@@ -1,0 +1,50 @@
+.contenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.contenido input{
+    padding: 2px 2px;
+    border: 1px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.contenido input:focus{
+    border: 2px solid #555;
+}
+
+.contenido select{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 2px 2px;
+    background: white;
+}
+
+.form{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 1% 1.5%;
+    width: 70%;
+    border: 1px #dfdfdf solid;
+    background: #e5e5e5;
+}
+.form div{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.form div label{
+    font-size: 20px;
+}
+
+.form div input, div select{
+    height: 100%;
+}

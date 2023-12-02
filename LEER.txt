@@ -1,0 +1,62 @@
+Hola.
+
+¡Indicaciones!
+
+---- Recomenaciones -----
+
+    Como observan el proyecto ya tiene unas migraciones, modelos, controladores,
+    routes, vistas y estilos o request; Esos archivos ya creados son la base de la
+    aplicacion web asi que eecomendable no borrar nada o/u modificar.
+
+
+---- Subir a Github -----
+
+    Al momento de agregar algo a su RAMA para subir al repositorio de Github en
+    la consola saldran unos warning, esto se debe a que hay espacios y saltos de lineas
+    en Laravel entonces usan este primer comando:
+
+    << git config --global core.autocrlf true >>
+
+    Despues de esto usan el segundo comando cada vez que quieran agregar algo,
+    recuerden que para agregar algo es el comando << git add . >> al usar este
+    comando si hicieron algo nuevo o modificaron algo de su trabajo apareceran
+    los warning por lo que utilizan este comando:
+
+    << git config --global core.eol lf >>
+
+    Si sale un error, que contenga <<CRLF>> usan el primer comando.
+
+---- Crear Roles ----
+
+    Al crear los roles lo van a hacer en el siguiente orden:
+    -Administrador
+    -Instructor
+    -Reclutador
+    -Selector
+    -Candidato
+
+    El proyecto tiene por predeterminado al crear un usuario asignar la
+    id_role=5 que seria el rol Candidato.
+
+
+---- Agregar Estilos ----
+
+    Hay dos css agregados uno de ellos es para los estilos del encabezado y
+    el otro es para los estilos de los formularios, para el de los formularios
+    solo deben usar las correspondientes clases.
+
+    Si desean añadir un cambio pequeño al estilo de formulario NO CAMBIAR NADA
+    DEL CSS hacer cambios en el propio archivo, ahora si quieren diseñar sus
+    css para las partes de su trabajo creen un css nuevo y lo referencia al
+    mismo archivo NO AL APP DE LAYOUTS.
+
+    Solo recordar que hay que mantener uniformidad.
+
+
+---- Controladores, Vistas, Modelos, Routes, Migraciones y Request -----
+
+    Si requieren de crear alguno de estos lo pueden hacer, ahora modificar esta
+    permitido mientras se haya hablado con el grupo para hacer la modificacion.
+
+
+Gracias :D
