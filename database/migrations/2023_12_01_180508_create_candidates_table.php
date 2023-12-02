@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('id_departament')->constrained('departaments');
-            $table->foreignId('id_municipalities')->constrained('municipalities');
+            $table->foreignId('id_municipality')->constrained('municipalities');
             $table->string('addres');
             $table->timestamps();
         });

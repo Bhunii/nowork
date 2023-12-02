@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('id_function')->constrained('functions');
             $table->enum('payment_method',['M,Q']);
             $table->decimal('salary', $precision = 8, $scale = 2);
-            $table->enum('type of contract',['I,D']);
+            $table->enum('type_contract',['I,D']);
             $table->timestamps();
         });
     }

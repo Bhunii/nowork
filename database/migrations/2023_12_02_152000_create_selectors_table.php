@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_user')->constrained('users');
             $table->foreignId('id_company')->constrained('companies');
-            $table->date('date_admission');
+            $table->date('admission_date');
             $table->timestamps();
         });
     }
