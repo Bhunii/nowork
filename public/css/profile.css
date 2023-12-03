@@ -1,0 +1,170 @@
+.main_profile{
+    width: 100%;
+    height: 100vh;
+    padding: 5px;
+    background: rgb(234, 234, 234);
+}
+
+.container_profile{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    grid-template-columns: 0.3fr 1fr;
+}
+
+.container_nexos_profile{
+    width: 100%;
+    height: 100%;
+}
+
+.nexos_ul{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    background: #37373d;
+    gap: 15px;
+}
+
+.nexos{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    list-style-type: none;
+}
+
+.nexos a{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    text-decoration: none;
+    transition: background-color 0.6s ease;
+}
+
+.nexos a:link{
+    color: #f1efef;
+}
+
+.nexos a:visited{
+    color: #f1efef;
+}
+
+.nexos a:hover{
+    /* padding: 1%; */
+    background-color: #f1efef;
+    color: black;
+}
+
+.nexos a:active{
+    color: rgb(255, 113, 146);
+}
+
+.nexo_logout form{
+    width: 100%;
+    height: 100%;
+}
+
+.nexo_logout form input{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: black;
+    font-weight: 600;
+}
+
+input[type="submit"]:hover {
+    color: #f1efef;
+    background: black;
+  }
+
+
+
+/*  */
+.container_general_profile{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: 40px auto;
+}
+
+.phrase_profile{
+    display: flex;
+    width: 100%;
+    height: 40px;
+    background: #37373d;
+    align-items: center;
+    justify-content: center;
+}
+
+.phrase_profile span{
+    color: #f1efef;
+    animation: moveImageX 10s linear infinite;
+}
+
+@keyframes moveImageX {
+    0% {
+        transform: translateX(-70%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-70%);
+    }
+}
+
+.profile{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    background-color: white;
+}
+
+.img_profile{
+    display: flex;
+    width: 35%;
+    padding: 15px 10px;
+    justify-content: center;
+}
+
+.img_profile img{
+    width: 224px;
+    height: 253px;
+    border-radius: 7px;
+    background: #f2f2f3;
+}
+
+.data_profile{
+    width: 65%;
+    padding: 15px 5px;
+}
+
+.data_ul{
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.data{
+    list-style-type: none;
+}
+
+.data span{
+    font-size:larger;
+}
+
+.data_title{
+    margin: 15px 0px 15px 0px;
+}
+
+.data_occupational_profile{
+    width: 90%;
+}

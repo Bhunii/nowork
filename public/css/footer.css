@@ -1,0 +1,47 @@
+.pie_pagina{
+    display: grid;
+    width: 100%;
+    height: 110px;
+    grid-template-columns: 0.8fr 1fr 0.6fr;
+    padding: 0% 1%;
+    background-color: #656571;
+    /* background-color: #676378; */
+    box-shadow: 5px 0 55px #676378;
+}
+
+.p_footer{
+    padding: 10px;
+}
+
+.btns_footer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.btns_footer picture{
+    width: 42px;
+    height: 42px;
+}
+
+.btn_footer img{
+    width: 100%;
+    height: 100%;
+}
+
+.add_footer{
+    display: flex;
+    justify-content: flex-end;
+    align-items:flex-end;
+    padding: 10px;
+}
+
+.add_footer picture{
+    width: 35px;
+    height: 35px;
+}
+
+.add_footer picture img{
+    width: 100%;
+    height: 100%;
+}

@@ -101,7 +101,7 @@
         value="Enviar"
         >
     </form>
-    <h4><a href="{{ route('user.index') }}">Volver atras</a></h4>
+    <h4><a href="{{ route('login') }}">Volver atras</a></h4>
 </main>
 
 @endsection

@@ -97,3 +97,58 @@ html{
 .links a:active{
     color: rgb(255, 113, 146);
 }
+
+.nexos_header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ul_nexos_header{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.ul_nexos_header li{
+    display: flex;
+    width: 90px;
+    height: 37px;
+    border: 1px white solid;
+    border-radius: 5px;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+    transition: border 1.5s ease;
+}
+
+.ul_nexos_header li:hover{
+    border: 1px rgb(251, 166, 186) solid;
+}
+
+.li_nexos a{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    transition: color 1.5s ease;
+    text-decoration-line: none;
+}
+.li_nexos a:link{
+    color: white;
+}
+
+.li_nexos a:visited{
+    color: white;
+}
+
+.li_nexos a:hover{
+    color: rgb(255, 113, 146);
+}
+
+.li_nexos a:active{
+    color: rgb(255, 113, 146);
+}

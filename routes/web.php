@@ -9,6 +9,8 @@ use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ProfileController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,9 +67,12 @@ Route::post('/recruiter/{id}/store', [RecruiterController::class, 'store'])->nam
 Route::get('/recruiter/{id}/edit', [RecruiterController::class, 'edit'])->name('recruiter.edit');
 Route::put('/recruiter/{id}/update', [RecruiterController::class, 'update'])->name('recruiter.update');
 
-//management routes for candidate
+//Management routes for candidate
 Route::get('/candidate/index', [CandidateController::class, 'index'])->name('candidate.index');
 Route::get('/candidate/{id}/create', [CandidateController::class, 'create'])->name('candidate.create');
 Route::post('/candidate/{id}/store', [CandidateController::class, 'store'])->name('candidate.store');
 Route::get('/candidate/{id}/edit', [CandidateController::class, 'edit'])->name('candidate.edit');
 Route::put('/candidate/{id}/update', [CandidateController::class, 'update'])->name('candidate.update');
+
+//Profile routes
+Route::get('/profile/{id}/index', [ProfileController::class, 'index'])->name('profile.index');

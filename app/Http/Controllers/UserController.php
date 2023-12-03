@@ -36,7 +36,7 @@ class UserController extends Controller
             'password' => Hash::make($request->input('password'))
         ]);
 
-        return redirect()->route('user.index')->with('Usuario Creado Exitosamente');
+        return redirect()->route('login')->with('Usuario Creado Exitosamente');
     }
 
     public function edit($id):View
@@ -81,7 +81,7 @@ class UserController extends Controller
 
     public function show($id):View
     {
-        $user = User::findOrFail($id);      
+        $user = User::findOrFail($id);
         return view('user.show', compact('user'));
     }
 }
