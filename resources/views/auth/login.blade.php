@@ -59,7 +59,7 @@
             <ul class="sign_up">
                 <li>New user?</li>
                 <li>  |  </li>
-                <li><a href="{{ route('user.create') }}" target="_self"> Create an account</a></li>
+                <li><a href="{{ route('candidate.create') }}" target="_self"> Create an account</a></li>
             </ul>
         </section>
     </div>

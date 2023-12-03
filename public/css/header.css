@@ -41,6 +41,11 @@ html{
     align-items: center;
 }
 
+.icon_logo{
+    width: 45px;
+    height: 45px;
+}
+
 .logo_encabezado span{
     font-family: 'Fredericka the Great', cursive;
     font-size: xx-large;

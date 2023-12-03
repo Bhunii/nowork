@@ -69,8 +69,8 @@ Route::put('/recruiter/{id}/update', [RecruiterController::class, 'update'])->na
 
 //Management routes for candidate
 Route::get('/candidate/index', [CandidateController::class, 'index'])->name('candidate.index');
-Route::get('/candidate/{id}/create', [CandidateController::class, 'create'])->name('candidate.create');
-Route::post('/candidate/{id}/store', [CandidateController::class, 'store'])->name('candidate.store');
+Route::get('/candidate/create', [CandidateController::class, 'create'])->name('candidate.create');
+Route::post('/candidate/store', [CandidateController::class, 'store'])->name('candidate.store');
 Route::get('/candidate/{id}/edit', [CandidateController::class, 'edit'])->name('candidate.edit');
 Route::put('/candidate/{id}/update', [CandidateController::class, 'update'])->name('candidate.update');
 

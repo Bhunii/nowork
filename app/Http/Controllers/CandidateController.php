@@ -3,39 +3,63 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use App\Http\Requests\CandidateRequest;
 use App\Models\Candidate;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use App\Models\User;
+use Illuminate\Support\Facades\Redirect;
 
 class CandidateController extends Controller
 {
-    public function index(){
+    public function index():View
+    {
         $candidates = Candidate::all();
         return view('candidate.index', ['candidates' => $candidates]);
     }
 
-    public function create($id){
-        $user = User::findOrFail($id);
-        return view('candidate.create', compact('user'));
+    public function create():View
+    {
+        // $user = User::findOrFail($id), compact('user');
+        return view('candidate.create');
     }
 
-    public function store(Request $request,$id){
-        $user = User::findOrFail($id);
+    public function store(CandidateRequest $request):RedirectResponse
+    {
+        // $user = User::findOrFail($id);
 
-        Candidate::create([
-            'user_id'=> $id,
-            'selection_status'=> $request->selection_status,
-            'points'=> $request->points
+        $user = User::create([
+            'doc_type' => $request->doc_type,
+            'doc_num' => Str::upper($request->doc_num),
+            'name' => Str::upper($request->name),
+            'last_name' => Str::upper($request->last_name),
+            'phone' => $request->phone,
+            'genre' => $request->genre,
+            'user_name' => $request->user_name,
+            'email' => Str::lower($request->email),
+            'password' => Hash::make($request->password)
         ]);
 
-        return redirect()->route('candidate.index');
+        Candidate::create([
+            'user_id' => $user->id,
+            'id_departament' => $request->id_departament,
+            'id_municipality' => $request->id_municipality,
+            'addres' => Str::lower($request->addres),
+        ]);
+
+        return redirect()->route('login')->with('mensaje','Usuario Creado Exitosamente');
     }
 
-    public function edit($id){
+    public function edit($id):View
+    {
         $candidate = Candidate::findOrFail($id);
         return view('candidate.edit', compact('candidate'));
     }
 
-    public function update(Request $request,$id){
+    public function update(Request $request,$id):RedirectResponse
+    {
         $candidate = Candidate::findOrFail($id);
 
         $candidate->selection_status = $request->selection_status;

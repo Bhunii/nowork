@@ -31,12 +31,13 @@ class UserController extends Controller
             'name' => Str::upper($request->input('name')),
             'last_name' => Str::upper($request->input('last_name')),
             'phone' => $request->input('phone'),
-            'user_name' => Str::lower($request->input('user_name')),
+            'genre' => $request->genre,
+            'user_name' => $request->input('user_name'),
             'email' => Str::lower($request->input('email')),
             'password' => Hash::make($request->input('password'))
         ]);
 
-        return redirect()->route('login')->with('Usuario Creado Exitosamente');
+        return redirect()->route('login')->with('mensaje','Usuario Creado Exitosamente');
     }
 
     public function edit($id):View

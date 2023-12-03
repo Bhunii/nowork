@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/header.css')}}">
     <link rel="stylesheet" href="{{asset('css/form.css')}}">
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
+    <link rel="icon" type="image/png" href="{{ asset('img/icon-black-logo.png') }}">
     @yield('css')
     <title>
         @isset($title)
@@ -15,13 +16,17 @@
         {{ config('app.name') }}
     </title>
     <style>
-
+        /* link[rel="icon"] {
+            width: 5px;
+            height: 11px;
+        } */
     </style>
     <title></title>
 </head>
 <body>
     <header class="encabezado">
         <section class="logo_encabezado">
+            <img class="icon_logo" src="{{ asset('img/icon-white-logo.png') }}" alt="icon profile">
             <span>Nowork</span>
         </section>
 
@@ -55,7 +60,7 @@
                         <a href="{{ route('login') }}">Sign in</a>
                     </li>
                     <li class="li_nexos">
-                        <a href="{{ route('user.create') }}">Sign up</a>
+                        <a href="{{ route('candidate.create') }}">Sign up</a>
                     </li>
                 </ul>
             @endguest

@@ -22,6 +22,7 @@
         <div>
             <label>Document Type</label>
             <select name="doc_type">
+                <option value=" ">Select an option</option>
                 <option value="CC">citizenship card</option>
                 <option value="TI">identity card</option>
             </select>
@@ -87,11 +88,19 @@
             @enderror
         </div>
         <div>
+            <label>Genre</label>
+            <select name="genre">
+                <option value=" ">Select an option</option>
+                <option value="M">male</option>
+                <option value="F">female</option>
+            </select>
+        </div>
+        <div>
             <label>Password</label>
             <input
             name="password"
             type="password"
-            value="{{ old('password') }}"
+            value=""
             >@error('password')
                 <small>{{$message}}</small>
             @enderror

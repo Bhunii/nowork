@@ -19,12 +19,12 @@
         </tr>
         @forelse ($users as $user)
             <tr>
-                <td style="width: 360px"><a href="{{ route('user.edit', $user->id)}}">Edit User Role</a> | 
+                <td style="width: 360px"><a href="{{ route('user.edit', $user->id)}}">Edit User Role</a> |
                     <form method="POST" action="{{route('user.destroy', $user->id)}}">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="DELETE" class="edit"/>
-                    </form> | 
+                    </form> |
                     <a href="{{ route('user.show', $user->id) }}">Show User</a> |
                     <a href="{{ route('user.edit_data', $user->id) }}">Update Data</a>
                 </td>
