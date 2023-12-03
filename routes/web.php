@@ -9,6 +9,8 @@ use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\OccupationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -71,3 +73,12 @@ Route::get('/candidate/{id}/create', [CandidateController::class, 'create'])->na
 Route::post('/candidate/{id}/store', [CandidateController::class, 'store'])->name('candidate.store');
 Route::get('/candidate/{id}/edit', [CandidateController::class, 'edit'])->name('candidate.edit');
 Route::put('/candidate/{id}/update', [CandidateController::class, 'update'])->name('candidate.update');
+
+//rutas de ocupaciones
+Route::get('/occupation/index', [OccupationController::class,'index'])->name('occupation.index');
+Route::get('/occupation/create', [OccupationController::class,'create'])->name('occupation.create');
+Route::post('/occupation/store', [OccupationController::class,'store'])->name('occupation.store');
+Route::get('/occupation/edit/{occupation}', [OccupationController::class,'edit'])->name('occupation.edit');
+Route::put('/occupation/update/{occupation}', [OccupationController::class,'update'])->name('occupation.update');
+Route::delete('/occupation/destroy/{occupation}',[OccupationController::class, 'destroy'])->name('occupation.destroy');
+Route::get('/occupation/show/{occupation}', [OccupationController::class,'show'])->name('occupation.show');
