@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Occupation;
+use App\Models\Skill;
+use App\Models\Knowledge;
 
 class OccupationController extends Controller
 {
@@ -22,11 +24,27 @@ class OccupationController extends Controller
     public function store(Request $request)
     {
         Occupation::create([
-            'code_occupation'=>$request->code_occupation,
-            'name'=>$request->name,
-            'description'=>$request->description,
+            'code_occupation' => $request->code_occupation,
+            'name' => $request->name_occupation,
+            'description' => $request->description_occupation,
         ]);
+
+        Skill::create([
+            'code_occupation' => Occupation::latest('code_occupation')->first()->code_occupation,
+            'code'=>$request->code_skill,
+            'name' => $request->name_skill,
+            'description' => $request->description_skill,
+        ]);
+
+        Knowledge::create([
+            'code_occupation'=>Occupation::latest('code_occupation')->first()->code_occupation,
+            'code'=>$request->code_knowledge,
+            'name'=>$request->name_knowledge,
+            'description'=>$request->description_knowledge,
+        ]);
+        return redirect()->route('occupation.create');
     }
+
 
     public function edit(Occupation $occupation)
     {

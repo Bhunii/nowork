@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\OccupationController;
+use App\Http\Controllers\SkillController;
 
 
 /*
@@ -82,3 +83,11 @@ Route::get('/occupation/edit/{occupation}', [OccupationController::class,'edit']
 Route::put('/occupation/update/{occupation}', [OccupationController::class,'update'])->name('occupation.update');
 Route::delete('/occupation/destroy/{occupation}',[OccupationController::class, 'destroy'])->name('occupation.destroy');
 Route::get('/occupation/show/{occupation}', [OccupationController::class,'show'])->name('occupation.show');
+
+Route::get('/skill/index', [SkillController::class,'index'])->name('skill.index');
+Route::get('/skill/create', [SkillController::class,'create'])->name('skill.create');
+Route::post('/skill/store', [SkillController::class,'store'])->name('skill.store');
+Route::get('/skill/edit/{skill}', [SkillController::class,'edit'])->name('skill.edit');
+Route::put('/skill/update/{skill}', [SkillController::class,'update'])->name('skill.update');
+Route::delete('/skill/destroy/{skill}',[SkillController::class, 'destroy'])->name('skill.destroy');
+Route::get('/skill/show/{skill}', [SkillController::class,'show'])->name('skill.show');

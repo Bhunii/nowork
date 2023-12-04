@@ -29,7 +29,7 @@
                     <a href="{{ route('home.index') }}" target="_self">Home</a>
                 </li>
                 <li class="links">
-                    <a href="#" target="_self">...</a>
+                    <a href="{{route('occupation.index')}}" target="_self">Ocupaciones</a>
                 </li>
                 <li class="links">
                     <a href="#" target="_self">...</a>

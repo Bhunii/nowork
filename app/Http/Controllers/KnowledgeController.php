@@ -10,7 +10,7 @@ class KnowledgeController extends Controller
 {
     public function index()
     {
-        $knowledges=Knoledge::all();
+        $knowledges=Knowledge::all();
         return view('knowledge.index',compact('knowledges'));
     }
     
@@ -21,32 +21,32 @@ class KnowledgeController extends Controller
 
     public function store(Request $request)
     {
-        Knoledge::create([
+        Knowledge::create([
             'code_occupation'=>$request->code_occupation,
             'code'=>$request->code,
-            'name'=>$request->code,
-            'description'=>$request->code,
+            'name'=>$request->name,
+            'description'=>$request->description,
         ]);
     }
 
-    public function edit(Knoledge $knowledge)
+    public function edit(Knowledge $knowledge)
     {
         return view('knowledge.edit', compact('knowledge'));
     }
 
-    public function update(Request $request, Knoledge $knowledge)
+    public function update(Request $request, Knowledge $knowledge)
     {
         $knowledge->update($request->all());
         return redirect()->route('knowledge.index');
     }
 
-    public function destroy(Knoledge $knowledge)
+    public function destroy(Knowledge $knowledge)
     {
         $knowledge->delete();
         return redirect()->route('knowledge.index');
     }
 
-    public function show(Knoledge $knowledge)
+    public function show(Knowledge $knowledge)
     {
         return view('knowledge.show', compact('knowledge'));
     }
