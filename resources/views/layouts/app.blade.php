@@ -50,7 +50,7 @@
             @auth
                 <ul class="ul_nexos_header">
                     <li class="li_nexos">
-                        <a href="{{ route('profile.index',$user->id)}}">Profile</a>
+                        <a href="{{ route('profile.index')}}">Profile</a>
                     </li>
                 </ul>
             @endauth

@@ -15,4 +15,8 @@ class Curriculum extends Model
         'id_candidate',
         'occupational_profile'
     ];
+
+    protected $attributes = [
+        'occupational_profile' => 'Aqui va tu perfil ocupacional.',
+    ];
 }

@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Http\Requests\CandidateRequest;
 use App\Models\Candidate;
+use App\Models\Curriculum;
+use App\Models\Departament;
+use App\Models\Municipality;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Models\User;
@@ -22,8 +25,10 @@ class CandidateController extends Controller
 
     public function create():View
     {
+        $departaments = Departament::all();
+        $municipalities = Municipality::all();
         // $user = User::findOrFail($id), compact('user');
-        return view('candidate.create');
+        return view('candidate.create', compact('departaments'), compact('municipalities'));
     }
 
     public function store(CandidateRequest $request):RedirectResponse
@@ -42,11 +47,15 @@ class CandidateController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        Candidate::create([
+        $candidate = Candidate::create([
             'user_id' => $user->id,
             'id_departament' => $request->id_departament,
             'id_municipality' => $request->id_municipality,
-            'addres' => Str::lower($request->addres),
+            'addres' => Str::lower($request->addres)
+        ]);
+
+        Curriculum::create([
+            'id_candidate' => $candidate->id,
         ]);
 
         return redirect()->route('login')->with('mensaje','Usuario Creado Exitosamente');

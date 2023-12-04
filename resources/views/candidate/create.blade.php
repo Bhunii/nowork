@@ -1,6 +1,9 @@
 @extends('layouts.app',['title' => 'Form Register'])
 
 @section('content')
+@php
+    $selected_departament = old('id_departament');
+@endphp
     <style>
         .contenido{
             height: 1000px;
@@ -97,19 +100,25 @@
         </div>
         <div>
             <label>Departament</label>
-            <input
-            name="id_departament"
-            type="text"
-            value=""
-            >
+            <select name="id_departament">
+                <option value=" ">Select an option</option>
+                @foreach ($departaments as $departament)
+                    <option value="{{ $departament->id }}">{{ $departament->name }}</option>
+                @endforeach
+            </select>
         </div>
         <div>
             <label>Municipality</label>
-            <input
-            name="id_municipality"
-            type="text"
-            value=""
-            >
+            <select name="id_municipality">
+                <option value=" ">Select an option</option>
+                @foreach ($municipalities as $municipality)
+                    @if (old('id_departament') == $municipality->id_departament)
+                        <option value="{{ $municipality->id }}" selected>{{ $municipality->name }}</option>
+                    @else
+                        <option value="{{ $municipality->id }}">{{ $municipality->name }}</option>
+                    @endif
+                @endforeach
+            </select>
         </div>
         <div>
             <label>Addres</label>

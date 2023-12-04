@@ -34,7 +34,7 @@
                 <td style="width: 300px">{{ $user->email }}</td>
                 <td style="width: 60px">{{ $user->role_id }}</td>
                 <td style="width: 150px">{{ $user->role->role_name }}</td>
-                <td style="width: 150px, border: none">
+                <td style="width: 150px">
                 @switch($user->role->role_name)
                     @case("INSTRUCTOR")
                         <a href="{{ route('instructor.create', $user->id) }}">Create Profile</a>

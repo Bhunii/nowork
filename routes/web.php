@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CurriculumController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
@@ -75,4 +76,8 @@ Route::get('/candidate/{id}/edit', [CandidateController::class, 'edit'])->name('
 Route::put('/candidate/{id}/update', [CandidateController::class, 'update'])->name('candidate.update');
 
 //Profile routes
-Route::get('/profile/{id}/index', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
+
+//Management routes for candidate
+Route::get('/curriculum/edit', [CurriculumController::class, 'edit'])->name('curriculum.edit');
+Route::get('/curriculum/update', [CurriculumController::class, 'update'])->name('curriculum.updat');

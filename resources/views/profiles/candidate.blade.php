@@ -69,7 +69,7 @@
                                 <span>{{ auth()->user()->phone }}</span>
                             </li>
                             <li class="data data_occupational_profile">
-                                <span>Un perfil ocupacional consiste en la descripción de las habilidades que un trabajador debe tener (o tiene) para ejercer eficientemente un puesto de trabajo.
+                                <span>
                                 </span>
                             </li>
                         </ul>
