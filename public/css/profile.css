@@ -139,7 +139,6 @@ input[type="submit"]:hover {
     width: 224px;
     height: 253px;
     border-radius: 7px;
-    background: #f2f2f3;
 }
 
 .data_profile{
@@ -166,5 +165,34 @@ input[type="submit"]:hover {
 }
 
 .data_occupational_profile{
+    position: relative;
+    display: flex;
+    flex-direction: column;
     width: 90%;
+}
+
+.show_hide_container{
+    /* position: absolute; */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 120px;
+    top: 0;
+    left: 0;
+    background-color: white;
+    /* z-index: 1; */
+    display: none;
+}
+
+.form_edit_curriculum{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form_edit_curriculum input[type="text"]{
+    width: 100%;
+    height: 50px;
 }

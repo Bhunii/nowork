@@ -80,4 +80,4 @@ Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile
 
 //Management routes for candidate
 Route::get('/curriculum/edit', [CurriculumController::class, 'edit'])->name('curriculum.edit');
-Route::get('/curriculum/update', [CurriculumController::class, 'update'])->name('curriculum.updat');
+Route::put('/curriculum/update', [CurriculumController::class, 'update'])->name('curriculum.update');

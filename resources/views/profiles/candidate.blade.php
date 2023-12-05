@@ -1,5 +1,9 @@
 @extends('layouts.app',['title' => 'Your Profile'])
 
+@section('js')
+    <script src="{{ asset('js/profile.js') }}"></script>
+@endsection
+
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 @endsection
@@ -60,23 +64,44 @@
                                 <span>{{ auth()->user()->doc_type }}</span> <span>{{ auth()->user()->doc_num }}</span>
                             </li>
                             <li class="data">
-                                <span>Ciudad</span>
+                                <span>{{ auth()->user()->candidate->departament->name }}</span> - <span>{{auth()->user()->candidate->municipality->name}}</span>
                             </li>
                             <li class="data">
                                 <span>{{ auth()->user()->email }}</span>
                             </li>
-                            <li class="data">
-                                <span>{{ auth()->user()->phone }}</span>
-                            </li>
-                            <li class="data data_occupational_profile">
-                                <span>
-                                </span>
-                            </li>
+                                <li class="data">
+                                    <span>{{ auth()->user()->phone }}</span>
+                                </li>
+                                <li class="data data_occupational_profile">
+                                    <span>{{ auth()->user()->candidate->curriculum->occupational_profile }}</span>
+                                    <button id="btnShow" class="btnUpdateCurriculum" onclick="ShowContainer()">
+                                        Actualizar Pefil Ocupacional
+                                    </button>
+                                    <div class="show_hide_container">
+                                        <form class="form_edit_curriculum" method="post" action="{{ route('curriculum.update') }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="div_input_occupational_profile">
+                                                <input
+                                                name="occupational_profile"
+                                                type="text"
+                                                value="{{ old('occupational_profile', auth()->user()->candidate->curriculum->occupational_profile) }}"
+                                                >
+                                                @error('occupational_profile')
+                                                    <small>{{$message}}</small>
+                                                @enderror
+                                            </div>
+                                            <div>
+                                                <input type="submit" value="Actualizar">
+                                                <button id="btnHide" class="btnUpdateCurriculum" onclick="HideContainer()">Cancelar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
                         </ul>
                     </article>
                 </div>
             </section>
         </div>
     </main>
-
 @endsection

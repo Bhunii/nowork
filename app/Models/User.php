@@ -21,8 +21,9 @@ class User extends Authenticatable
     protected $table = "users";
 
     protected $attributes = [
-        'role_id' => '4',
+        'role_id' => '5',
     ];
+
     protected $fillable = [
         'doc_type',
         'doc_num',
@@ -60,5 +61,9 @@ class User extends Authenticatable
 
     public function instructors(){
         return $this->hasMany(Instructor::class, 'user_id', 'id');
+    }
+
+    public function candidate(){
+        return $this->hasOne(Candidate::class, 'user_id');
     }
 }

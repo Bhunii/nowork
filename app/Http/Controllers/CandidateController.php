@@ -56,6 +56,7 @@ class CandidateController extends Controller
 
         Curriculum::create([
             'id_candidate' => $candidate->id,
+            'occupational_profile'
         ]);
 
         return redirect()->route('login')->with('mensaje','Usuario Creado Exitosamente');
