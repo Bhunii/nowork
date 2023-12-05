@@ -1,22 +1,36 @@
 .pie_pagina{
     display: grid;
     width: 100%;
-    height: 110px;
+    height: 100%;
     grid-template-columns: 0.8fr 1fr 0.6fr;
     padding: 0% 1%;
-    background-color: #656571;
+    background-color: #39393b;
     /* background-color: #676378; */
-    box-shadow: 5px 0 55px #676378;
+    box-shadow: 5px 0 55px #64626d;
 }
 
 .p_footer{
     padding: 10px;
 }
 
-.btns_footer{
+.links_footer{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+}
+
+.ul_links{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.linksf{
+    list-style-type: none;
+}
+
+.linksf a{
+    text-decoration-line: none;
 }
 
 .btns_footer picture{

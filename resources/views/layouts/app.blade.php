@@ -80,17 +80,17 @@
         <section class="links_footer">
             <ul class="ul_links">
                 <li class="linksf">
-                    <a href="" target="">
+                    <a href="#" target="">
                         <img src="../img/login/icon_facebook_circular.png" alt="facebook"/>
                     </a>
                 </li>
                 <li class="linksf">
-                    <a href="" target="">
+                    <a href="#" target="">
                         <img src="../img/login/icon_whatsapp.png" alt="whatsapp"/>
                     </a>
                 </li>
                 <li class="linksf">
-                    <a href="" target="">
+                    <a href="#" target="">
                         <img src="../img/login/icon_social.png" alt="social"/>
                     </a>
                 </li>
