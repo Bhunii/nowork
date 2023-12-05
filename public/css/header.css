@@ -21,6 +21,10 @@ html{
     overflow-x: hidden;
 }
 
+button {
+    border: none;
+    outline: none; /* Esto elimina el resaltado al hacer clic en el botón en algunos navegadores */
+  }
 
 .encabezado{
     position: relative;

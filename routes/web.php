@@ -72,8 +72,8 @@ Route::put('/recruiter/{id}/update', [RecruiterController::class, 'update'])->na
 Route::get('/candidate/index', [CandidateController::class, 'index'])->name('candidate.index');
 Route::get('/candidate/create', [CandidateController::class, 'create'])->name('candidate.create');
 Route::post('/candidate/store', [CandidateController::class, 'store'])->name('candidate.store');
-Route::get('/candidate/{id}/edit', [CandidateController::class, 'edit'])->name('candidate.edit');
-Route::put('/candidate/{id}/update', [CandidateController::class, 'update'])->name('candidate.update');
+Route::get('/candidate/edit', [CandidateController::class, 'edit'])->name('candidate.edit');
+Route::put('/candidate/update', [CandidateController::class, 'update'])->name('candidate.update');
 
 //Profile routes
 Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');

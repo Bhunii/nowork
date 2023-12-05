@@ -16,6 +16,7 @@
         @endisset
         {{ config('app.name') }}
     </title>
+    @yield('style')
     <style>
         /* link[rel="icon"] {
             width: 5px;

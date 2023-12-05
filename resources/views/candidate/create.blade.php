@@ -1,9 +1,6 @@
 @extends('layouts.app',['title' => 'Form Register'])
 
 @section('content')
-@php
-    $selected_departament = old('id_departament');
-@endphp
     <style>
         .contenido{
             height: 1000px;
@@ -143,7 +140,7 @@
         value="enviar"
         >
     </form>
-    <h4><a href="{{ route('login') }}">Back to List</a></h4>
+    <h4><a href="{{ route('login') }}">Volver</a></h4>
 </main>
 
 @endsection

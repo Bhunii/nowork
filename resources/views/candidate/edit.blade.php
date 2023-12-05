@@ -1,67 +1,122 @@
-@extends('layouts.app',['title' => 'Update Info Instructor'])
+@extends('layouts.nav.candidate',['title' => 'Update Data'])
 
-@section('content')
+@section('style')
     <style>
-        .contenido{
+        /* .main_profile{
             height: 800px;
-        }
-
-        .form_update_candidate{
-            height: 75%;
-        }
-
-        .form_update_candidate div{
-            height: 14%;
-            gap: 15%;
-        }
+        } */
 
     </style>
-<main class="contenido">
-    <form class="form form_update_candidate" method="post" action="{{ route('candidate.update', $candidate->id) }}">
+@endsection
+
+@section('content_profile')
+<section class="contenido contenido_profile">
+    <form class="form form_edit_curriculum" method="post" action="">
         @csrf
-        @method('PUT')
+        <div>
+            <label>Document Type</label>
+            <select name="doc_type" disabled>
+                <option value=" ">Select an option</option>
+                <option value="CC">citizenship card</option>
+                <option value="TI">identity card</option>
+            </select>
+        </div>
         <div>
             <label>Document Number</label>
             <input
             name="doc_num"
             type="text"
-            value="{{$candidate->user->doc_num}}"
-            disabled
-            >
+            value="{{ old('doc_num') }}"
+            disabled>@error('doc_num')
+                <small>{{$message}}</small>
+            @enderror
         </div>
         <div>
             <label>Name</label>
             <input
             name="name"
             type="text"
-            value="{{$candidate->user->name}}"
-            disabled
-            >
+            value="{{ old('name') }}"
+            disabled>@error('name')
+                <small>{{$message}}</small>
+            @enderror
         </div>
         <div>
             <label>Last Name</label>
             <input
             name="last_name"
             type="text"
-            value="{{$candidate->user->last_name}}"
-            disabled
-            >
+            value="{{ old('last_name') }}"
+            disabled>@error('last_name')
+                <small>{{$message}}</small>
+            @enderror
         </div>
         <div>
-            <label>Selection Status</label>
-            <select name="selection_status">
-                <option value="NULL"></option>
-                <option value="EN ESTUDIO">En Estudio</option>
-                <option value="SELECCIONADO">Seleccionado</option>
+            <label>Phone</label>
+            <input
+            name="phone"
+            type="text"
+            value="{{ old('phone') }}"
+            >@error('phone')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
+        <div>
+            <label>User name</label>
+            <input
+            name="user_name"
+            type="text"
+            value="{{ old('user_name') }}"
+            >@error('user_name')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
+        <div>
+            <label>Email</label>
+            <input
+            name="email"
+            type="text"
+            value="{{ old('email') }}"
+            >@error('email')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
+        <div>
+            <label>Genre</label>
+            <select name="genre" disabled>
+                <option value=" ">Select an option</option>
+                <option value="M">male</option>
+                <option value="F">female</option>
             </select>
         </div>
         <div>
-            <label>Points</label>
+            <label>Departament</label>
+            <select name="id_departament">
+                <option value=" ">Select an option</option>
+                @foreach ($departaments as $departament)
+                    <option value="{{ $departament->id }}">{{ $departament->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div>
+            <label>Municipality</label>
+            <select name="id_municipality">
+                <option value=" ">Select an option</option>
+                @foreach ($municipalities as $municipality)
+                    @if (old('id_departament') == $municipality->id_departament)
+                        <option value="{{ $municipality->id }}" selected>{{ $municipality->name }}</option>
+                    @else
+                        <option value="{{ $municipality->id }}">{{ $municipality->name }}</option>
+                    @endif
+                @endforeach
+            </select>
+        </div>
+        <div>
+            <label>Addres</label>
             <input
-            name="points"
+            name="addres"
             type="text"
             value=""
-            required
             >
         </div>
         <input
@@ -69,7 +124,6 @@
         value="enviar"
         >
     </form>
-    <h4><a href="{{ route('candidate.index') }}">Back to List</a></h4>
-</main>
+</section>
 
 @endsection
