@@ -9,10 +9,11 @@ use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CurriculumController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 use App\Http\Controllers\OccupationController;
 use App\Http\Controllers\SkillController;
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,13 +69,12 @@ Route::post('/recruiter/{id}/store', [RecruiterController::class, 'store'])->nam
 Route::get('/recruiter/{id}/edit', [RecruiterController::class, 'edit'])->name('recruiter.edit');
 Route::put('/recruiter/{id}/update', [RecruiterController::class, 'update'])->name('recruiter.update');
 
-//management routes for candidate
+//Management routes for candidate
 Route::get('/candidate/index', [CandidateController::class, 'index'])->name('candidate.index');
-Route::get('/candidate/{id}/create', [CandidateController::class, 'create'])->name('candidate.create');
-Route::post('/candidate/{id}/store', [CandidateController::class, 'store'])->name('candidate.store');
+Route::get('/candidate/create', [CandidateController::class, 'create'])->name('candidate.create');
+Route::post('/candidate/store', [CandidateController::class, 'store'])->name('candidate.store');
 Route::get('/candidate/{id}/edit', [CandidateController::class, 'edit'])->name('candidate.edit');
 Route::put('/candidate/{id}/update', [CandidateController::class, 'update'])->name('candidate.update');
-
 //rutas de ocupaciones
 Route::get('/occupation/index', [OccupationController::class,'index'])->name('occupation.index');
 Route::get('/occupation/create', [OccupationController::class,'create'])->name('occupation.create');
@@ -84,10 +84,9 @@ Route::put('/occupation/update/{occupation}', [OccupationController::class,'upda
 Route::delete('/occupation/destroy/{occupation}',[OccupationController::class, 'destroy'])->name('occupation.destroy');
 Route::get('/occupation/show/{occupation}', [OccupationController::class,'show'])->name('occupation.show');
 
-Route::get('/skill/index', [SkillController::class,'index'])->name('skill.index');
-Route::get('/skill/create', [SkillController::class,'create'])->name('skill.create');
-Route::post('/skill/store', [SkillController::class,'store'])->name('skill.store');
-Route::get('/skill/edit/{skill}', [SkillController::class,'edit'])->name('skill.edit');
-Route::put('/skill/update/{skill}', [SkillController::class,'update'])->name('skill.update');
-Route::delete('/skill/destroy/{skill}',[SkillController::class, 'destroy'])->name('skill.destroy');
-Route::get('/skill/show/{skill}', [SkillController::class,'show'])->name('skill.show');
+//Profile routes
+Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
+
+//Management routes for candidate
+Route::get('/curriculum/edit', [CurriculumController::class, 'edit'])->name('curriculum.edit');
+Route::get('/curriculum/update', [CurriculumController::class, 'update'])->name('curriculum.updat');

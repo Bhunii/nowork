@@ -31,46 +31,47 @@ class UserController extends Controller
             'name' => Str::upper($request->input('name')),
             'last_name' => Str::upper($request->input('last_name')),
             'phone' => $request->input('phone'),
-            'user_name' => Str::lower($request->input('user_name')),
+            'genre' => $request->genre,
+            'user_name' => $request->input('user_name'),
             'email' => Str::lower($request->input('email')),
             'password' => Hash::make($request->input('password'))
         ]);
 
-        return redirect()->route('user.index')->with('Usuario Creado Exitosamente');
+        return redirect()->route('login')->with('mensaje','Usuario Creado Exitosamente');
     }
 
-    public function edit($id):View
+    public function edit():View
     {
-        $user = User::findOrFail($id);
+        $user = auth()->user();
         return view('user.edit', compact('user'));
     }
 
-    public function update(Request $request,$id):RedirectResponse
+    public function update(Request $request):RedirectResponse
     {
-        $user = User::findOrFail($id);
+        $user = auth()->user();
 
         $user->role_id = $request->role_id;
         $user->save();
 
-        return redirect()->route('user.index');
+        return redirect()->route('profile.index');
     }
 
-    public function edit_data($id):View
+    public function edit_data():View
     {
-        $user = User::findOrFail($id);
+        $user = auth()->user();
         return view('user.edit_data', compact('user'));
     }
 
-    public function update_data(Request $request,$id):RedirectResponse
+    public function update_data(Request $request):RedirectResponse
     {
-        $user = User::findOrFail($id);
+        $user = auth()->user();;
 
         $user->phone = $request->phone;
         $user->user_name = $request->user_name;
         $user->email = $request->email;
         $user->save();
 
-        return redirect()->route('user.index');
+        return redirect()->route('profile.index');
     }
 
     public function destroy($id):RedirectResponse
@@ -81,7 +82,7 @@ class UserController extends Controller
 
     public function show($id):View
     {
-        $user = User::findOrFail($id);      
+        $user = User::findOrFail($id);
         return view('user.show', compact('user'));
     }
 }

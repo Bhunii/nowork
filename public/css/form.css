@@ -8,12 +8,13 @@
 .contenido input{
     padding: 2px 2px;
     border: 1px solid #ccc;
-    -webkit-transition: 0.5s;
+    -webkit-transition: 0.5s ;
     transition: 0.5s;
     outline: none;
 }
 
 .contenido input:focus{
+    transition: 2s ease;
     border: 2px solid #555;
 }
 

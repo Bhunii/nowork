@@ -21,7 +21,7 @@ class User extends Authenticatable
     protected $table = "users";
 
     protected $attributes = [
-        'role_id' => '5',
+        'role_id' => '4',
     ];
     protected $fillable = [
         'doc_type',

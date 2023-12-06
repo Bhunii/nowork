@@ -16,4 +16,9 @@ class Municipality extends Model
         'code',
         'name'
     ];
+
+    public function departament()
+    {
+        return $this->belongsTo(Departament::class, 'id_departament', 'id');
+    }
 }
