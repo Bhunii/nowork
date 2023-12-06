@@ -1,27 +1,37 @@
 @extends('layouts.app',['title' => 'Form Register'])
 
-@section('content')
+@section('style')
     <style>
-        .contenido{
-            height: 1000px;
+        .contenido_form{
+            height: 1050px;
         }
 
         .form_register_candidate{
-            height: 90%;
-            gap: 10px;
+            display: flex;
+            flex-direction: column;
         }
-
-        .form_register_candidate div{
-            height: 10%;
+        .div_form_create_candidate{
+            padding: 20px;
+            gap: 19px;
+        }
+        .input_general_submit{
+            width: 140px;
+            height: 40px;
+        }
+        .btn_general{
+            width: 140px;
+            height: 40px;
         }
 
     </style>
-<main class="contenido">
+@endsection
+@section('content')
+<main class="contenido_form">
     <form class="form form_register_candidate" method="post" action="{{ route('candidate.store') }}">
         @csrf
         <div>
             <label>Document Type</label>
-            <select name="doc_type">
+            <select class="select_style_general" name="doc_type" class="s">
                 <option value=" ">Select an option</option>
                 <option value="CC">citizenship card</option>
                 <option value="TI">identity card</option>
@@ -30,6 +40,7 @@
         <div>
             <label>Document Number</label>
             <input
+            class="input_style_general"
             name="doc_num"
             type="text"
             value="{{ old('doc_num') }}"
@@ -40,6 +51,7 @@
         <div>
             <label>Name</label>
             <input
+            class="input_style_general"
             name="name"
             type="text"
             value="{{ old('name') }}"
@@ -50,6 +62,7 @@
         <div>
             <label>Last Name</label>
             <input
+            class="input_style_general"
             name="last_name"
             type="text"
             value="{{ old('last_name') }}"
@@ -60,6 +73,7 @@
         <div>
             <label>Phone</label>
             <input
+            class="input_style_general"
             name="phone"
             type="text"
             value="{{ old('phone') }}"
@@ -70,6 +84,7 @@
         <div>
             <label>User name</label>
             <input
+            class="input_style_general"
             name="user_name"
             type="text"
             value="{{ old('user_name') }}"
@@ -80,6 +95,7 @@
         <div>
             <label>Email</label>
             <input
+            class="input_style_general"
             name="email"
             type="text"
             value="{{ old('email') }}"
@@ -89,7 +105,7 @@
         </div>
         <div>
             <label>Genre</label>
-            <select name="genre">
+            <select class="select_style_general" name="genre">
                 <option value=" ">Select an option</option>
                 <option value="M">male</option>
                 <option value="F">female</option>
@@ -97,7 +113,7 @@
         </div>
         <div>
             <label>Departament</label>
-            <select name="id_departament">
+            <select class="select_style_general" name="id_departament">
                 <option value=" ">Select an option</option>
                 @foreach ($departaments as $departament)
                     <option value="{{ $departament->id }}">{{ $departament->name }}</option>
@@ -106,7 +122,7 @@
         </div>
         <div>
             <label>Municipality</label>
-            <select name="id_municipality">
+            <select class="select_style_general" name="id_municipality">
                 <option value=" ">Select an option</option>
                 @foreach ($municipalities as $municipality)
                     @if (old('id_departament') == $municipality->id_departament)
@@ -120,27 +136,36 @@
         <div>
             <label>Addres</label>
             <input
+            class="input_style_general"
             name="addres"
             type="text"
-            value=""
+            value="{{ old('addres') }}"
             >
+            @error('addres')
+                <small>{{$message}}</small>
+            @enderror
         </div>
         <div>
             <label>Password</label>
             <input
+            class="input_style_general"
             name="password"
             type="password"
             value=""
-            >@error('password')
+            >
+            @error('password')
                 <small>{{$message}}</small>
             @enderror
         </div>
-        <input
-        type="submit"
-        value="enviar"
-        >
+        <div class="div_form_create_candidate" style="flex-direction: row">
+            <input
+            class="input_general_submit"
+            type="submit"
+            value="Crear"
+            >
+            <button class="btn_general"><a href="{{ route('login') }}">Volver</a></button>
+        </div>
     </form>
-    <h4><a href="{{ route('login') }}">Volver</a></h4>
 </main>
 
 @endsection

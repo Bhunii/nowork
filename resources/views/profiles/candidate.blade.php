@@ -63,8 +63,8 @@
                                 @enderror
                             </div>
                             <div>
-                                <input id="input_submit_edit_curriculum" type="submit" value="Actualizar">
-                                <button id="btnHide" class="btn_update_curriculum" onclick="HideContainer()">Cancelar</button>
+                                <input class="input_general_submit" id="input_submit_edit_curriculum" type="submit" value="Actualizar">
+                                <button class="btn_general btn_update_curriculum" id="btnHide" onclick="HideContainer()">Cancelar</button>
                             </div>
                         </form>
                     </div>

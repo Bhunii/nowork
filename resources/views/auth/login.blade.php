@@ -4,6 +4,17 @@
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 @endsection
 
+@section('style')
+    <style>
+        .contenido{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px
+        }
+    </style>
+@endsection
+
 @section('content')
 <main class="contenido">
     <div class="container_login">
