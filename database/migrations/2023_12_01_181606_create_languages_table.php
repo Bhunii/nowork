@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_curriculum')->constrained('curriculum');
-            $table->foreignId('id_type_language')->constrained('types_languages');
+            $table->foreignId('id_type_language')->constrained('types_languages')->nullable();
             $table->timestamps();
         });
     }

@@ -7,10 +7,70 @@
 
 .contenedor_curriculum{
     display: flex;
-    width: 80%;
+    width: 100%;
     height: 100%;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+    padding: 11px;
     gap: 25px;
+    overflow: hidden;
+}
+
+/*  */
+.nav_curriculum{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 45px;
+}
+
+.btn_nav{
+    width: 121px;
+    height: 41px;
+    background: none;
+    border: none;
+    font-weight: 700;
+    border-bottom: 5px rgb(84, 80, 89) solid;
+    transition: border-bottom 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+}
+
+.btn_nav:hover{
+    font-size: 0.9em;
+    color: rgb(176, 53, 82);
+    border-bottom: 5px rgb(143, 61, 80) solid;
+    background: none;
+}
+
+/*  */
+.contenedor_form_curriculum{
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.contenido_form_curriculum{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 21px;
+    margin: 0;
+    visibility: none;
+}
+
+.contenido_form_curriculum div{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+/*  */
+#contenido_curriculum_estudios{
+    display: flex;
+}
+
+#contenido_curriculum_experiencias, #contenido_curriculum_idiomas{
+    display: none;
 }

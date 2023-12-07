@@ -1,34 +1,32 @@
-var contenido1 = document.getElementById("contenido_curriculum_studies");
-var contenido2 = document.getElementById("contenido_curriculum_experiences");
-var contenido3 = document.getElementById("contenido_curriculum_languages");
-// var contenido4 = document.getElementById("contenido4");
-var btn1 = document.getElementById("btn_curriculum_1");
-var btn2 = document.getElementById("btn_curriculum_2");
-var btn3 = document.getElementById("btn_curriculum_3");
-// var btn4 = document.getElementById("btn4");
+document.addEventListener("DOMContentLoaded", function() {
+    var contenido1 = document.getElementById("contenido_curriculum_estudios");
+    var contenido2 = document.getElementById("contenido_curriculum_experiencias");
+    var contenido3 = document.getElementById("contenido_curriculum_idiomas");
+    var btn1 = document.getElementById("btn_curriculum_1");
+    var btn2 = document.getElementById("btn_curriculum_2");
+    var btn3 = document.getElementById("btn_curriculum_3");
 
-function openCurriculumStudies(){
-    contenido1.style.transform = "translateX(0%)";
-    contenido2.style.transform = "translateX(100%)";
-    contenido3.style.transform = "translateX(100%)";
-    // contenido4.style.transform = "translateX(100%)";
-}
+    if (btn1 && btn2 && btn3) {
+        btn1.addEventListener("click", openCurriculumStudies);
+        btn2.addEventListener("click", openCurriculumExperiences);
+        btn3.addEventListener("click", openCurriculumLanguages);
+    }
 
-function openCurriculumExperiences(){
-    contenido1.style.transform = "translateX(100%)";
-    contenido2.style.transform = "translateX(0%)";
-    contenido3.style.transform = "translateX(100%)";
-    // contenido4.style.transform = "translateX(100%)";
-}
-function openCurriculumLanguages(){
-    contenido1.style.transform = "translateX(100%)";
-    contenido2.style.transform = "translateX(100%)";
-    contenido3.style.transform = "translateX(0%)";
-    // contenido4.style.transform = "translateX(100%)";
-}
-// function openIdiomas(){
-//     contenido1.style.transform = "translateX(100%)";
-//     contenido2.style.transform = "translateX(100%)";
-//     contenido3.style.transform = "translateX(100%)";
-//     // contenido4.style.transform = "translateX(0%)";
-// }
+    function openCurriculumStudies() {
+        contenido1.style.display = "flex";
+        contenido2.style.display = "none";
+        contenido3.style.display = "none";
+    }
+
+    function openCurriculumExperiences() {
+        contenido1.style.display = "none";
+        contenido2.style.display = "flex";
+        contenido3.style.display = "none";
+    }
+
+    function openCurriculumLanguages() {
+        contenido1.style.display = "none";
+        contenido2.style.display = "none";
+        contenido3.style.display = "flex";
+    }s
+});
