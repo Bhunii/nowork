@@ -18,7 +18,7 @@
                 </article>
                 <ul class="nexos_ul">
                     <li class="nexos">
-                        <a href="#">Actualizar Hoja de Vida</a>
+                        <a href="{{ route('curriculum.index') }}">Actualizar Hoja de Vida</a>
                     </li>
                     <li class="nexos">
                         <a href="{{ route('candidate.edit') }}">Actualizar Datos Personales</a>

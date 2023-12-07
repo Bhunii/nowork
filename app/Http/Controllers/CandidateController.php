@@ -25,10 +25,9 @@ class CandidateController extends Controller
 
     public function create():View
     {
-        $departaments = Departament::all();
-        $municipalities = Municipality::all();
+        $departaments = Departament::with('municipalities')->get();
         // $user = User::findOrFail($id), compact('user');
-        return view('candidate.create', compact('departaments'), compact('municipalities'));
+        return view('candidate.create', compact('departaments'));
     }
 
     public function store(CandidateRequest $request):RedirectResponse
@@ -65,10 +64,9 @@ class CandidateController extends Controller
     public function edit():View
     {
         $user = auth()->user();
-        $departaments = Departament::all();
-        $municipalities = Municipality::all();
+        $departaments = Departament::with('municipalities')->get();
 
-        return view('candidate.edit', compact('user','departaments','municipalities'));
+        return view('candidate.edit', compact('user','departaments'));
     }
 
     public function update(Request $request):RedirectResponse

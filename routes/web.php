@@ -79,5 +79,7 @@ Route::put('/candidate/update', [CandidateController::class, 'update'])->name('c
 Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
 
 //Management routes for candidate
+Route::get('/curriculum/index', [CurriculumController::class, 'index'])->name('curriculum.index');
+Route::get('/curriculum/create', [CurriculumController::class, 'create'])->name('curriculum.create');
 Route::get('/curriculum/edit', [CurriculumController::class, 'edit'])->name('curriculum.edit');
 Route::put('/curriculum/update', [CurriculumController::class, 'update'])->name('curriculum.update');

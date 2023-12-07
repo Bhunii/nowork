@@ -1,5 +1,9 @@
 @extends('layouts.app',['title' => 'Form Register'])
 
+@section('js')
+    <script src="{{ asset('js/location.js') }}"></script>
+@endsection
+
 @section('style')
     <style>
         .contenido_form{
@@ -113,24 +117,17 @@
         </div>
         <div>
             <label>Departament</label>
-            <select class="select_style_general" name="id_departament">
-                <option value=" ">Select an option</option>
+            <select class="select_style_general" name="id_departament" id="departamentSelect">
+                <option value="">Select an option</option>
                 @foreach ($departaments as $departament)
-                    <option value="{{ $departament->id }}">{{ $departament->name }}</option>
+                    <option value="{{ $departament->id }}" data-municipalities='@json($departament->municipalities)'>{{ $departament->name }}</option>
                 @endforeach
             </select>
         </div>
         <div>
             <label>Municipality</label>
-            <select class="select_style_general" name="id_municipality">
-                <option value=" ">Select an option</option>
-                @foreach ($municipalities as $municipality)
-                    @if (old('id_departament') == $municipality->id_departament)
-                        <option value="{{ $municipality->id }}" selected>{{ $municipality->name }}</option>
-                    @else
-                        <option value="{{ $municipality->id }}">{{ $municipality->name }}</option>
-                    @endif
-                @endforeach
+            <select class="select_style_general" name="id_municipality" id="municipalitySelect">
+                <option value="">Select an option</option>
             </select>
         </div>
         <div>

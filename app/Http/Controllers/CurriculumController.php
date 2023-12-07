@@ -4,15 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CurriculumRequest;
 use Illuminate\Http\RedirectResponse;
+use App\Models\Departament;
 use App\Models\Curriculum;
 use Illuminate\Http\Request;
 
 class CurriculumController extends Controller
 {
-    public function index($id){
+    public function index(){
+        $user = auth()->user();
+        $departaments = Departament::with('municipalities')->get();
+        return view('curriculum.index', compact('user','departaments'));
     }
 
-    public function create($id){
+    public function create(){
+        $user = auth()->user();
+        return view('curriculum.create', compact('user'));
     }
 
     public function store($id){
