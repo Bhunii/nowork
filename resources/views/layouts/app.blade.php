@@ -39,7 +39,7 @@
                     <a href="#" target="_self">...</a>
                 </li>
                 <li class="links">
-                    <a href="#" target="_self">...</a>
+                    <a href="{{ route('company.index')  }}" target="_self">Companies</a>
                 </li>
                 <li class="links">
                     <a href="#" target="_self">...</a>

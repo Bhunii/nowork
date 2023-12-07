@@ -11,6 +11,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CurriculumController;
+use App\Http\Controllers\CompanyController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
@@ -74,6 +75,15 @@ Route::get('/candidate/create', [CandidateController::class, 'create'])->name('c
 Route::post('/candidate/store', [CandidateController::class, 'store'])->name('candidate.store');
 Route::get('/candidate/{id}/edit', [CandidateController::class, 'edit'])->name('candidate.edit');
 Route::put('/candidate/{id}/update', [CandidateController::class, 'update'])->name('candidate.update');
+
+//Management routes for companies
+Route::get('/company/index', [CompanyController::class, 'index'])->name('company.index');
+Route::get('/company/create', [CompanyController::class, 'create'])->name('company.create');
+Route::post('/company/store', [CompanyController::class, 'store'])->name('company.store');
+Route::get('/company/{id}/edit', [CompanyController::class, 'edit'])->name('company.edit');
+Route::put('/company/{id}/update', [CompanyController::class, 'update'])->name('company.update');
+Route::delete('/company/{id}/destroy', [CompanyController::class, 'destroy'])->name('company.destroy');
+Route::get('/company/{id}/show', [CompanyController::class, 'show'])->name('company.show');
 
 //Profile routes
 Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
