@@ -9,6 +9,8 @@ use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ChargeController;
+use App\Http\Controllers\VacancyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,3 +73,15 @@ Route::get('/candidate/{id}/create', [CandidateController::class, 'create'])->na
 Route::post('/candidate/{id}/store', [CandidateController::class, 'store'])->name('candidate.store');
 Route::get('/candidate/{id}/edit', [CandidateController::class, 'edit'])->name('candidate.edit');
 Route::put('/candidate/{id}/update', [CandidateController::class, 'update'])->name('candidate.update');
+
+Route::get('/charge/index',[ChargeController::class,'index'])->name('charge.index');
+Route::get('/charge/create',[ChargeController::class,'create'])->name('charge.create');
+Route::post('/charge/store',[ChargeController::class,'store'])->name('charge.store');
+Route::get('/charge/{id}/edit', [ChargeController::class, 'edit'])->name('cahrge.edit');
+Route::put('/charge/{id}/update', [ChargeController::class, 'update'])->name('charge.update');
+
+Route::get('/vacancy/index',[VacancyController::class,'index'])->name('vacancy.index');
+Route::get('/vacancy/create',[VacancyController::class,'create'])->name('vacancy.create');
+Route::post('/vacancy/store',[VacancyController::class,'store'])->name('vacancy.store');
+Route::get('/vacancy/{id}/edit', [VacancyController::class, 'edit'])->name('vacancy.edit');
+Route::put('/vacancy/{id}/update', [VacancyController::class, 'update'])->name('vacancy.update');

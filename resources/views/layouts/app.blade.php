@@ -32,10 +32,10 @@
                     <a href="#" target="_self">...</a>
                 </li>
                 <li class="links">
-                    <a href="#" target="_self">...</a>
+                    <a href="{{ route('vacancy.index') }}" target="_self" class="button">create vacanty</a>
                 </li>
                 <li class="links">
-                    <a href="#" target="_self">...</a>
+                    <a href="{{ route('charge.index') }}" target="_self" class="button">create charge</a>
                 </li>
             </ul>
         </nav>
