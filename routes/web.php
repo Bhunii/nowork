@@ -86,6 +86,8 @@ Route::get('/occupation/show/{occupation}', [OccupationController::class,'show']
 
 //Profile routes
 Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/profiles/recruiter', [RecruiterController::class, 'index'])->name('profiles.recruiter');
+
 
 //Management routes for candidate
 Route::get('/curriculum/edit', [CurriculumController::class, 'edit'])->name('curriculum.edit');

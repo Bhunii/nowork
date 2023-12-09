@@ -8,7 +8,7 @@
             <!--  -->
         @elseif (auth()->user()->role_id == 2)
             <!-- <p>Rol: Instructor</p> -->
-        @elseif (auth()->user()->role_id == 3)
+        @elseif (isset($user) && auth()->user()->role_id == 3)
             @extends('profiles.recruiter')
         @elseif (isset($user) && auth()->user()->role_id == 4)
 

@@ -2,7 +2,59 @@
 
 @section('content')
 
-<link rel="stylesheet" href="{{asset('css/form.css')}}">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #525252;
+    }
+
+    .contenido {
+        margin: 50px auto;
+        width: 80%;
+        background-color: rgb(110, 110, 110);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #e4e4e4;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-top: 10px;
+        color: #333;
+    }
+
+    input[type='text'] {
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    input[type='submit'] {
+        padding: 10px 20px;
+        background-color: #d32f2f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type='submit']:hover {
+        background-color: #b71c1c;
+    }
+</style>
+
 <h1>Formulario de creacion de ocupacion</h1>
 <main class="contenido">
     <form class="form" method="POST" action="{{ route('occupation.store')}}">
