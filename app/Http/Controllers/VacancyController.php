@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vacancy;
+use App\Models\Charge;
 
 
 class VacancyController extends Controller
@@ -30,6 +31,15 @@ class VacancyController extends Controller
         $vacancy->start_date=$request->start_date;
         $vacancy->end_date=$request->end_date;
         $vacancy->save();
+
+        Charge::create([
+            'id_vacancy'=>Vacancy::latest('id_vacancy')->first()->id_vacancy,
+            'id_denomination'=>$request->id_denomination,
+            'id_funtion'=>$request->id_function,
+            'payment_method'=>$request->payment_method,
+            'salary'=>$request->salary,
+            'type_contract'=>$request->type_contract,
+        ]);
         
         return rendirect()->route('vacancy.create');
 
