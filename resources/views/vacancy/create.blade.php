@@ -4,7 +4,10 @@
 
 <form method="POST" action="{{route('vacancy.store')}}">
     @csrf
+
+
     
+    <h2>form  </h2>
     
     <label> occupational_profile</label>
     <input type="text" name="occupational_profile"/>
@@ -32,7 +35,24 @@
 
 
 
-    <input type="submit" value="Crear"/>
+    <h2>form charge </h2>
+    <label> id_denomination</label>
+    <input type="text" name="id_denomination"/>
+
+    <label> id_function</label>
+    <input type="text" name="id_function"/>
+
+    <label> payment_method</label>
+    <input type="text" name="payment_method"/>
+
+    <label> salary</label>
+    <input type="text" name="salary"/>
+
+    <label> type_contract</label>
+    <input type="text" name="type_contract"/>
+
+
+    <input type="submit" value="Crear" class="create"/>
 
 </form>
 @endsection
