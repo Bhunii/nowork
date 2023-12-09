@@ -17,10 +17,10 @@
                         <a href="#">Ver Empresas</a>
                     </li>
                     <li class="nexos">
-                        <a href="#">Crear Vacante</a>
+                        <a href="{{route('vacancy.create')}}">Crear Vacante</a>
                     </li>
                     <li class="nexos">
-                        <a href="#">Ver Vacante</a>
+                        <a href="{{route('vacancy.index')}}">Ver Vacante</a>
                     </li>
                     <li class="nexos">
                         <a href="{{route('occupation.create')}}">Crear Ocupacion</a>
