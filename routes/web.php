@@ -14,6 +14,10 @@ use App\Http\Controllers\CurriculumController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 use App\Http\Controllers\OccupationController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\ChargeController;
+use App\Http\Controllers\VacancyController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,6 +93,35 @@ Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile
 Route::get('/profiles/recruiter', [RecruiterController::class, 'index'])->name('profiles.recruiter');
 
 
+//Profile routes
+Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/profiles/recruiter', [RecruiterController::class, 'index'])->name('profiles.recruiter');
+
+
 //Management routes for candidate
 Route::get('/curriculum/edit', [CurriculumController::class, 'edit'])->name('curriculum.edit');
 Route::get('/curriculum/update', [CurriculumController::class, 'update'])->name('curriculum.updat');
+
+Route::get('/charge/index',[ChargeController::class,'index'])->name('charge.index');
+Route::get('/charge/create',[ChargeController::class,'create'])->name('charge.create');
+Route::post('/charge/store',[ChargeController::class,'store'])->name('charge.store');
+Route::get('/charge/{id}/edit', [ChargeController::class, 'edit'])->name('cahrge.edit');
+Route::put('/charge/{id}/update', [ChargeController::class, 'update'])->name('charge.update');
+
+Route::get('/vacancy/index',[VacancyController::class,'index'])->name('vacancy.index');
+Route::get('/vacancy/create',[VacancyController::class,'create'])->name('vacancy.create');
+Route::post('/vacancy/store',[VacancyController::class,'store'])->name('vacancy.store');
+Route::get('/vacancy/{id}/edit', [VacancyController::class, 'edit'])->name('vacancy.edit');
+Route::put('/vacancy/{id}/update', [VacancyController::class, 'update'])->name('vacancy.update');
+
+Route::get('/charge/index',[ChargeController::class,'index'])->name('charge.index');
+Route::get('/charge/create',[ChargeController::class,'create'])->name('charge.create');
+Route::post('/charge/store',[ChargeController::class,'store'])->name('charge.store');
+Route::get('/charge/{id}/edit', [ChargeController::class, 'edit'])->name('cahrge.edit');
+Route::put('/charge/{id}/update', [ChargeController::class, 'update'])->name('charge.update');
+
+Route::get('/vacancy/index',[VacancyController::class,'index'])->name('vacancy.index');
+Route::get('/vacancy/create',[VacancyController::class,'create'])->name('vacancy.create');
+Route::post('/vacancy/store',[VacancyController::class,'store'])->name('vacancy.store');
+Route::get('/vacancy/{id}/edit', [VacancyController::class, 'edit'])->name('vacancy.edit');
+Route::put('/vacancy/{id}/update', [VacancyController::class, 'update'])->name('vacancy.update');
