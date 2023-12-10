@@ -21,13 +21,10 @@ html{
     overflow-x: hidden;
 }
 
-<<<<<<< HEAD
-=======
 button {
     border: none;
     outline: none; /* Esto elimina el resaltado al hacer clic en el botón en algunos navegadores */
   }
->>>>>>> origin/bryan
 
 .encabezado{
     position: relative;

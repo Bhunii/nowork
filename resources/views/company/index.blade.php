@@ -12,7 +12,6 @@
 </head>
 <body>
     <div class="container">
-        <a href="{{route('candidate.create')}}" id="create">Create new company</a>
         <h2>LIST OF COMPANIES</h2>
         <table class="tabla">
             <tr>
@@ -30,16 +29,16 @@
         @forelse ($companies as $company)
             <tbody>
                 <tr>
-                    <td>{{$companies->recruiters->id_recruiter}}</td>
-                    <td>{{$companies->name}}</td>
-                    <td>{{$companies->nit}}</td>
-                    <td>{{$companies->company_name}}</td>
-                    <td>{{$companies->email}}</td>
-                    <td>{{$companies->nature}}</td>
-                    <td>{{$companies->departaments->id_departament}}</td>
-                    <td>{{$companies->municipalities->id_municipality}}</td>
-                    <td>{{$companies->addres}}</td>
-                    <td>{{$companies->phone}}</td>
+                    <td>{{$company->recruiters->id_recruiter}}</td>
+                    <td>{{$company->name}}</td>
+                    <td>{{$company->nit}}</td>
+                    <td>{{$company->company_name}}</td>
+                    <td>{{$company->email}}</td>
+                    <td>{{$company->nature}}</td>
+                    <td>{{$company->departaments->id_departament}}</td>
+                    <td>{{$company->municipalities->id_municipality}}</td>
+                    <td>{{$company->addres}}</td>
+                    <td>{{$company->phone}}</td>
                     <td><a href="{{route('company.show', $company->id)}}" class="edit">DETAILS</a><a href="{{ route('company.edit', $company->id)}}" class="edit">EDIT</a>|
                         <form method="POST" action="{{route('company.destroy', $company->id)}}">
                             @csrf
@@ -54,6 +53,7 @@
                 </tr>
             </tbody>
         @endforelse
+        <a href="{{route('company.create')}}" id="create">Create new company</a>
         </table>
     </div>
 </body>

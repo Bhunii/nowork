@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use App\Models\Departament;
 
 class CompanyController extends Controller
 
@@ -17,7 +18,8 @@ class CompanyController extends Controller
     }
     public function create():View
     {
-        return view('company.create');
+        $departaments = Departament::with('municipalities')->get();
+        return view('company.create', compact('departaments'));
     }
 
     public function store(Request $request): RedirectResponse

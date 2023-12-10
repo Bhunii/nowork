@@ -1,25 +1,29 @@
 @extends('layouts.app')
 
+@section('js')
+    <script src="{{ asset('js/location.js') }}"></script>
+@endsection
+
 @section('content')
 <main class="contenido">
-    <form class="form form_register_recruiter" method="post" action="{{ route('companies.store', $companies->id) }}">
+    <form class="form form_register_recruiter" method="post" action="{{ route('company.store') }}">
         @csrf
         <div>
             <label>Name</label>
             <input
             name="name"
             type="text"
-            value="{{$companies->name}}"
-            disabled
+            value="{{old('name')}}"
+            required
             >
         </div>
         <div>
             <label>Nit</label>
             <input
-            name="name"
+            name="nit"
             type="text"
-            value="{{$companies->nit}}"
-            disabled
+            value="{{old('nit')}}"
+            required
             >
         </div>
         <div>
@@ -27,8 +31,8 @@
             <input
             name="name"
             type="text"
-            value="{{$companies->company_name}}"
-            disabled
+            value="{{old('')}}"
+            required
             >
         </div>
         <div>
@@ -36,8 +40,8 @@
             <input
             name="email"
             type="text"
-            value="{{$companies->email}}"
-            disabled
+            value="{{old('')}}"
+            required
             >
         </div>
         <div>
@@ -45,34 +49,31 @@
             <input
             name="admission_date"
             type="date"
-            value="{{$companies->nature}}"
+            value="{{old('')}}"
             required
             >
         </div>
         <div>
-            <label>Id departament</label>
-            <input
-            name="id_departament"
-            type="text"
-            value="{{$companies->id_departament}}"
-            required
-            >
+            <label>Departament</label>
+            <select class="select_style_general" name="id_departament" id="departamentSelect">
+                <option value="">Select an option</option>
+                @foreach ($departaments as $departament)
+                    <option value="{{ $departament->id }}" data-municipalities='@json($departament->municipalities)'>{{ $departament->name }}</option>
+                @endforeach
+            </select>
         </div>
         <div>
-            <label>Id municipality</label>
-            <input
-            name="id_municipality"
-            type="text"
-            value="{{$companies->id_municipality}}"
-            required
-            >
+            <label>Municipality</label>
+            <select class="select_style_general" name="id_municipality" id="municipalitySelect">
+                <option value="">Select an option</option>
+            </select>
         </div>
         <div>
             <label>Address</label>
             <input
             name="addres"
             type="date"
-            value="{{$companies->addres}}"
+            value="{{old('')}}"
             required
             >
         </div>
@@ -81,8 +82,8 @@
             <input
             name="phone"
             type="text"
-            value="{{$companies->phone}}"
-            disabled
+            value="{{old('')}}"
+            required
             >
         </div>
         <input
@@ -90,7 +91,7 @@
         value="enviar"
         >
     </form>
-    <h4><a href="{{ route('recruiter.index') }}">Back to List</a></h4>
+    <h4><a href="{{ route('company.index') }}">Back to List</a></h4>
 </main>
 
 @endsection

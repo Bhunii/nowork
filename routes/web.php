@@ -106,12 +106,6 @@ Route::get('/company/{id}/show', [CompanyController::class, 'show'])->name('comp
 Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
 Route::get('/profiles/recruiter', [RecruiterController::class, 'index'])->name('profiles.recruiter');
 
-
-//Profile routes
-Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
-Route::get('/profiles/recruiter', [RecruiterController::class, 'index'])->name('profiles.recruiter');
-
-
 //Management routes for candidate
 Route::get('/curriculum/index', [CurriculumController::class, 'index'])->name('curriculum.index');
 Route::get('/curriculum/create', [CurriculumController::class, 'create'])->name('curriculum.create');
