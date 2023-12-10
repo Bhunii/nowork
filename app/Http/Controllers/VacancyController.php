@@ -6,7 +6,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vacancy;
 use App\Models\Charge;
+<<<<<<< HEAD
 use App\Models\Departament;
+=======
+>>>>>>> origin/Nicolas
 
 
 class VacancyController extends Controller
@@ -18,8 +21,12 @@ class VacancyController extends Controller
     }
     public function create()
     {
+<<<<<<< HEAD
         $departaments = Departament::with('municipalities')->get();
         return view('vacancy.create', compact('departaments'));
+=======
+        return view('vacancy.create');
+>>>>>>> origin/Nicolas
     }
     public function store(Request $request)
     {
@@ -42,7 +49,11 @@ class VacancyController extends Controller
             'salary'=>$request->salary,
             'type_contract'=>$request->type_contract,
         ]);
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> origin/Nicolas
         return rendirect()->route('vacancy.create');
 
     }
@@ -80,4 +91,8 @@ class VacancyController extends Controller
         }
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/Nicolas
