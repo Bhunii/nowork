@@ -12,9 +12,14 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index():View
     {
-        $users = User::all();
+        $users = User::where('role_id', '!=', 1)->get();
         return view('user.index', compact('users'));
     }
     public function create():View
@@ -40,13 +45,13 @@ class UserController extends Controller
         return redirect()->route('login')->with('mensaje','Usuario Creado Exitosamente');
     }
 
-    public function edit():View
+    public function edit_role():View
     {
         $user = auth()->user();
-        return view('user.edit', compact('user'));
+        return view('user.edit_role', compact('user'));
     }
 
-    public function update(Request $request):RedirectResponse
+    public function update_role(Request $request):RedirectResponse
     {
         $user = auth()->user();
 

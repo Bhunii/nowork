@@ -1,6 +1,14 @@
-@extends('layouts.app',['title' => 'Update Data'])
+@extends('layouts.nav.administrator',['title' => 'Editar Rol Usuario'])
 
-@section('content')
+@section('js')
+    <script src="{{ asset('js/profile.js') }}"></script>
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+@endsection
+
+@section('style')
     <style>
         .contenido{
             height: 800px;
@@ -16,7 +24,11 @@
         }
 
     </style>
-<main class="contenido">
+@endsection
+
+@section('content')
+
+<section class="contenido">
     <form class="form form_update_user" method="post" action="{{ route('user.update_data', $user->id) }}">
         @csrf
         @method('PUT')
@@ -80,6 +92,6 @@
         >
     </form>
     <h4><a href="{{ route('home.index') }}">Volver</a></h4>
-</main>
+</section>
 
 @endsection

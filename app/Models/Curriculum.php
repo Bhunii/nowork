@@ -15,4 +15,19 @@ class Curriculum extends Model
         'id_candidate',
         'occupational_profile'
     ];
+
+    public function studies()
+    {
+        return $this->hasMany(Study::class, 'id_curriculum');
+    }
+
+    public function experiences()
+    {
+        return $this->hasMany(Experience::class, 'id_curriculum');
+    }
+
+    public function languages()
+    {
+        return $this->hasMany(Language::class, 'id_curriculum');
+    }
 }

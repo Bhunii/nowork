@@ -9,7 +9,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $user = User::with('candidate')->find(auth()->id());
+        $user = auth()->user();
         return view('profile.index', compact('user'));
     }
 }

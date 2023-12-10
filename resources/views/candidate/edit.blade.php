@@ -21,7 +21,7 @@
 
         .form_edit_curriculum::-webkit-scrollbar {
             width: 8px;
-            height: 5px; /* Ancho del scrollbar */
+            height: 5px;
         }
         .input_style_general, .select_style_general{
             background-color: d3d3d3;

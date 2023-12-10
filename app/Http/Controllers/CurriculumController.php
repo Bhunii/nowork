@@ -13,7 +13,10 @@ class CurriculumController extends Controller
     public function index(){
         $user = auth()->user();
         $departaments = Departament::with('municipalities')->get();
-        return view('curriculum.index', compact('user','departaments'));
+
+        $curriculum = $user->candidate->curriculum;
+
+        return view('curriculum.index', compact('user','departaments','curriculum'));
     }
 
     public function create(){

@@ -47,10 +47,10 @@ Route::post('/role/store', [RoleController::class, 'store'])->name('role.store')
 Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
-Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
-Route::put('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
-Route::get('/user/{id}/edit_data', [UserController::class, 'edit_data'])->name('user.edit_data');
-Route::put('/user/{id}/update_data', [UserController::class, 'update_data'])->name('user.update_data');
+Route::get('/user/edit_role', [UserController::class, 'edit_role'])->name('user.edit_role');
+Route::put('/user/update_role', [UserController::class, 'update_role'])->name('user.update_role');
+Route::get('/user/edit_data', [UserController::class, 'edit_data'])->name('user.edit_data');
+Route::put('/user/update_data', [UserController::class, 'update_data'])->name('user.update_data');
 Route::delete('/user/{id}/destroy', [UserController::class, 'destroy'])->name('user.destroy');
 Route::get('/user/{id}/show', [UserController::class, 'show'])->name('user.show');
 
