@@ -14,7 +14,6 @@
     justify-content: start;
     padding: 11px;
     gap: 25px;
-    overflow: hidden;
 }
 
 /*  */
@@ -48,7 +47,6 @@
     display: flex;
     width: 100%;
     justify-content: center;
-    overflow: hidden;
 }
 
 .contenido_form_curriculum{
@@ -57,20 +55,10 @@
     flex-direction: column;
     gap: 21px;
     margin: 0;
-    visibility: none;
 }
 
 .contenido_form_curriculum div{
     display: flex;
     width: 100%;
     flex-direction: column;
-}
-
-/*  */
-#contenido_curriculum_estudios{
-    display: flex;
-}
-
-#contenido_curriculum_experiencias, #contenido_curriculum_idiomas{
-    display: none;
 }

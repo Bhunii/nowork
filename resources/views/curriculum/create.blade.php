@@ -52,7 +52,7 @@
                 <button id="btn_curriculum_3" onclick="openCurriculumLanguages()" class="btn_nav btn_nav_3">Idiomas</button>
             </article>
             <article class="contenedor_form_curriculum">
-                <form class="form form_create_curriculum" method="post" action="{{ route('curriculum.store') }}">
+                <form class="form form_create_curriculum" method="post" action="">
                     <div id="contenido_curriculum_estudios" class="contenido_form_curriculum">
                         <div>
                             <label>Name Institution</label>
