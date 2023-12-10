@@ -36,7 +36,7 @@
             <input
             name="email"
             type="text"
-            value="{{$user->email}}"
+            value="{{$companies->email}}"
             disabled
             >
         </div>

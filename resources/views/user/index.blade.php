@@ -9,53 +9,49 @@
     </style>
     <table class="tabla">
         <tr>
-            <td>Config</td>
-            <td>User id</td>
-            <td>Name</td>
-            <td>Last name</td>
-            <td>Email</td>
-            <td>Role id</td>
-            <td>Role name</td>
+            <td>id_recruiter</td>
+            <td>name</td>
+            <td>nit</td>
+            <td>company_name</td>
+            <td>email</td>
+            <td>nature</td>
+            <td>id_departement</td>
+            <td>id_municipality</td>
+            <td>addres</td>
+            <td>phone</td>
         </tr>
-        @forelse ($users as $user)
+        @forelse ($companies as $company)
+        <tbody>
             <tr>
-                <td style="width: 360px"><a href="{{ route('user.edit', $user->id)}}">Edit User Role</a> |
-                    <form method="POST" action="{{route('user.destroy', $user->id)}}">
+                <td>{{$companies->recruiters->id_recruiter}}</td>
+                <td>{{$companies->name}}</td>
+                <td>{{$companies->nit}}</td>
+                <td>{{$companies->company_name}}</td>
+                <td>{{$companies->email}}</td>
+                <td>{{$companies->nature}}</td>
+                <td>{{$companies->departaments->id_departament}}</td>
+                <td>{{$companies->municipalities->id_municipality}}</td>
+                <td>{{$companies->addres}}</td>
+                <td>{{$companies->phone}}</td>
+                <td><a href="{{route('company.show', $company->id)}}" class="edit">DETAILS</a><a href="{{ route('company.edit', $company->id)}}" class="edit">EDIT</a>|
+                    <form method="POST" action="{{route('company.destroy', $company->id)}}">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="DELETE" class="edit"/>
-                    </form> |
-                    <a href="{{ route('user.show', $user->id) }}">Show User</a> |
-                    <a href="{{ route('user.edit_data', $user->id) }}">Update Data</a>
+                        </form>
                 </td>
-                <td style="width: 60px">{{ $user->id }}</td>
-                <td style="width: 200px">{{ $user->name }}</td>
-                <td style="width: 200px">{{ $user->last_name }}</td>
-                <td style="width: 300px">{{ $user->email }}</td>
-                <td style="width: 60px">{{ $user->role_id }}</td>
-                <td style="width: 150px">{{ $user->role->role_name }}</td>
-                <td style="width: 150px">
-                @switch($user->role->role_name)
-                    @case("INSTRUCTOR")
-                        <a href="{{ route('instructor.create', $user->id) }}">Create Profile</a>
-                        @break
-                    @case("RECLUTADOR")
-                        <a href="{{ route('recruiter.create', $user->id) }}">Create Profile</a>
-                        @break
-                    @case("CANDIDATO")
-                        <a href="{{ route('candidate.create', $user->id) }}">Create Profile</a>
-                        @break
-                    @default
-                        hola
-                @endswitch</td>
             </tr>
         @empty
             <tr>
-                <td>Table empty</td>
-            </tr>
+                <td colspan="2">There is no system</td>
+            </tr></tbody>
         @endforelse
     </table>
+</div>
+</body>
+</html>
+@endsection
     <br>
-    <h4><a href="{{ route('user.create') }}">Registrar un Usuario</a></h4>
+    <h4><a href="{{ route('company.create') }}">REGISTER A NEW COMPANY</a></h4>
 </main>
 @endsection
