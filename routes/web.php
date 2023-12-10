@@ -11,6 +11,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CurriculumController;
+use App\Http\Controllers\StudyController;
+use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\LanguageController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
@@ -47,10 +50,10 @@ Route::post('/role/store', [RoleController::class, 'store'])->name('role.store')
 Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
-Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
-Route::put('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
-Route::get('/user/{id}/edit_data', [UserController::class, 'edit_data'])->name('user.edit_data');
-Route::put('/user/{id}/update_data', [UserController::class, 'update_data'])->name('user.update_data');
+Route::get('/user/edit_role', [UserController::class, 'edit_role'])->name('user.edit_role');
+Route::put('/user/update_role', [UserController::class, 'update_role'])->name('user.update_role');
+Route::get('/user/edit_data', [UserController::class, 'edit_data'])->name('user.edit_data');
+Route::put('/user/update_data', [UserController::class, 'update_data'])->name('user.update_data');
 Route::delete('/user/{id}/destroy', [UserController::class, 'destroy'])->name('user.destroy');
 Route::get('/user/{id}/show', [UserController::class, 'show'])->name('user.show');
 
@@ -72,12 +75,29 @@ Route::put('/recruiter/{id}/update', [RecruiterController::class, 'update'])->na
 Route::get('/candidate/index', [CandidateController::class, 'index'])->name('candidate.index');
 Route::get('/candidate/create', [CandidateController::class, 'create'])->name('candidate.create');
 Route::post('/candidate/store', [CandidateController::class, 'store'])->name('candidate.store');
-Route::get('/candidate/{id}/edit', [CandidateController::class, 'edit'])->name('candidate.edit');
-Route::put('/candidate/{id}/update', [CandidateController::class, 'update'])->name('candidate.update');
+Route::get('/candidate/edit', [CandidateController::class, 'edit'])->name('candidate.edit');
+Route::put('/candidate/update', [CandidateController::class, 'update'])->name('candidate.update');
 
 //Profile routes
 Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
 
 //Management routes for candidate
+Route::get('/curriculum/index', [CurriculumController::class, 'index'])->name('curriculum.index');
+Route::get('/curriculum/create', [CurriculumController::class, 'create'])->name('curriculum.create');
 Route::get('/curriculum/edit', [CurriculumController::class, 'edit'])->name('curriculum.edit');
-Route::get('/curriculum/update', [CurriculumController::class, 'update'])->name('curriculum.updat');
+Route::put('/curriculum/update', [CurriculumController::class, 'update'])->name('curriculum.update');
+
+//Management routes for studies of candidate
+Route::get('/study/index', [StudyController::class, 'index'])->name('study.index');
+Route::get('/study/create', [StudyController::class, 'create'])->name('study.create');
+Route::put('/study/store', [StudyController::class, 'store'])->name('study.store');
+
+//Management routes for experiences of candidate
+Route::get('/experience/index', [ExperienceController::class, 'index'])->name('experience.index');
+Route::get('/experience/create', [ExperienceController::class, 'create'])->name('experience.create');
+Route::put('/experience/store', [ExperienceController::class, 'store'])->name('experience.store');
+
+//Management routes for languages of candidate
+Route::get('/language/index', [LanguageController::class, 'index'])->name('language.index');
+Route::get('/language/create', [LanguageController::class, 'create'])->name('language.create');
+Route::put('/language/store', [LanguageController::class, 'store'])->name('language.store');

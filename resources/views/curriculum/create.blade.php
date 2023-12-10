@@ -52,7 +52,7 @@
                 <button id="btn_curriculum_3" onclick="openCurriculumLanguages()" class="btn_nav btn_nav_3">Idiomas</button>
             </article>
             <article class="contenedor_form_curriculum">
-                <form class="form form_create_curriculum">
+                <form class="form form_create_curriculum" method="post" action="">
                     <div id="contenido_curriculum_estudios" class="contenido_form_curriculum">
                         <div>
                             <label>Name Institution</label>
@@ -61,7 +61,7 @@
                             name="name_institution"
                             type="text"
                             value="{{ old('name_institution') }}">
-                            @error('')
+                            @error('name_institucion')
                                 <small>$message</small>
                             @enderror
                         </div>
@@ -72,7 +72,7 @@
                             name="id_denomination"
                             type="text"
                             value="{{ old('id_denomination') }}">
-                            @error('')
+                            @error('id_denomination')
                                 <small>$message</small>
                             @enderror
                         </div>
@@ -98,7 +98,7 @@
                             name="addres"
                             type="type"
                             value="{{ old('addres') }}">
-                            @error('')
+                            @error('addres')
                                 <small>$message</small>
                             @enderror
                         </div>
@@ -109,7 +109,7 @@
                             name="end_date"
                             type="date"
                             value="{{ old('end_date') }}">
-                            @error('')
+                            @error('end_date')
                                 <small>$message</small>
                             @enderror
                         </div>
@@ -123,7 +123,7 @@
                             name="name_company"
                             type="text"
                             value="{{ old('name_company') }}">
-                            @error('')
+                            @error('name_company')
                                 <small>$message</small>
                             @enderror
                         </div>
@@ -134,7 +134,7 @@
                             name="company_addres"
                             type="text"
                             value="{{ old('') }}">
-                            @error('')
+                            @error('company_addres')
                                 <small>$message</small>
                             @enderror
                         </div>
@@ -145,7 +145,7 @@
                             name="id_denominacion_company"
                             type="text"
                             value="{{ old('id_denominacion_company') }}">
-                            @error('')
+                            @error('id_denominacion_company')
                                 <small>$message</small>
                             @enderror
                         </div>
@@ -156,7 +156,7 @@
                             name="id_function"
                             type="text"
                             value="{{ old('id_function') }}">
-                            @error('')
+                            @error('id_function')
                                 <small>$message</small>
                             @enderror
                         </div>
@@ -167,7 +167,7 @@
                             name="start_date"
                             type="date"
                             value="{{ old('start_date') }}">
-                            @error('')
+                            @error('start_date')
                                 <small>$message</small>
                             @enderror
                         </div>
@@ -178,7 +178,7 @@
                             name="end_date_company"
                             type="date"
                             value="{{ old('end_date_company') }}">
-                            @error('')
+                            @error('end_date_company')
                                 <small>$message</small>
                             @enderror
                         </div>

@@ -1,41 +1,78 @@
-.contenido{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-.contenido input{
-    padding: 2px 2px;
+body input{
+    height: 35px;
+    padding: 5px 7px;
     border: 1px solid #ccc;
     -webkit-transition: 0.5s ;
     transition: 0.5s;
     outline: none;
 }
 
-.contenido input:focus{
+body input:focus{
     transition: 2s ease;
     border: 2px solid #555;
 }
 
-.contenido select{
+body select{
     border: 1px solid #ccc;
+    height: 33px;
     border-radius: 4px;
     padding: 2px 2px;
     background: white;
+}
+
+body input[type="submit"]{
+    cursor: pointer;
+    border:0.5px #a3354eff solid;
+    background: rgb(162, 83, 101);
+    border-radius: 3px;
+    color: white;
+    transition: background-color 0.7s ease;
+}
+
+body input[type="submit"]:hover{
+    background-color: rgb(166, 104, 118);
+}
+
+body button{
+    cursor: pointer;
+    background: #9c9c9c;
+    border: 0.5px #7e7e7e solid;
+    border-radius: 3px;
+    color: rgb(49, 49, 49);
+    transition: background-color 0.7s ease;
+}
+
+body button:hover{
+    background-color: #878686;
+    color: rgb(16, 16, 16);
+}
+
+body button:active{
+    color: rgb(0, 0, 0);
+}
+
+body a{
+    text-decoration-line: none;
+}
+
+.contenido_form{
+    display: flex;
+    justify-content: center;
+    padding: 25px;
 }
 
 .form{
     display: flex;
     position: relative;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
     padding: 1% 1.5%;
     width: 70%;
+    height: 100%;
     border: 1px #dfdfdf solid;
     background: #e5e5e5;
+    gap: 19px;
 }
+
 .form div{
     display: flex;
     width: 100%;
@@ -43,9 +80,5 @@
 }
 
 .form div label{
-    font-size: 20px;
-}
-
-.form div input, div select{
-    height: 100%;
+    font-size: 19px;
 }

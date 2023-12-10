@@ -1,0 +1,43 @@
+.contenedor_show_usuarios{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 25px 15px;
+    gap: 21px;
+}
+
+.contenedor_data_usuario{
+    display: flex;
+    width: 100%;
+    height: 371px;
+    justify-content: center;
+}
+
+.contenido_data_usuario{
+    display: flex;
+    width: 60%;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.ul_campo_data{
+    align-items: flex-end;
+    font-weight: 700;
+    width: 40%;
+    padding: 3px 5px;
+}
+
+.ul_valor_data{
+    width: 60%;
+    padding: 3px 1px;
+}
+
+.ul_campo_data, .ul_valor_data{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    gap: 15px;
+}
+
