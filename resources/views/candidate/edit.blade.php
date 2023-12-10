@@ -42,7 +42,7 @@
         <div>
             <label>Document Type</label>
             <select class="select_style_general" name="doc_type" disabled>
-                <option value=" ">Select an option</option>
+                <option value="">Select an option</option>
                 <option value="CC">citizenship card</option>
                 <option value="TI">identity card</option>
             </select>
@@ -121,7 +121,7 @@
         <div>
             <label>Genre</label>
             <select class="select_style_general" name="genre" disabled>
-                <option value=" ">Select an option</option>
+                <option value="">Select an option</option>
                 <option value="M">male</option>
                 <option value="F">female</option>
             </select>
