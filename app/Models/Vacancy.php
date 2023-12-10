@@ -22,5 +22,6 @@ class Vacancy extends Model
         'start_date',
         'end_date'
     ];
-
+    
+    
 }
