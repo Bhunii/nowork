@@ -1,0 +1,32 @@
+.contenedor_edit_role_usuario{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 25px 15px;
+    gap: 11px;
+}
+
+.tr_edit_role_encabezado{
+    color: white;
+    background-color: #504a54;
+}
+
+.tr_edit_role_encabezado td{
+    text-align: center;
+}
+
+.tr_data_edit_role{
+    background-color: #a9a4ad;
+    padding: 5px 3px;
+    text-align: center;
+}
+
+.form_edit_user_role{
+    width: 100%;
+}
+
+.form_edit_user_role select{
+    width: 100%;
+}

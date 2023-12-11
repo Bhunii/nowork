@@ -1,83 +1,168 @@
-@extends('layouts.app',['title' => 'Completed Register Instructor'])
+@extends('layouts.app',['title' => 'Form Register'])
 
-@section('content')
+@section('js')
+    <script src="{{ asset('js/location.js') }}"></script>
+@endsection
+
+@section('style')
     <style>
-        .contenido{
-            height: 1000px;
+        .contenido_form{
+            height: 1050px;
         }
 
         .form_register_candidate{
-            height: 75%;
+            display: flex;
+            flex-direction: column;
         }
-
-        .form_register_candidate div{
-            height: 10%;
-            gap: 15%;
+        .div_form_create_candidate{
+            padding: 20px;
+            gap: 19px;
+        }
+        .input_general_submit{
+            width: 140px;
+            height: 40px;
+        }
+        .btn_general{
+            width: 140px;
+            height: 40px;
         }
 
     </style>
-<main class="contenido">
-    <form class="form form_register_candidate" method="post" action="{{ route('candidate.store', $user->id) }}">
+@endsection
+@section('content')
+<main class="contenido_form">
+    <form class="form form_register_candidate" method="post" action="{{ route('candidate.store') }}">
         @csrf
+        <div>
+            <label>Document Type</label>
+            <select class="select_style_general" name="doc_type" class="s">
+                <option value=" ">Select an option</option>
+                <option value="CC">citizenship card</option>
+                <option value="TI">identity card</option>
+            </select>
+        </div>
         <div>
             <label>Document Number</label>
             <input
+            class="input_style_general"
             name="doc_num"
             type="text"
-            value="{{$user->doc_num}}"
-            disabled
-            >
+            value="{{ old('doc_num') }}"
+            >@error('doc_num')
+                <small>{{$message}}</small>
+            @enderror
         </div>
         <div>
             <label>Name</label>
             <input
+            class="input_style_general"
             name="name"
             type="text"
-            value="{{$user->name}}"
-            disabled
-            >
+            value="{{ old('name') }}"
+            >@error('name')
+                <small>{{$message}}</small>
+            @enderror
         </div>
         <div>
             <label>Last Name</label>
             <input
+            class="input_style_general"
             name="last_name"
             type="text"
-            value="{{$user->last_name}}"
-            disabled
-            >
+            value="{{ old('last_name') }}"
+            >@error('last_name')
+                <small>{{$message}}</small>
+            @enderror
         </div>
         <div>
             <label>Phone</label>
             <input
+            class="input_style_general"
             name="phone"
             type="text"
-            value="{{$user->phone}}"
-            disabled
-            >
+            value="{{ old('phone') }}"
+            >@error('phone')
+                <small>{{$message}}</small>
+            @enderror
         </div>
         <div>
-            <label>Selection Status</label>
-            <select name="selection_status">
-                <option value="NULL"></option>
-                <option value="EN ESTUDIO">En Estudio</option>
-                <option value="SELECCIONADO">Seleccionado</option>
+            <label>User name</label>
+            <input
+            class="input_style_general"
+            name="user_name"
+            type="text"
+            value="{{ old('user_name') }}"
+            >@error('user_name')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
+        <div>
+            <label>Email</label>
+            <input
+            class="input_style_general"
+            name="email"
+            type="text"
+            value="{{ old('email') }}"
+            >@error('email')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
+        <div>
+            <label>Genre</label>
+            <select class="select_style_general" name="genre">
+                <option value=" ">Select an option</option>
+                <option value="M">male</option>
+                <option value="F">female</option>
             </select>
         </div>
         <div>
-            <label>Points</label>
-            <input
-            name="points"
-            type="text"
-            value=""
-            required
-            >
+            <label>Departament</label>
+            <select class="select_style_general" name="id_departament" id="departamentSelect">
+                <option value="">Select an option</option>
+                @foreach ($departaments as $departament)
+                    <option value="{{ $departament->id }}" data-municipalities='@json($departament->municipalities)'>{{ $departament->name }}</option>
+                @endforeach
+            </select>
         </div>
-        <input
-        type="submit"
-        value="enviar"
-        >
+        <div>
+            <label>Municipality</label>
+            <select class="select_style_general" name="id_municipality" id="municipalitySelect">
+                <option value="">Select an option</option>
+            </select>
+        </div>
+        <div>
+            <label>Addres</label>
+            <input
+            class="input_style_general"
+            name="addres"
+            type="text"
+            value="{{ old('addres') }}"
+            >
+            @error('addres')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
+        <div>
+            <label>Password</label>
+            <input
+            class="input_style_general"
+            name="password"
+            type="password"
+            value=""
+            >
+            @error('password')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
+        <div class="div_form_create_candidate" style="flex-direction: row">
+            <input
+            class="input_general_submit"
+            type="submit"
+            value="Crear"
+            >
+            <button class="btn_general"><a href="{{ route('login') }}">Volver</a></button>
+        </div>
     </form>
-    <h4><a href="{{ route('candidate.index') }}">Back to List</a></h4>
 </main>
 
 @endsection

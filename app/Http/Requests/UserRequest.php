@@ -29,6 +29,7 @@ class UserRequest extends FormRequest
             'name' => 'required|alpha|min:3|max:20',
             'last_name' => 'required|alpha|min:3|max:30',
             'phone' => 'required|numeric|min:10',
+            'genre'=>'required|in:M,F',
             'user_name' => 'required|unique:users|min:3|max:20',
             'email' => 'required|unique:users|email',
             'password' => 'required'

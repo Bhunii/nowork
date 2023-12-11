@@ -1,0 +1,61 @@
+.pie_pagina{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 0.8fr 1fr 0.6fr;
+    padding: 0% 1%;
+    background-color: #39393b;
+    /* background-color: #676378; */
+    /* box-shadow: 5px 0 55px #64626d; */
+}
+
+.p_footer{
+    padding: 10px;
+}
+
+.links_footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ul_links{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.linksf{
+    list-style-type: none;
+}
+
+.linksf a{
+    text-decoration-line: none;
+}
+
+.btns_footer picture{
+    width: 42px;
+    height: 42px;
+}
+
+.btn_footer img{
+    width: 100%;
+    height: 100%;
+}
+
+.add_footer{
+    display: flex;
+    justify-content: flex-end;
+    align-items:flex-end;
+    padding: 10px;
+}
+
+.add_footer picture{
+    width: 35px;
+    height: 35px;
+}
+
+.add_footer picture img{
+    width: 100%;
+    height: 100%;
+}
