@@ -19,4 +19,7 @@ class Charge extends Model
         'salary',
         'type_contract'
     ];
+    public function users(){
+        return $this->belongsTo(users::class,'id_vacancy','id');
+    }
 }

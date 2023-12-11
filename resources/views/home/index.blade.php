@@ -7,7 +7,7 @@
                 <p>Rol: Administrador</p>
             @elseif (auth()->user()->role_id == 2)
                 <p>Rol: Instructor</p>
-            @elseif (auth()->user()->role_id == 3)
+            @elseif (isset($user) && auth()->user()->role_id == 3)
                 <p>Rol: Reclutador</p>
             @elseif (isset($user) && auth()->user()->role_id == 4)
                 <p>Rol: Candidato</p>

@@ -14,7 +14,13 @@ use App\Http\Controllers\CurriculumController;
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\CompanyController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
+use App\Http\Controllers\OccupationController;
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\ChargeController;
+use App\Http\Controllers\VacancyController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -78,8 +84,27 @@ Route::post('/candidate/store', [CandidateController::class, 'store'])->name('ca
 Route::get('/candidate/edit', [CandidateController::class, 'edit'])->name('candidate.edit');
 Route::put('/candidate/update', [CandidateController::class, 'update'])->name('candidate.update');
 
+//rutas de ocupaciones
+Route::get('/occupation/index', [OccupationController::class,'index'])->name('occupation.index');
+Route::get('/occupation/create', [OccupationController::class,'create'])->name('occupation.create');
+Route::post('/occupation/store', [OccupationController::class,'store'])->name('occupation.store');
+Route::get('/occupation/edit/{occupation}', [OccupationController::class,'edit'])->name('occupation.edit');
+Route::put('/occupation/update/{occupation}', [OccupationController::class,'update'])->name('occupation.update');
+Route::delete('/occupation/destroy/{occupation}',[OccupationController::class, 'destroy'])->name('occupation.destroy');
+Route::get('/occupation/show/{occupation}', [OccupationController::class,'show'])->name('occupation.show');
+
+//Management routes for companies
+Route::get('/company/index', [CompanyController::class, 'index'])->name('company.index');
+Route::get('/company/create', [CompanyController::class, 'create'])->name('company.create');
+Route::post('/company/store', [CompanyController::class, 'store'])->name('company.store');
+Route::get('/company/{id}/edit', [CompanyController::class, 'edit'])->name('company.edit');
+Route::put('/company/{id}/update', [CompanyController::class, 'update'])->name('company.update');
+Route::delete('/company/{id}/destroy', [CompanyController::class, 'destroy'])->name('company.destroy');
+Route::get('/company/{id}/show', [CompanyController::class, 'show'])->name('company.show');
+
 //Profile routes
 Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/profiles/recruiter', [RecruiterController::class, 'index'])->name('profiles.recruiter');
 
 //Management routes for candidate
 Route::get('/curriculum/index', [CurriculumController::class, 'index'])->name('curriculum.index');
@@ -101,3 +126,16 @@ Route::put('/experience/store', [ExperienceController::class, 'store'])->name('e
 Route::get('/language/index', [LanguageController::class, 'index'])->name('language.index');
 Route::get('/language/create', [LanguageController::class, 'create'])->name('language.create');
 Route::put('/language/store', [LanguageController::class, 'store'])->name('language.store');
+
+Route::get('/charge/index',[ChargeController::class,'index'])->name('charge.index');
+Route::get('/charge/create',[ChargeController::class,'create'])->name('charge.create');
+Route::post('/charge/store',[ChargeController::class,'store'])->name('charge.store');
+Route::get('/charge/{id}/edit', [ChargeController::class, 'edit'])->name('cahrge.edit');
+Route::put('/charge/{id}/update', [ChargeController::class, 'update'])->name('charge.update');
+
+Route::get('/vacancy/index',[VacancyController::class,'index'])->name('vacancy.index');
+Route::get('/vacancy/create',[VacancyController::class,'create'])->name('vacancy.create');
+Route::post('/vacancy/store',[VacancyController::class,'store'])->name('vacancy.store');
+Route::get('/vacancy/{id}/edit', [VacancyController::class, 'edit'])->name('vacancy.edit');
+Route::put('/vacancy/{id}/update', [VacancyController::class, 'update'])->name('vacancy.update');
+
