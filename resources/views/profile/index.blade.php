@@ -7,9 +7,13 @@
             $profileView = 'profiles.administrator';
         @endphp
     @elseif (auth()->user()->role_id == 2)
-        <!-- <p>Rol: Instructor</p> -->
+        @php
+            $profileView = 'profiles.instructor';
+        @endphp
     @elseif (auth()->user()->role_id == 3)
-        <!-- <p>Rol: Reclutador</p> -->
+        @php
+            $profileView = 'profiles.recruiter';
+        @endphp
     @elseif (auth()->user()->role_id == 4)
         @php
             $profileView = 'profiles.candidate';

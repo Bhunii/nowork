@@ -1,4 +1,4 @@
-@extends('layouts.nav.recruiter',['title' => 'Your Profile'])
+@extends('layouts.nav.instructor',['title' => 'Your Profile'])
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
@@ -22,12 +22,6 @@
             <ul class="data_ul">
                 <li class="data data_title">
                     <h2>Informacion del Perfil</h2>
-                </li>
-                <li class="data">
-                    <span>nit</span>
-                </li>
-                <li class="data">
-                    <span>nombre empresa</span>
                 </li>
                 <li class="data">
                     <span>{{ auth()->user()->name }}</span> <span>{{ auth()->user()->last_name }}</span>
@@ -54,4 +48,3 @@
         </article>
     </div>
 @endsection
-
