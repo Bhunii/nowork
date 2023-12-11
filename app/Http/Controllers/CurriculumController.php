@@ -4,17 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CurriculumRequest;
 use Illuminate\Http\RedirectResponse;
+use App\Models\Curriculum;
 use Illuminate\Http\Request;
 
 class CurriculumController extends Controller
 {
-    public function index($id){
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
-    public function create($id){
+    public function index(){
+        $user = auth()->user();
+
+        $curriculum = $user->candidate->curriculum;
+
+        return view('curriculum.index', compact('user','curriculum'));
     }
 
-    public function store($id){
+    public function create(){
+        return view('curriculum.create');
+    }
+
+    public function store(Request $request){
+
+        return redirect()->route('profile.index');
     }
 
     public function edit(){
@@ -26,14 +40,17 @@ class CurriculumController extends Controller
     {
         $user = auth()->user();
 
-        $user->occupational_profile = $request->occupational_profile;
-        $user->save();
+        $curriculum = $user->candidate->curriculum;
 
-        return redirect()->route('profile.index')->with('user', $user);
+        $curriculum->update([
+            'occupational_profile' => $request->occupational_profile
+        ]);
+
+        return redirect()->route('profile.index');
     }
 
-    public function destoy($id){
-        $user = auth()->user();
+    public function destoy(){
+        // $user = auth()->user();
         return view('profile.index', compact('user'));
     }
 

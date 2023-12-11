@@ -2,7 +2,7 @@
     width: 100%;
     height: 100vh;
     padding: 5px;
-    background: rgb(234, 234, 234);
+    background: rgba(130, 130, 130, 0.292);
 }
 
 .container_profile{
@@ -17,6 +17,22 @@
 .container_nexos_profile{
     width: 100%;
     height: 100%;
+    border-right: 5px #2c2c31 solid;
+}
+
+.phrase_profile{
+    display: flex;
+    width: 100%;
+    height: 43px;
+    background: #37373d;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 3px #2c2c31 solid;
+}
+
+.phrase_profile span{
+    color: #f1efef;
+    animation: moveImageX 10s linear infinite;
 }
 
 .nexos_ul{
@@ -79,45 +95,30 @@
     font-weight: 800;
 }
 
-input[type="submit"]:hover {
+.nexo_logout form input[type="submit"]:hover {
     color: #f1efef;
     background: black;
   }
 
-
+@keyframes moveImageX {
+    0% {
+        transform: translateX(-65%);
+    }
+    50% {
+        transform: translateX(67%);
+    }
+    100% {
+        transform: translateX(-65%);
+    }
+}
 
 /*  */
 .container_general_profile{
-    display: grid;
-    width: 100%;
-    height: 100%;
-    grid-template-rows: 40px auto;
-}
-
-.phrase_profile{
     display: flex;
     width: 100%;
-    height: 40px;
-    background: #37373d;
-    align-items: center;
+    height: 100%;
     justify-content: center;
-}
-
-.phrase_profile span{
-    color: #f1efef;
-    animation: moveImageX 10s linear infinite;
-}
-
-@keyframes moveImageX {
-    0% {
-        transform: translateX(-70%);
-    }
-    50% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-70%);
-    }
+    background: white;
 }
 
 .profile{
@@ -125,13 +126,13 @@ input[type="submit"]:hover {
     width: 100%;
     height: 100%;
     flex-direction: row;
-    background-color: white;
+    padding: 25px 0px;
 }
 
 .img_profile{
     display: flex;
     width: 35%;
-    padding: 15px 10px;
+    padding: 55px 10px;
     justify-content: center;
 }
 
@@ -139,7 +140,6 @@ input[type="submit"]:hover {
     width: 224px;
     height: 253px;
     border-radius: 7px;
-    background: #f2f2f3;
 }
 
 .data_profile{
@@ -166,5 +166,64 @@ input[type="submit"]:hover {
 }
 
 .data_occupational_profile{
+    position: relative;
+    display: flex;
+    flex-direction: column;
     width: 90%;
+    gap: 5px;
+}
+
+.show_hide_container{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 120px;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 1;
+    display: none;
+}
+
+.form_edit_curriculum{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 7px;
+}
+
+#btnShow{
+    padding: 1.9px;
+    width: 120px;
+    height: 36px;
+}
+
+#btnHide{
+    padding: 5px;
+    width: 120px;
+    height: 36px;
+}
+
+#input_submit_edit_curriculum{
+    width: 140px;
+    height: 36px;
+}
+
+#textarea_occupational_profile{
+    display: flex;
+    width: 100%;
+    padding: 7px 7px;
+    height: 121px;
+    /* line-height: 1.5; */
+    border: 2px #37373d solid;
+    border-radius: 5px;
+    font-size:larger;
+    resize: none;
+    overflow-wrap: break-word;
+}
+
+#textarea_occupational_profile:focus{
+    outline: none;
 }

@@ -21,4 +21,16 @@ class Candidate extends Model
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function departament(){
+        return $this->belongsTo(Departament::class, 'id_departament');
+    }
+
+    public function municipality(){
+        return $this->belongsTo(Municipality::class, 'id_municipality');
+    }
+
+    public function curriculum(){
+        return $this->hasOne(Curriculum::class, 'id_candidate');
+    }
 }

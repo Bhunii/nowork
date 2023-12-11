@@ -25,17 +25,16 @@ class CandidateController extends Controller
 
     public function create():View
     {
-        $departaments = Departament::all();
-        $municipalities = Municipality::all();
+        $departaments = Departament::with('municipalities')->get();
         // $user = User::findOrFail($id), compact('user');
-        return view('candidate.create', compact('departaments'), compact('municipalities'));
+        return view('candidate.create', compact('departaments'));
     }
 
     public function store(CandidateRequest $request):RedirectResponse
     {
         // $user = User::findOrFail($id);
 
-        $user = User::create([
+        User::create([
             'doc_type' => $request->doc_type,
             'doc_num' => Str::upper($request->doc_num),
             'name' => Str::upper($request->name),
@@ -47,34 +46,45 @@ class CandidateController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        $candidate = Candidate::create([
-            'user_id' => $user->id,
+        Candidate::create([
+            'user_id' => User::latest('id')->first()->id,
             'id_departament' => $request->id_departament,
             'id_municipality' => $request->id_municipality,
             'addres' => Str::lower($request->addres)
         ]);
 
         Curriculum::create([
-            'id_candidate' => $candidate->id,
+            'id_candidate' => Candidate::latest('id')->first()->id,
+            'occupational_profile'
         ]);
 
         return redirect()->route('login')->with('mensaje','Usuario Creado Exitosamente');
     }
 
-    public function edit($id):View
+    public function edit():View
     {
-        $candidate = Candidate::findOrFail($id);
-        return view('candidate.edit', compact('candidate'));
+        $user = auth()->user();
+        $departaments = Departament::with('municipalities')->get();
+
+        return view('candidate.edit', compact('user','departaments'));
     }
 
-    public function update(Request $request,$id):RedirectResponse
+    public function update(Request $request):RedirectResponse
     {
-        $candidate = Candidate::findOrFail($id);
+        $user = auth()->user();
 
-        $candidate->selection_status = $request->selection_status;
-        $candidate->points = $request->points;
-        $candidate->save();
+        $user->update([
+            'phone' => $request->phone,
+            'user_name' => $request->user_name,
+            'email' => Str::lower($request->email)
+        ]);
 
-        return redirect()->route('candidate.index');
+        $user->candidate->update([
+            'id_departament' => $request->id_departament,
+            'id_municipality' => $request->id_municipality,
+            'addres' => Str::lower($request->addres)
+        ]);
+
+        return redirect()->route('profile.index')->with('mensaje','Datos Actualizados');
     }
 }

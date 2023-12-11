@@ -21,4 +21,12 @@ class Study extends Model
         'end_date'
     ];
 
+    public function departament(){
+        return $this->belongsTo(Departament::class, 'id_departament');
+    }
+
+    public function municipality(){
+        return $this->belongsTo(Municipality::class, 'id_municipality');
+    }
+
 }

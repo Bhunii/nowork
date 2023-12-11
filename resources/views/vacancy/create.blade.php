@@ -1,14 +1,18 @@
 @extends('layouts.app')
 
+@section('js')
+    <script src="{{ asset('js/location.js') }}"></script>
+@endsection
+
 @section("content")
 
 <form method="POST" action="{{route('vacancy.store')}}">
     @csrf
 
 
-    
+
     <h2>form  </h2>
-    
+
     <label> occupational_profile</label>
     <input type="text" name="occupational_profile"/>
 
@@ -18,11 +22,21 @@
     <label> workday</label>
     <input type="text" name="workday"/>
 
-    <label> id_departament</label>
-    <input type="text" name="id_departament"/>
-
-    <label> id_municipality</label>
-    <input type="text" name="id_municipality"/>
+    <div>
+        <label>Departament</label>
+        <select class="select_style_general" name="id_departament" id="departamentSelect">
+            <option value="">Select an option</option>
+            @foreach ($departaments as $departament)
+                <option value="{{ $departament->id }}" data-municipalities='@json($departament->municipalities)'>{{ $departament->name }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div>
+        <label>Municipality</label>
+        <select class="select_style_general" name="id_municipality" id="municipalitySelect">
+            <option value="">Select an option</option>
+        </select>
+    </div>
 
     <label> addres</label>
     <input type="text" name="addres"/>
