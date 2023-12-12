@@ -1,4 +1,4 @@
-@extends('layouts.nav.candidate',['title' => 'Create Curriculum'])
+@extends('layouts.nav.candidate',['title' => 'Curriculum - Idioma'])
 
 @section('js')
     <script src="{{ asset('js/type_language.js') }}" ></script>
@@ -44,9 +44,10 @@
 <div class="contenido_curriculum">
     <section class="contenedor_curriculum">
         <article class="nav_curriculum">
-        <button id="btn_curriculum_3" class="btn_nav btn_nav_3">Idiomas</button>        </article>
+            <button id="btn_curriculum_3" class="btn_nav btn_nav_3">Idiomas</button>
+        </article>
         <article class="contenedor_form_curriculum">
-            <form class="form form_create_curriculum" method="post" action="">
+            <form class="form form_create_curriculum" method="post" action="{{ route('language.store') }}">
                 @csrf
                 <div>
                     <label>Tipo idioma</label>
@@ -67,9 +68,12 @@
                     <input
                     class="input_general_submit"
                     type="submit"
-                    value="Crear">
+                    value="Agregar">
                 </div>
             </form>
+        </article>
+        <article>
+            <a href="{{route('language.index')}}">Volver</a>
         </article>
     </section>
 </div>

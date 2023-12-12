@@ -39,13 +39,6 @@
                     <td class="td_general_tabla_usuarios" style="width: 200px">{{ $user->last_name }}</td>
                     <td class="td_general_tabla_usuarios" style="width: 200px">{{ $user->email }}</td>
                     <td class="td_general_tabla_usuarios" style="width: 150px">{{ $user->role->role_name }}</td>
-                    <!-- <td class="td_borrar_usuario" style="width: 70px">
-                        <form method="POST" action="{{route('user.destroy', $user->id)}}">
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit" value="DELETE" class="edit"/>
-                        </form>
-                    </td> -->
                 </tr>
             @empty
                 <tr>

@@ -32,7 +32,7 @@ class StudyController extends Controller
         $curriculum = Auth::user()->candidate->curriculum;
 
         Study::create([
-            'curriculum_id' => $curriculum->id,
+            'id_curriculum' => $curriculum->id,
             'name_institution' => $request->name_institution,
             'id_denomination' => $request->id_denomination,
             'id_departament' => $request->id_departament,
@@ -43,15 +43,16 @@ class StudyController extends Controller
         return redirect()->route('study.index');
     }
 
-    public function edit(){
+    public function edit($id){
         $user = auth()->user();
-        $study = $user->candidate->curriculum->studies;
-        return view('study.edit', compact('user', 'study'));
+        $study = $user->candidate->curriculum->studies->find($id);
+        $departaments = Departament::with('municipalities')->get();
+        return view('study.edit', compact('study','departaments'));
     }
 
-    public function update(Request $request){
+    public function update(Request $request,$id){
         $user = auth()->user();
-        $study = $user->candidate->curriculum->studies;
+        $study = $user->candidate->curriculum->studies->find($id);
 
         $study -> update([
             'id_departament' => $request->id_departament,
@@ -72,9 +73,7 @@ class StudyController extends Controller
 
     public function destroy($id){
         $user = auth()->user();
-        $study = $user->candidate->curriculum->studies->find($id);
-
-        $study->delete();
+        ($user->candidate->curriculum->studies->find($id))->delete();
 
         return redirect()->route('study.index')->with('mensaje', 'Estudio Eliminado');
     }

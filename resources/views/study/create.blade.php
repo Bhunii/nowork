@@ -1,4 +1,4 @@
-@extends('layouts.nav.candidate',['title' => 'Agregar Estudio'])
+@extends('layouts.nav.candidate',['title' => 'Curriculum - Estudio'])
 
 @section('js')
     <script src="{{ asset('js/location.js') }}" ></script>
@@ -47,7 +47,7 @@
                 <button id="btn_curriculum_1" class="btn_nav btn_nav_1">Estudios</button>
             </article>
             <article class="contenedor_form_curriculum">
-                <form class="form form_create_curriculum" method="post" action="">
+                <form class="form form_create_curriculum" method="post" action="{{ route('study.store') }}">
                     @csrf
                     <div><!-- id="contenido_curriculum_estudios" class="contenido_form_curriculum" -->
                         <label>Name Institution</label>
@@ -115,6 +115,9 @@
                         value="Crear">
                     </div>
                 </form>
+            </article>
+            <article>
+                <a href="{{route('experience.index')}}">Back</a>
             </article>
         </section>
     </div>

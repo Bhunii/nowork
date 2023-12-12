@@ -47,7 +47,7 @@
             <button id="btn_curriculum_2" class="btn_nav btn_nav_2">Experiencias</button>
         </article>
         <article class="contenedor_form_curriculum">
-            <form class="form form_create_curriculum" method="post" action="">
+            <form class="form form_create_curriculum" method="post" action="{{ route('experience.store') }}">
                 @csrf
                 <div>
                     <label>Name Company</label>
@@ -119,9 +119,12 @@
                     <input
                     class="input_general_submit"
                     type="submit"
-                    value="Crear">
+                    value="Agregar">
                 </div>
             </form>
+        </article>
+        <article>
+            <a href="{{route('experience.index')}}">Volver</a>
         </article>
     </section>
 </div>

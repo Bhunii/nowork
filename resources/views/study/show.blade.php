@@ -1,11 +1,11 @@
-@extends('layouts.nav.candidate',['title' => 'Estudio'])
+@extends('layouts.nav.candidate',['title' => 'Curriculum - Estudio'])
 
 @section('js')
 @endsection
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/user-show.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/general-show.css') }}">
 @endsection
 
 @section('content_profile')
@@ -24,10 +24,10 @@
                 <li>Fecha Culminacion</li>
             </ul>
             <ul class="ul_valor_data">
-                <li>{{$study->name}}</li>
-                <li>{{$study->id_denomination}}</li>
-                <li>{{$study->id_departament}}</li>
-                <li>{{$study->id_municipality}}</li>
+                <li>{{$study->name_institution}}</li>
+                <li>{{$study->denomination->description}}</li>
+                <li>{{$study->departament->name}}</li>
+                <li>{{$study->municipality->name}}</li>
                 <li>{{$study->addres}}</li>
                 <li>{{$study->end_date}}</li>
             </ul>

@@ -1,4 +1,4 @@
-@extends('layouts.nav.candidate',['title' => 'Editar Estudio'])
+@extends('layouts.nav.candidate',['title' => 'Curriculum - Estudio'])
 
 @section('js')
     <script src="{{ asset('js/location.js') }}" ></script>
@@ -47,7 +47,7 @@
                 <button id="btn_curriculum_1" class="btn_nav btn_nav_1">Estudios</button>
             </article>
             <article class="contenedor_form_curriculum">
-                <form class="form form_create_curriculum" method="post" action="">
+                <form class="form form_create_curriculum" method="post" action="{{ route('study.update', $study->id) }}">
                     @csrf
                     @method('PUT')
                     <div><!-- id="contenido_curriculum_estudios" class="contenido_form_curriculum" -->
@@ -68,7 +68,7 @@
                         class="input_style_general"
                         name="id_denomination"
                         type="text"
-                        value="{{ old('id_denomination') }}"
+                        value="{{ $study->id_denomination }}"
                         disabled>
                         @error('id_denomination')
                             <small>$message</small>
@@ -95,7 +95,7 @@
                         class="input_style_general"
                         name="addres"
                         type="type"
-                        value="{{ old('addres') }}">
+                        value="{{ $study->addres }}">
                         @error('addres')
                             <small>$message</small>
                         @enderror
@@ -106,7 +106,7 @@
                         class="input_style_general"
                         name="end_date"
                         type="date"
-                        value="{{ old('end_date') }}">
+                        value="{{ $study->end_date }}">
                         @error('end_date')
                             <small>$message</small>
                         @enderror
@@ -115,9 +115,12 @@
                         <input
                         class="input_general_submit"
                         type="submit"
-                        value="Crear">
+                        value="Actualizar">
                     </div>
                 </form>
+            </article>
+            <article>
+                <a href="{{route('study.index')}}">Back</a>
             </article>
         </section>
     </div>

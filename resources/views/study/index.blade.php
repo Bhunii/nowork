@@ -1,4 +1,4 @@
-@extends('layouts.nav.candidate',['title' => 'Estudios'])
+@extends('layouts.nav.candidate',['title' => 'Curriculum - Estudios'])
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
@@ -28,7 +28,7 @@
                         <a class="a_config_general" href="{{route('study.show', $study->id)}}">Show study</a> |
                         <a class="a_config_general" href="{{route('study.edit', $study->id)}}">Edit study</a>
                     </td>
-                    <td class="td_general_tabla_general">{{ $study->name }}</td>
+                    <td class="td_general_tabla_general">{{ $study->name_institution }}</td>
                     <td class="td_general_tabla_general">{{ $study->municipality->name }}</td>
                     <td class="td_general_tabla_general">{{ $study->end_date }}</td>
                     <td class="td_borrar_general" style="width: 70px">
