@@ -2,13 +2,28 @@
 
 @section('content')
 <a href="{{ route('vacancy.create') }}" id="create">Create new vacancy</a>
-<ul>
-    @forelse($vacancies as $vacancy)
-        <li>
-            <a href="#">
-                {{ $vacancy->id_vacancy }}
-            </a>
-        </li>
+
+    <h1>Lista Vacantes</h1>
+    <table class="tabla">
+        <thead>
+            <tr>
+                <th>Perfil</th>
+                <th>Numero vacantes disponibles</th>
+                <th>Dias de trabajo</th>
+                <th>Direccion</th>
+            </tr>
+        </thead>
+        @forelse($vacancies as $vacancy)
+        <tbody>
+            <tr>
+                <td>{{$vacancy->occupational_profile}}</td>
+                <td>{{$vacancy->number_vacancy}}</td>
+                <td>{{$vacancy->workday}}</td>
+                <td>{{$vacancy->addres}}</td>
+            </tr>
+        </tbody>
+
+    </table>
     @empty
         <p>No hay sistema</p>
     @endforelse

@@ -25,6 +25,7 @@
                     <li class="nexos">
                         <a href="{{route('occupation.index')}}">ver ocpuacion</a>
                     </li>
+                    
                     <li class="nexos">
                         <a href="#">Ajustes</a>
                     </li>

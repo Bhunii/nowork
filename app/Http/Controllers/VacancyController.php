@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Vacancy;
 use App\Models\Charge;
 use App\Models\Departament;
-use Illuminate\Support\Facades\Auth;
+
 
 
 class VacancyController extends Controller
@@ -29,11 +29,9 @@ class VacancyController extends Controller
     }
     public function store(Request $request)
 {
-    $user = auth()->user();
-    $company = $user->recruiter->company;
 
     $vacancy = Vacancy::create([
-        'id_company' => $company->id,
+        'id_company' => $request->id_company,
         'occupational_profile' => $request->occupational_profile,
         'number_vacancy' => $request->number_vacancy,
         'workday' => $request->workday,
@@ -45,7 +43,7 @@ class VacancyController extends Controller
     ]);
 
     Charge::create([
-        'id_vacancy'=>Vacancy::latest('id_vacancy')->first()->id_vacancy,
+        'id_vacancy'=>Vacancy::latest('id')->first()->id,
         'id_denomination' => $request->id_denomination,
         'id_function' => $request->id_function,
         'payment_method' => $request->payment_method,

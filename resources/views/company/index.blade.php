@@ -15,21 +15,21 @@
         <h2>LIST OF COMPANIES</h2>
         <table class="tabla">
             <tr>
-                <td>id_recruiter</td>
-                <td>name</td>
-                <td>nit</td>
-                <td>company_name</td>
-                <td>email</td>
-                <td>nature</td>
-                <td>id_departement</td>
-                <td>id_municipality</td>
-                <td>addres</td>
-                <td>phone</td>
+                <th>id_company</th>
+                <th>name</th>
+                <th>nit</th>
+                <th>company_name</th>
+                <th>email</th>
+                <th>nature</th>
+                <th>id_departement</th>
+                <th>id_municipality</th>
+                <th>addres</th>
+                <th>phone</th>
             </tr>
         @forelse ($companies as $company)
             <tbody>
                 <tr>
-                    <td>{{$company->recruiter->name}}</td>
+                    <td>{{$company->id_company}}</td>
                     <td>{{$company->name}}</td>
                     <td>{{$company->nit}}</td>
                     <td>{{$company->company_name}}</td>
