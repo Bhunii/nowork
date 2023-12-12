@@ -27,7 +27,7 @@
     <input type="text" name="number_vacancy"/>
 
     <label> workday</label>
-    <input type="text" name="workday"/>
+    <input type="date" date="workday"/>
 
     <div>
         <label>Departament</label>

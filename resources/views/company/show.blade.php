@@ -4,7 +4,6 @@
 <style></style>
 <h4>List of companies</h4>
         <table class="tabla">
-
             <thead>
                 <tr>
                     <td>Id _recruiter</td>

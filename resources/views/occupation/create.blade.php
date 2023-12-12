@@ -75,6 +75,9 @@
         <label>Nombre de funcion:</label>
         <input type="text" name="name_function"/>
         <label>Descripcion de funcion:</label>
+        <label>Nombre de habilidad:</label>
+        <input type="text" name="name_function"/>
+        <label>Descripcion de habilidad:</label>
         <input type="text" name="description_function"/>
 
 
@@ -84,7 +87,7 @@
         <label>Descripcion de denominacion:</label>
         <input type="text" name="description_denomination"/>
 
-        
+
         <h2>Ocupaciones Relacionadas</h2>
         <label>Codigo de ocupacion relacionada=opcional:</label>
         <input type="text" name="code_occupation_relation"/>
@@ -98,7 +101,7 @@
         <label>Descripcion de habilidad:</label>
         <input type="text" name="description_skill"/>
 
-        
+
         <h2>Conocimientos</h2>
         <label>Codigo de conocimiento:</label>
         <input type="text" name="code_knowledge"/>

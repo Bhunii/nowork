@@ -24,8 +24,7 @@ class VacancyController extends Controller
     }
     public function create()
     {
-        $departaments = Departament::with('municipalities')->get();
-        return view('vacancy.create', compact('departaments'));
+        return view('vacancy.create');
     }
     public function store(Request $request)
     {

@@ -23,6 +23,7 @@ use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\AboutController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
