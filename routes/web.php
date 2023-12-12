@@ -127,7 +127,7 @@ Route::get('/experience/create', [ExperienceController::class, 'create'])->name(
 Route::post('/experience/store', [ExperienceController::class, 'store'])->name('experience.store');
 Route::get('/experience/{id}/edit', [ExperienceController::class, 'edit'])->name('experience.edit');
 Route::put('/experience/{id}/update', [ExperienceController::class, 'update'])->name('experience.update');
-Route::get('/experience/{$id}/show', [ExperienceController::class, 'show'])->name('experience.show');
+Route::get('/experience/{id}/show', [ExperienceController::class, 'show'])->name('experience.show');
 Route::delete('/experience/{id}/destroy', [ExperienceController::class, 'destroy'])->name('experience.destroy');
 
 //Management routes for languages of candidate

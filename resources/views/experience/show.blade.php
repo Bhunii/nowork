@@ -1,4 +1,4 @@
-@extends('layouts.nav.administrator',['title' => 'Usuario'])
+@extends('layouts.nav.administrator',['title' => 'Curriculum - Experiencia'])
 
 @section('js')
     <script src="{{ asset('js/profile.js') }}"></script>
@@ -26,9 +26,9 @@
             </ul>
             <ul class="ul_valor_data">
                 <li>{{$experience->name_company}}</li>
-                <li>{{$experience->company_addres}}</li>
-                <li>{{$experience->id_denomination}}</li>
-                <li>{{$experience->funciones}}</li>
+                <li>{{$experience->addres}}</li>
+                <li>{{$experience->denomination->description}}</li>
+                <li>{{$experience->function->description}}</li>
                 <li>{{$experience->start_date}}</li>
                 <li>{{$experience->end_date}}</li>
             </ul>

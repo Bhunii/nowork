@@ -28,7 +28,7 @@
                         <a class="a_config_general" href="{{route('experience.show', $experience->id)}}">Show experience</a> |
                         <a class="a_config_general" href="{{route('experience.edit', $experience->id)}}">Edit experience</a>
                     </td>
-                    <td class="td_general_tabla_general">{{ $experience->name }}</td>
+                    <td class="td_general_tabla_general">{{ $experience->name_company }}</td>
                     <td class="td_general_tabla_general">{{ $experience->start_date }}</td>
                     <td class="td_general_tabla_general">{{ $experience->end_date }}</td>
                     <td class="td_borrar_general" style="width: 70px">

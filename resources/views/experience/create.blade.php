@@ -1,4 +1,4 @@
-@extends('layouts.nav.candidate',['title' => 'Create Curriculum'])
+@extends('layouts.nav.candidate',['title' => 'Curriculum - Experiencia'])
 
 @section('js')
 @endsection
@@ -64,10 +64,10 @@
                     <label>Addres</label>
                     <input
                     class="input_style_general"
-                    name="company_addres"
+                    name="addres"
                     type="text"
-                    value="{{ old('') }}">
-                    @error('company_addres')
+                    value="{{ old('addres') }}">
+                    @error('addres')
                         <small>$message</small>
                     @enderror
                 </div>
@@ -75,10 +75,10 @@
                     <label>Denominacion</label>
                     <input
                     class="input_style_general"
-                    name="id_denominacion_company"
+                    name="id_denomination"
                     type="text"
-                    value="{{ old('id_denominacion_company') }}">
-                    @error('id_denominacion_company')
+                    value="{{ old('id_denomination') }}">
+                    @error('id_denomination')
                         <small>$message</small>
                     @enderror
                 </div>
@@ -108,10 +108,10 @@
                     <label>End Date</label>
                     <input
                     class="input_style_general"
-                    name="end_date_company"
+                    name="end_date"
                     type="date"
-                    value="{{ old('end_date_company') }}">
-                    @error('end_date_company')
+                    value="{{ old('end_date') }}">
+                    @error('end_date')
                         <small>$message</small>
                     @enderror
                 </div>

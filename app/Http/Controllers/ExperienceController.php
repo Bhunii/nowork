@@ -18,7 +18,7 @@ class ExperienceController extends Controller
     public function index(){
         $user = auth()->user();
         $experiences = $user->candidate->curriculum->experiences;
-        return view('experience.index', compact('user','experiences'));
+        return view('experience.index', compact('experiences'));
     }
 
     public function create(){
@@ -31,13 +31,13 @@ class ExperienceController extends Controller
         $curriculum = Auth::user()->candidate->curriculum;
 
         Experience::create([
-            'curriculum_id' => $curriculum->id,
+            'id_curriculum' => $curriculum->id,
             'name_company' => $request->name_company,
-            'company_addres' => $request->company_addres,
+            'addres' => $request->addres,
             'id_denomination' => $request->id_denomination,
             'id_function' => $request->id_function,
             'start_date' => $request->start_date,
-            'end_date' => $request->end_dates
+            'end_date' => $request->end_date
         ]);
 
         return redirect()->route('experience.index');
