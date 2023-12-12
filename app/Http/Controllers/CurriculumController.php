@@ -36,7 +36,7 @@ class CurriculumController extends Controller
         return view('curriculum.edit', compact('user'));
     }
 
-    public function update(CurriculumRequest $request):RedirectResponse
+    public function update(Request $request):RedirectResponse
     {
         $user = auth()->user();
 

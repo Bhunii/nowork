@@ -147,17 +147,34 @@
     padding: 15px 5px;
 }
 
+.contenedor_ul_data{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 11px;
+}
+
 .data_ul{
     display: flex;
     flex-direction: column;
     gap: 17px;
+    padding: 2px 5px;
 }
 
-.data{
+.ul_campo_data{
+    display: flex;
+    width: 25%;
+    align-items: flex-end;
+    font-weight: 800;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.data,.ul_campo_data li{
     list-style-type: none;
 }
 
-.data span{
+.contenedor_ul_data span{
     font-size:larger;
 }
 
@@ -191,7 +208,7 @@
     width: 100%;
     height: 100%;
     flex-direction: column;
-    gap: 7px;
+    gap: 11px;
 }
 
 #btnShow{
@@ -226,4 +243,10 @@
 
 #textarea_occupational_profile:focus{
     outline: none;
+}
+
+.contenedor_visible{
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
 }
