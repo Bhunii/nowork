@@ -62,5 +62,3 @@ public function store(Request $request): RedirectResponse
         return view('company.show', compact('company'));
     }
 }
-
-
