@@ -72,9 +72,9 @@
         <h2>Funciones</h2>
         <label>Codigo de funcion:</label>
         <input type="text" name="code_function"/>
-        <label>Nombre de habilidad:</label>
+        <label>Nombre de funcion:</label>
         <input type="text" name="name_function"/>
-        <label>Descripcion de habilidad:</label>
+        <label>Descripcion de funcion:</label>
         <input type="text" name="description_function"/>
 
 

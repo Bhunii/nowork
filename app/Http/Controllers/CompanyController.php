@@ -7,10 +7,17 @@ use App\Models\Company;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Models\Departament;
+use App\Models\Municipality;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index():View
     {
         $companies = Company::all();
@@ -22,11 +29,13 @@ class CompanyController extends Controller
         return view('company.create', compact('departaments'));
     }
 
-    public function store(Request $request): RedirectResponse
+public function store(Request $request): RedirectResponse
     {
+        $user = auth()->user();
+        $recruiter = $user->recruiter;
 
         Company::create([
-            'id_recruiter' => $request->id_recruiter,
+            'id_recruiter' => $recruiter->id,
             'name' => $request->name,
             'nit'=> $request->nit,
             'company_name'=> $request->company_name,
@@ -34,8 +43,8 @@ class CompanyController extends Controller
             'nature' => $request->nature,
             'id_departament' => $request->id_departament,
             'id_municipality' => $request->id_municipality,
-            'email'=> $request->addres,
-            'nature' => $request->phone
+            'addres'=> $request->addres,
+            'phone' => $request->phone
         ]);
 
         return redirect()->route('login')->with('mensaje','Usuario Creado Exitosamente');

@@ -29,7 +29,7 @@
         <div>
             <label>Company name</label>
             <input
-            name="name"
+            name="company_name"
             type="text"
             value="{{old('')}}"
             required
@@ -39,7 +39,7 @@
             <label>Email</label>
             <input
             name="email"
-            type="text"
+            type="email"
             value="{{old('')}}"
             required
             >
@@ -47,8 +47,8 @@
         <div>
             <label>Nature of the company</label>
             <input
-            name="admission_date"
-            type="date"
+            name="nature"
+            type="text"
             value="{{old('')}}"
             required
             >
@@ -72,7 +72,7 @@
             <label>Address</label>
             <input
             name="addres"
-            type="date"
+            type="text"
             value="{{old('')}}"
             required
             >

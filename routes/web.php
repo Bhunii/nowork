@@ -20,6 +20,7 @@ use App\Http\Controllers\OccupationController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ChargeController;
 use App\Http\Controllers\VacancyController;
+use App\Http\Controllers\AboutController;
 
 
 /*
@@ -139,3 +140,5 @@ Route::post('/vacancy/store',[VacancyController::class,'store'])->name('vacancy.
 Route::get('/vacancy/{id}/edit', [VacancyController::class, 'edit'])->name('vacancy.edit');
 Route::put('/vacancy/{id}/update', [VacancyController::class, 'update'])->name('vacancy.update');
 
+//About
+Route::get('/about/index',[AboutController::class,'index'])->name('about.index');

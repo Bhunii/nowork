@@ -15,37 +15,31 @@
         <h2>LIST OF COMPANIES</h2>
         <table class="tabla">
             <tr>
-                <td>id_recruiter</td>
-                <td>name</td>
-                <td>nit</td>
-                <td>company_name</td>
-                <td>email</td>
-                <td>nature</td>
-                <td>id_departement</td>
-                <td>id_municipality</td>
-                <td>addres</td>
-                <td>phone</td>
+                <th>id_company</th>
+                <th>name</th>
+                <th>nit</th>
+                <th>company_name</th>
+                <th>email</th>
+                <th>nature</th>
+                <th>id_departement</th>
+                <th>id_municipality</th>
+                <th>addres</th>
+                <th>phone</th>
             </tr>
         @forelse ($companies as $company)
             <tbody>
                 <tr>
-                    <td>{{$company->recruiters->id_recruiter}}</td>
+                    <td>{{$company->id_company}}</td>
                     <td>{{$company->name}}</td>
                     <td>{{$company->nit}}</td>
                     <td>{{$company->company_name}}</td>
                     <td>{{$company->email}}</td>
                     <td>{{$company->nature}}</td>
-                    <td>{{$company->departaments->id_departament}}</td>
-                    <td>{{$company->municipalities->id_municipality}}</td>
+                    <td>{{$company->departament->name}}</td>
+                    <td>{{$company->municipality->name}}</td>
                     <td>{{$company->addres}}</td>
                     <td>{{$company->phone}}</td>
-                    <td><a href="{{route('company.show', $company->id)}}" class="edit">DETAILS</a><a href="{{ route('company.edit', $company->id)}}" class="edit">EDIT</a>|
-                        <form method="POST" action="{{route('company.destroy', $company->id)}}">
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit" value="DELETE" class="edit"/>
-                            </form>
-                    </td>
+
                 </tr>
             @empty
                 <tr>
@@ -59,3 +53,5 @@
 </body>
 </html>
 @endsection
+
+

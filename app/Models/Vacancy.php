@@ -23,5 +23,7 @@ class Vacancy extends Model
         'end_date'
     ];
     
-    
+    public function company(){
+        return $this->belongsTo(Company::class, 'id_company');
+    }
 }

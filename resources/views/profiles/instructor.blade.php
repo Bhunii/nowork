@@ -9,7 +9,7 @@
         <article class="img_profile">
             @switch($user->genre)
                 @case("M")
-                    <img class="icon_profile2" src="icon_profile1.png" alt="icon profile">
+                    <img class="icon_profile2" src="{{asset('img/gigachad.jpg')}}" alt="icon profile">
                     @break
                 @case("F")
                     <img class="icon_profile2" src="{{ asset('img/icon_profile2.png') }}" alt="icon profile">

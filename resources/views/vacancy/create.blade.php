@@ -1,17 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.nav.recruiter',['title' => 'Your Profile'])
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+@endsection
 
 @section('js')
     <script src="{{ asset('js/location.js') }}"></script>
 @endsection
 
-@section("content")
+@section('content_profile')
 
 <form method="POST" action="{{route('vacancy.store')}}">
     @csrf
 
 
 
-    <h2>form  </h2>
+    <h2>Formulario Vacante</h2>
+
+    <label>id de company</label>
+    <input type="text" name="id_company">
 
     <label> occupational_profile</label>
     <input type="text" name="occupational_profile"/>
@@ -42,10 +49,10 @@
     <input type="text" name="addres"/>
 
     <label> start_date</label>
-    <input type="text" name="start_date"/>
+    <input type="date" name="start_date"/>
 
     <label> end_date</label>
-    <input type="text" name="end_date"/>
+    <input type="date" name="end_date"/>
 
 
 
@@ -56,15 +63,23 @@
     <label> id_function</label>
     <input type="text" name="id_function"/>
 
-    <label> payment_method</label>
-    <input type="text" name="payment_method"/>
+    <label>Payment method</label>
+        <select class="select_style_general" name="payment_method">
+            <option value="">Select an option</option>
+            <option value="M">M</option>
+            <option value="Q">Q</option>
+        </select>
+
 
     <label> salary</label>
     <input type="text" name="salary"/>
 
-    <label> type_contract</label>
-    <input type="text" name="type_contract"/>
-
+    <label>Type Contract</label>
+        <select class="select_style_general" name="type_contract">
+            <option value="">Select an option</option>
+            <option value="I">I</option>
+            <option value="D">D</option>
+        </select>
 
     <input type="submit" value="Crear" class="create"/>
 
