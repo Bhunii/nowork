@@ -1,56 +1,83 @@
 @extends('layouts.app')
 
 @section('content')
-<a href="{{ route('vacancy.create') }}" id="create">Create new vacancy</a>
-<ul>
-    @forelse($vacancies as $vacancy)
-        <li>
-            <a href="#">
-                {{ $vacancy->id_vacancy }}
-            </a>
-        </li>
-    @empty
-        <p>No hay sistema</p>
-    @endforelse
-</ul>
+    <h1>Lista Vacantes</h1>
+
+    <div class="vacancy-list">
+        @forelse($vacancies as $vacancy)
+            <div class="vacancy-box">
+                <span class="company-name">{{$vacancy->company_name}}</span>
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th style="background-color: #333; color: #fff;">Perfil</th>
+                            <th style="background-color: #333; color: #fff;">Numero vacantes disponibles</th>
+                            <th style="background-color: #333; color: #fff;">Dias de trabajo</th>
+                            <th style="background-color: #333; color: #fff;">Direccion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{$vacancy->occupational_profile}}</td>
+                            <td>{{$vacancy->number_vacancy}}</td>
+                            <td>{{$vacancy->workday}}</td>
+                            <td>{{$vacancy->addres}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        @empty
+            <p>No hay sistema</p>
+        @endforelse
+    </div>
+
+    <div class="bottom-section">
+        <!-- Botón al fondo -->
+        <a href="{{ route('vacancy.create') }}" id="create" style="background-color: #e44d26; color: #fff; padding: 10px; text-decoration: none;">Crear nueva vacante</a>
+    </div>
 @endsection
 
 <style>
-#create {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #3498db;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    margin-bottom: 20px;
-}
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f2f2f2;
+        color: #333;
+    }
 
-#create:hover {
-    background-color: #2980b9;
-}
+    .vacancy-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-around;
+    }
 
-/* Estilos para la lista de ciudades */
-.roles-list {
-    list-style: none;
-    padding: 0;
-}
+    .vacancy-box {
+        border: 1px solid #ddd;
+        padding: 10px;
+        width: 300px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-.roles-list li {
-    margin-bottom: 10px;
-}
+    .company-name {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 10px;
+    }
 
-.ciudad-link {
-    text-decoration: none;
-    color: #333;
-    border: 1px solid #ccc;
-    padding: 10px 15px;
-    border-radius: 4px;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-}
+    .tabla {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
-.ciudad-link:hover {
-    background-color: #f5f5f5;
-}
+    .tabla th, .tabla td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .bottom-section {
+        text-align: center;
+        margin-top: 20px;
+    }
 </style>
