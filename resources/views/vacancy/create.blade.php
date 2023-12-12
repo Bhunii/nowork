@@ -1,10 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.nav.recruiter',['title' => 'Your Profile'])
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+@endsection
 
 @section('js')
     <script src="{{ asset('js/location.js') }}"></script>
 @endsection
 
-@section("content")
+@section('content_profile')
 
 <form method="POST" action="{{route('vacancy.store')}}">
     @csrf
