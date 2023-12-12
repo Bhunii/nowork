@@ -29,4 +29,8 @@ class Study extends Model
         return $this->belongsTo(Municipality::class, 'id_municipality');
     }
 
+    public function denomination(){
+        return $this->belongsTo(Denomination::class, 'id_denomination');
+    }
+
 }

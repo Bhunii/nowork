@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Models\Vacancy;
 use App\Models\Charge;
-use App\Models\Departament;
-
-
 
 class VacancyController extends Controller
 {
@@ -86,5 +82,4 @@ class VacancyController extends Controller
 
         }
     }
-
 }

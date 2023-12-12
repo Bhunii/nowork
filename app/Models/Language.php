@@ -15,4 +15,8 @@ class Language extends Model
     'id_curriculum',
     'id_type_language'
     ];
+
+    public function type_language(){
+        return $this->belongsTo(TypeLanguage::class, 'id_type_language');
+    }
 }

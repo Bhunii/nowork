@@ -24,7 +24,7 @@ class StudyController extends Controller
 
     public function create(){
         $departaments = Departament::with('municipalities')->get();
-        return view('study.create', compact('user','departaments'));
+        return view('study.create', compact('departaments'));
     }
 
     public function store(Request $request){
@@ -32,7 +32,7 @@ class StudyController extends Controller
         $curriculum = Auth::user()->candidate->curriculum;
 
         Study::create([
-            'curriculum_id' => $curriculum->id,
+            'id_curriculum' => $curriculum->id,
             'name_institution' => $request->name_institution,
             'id_denomination' => $request->id_denomination,
             'id_departament' => $request->id_departament,
@@ -42,4 +42,40 @@ class StudyController extends Controller
         ]);
         return redirect()->route('study.index');
     }
+
+    public function edit($id){
+        $user = auth()->user();
+        $study = $user->candidate->curriculum->studies->find($id);
+        $departaments = Departament::with('municipalities')->get();
+        return view('study.edit', compact('study','departaments'));
+    }
+
+    public function update(Request $request,$id){
+        $user = auth()->user();
+        $study = $user->candidate->curriculum->studies->find($id);
+
+        $study -> update([
+            'id_departament' => $request->id_departament,
+            'id_municipality' => $request->id_municipality,
+            'addres' => Str::lower($request->addres),
+            'end_date' => $request->end_date
+        ]);
+
+        return redirect()->route('study.index');
+    }
+
+    public function show($id){
+        $user = auth()->user();
+        $study = $user->candidate->curriculum->studies->find($id);
+
+        return view('study.show', compact('study'));
+    }
+
+    public function destroy($id){
+        $user = auth()->user();
+        ($user->candidate->curriculum->studies->find($id))->delete();
+
+        return redirect()->route('study.index')->with('mensaje', 'Estudio Eliminado');
+    }
 }
+

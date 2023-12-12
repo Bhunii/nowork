@@ -14,11 +14,18 @@ class Experience extends Model
     protected $fillable = [
         'id_curriculum',
         'name_company',
-        'adress',
+        'addres',
         'id_denomination',
         'id_function',
         'start_date',
         'end_date'
     ];
 
+    public function denomination(){
+        return $this->belongsTo(Denomination::class, 'id_denomination');
+    }
+
+    public function function(){
+        return $this->belongsTo(Functions::class, 'id_function');
+    }
 }

@@ -7,7 +7,6 @@ use App\Models\Company;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Models\Departament;
-use App\Models\Municipality;
 use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller

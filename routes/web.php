@@ -15,12 +15,11 @@ use App\Http\Controllers\StudyController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\CompanyController;
-use Symfony\Component\HttpKernel\Profiler\Profile;
 use App\Http\Controllers\OccupationController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ChargeController;
-use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\VacancyController;
 
 
 
@@ -117,17 +116,29 @@ Route::put('/curriculum/update', [CurriculumController::class, 'update'])->name(
 //Management routes for studies of candidate
 Route::get('/study/index', [StudyController::class, 'index'])->name('study.index');
 Route::get('/study/create', [StudyController::class, 'create'])->name('study.create');
-Route::put('/study/store', [StudyController::class, 'store'])->name('study.store');
+Route::post('/study/store', [StudyController::class, 'store'])->name('study.store');
+Route::get('/study/{id}/edit', [StudyController::class, 'edit'])->name('study.edit');
+Route::put('/study/{id}/update', [StudyController::class, 'update'])->name('study.update');
+Route::get('/study/{id}/show', [StudyController::class, 'show'])->name('study.show');
+Route::delete('/study/{id}/destroy', [StudyController::class, 'destroy'])->name('study.destroy');
 
 //Management routes for experiences of candidate
 Route::get('/experience/index', [ExperienceController::class, 'index'])->name('experience.index');
 Route::get('/experience/create', [ExperienceController::class, 'create'])->name('experience.create');
-Route::put('/experience/store', [ExperienceController::class, 'store'])->name('experience.store');
+Route::post('/experience/store', [ExperienceController::class, 'store'])->name('experience.store');
+Route::get('/experience/{id}/edit', [ExperienceController::class, 'edit'])->name('experience.edit');
+Route::put('/experience/{id}/update', [ExperienceController::class, 'update'])->name('experience.update');
+Route::get('/experience/{id}/show', [ExperienceController::class, 'show'])->name('experience.show');
+Route::delete('/experience/{id}/destroy', [ExperienceController::class, 'destroy'])->name('experience.destroy');
 
 //Management routes for languages of candidate
 Route::get('/language/index', [LanguageController::class, 'index'])->name('language.index');
 Route::get('/language/create', [LanguageController::class, 'create'])->name('language.create');
-Route::put('/language/store', [LanguageController::class, 'store'])->name('language.store');
+Route::post('/language/store', [LanguageController::class, 'store'])->name('language.store');
+Route::get('/language/{id}/edit', [LanguageController::class, 'edit'])->name('language.edit');
+Route::put('/language/{id}/update', [LanguageController::class, 'update'])->name('language.update');
+Route::get('/language/{id}/show', [LanguageController::class, 'show'])->name('language.show');
+Route::delete('/language/{id}/destroy', [LanguageController::class, 'destroy'])->name('language.destroy');
 
 Route::get('/charge/index',[ChargeController::class,'index'])->name('charge.index');
 Route::get('/charge/create',[ChargeController::class,'create'])->name('charge.create');
