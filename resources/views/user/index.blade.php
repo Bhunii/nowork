@@ -1,57 +1,58 @@
-@extends('layouts.app',['title' => 'Registered Users'])
-@section('content')
-<main class="contenido">
-    <h3>List of Users</h3>
-    <style>
-    .tabla td{
-        border: 1px rgb(159, 159, 159) solid;
-    }
-    </style>
-    <table class="tabla">
-        <tr>
-            <td>id_recruiter</td>
-            <td>name</td>
-            <td>nit</td>
-            <td>company_name</td>
-            <td>email</td>
-            <td>nature</td>
-            <td>id_departement</td>
-            <td>id_municipality</td>
-            <td>addres</td>
-            <td>phone</td>
-        </tr>
-        @forelse ($companies as $company)
-        <tbody>
-            <tr>
-                <td>{{$companies->recruiters->id_recruiter}}</td>
-                <td>{{$companies->name}}</td>
-                <td>{{$companies->nit}}</td>
-                <td>{{$companies->company_name}}</td>
-                <td>{{$companies->email}}</td>
-                <td>{{$companies->nature}}</td>
-                <td>{{$companies->departaments->id_departament}}</td>
-                <td>{{$companies->municipalities->id_municipality}}</td>
-                <td>{{$companies->addres}}</td>
-                <td>{{$companies->phone}}</td>
-                <td><a href="{{route('company.show', $company->id)}}" class="edit">DETAILS</a><a href="{{ route('company.edit', $company->id)}}" class="edit">EDIT</a>|
-                    <form method="POST" action="{{route('company.destroy', $company->id)}}">
-                        @csrf
-                        @method('DELETE')
-                        <input type="submit" value="DELETE" class="edit"/>
-                        </form>
-                </td>
-            </tr>
-        @empty
-            <tr>
-                <td colspan="2">There is no system</td>
-            </tr></tbody>
-        @endforelse
-    </table>
-</div>
-</body>
-</html>
+@extends('layouts.nav.administrator',['title' => 'Usuarios'])
+
+@section('js')
+    <script src="{{ asset('js/profile.js') }}"></script>
 @endsection
-    <br>
-    <h4><a href="{{ route('company.create') }}">REGISTER A NEW COMPANY</a></h4>
-</main>
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/user-index.css') }}">
+@endsection
+
+@section('style')
+
+@endsection
+
+@section('content_profile')
+<section class="contenedor_index_usuarios">
+    <article class="titulo_index_usuarios">
+        <h3>Listado de Usuarios</h3>
+    </article>
+    <article class="contenedor_tabla_usuarios">
+        <table class="contenido_tabla_usuarios">
+            <tr class="tr_tabla_usuario_encabezado">
+                <td>Config</td>
+                <td>Doc Num</td>
+                <td>Name</td>
+                <td>Last Name</td>
+                <td>Email</td>
+                <td>Role Name</td>
+            </tr>
+            @forelse ($users as $user)
+                <tr class="tr_tabla_usuario_contenido">
+                    <td class=" td_general_tabla_usuarios td_configuracion_usuario" style="width: 200px">
+                        <a class="a_config_usuario" href="{{ route('user.edit_role', $user->id)}}">Edit User Role</a> |
+                        <a class="a_config_usuario" href="{{ route('user.show', $user->id) }}">Show User</a>
+                    </td>
+                    <td class="td_general_tabla_usuarios" style="width: 100px">{{ $user->doc_num }}</td>
+                    <td class="td_general_tabla_usuarios" style="width: 200px">{{ $user->name }}</td>
+                    <td class="td_general_tabla_usuarios" style="width: 200px">{{ $user->last_name }}</td>
+                    <td class="td_general_tabla_usuarios" style="width: 200px">{{ $user->email }}</td>
+                    <td class="td_general_tabla_usuarios" style="width: 150px">{{ $user->role->role_name }}</td>
+                    <!-- <td class="td_borrar_usuario" style="width: 70px">
+                        <form method="POST" action="{{route('user.destroy', $user->id)}}">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="DELETE" class="edit"/>
+                        </form>
+                    </td> -->
+                </tr>
+            @empty
+                <tr>
+                    <td>Table empty</td>
+                </tr>
+            @endforelse
+        </table>
+    </article>
+</section>
 @endsection

@@ -4,7 +4,7 @@
 <style></style>
 <h4>List of companies</h4>
         <table class="tabla">
-            
+
             <thead>
                 <tr>
                     <td>Id _recruiter</td>
@@ -27,10 +27,10 @@
                     <td>{{$companies->company_name}}</td>
                     <td>{{$companies->email}}</td>
                     <td>{{$companies->nature}}</td>
-                    <td>{{$user->id_departament}}</td>
-                    <td>{{$user->id_municipality}}</td>
-                    <td>{{$departaments->phone}}</td>
-                    <td>{{$municipalities->email}}</td>
+                    <td>{{$departaments->id_departament}}</td>
+                    <td>{{$municipalities->id_municipality}}</td>
+                    <td>{{$companies->addres}}</td>
+                    <td>{{$companies->phone}}</td>
                 </tr>
             </tbody>
         </table>

@@ -1,44 +1,57 @@
-@extends('layouts.app',['title' => 'Profile'])
+@extends('layouts.app', ['title' => 'Home'])
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+@endsection
 
 @section('content')
 
-    @auth
-        <!-- <p>Bienvenido {{ auth()->user()->name }}</p>
-        <p>-Email: {{ auth()->user()->email }}</p>
-        <p>-User Name: {{ auth()->user()->user_name }}</p> -->
-
-            @if (auth()->user()->role_id == 1)
-                <p>Rol: Administrador</p>
-                <!-- <nav>
-                    <menu>
-                        <a href="{{ route('user.create') }}">Ver usuarios registrados</a>
-                        <a href="{{ route('user.index') }}">Actualizar mis datos</a>
-                        <a href="{{ route('logout') }}">Cerrar Sesión</a>
-                    </menu>
-                </nav> -->
-            @elseif (auth()->user()->role_id == 2)
-                <p>Rol: Instructor</p>
-            @elseif (auth()->user()->role_id == 3)
-                <p>Rol: Reclutador</p>
-            @elseif (isset($user) && auth()->user()->role_id == 4)
-                <p>Rol: Candidato</p>
-                <!-- <span><a href="{{ route('user.edit_data', $user->id) }}">Actualizar Datos Basicos</a></span>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit">Cerrar Sesión</button>
-                </form> -->
-            @endif
-                <span>Hola</span>
-        @endauth
-        @guest
-            <p>Usuario invitado</p>
-            <nav>
-                <menu>
-                    <a href="{{ route('login') }}">Iniciar sesión</a>
-                    <a href="{{ route('user.create') }}">Nuevo Usuario</a>
-                </menu>
+@auth
+    @if (auth()->user()->role_id == 1)
+        <p>Rol: Administrador</p>
+    @elseif (auth()->user()->role_id == 2)
+        <p>Rol: Instructor</p>
+    @elseif (isset($user) && auth()->user()->role_id == 3)
+        <p>Rol: Reclutador</p>
+    @elseif (isset($user) && auth()->user()->role_id == 4)
+        <p>Rol: Candidato</p>
+    @endif
+    <span>Hola</span>
+@else
+    <body>
+        <header class="header">
+            <a href="#" class="logo">Nowork</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+            <nav class="navbar">
+                <a href="#" class="active">Home</a>
+                <a href="{{ route('company.create') }}">Companies</a>
+                <a href="#">Contacts</a>
             </nav>
-        @endguest
+        </header>
 
+        <section class="home" id="home">
+            <div class="home-content">
+                <h1>Welcome to <span>Nowork</span></h1>
+                <div class="animacion-text">
+                    <h3 style="width: 800px;">Tu plataforma integral para <span>la Selección de Personal</span></h3>
+                </div>
+                <p>En el dinámico mundo empresarial actual, la clave del éxito reside en contar con un equipo de profesionales talentosos y comprometidos. En Nowork, entendemos que la elección del personal adecuado es un factor determinante para el crecimiento
+                    y la prosperidad de cualquier organización.</p>
+                <div class="animacion-text">
+                    <h3 style="width: 650px;">Usuario invitado</h3>
+                </div>
+                <nav>
+                    <div class="btn-box">
+                        <a class="btn" href="{{ route('login') }}">Iniciar sesión</a>
+                        <a class="btn" href="{{ route('user.create') }}">Nuevo Usuario</a>
+                    </div>
+                </nav>
+            </div>
+        </section>
+
+    </body>
+
+    </html>
+@endguest
 
 @endsection
