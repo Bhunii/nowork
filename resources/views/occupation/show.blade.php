@@ -47,7 +47,7 @@
             </td>
 
             <td>
-                @foreach($occupation->knowledges as $knowledge)
+                @foreach($occupation->knowledge as $knowledge)
                     {{ $knowledge->name_knowledge }}<br>
                 @endforeach
             </td>
