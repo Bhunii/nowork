@@ -72,8 +72,6 @@
         <h2>Funciones</h2>
         <label>Codigo de funcion:</label>
         <input type="text" name="code_function"/>
-        <label>Nombre de funcion:</label>
-        <input type="text" name="name_function"/>
         <label>Descripcion de funcion:</label>
         <input type="text" name="description_function"/>
 

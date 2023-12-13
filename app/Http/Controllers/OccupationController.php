@@ -38,7 +38,6 @@ class OccupationController extends Controller
         Functions::create([
             'code_occupation' => Occupation::latest('code_occupation')->first()->code_occupation,
             'code'=>$request->code_function,
-            'name' => $request->name_function,
             'description' => $request->description_function,
         ]);
 
@@ -94,8 +93,10 @@ class OccupationController extends Controller
         return redirect()->route('occupation.index');
     }
 
-    public function show(Occupation $occupation)
+    public function show($id)
     {
+        $occupation = Occupation::with('functions', 'denominations', 'relations', 'skills', 'knowledges')->findOrFail($id);
         return view('occupation.show', compact('occupation'));
     }
+
 }
