@@ -33,4 +33,14 @@ class Candidate extends Model
     public function curriculum(){
         return $this->hasOne(Curriculum::class, 'id_candidate');
     }
+
+    public function process(){
+        return $this->hasOne(Curriculum::class, 'id_candidate');
+    }
+
+    public function processes()
+    {
+        return $this->hasMany(Process::class, 'id_candidate');
+    }
+
 }

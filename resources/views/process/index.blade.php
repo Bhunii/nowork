@@ -2,13 +2,13 @@
     @php
         $profileView = null;
     @endphp
-    @if (auth()->user()->role_id == 1)
+    @if (auth()->user()->role_id == 3)
         @php
-            $profileView = 'user.index.administrator';
+            $profileView = 'process.index.recruiter';
         @endphp
-    @elseif (auth()->user()->role_id == 2)
+    @elseif (auth()->user()->role_id == 4)
         @php
-            $profileView = 'user.index.instructor';
+            $profileView = 'process.index.candidate';
         @endphp
     @endif
     @if ($profileView)

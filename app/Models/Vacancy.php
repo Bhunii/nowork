@@ -26,4 +26,25 @@ class Vacancy extends Model
     public function company(){
         return $this->belongsTo(Company::class, 'id_company');
     }
+
+    public function departament(){
+        return $this->belongsTo(Departament::class, 'id_departament');
+    }
+
+    public function municipality(){
+        return $this->belongsTo(Municipality::class, 'id_municipality');
+    }
+
+    public function charge(){
+        return $this->hasOne(Charge::class, 'id_vacancy');
+    }
+
+    public function process(){
+        return $this->hasOne(Process::class, 'id_vacancy');
+    }
+
+    public function processes(){
+        return $this->hasMany(Process::class, 'id_vacancy');
+    }
+
 }

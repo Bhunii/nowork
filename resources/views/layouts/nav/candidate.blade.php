@@ -24,7 +24,7 @@
                         <a href="{{ route('candidate.edit') }}">Actualizar Datos Personales</a>
                     </li>
                     <li class="nexos">
-                        <a href="#">Ver Vacantes Aplicadas</a>
+                        <a href="{{ route('process.index') }}">Ver Vacantes Aplicadas</a>
                     </li>
                     <li class="nexos">
                         <a href="#">Ajustes</a>

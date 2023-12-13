@@ -54,14 +54,6 @@ class VacancyController extends Controller
             'end_date' => $request->end_date
         ]);
 
-        $request->validate([
-            'id_denomination' => 'required',
-            'id_function' => 'required',
-            'payment_method' => 'required|in:M,Q',
-            'salary' => 'required',
-            'type_contract' => 'required|in:I,D',
-        ]);
-
         Charge::create([
             'id_vacancy'=>Vacancy::latest('id')->first()->id,
             'id_denomination' => $request->id_denomination,
@@ -75,38 +67,10 @@ class VacancyController extends Controller
     }
 
 
-    public function edit()
-    {
-        $authuser = auth()->user();
-
-        if($authuser->role_id == '3'){
-            $company = Auth::user()->recruiter->company;
-            $vacancy = $company->vacancy;
-            $departaments = Departament::with('municipalities')->get();
-            return view('vacancy.edit', compact('vacancy','departaments'));
-        }else{
-            return redirect()->route('profile.index');
-        }
-
+    public function edit(){
     }
 
-    public function update(Request $request)
-    {
-        $company = Auth::user()->recruiter->company;
-        $vacancy = $company->vacancy;
-
-        $vacancy->update([
-            'occupational_profile' => $request->occupational_profile,
-            'number_vacancy' => $request->number_vacancy,
-            'workday' => $request->workday,
-            'id_departament' => $request->id_departament,
-            'id_municipality' => $request->id_municipality,
-            'addres' => $request->addres,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date
-        ]);
-
-    return redirect()->route('vacancy.index');
+    public function update(){
     }
 
     public function destroy($id)
