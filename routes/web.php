@@ -77,10 +77,10 @@ Route::put('/instructor/update', [InstructorController::class, 'update'])->name(
 
 //Management routes for recruiter
 Route::get('/recruiter/index', [RecruiterController::class, 'index'])->name('recruiter.index');
-Route::get('/recruiter/{id}/create', [RecruiterController::class, 'create'])->name('recruiter.create');
-Route::post('/recruiter/{id}/store', [RecruiterController::class, 'store'])->name('recruiter.store');
-Route::get('/recruiter/{id}/edit', [RecruiterController::class, 'edit'])->name('recruiter.edit');
-Route::put('/recruiter/{id}/update', [RecruiterController::class, 'update'])->name('recruiter.update');
+Route::get('/recruiter/create', [RecruiterController::class, 'create'])->name('recruiter.create');
+Route::post('/recruiter/store', [RecruiterController::class, 'store'])->name('recruiter.store');
+Route::get('/recruiter/edit', [RecruiterController::class, 'edit'])->name('recruiter.edit');
+Route::put('/recruiter/update', [RecruiterController::class, 'update'])->name('recruiter.update');
 
 //Management routes for candidate
 Route::get('/candidate/index', [CandidateController::class, 'index'])->name('candidate.index');
@@ -102,8 +102,8 @@ Route::get('/occupation/show/{occupation}', [OccupationController::class,'show']
 Route::get('/company/index', [CompanyController::class, 'index'])->name('company.index');
 Route::get('/company/create', [CompanyController::class, 'create'])->name('company.create');
 Route::post('/company/store', [CompanyController::class, 'store'])->name('company.store');
-Route::get('/company/{id}/edit', [CompanyController::class, 'edit'])->name('company.edit');
-Route::put('/company/{id}/update', [CompanyController::class, 'update'])->name('company.update');
+Route::get('/company/edit', [CompanyController::class, 'edit'])->name('company.edit');
+Route::put('/company/update', [CompanyController::class, 'update'])->name('company.update');
 Route::delete('/company/{id}/destroy', [CompanyController::class, 'destroy'])->name('company.destroy');
 Route::get('/company/{id}/show', [CompanyController::class, 'show'])->name('company.show');
 
@@ -153,6 +153,7 @@ Route::put('/charge/{id}/update', [ChargeController::class, 'update'])->name('ch
 Route::get('/vacancy/index',[VacancyController::class,'index'])->name('vacancy.index');
 Route::get('/vacancy/create',[VacancyController::class,'create'])->name('vacancy.create');
 Route::post('/vacancy/store',[VacancyController::class,'store'])->name('vacancy.store');
-Route::get('/vacancy/{id}/edit', [VacancyController::class, 'edit'])->name('vacancy.edit');
-Route::put('/vacancy/{id}/update', [VacancyController::class, 'update'])->name('vacancy.update');
+Route::get('/vacancy/edit', [VacancyController::class, 'edit'])->name('vacancy.edit');
+Route::put('/vacancy/update', [VacancyController::class, 'update'])->name('vacancy.update');
+Route::delete('/vacancy/{id}/destroy', [VacancyController::class, 'destroy'])->name('vacancy.destroy');
 

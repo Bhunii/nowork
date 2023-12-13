@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('id_denomination')->constrained('denominations');
             $table->foreignId('id_function')->constrained('functions');
             $table->enum('payment_method',['M','Q']);
-            $table->decimal('salary', $precision = 8, $scale = 2);
+            $table->decimal('salary', $precision = 22, $scale = 2);
             $table->enum('type_contract',['I','D']);
             $table->timestamps();
         });

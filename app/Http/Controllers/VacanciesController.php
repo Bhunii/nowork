@@ -9,8 +9,7 @@ class VacanciesController extends Controller
 {
     public function index()
     {
-        $authuser = auth()->user();
         $vacancies=Vacancy::all();
-        return view('vacancies.index',compact('authuser','vacancies'));
+        return view('vacancies.index',compact('vacancies'));
     }
 }

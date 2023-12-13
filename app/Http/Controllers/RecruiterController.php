@@ -8,9 +8,19 @@ use App\Models\User;
 
 class RecruiterController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
     public function index(){
-        $recruiters = Recruiter::all();
-        return view('recruiter.index', compact('recruiters'));
+        $authuser = auth()->user();
+
+        if($authuser->role_id == '2'){
+            $recruiters = Recruiter::all();
+            return view('recruiter.index', compact('recruiters'));
+        }else{
+            return redirect()->route('profile.index');
+        }
     }
 
     public function create(){
@@ -19,17 +29,9 @@ class RecruiterController extends Controller
     public function store(){
     }
 
-    public function edit($id){
-        $recruiter = Recruiter::findOrFail($id);
-        return view('recruiter.edit', compact('recruiter'));
+    public function edit(){
     }
 
-    public function update(Request $request,$id){
-        $recruiter = recruiter::findOrFail($id);
-
-        $recruiter->admission_date = $request->admission_date;
-        $recruiter->save();
-
-        return redirect()->route('recruiter.index');
+    public function update(){
     }
 }

@@ -1,8 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.nav.recruiter',['title'=>'Empresa'])
 
-@section('content')
-<style></style>
-<h4>List of companies</h4>
+@section('css')
+    <link rel="stylesheet" href="{{ asset(css/company.css) }}">
+@endsection
+
+@section('content_profile')
+<section>
+    <article>
+    <h4>List of companies</h4>
         <table class="tabla">
             <thead>
                 <tr>
@@ -33,5 +38,5 @@
                 </tr>
             </tbody>
         </table>
-        <a href="{{route('company.index')}}">Back</a>
+</section>
 @endsection

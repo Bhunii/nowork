@@ -20,6 +20,6 @@ class Charge extends Model
         'type_contract'
     ];
     public function users(){
-        return $this->belongsTo(users::class,'id_vacancy','id');
+        return $this->belongsTo(User::class,'id_vacancy','id');
     }
 }
