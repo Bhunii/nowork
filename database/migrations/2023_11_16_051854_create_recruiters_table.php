@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('recruiters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->date('admission_date');
+            $table->date('admission_date')->nullable();
             $table->timestamps();
         });
     }

@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Models\User;
 use App\Models\Instructor;
+use App\Models\Recruiter;
 
 class UserController extends Controller
 {
@@ -20,8 +21,15 @@ class UserController extends Controller
 
     public function index():View
     {
-        $users = User::whereNotIn('role_id', [1,2])->get();
-        return view('user.index', compact('users'));
+        $authuser = auth()->user();
+        if($authuser->role_id == '1'){
+            $users = User::whereNotIn('role_id', [1,2])->get();
+            return view('user.index', compact('users'));
+        }elseif($authuser->role_id == '2'){
+            $users = User::whereNotIn('role_id', [1,2,3])->get();
+            return view('user.index', compact('users'));
+        }
+        return redirect()->route('profile.index');
     }
     public function create():View
     {
@@ -56,18 +64,39 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if($user->role_id == '4'){
+        $authuser = auth()->user();
 
-            $user->role_id = $request->role_id;
-            $user->save();
+        if($authuser->role_id == '1'){
 
-            $instructor = $id;
+            if($user->role_id == '4'){
 
-            Instructor::create([
-                'user_id' => $instructor
-            ]);
+                $user->role_id = $request->role_id;
+                $user->save();
+
+                $instructor = $id;
+
+                Instructor::create([
+                    'user_id' => $instructor
+                ]);
 
             return redirect()->route('profile.index');
+            }
+        }
+        elseif($authuser->role_id == '2'){
+
+            if($user->role_id == '4'){
+
+                $user->role_id = $request->role_id;
+                $user->save();
+
+                $recruiter = $id;
+
+                Recruiter::create([
+                    'user_id' => $recruiter
+                ]);
+
+            return redirect()->route('profile.index');
+            }
         }
 
         return redirect()->route('profile.index');

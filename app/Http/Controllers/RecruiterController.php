@@ -10,23 +10,13 @@ class RecruiterController extends Controller
 {
     public function index(){
         $recruiters = Recruiter::all();
-        return view('recruiter.index', ['recruiters' => $recruiters]);
+        return view('recruiter.index', compact('recruiters'));
     }
 
-    public function create($id){
-        $user = User::findOrFail($id);
-        return view('recruiter.create', compact('user'));
+    public function create(){
     }
 
-    public function store(Request $request,$id){
-        $user = User::findOrFail($id);
-
-        Recruiter::create([
-            'user_id'=> $id,
-            'admission_date'=> $request->admission_date
-        ]);
-
-        return redirect()->route('recruiter.index');
+    public function store(){
     }
 
     public function edit($id){

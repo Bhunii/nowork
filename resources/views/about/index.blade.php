@@ -1,4 +1,4 @@
-@extends('layouts.app' , ['title' => 'Home'])
+@extends('layouts.app' , ['title' => 'About us'])
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/about.css') }}">

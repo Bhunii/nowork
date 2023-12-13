@@ -64,10 +64,10 @@ Route::get('/user/{id}/show', [UserController::class, 'show'])->name('user.show'
 
 //management routes for instructor
 Route::get('/instructor/index', [InstructorController::class, 'index'])->name('instructor.index');
-Route::get('/instructor/{id}/create', [InstructorController::class, 'create'])->name('instructor.create');
-Route::post('/instructor/{id}/store', [InstructorController::class, 'store'])->name('instructor.store');
-Route::get('/instructor/{id}/edit', [InstructorController::class, 'edit'])->name('instructor.edit');
-Route::put('/instructor/{id}/update', [InstructorController::class, 'update'])->name('instructor.update');
+Route::get('/instructor/create', [InstructorController::class, 'create'])->name('instructor.create');
+Route::post('/instructor/store', [InstructorController::class, 'store'])->name('instructor.store');
+Route::get('/instructor/edit', [InstructorController::class, 'edit'])->name('instructor.edit');
+Route::put('/instructor/update', [InstructorController::class, 'update'])->name('instructor.update');
 
 //Management routes for recruiter
 Route::get('/recruiter/index', [RecruiterController::class, 'index'])->name('recruiter.index');

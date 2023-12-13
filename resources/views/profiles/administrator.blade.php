@@ -30,7 +30,7 @@
             </ul>
             <div class="contenedor_ul_data">
                 <ul class="ul_campo_data">
-                    <li><span> Candidato </span></li>
+                    <li><span> Administrador </span></li>
                     <li><span> Documento </span></li>
                     <li><span> Ubicacion </span></li>
                     <li><span> Correo </span></li>

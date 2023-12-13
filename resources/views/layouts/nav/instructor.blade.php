@@ -14,10 +14,13 @@
                 </article>
                 <ul class="nexos_ul">
                     <li class="nexos">
-                        <a href="#">Agregar Reclutador</a>
+                        <a href="{{ route('user.index') }}">Usuarios</a>
                     </li>
                     <li class="nexos">
-                        <a href="#">Gestion Reclutadores</a>
+                        <a href="{{ route('recruiter.index') }}">Reclutadores</a>
+                    </li>
+                    <li class="nexos">
+                        <a href="{{ route('instructor.edit') }}">Actualizar Datos Personales</a>
                     </li>
                     <li class="nexos">
                         <a href="#">Ver Vacantes Registradas</a>

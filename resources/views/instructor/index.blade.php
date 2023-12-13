@@ -12,7 +12,6 @@
         }
 
         .tabla_instructores {
-            border-collapse: collapse;
             width: 100%;
         }
 

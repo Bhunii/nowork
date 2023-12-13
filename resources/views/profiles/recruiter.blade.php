@@ -26,12 +26,14 @@
             </ul>
             <div class="contenedor_ul_data">
                 <ul class="ul_campo_data">
-                    <li><span> Candidato </span></li>
+                    <li><span> Nit </span></li>
+                    <li><span> Nombre empresa </span></li>
+                    <li><span> Reclutador </span></li>
                     <li><span> Documento </span></li>
                     <li><span> Ubicacion </span></li>
                     <li><span> Correo </span></li>
                     <li><span> Telefono </span></li>
-                    <li><span> Perfil Ocupacional </span></li>
+                    <li><span> Fecha Admision </span></li>
                 </ul>
                 <ul class="data_ul">
                     <li class="data">
@@ -57,9 +59,6 @@
                     </li>
                     <li class="data">
                         <span>profession</span>
-                    </li>
-                    <li class="data">
-                        <span>speciality</span>
                     </li>
                 </ul>
             </div>

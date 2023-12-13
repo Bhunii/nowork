@@ -30,23 +30,30 @@ class CompanyController extends Controller
 
 public function store(Request $request): RedirectResponse
     {
-        $user = auth()->user();
-        $recruiter = $user->recruiter;
+        $authuser = auth()->user();
 
-        Company::create([
-            'id_recruiter' => $recruiter->id,
-            'name' => $request->name,
-            'nit'=> $request->nit,
-            'company_name'=> $request->company_name,
-            'email'=> $request->email,
-            'nature' => $request->nature,
-            'id_departament' => $request->id_departament,
-            'id_municipality' => $request->id_municipality,
-            'addres'=> $request->addres,
-            'phone' => $request->phone
-        ]);
+        if($authuser->role_id == '3'){
+            $recruiter = $authuser->recruiter;
 
-        return redirect()->route('login')->with('mensaje','Usuario Creado Exitosamente');
+            Company::create([
+                'id_recruiter' => $recruiter->id,
+                'name' => $request->name,
+                'nit'=> $request->nit,
+                'company_name'=> $request->company_name,
+                'email'=> $request->email,
+                'nature' => $request->nature,
+                'id_departament' => $request->id_departament,
+                'id_municipality' => $request->id_municipality,
+                'addres'=> $request->addres,
+                'phone' => $request->phone
+            ]);
+
+            return redirect()->route('company.index')->with('mensaje','Empresa Creado');
+
+        }else{
+            return redirect()->route('profile.index');
+        }
+
     }
 
     public function edit():View

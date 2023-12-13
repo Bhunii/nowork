@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/header.css')}}">
     <link rel="stylesheet" href="{{asset('css/form.css')}}">
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
-    <link rel="icon" type="image/png" href="{{ asset('img/icon-black-logo.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('img/trex-logo-black.png') }}">
     @yield('css')
     <title>
         @isset($title)
@@ -20,7 +20,7 @@
     <style>
         /* link[rel="icon"] {
             width: 5px;
-            height: 11px;
+            height: 9px;
         } */
 
         /* main{
@@ -31,7 +31,7 @@
 <body>
     <header class="encabezado">
         <section class="logo_encabezado">
-            <img class="icon_logo" src="{{ asset('img/icon-white-logo.png') }}" alt="icon profile">
+            <img class="icon_logo" src="{{ asset('img/trex-logo-white.png') }}" alt="icon profile">
             <span>nowork</span>
         </section>
 

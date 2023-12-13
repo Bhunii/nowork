@@ -9,11 +9,9 @@ use App\Http\Requests\CandidateRequest;
 use App\Models\Candidate;
 use App\Models\Curriculum;
 use App\Models\Departament;
-use App\Models\Municipality;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Models\User;
-use Illuminate\Support\Facades\Redirect;
 
 class CandidateController extends Controller
 {
