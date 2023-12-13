@@ -15,8 +15,10 @@ class VacancyController extends Controller
 
     public function index()
     {
-    $vacancies=Vacancy::all();
-    return view('vacancy.index',compact('vacancies'));
+        $authuser = auth()->user();
+        if($authuser->role_id == '3')
+        $vacancy=Vacancy::all();
+        return view('vacancy.index',compact('vacancies'));
     }
     public function create()
     {

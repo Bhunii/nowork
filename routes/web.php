@@ -20,6 +20,7 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ChargeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\VacancyController;
+use App\Http\Controllers\VacanciesController;
 
 
 
@@ -34,17 +35,22 @@ use App\Http\Controllers\VacancyController;
 |
 */
 
-
+//Home
 Route::get('/', function () {
     return view('/home/index');
 });
-
 Route::get('/home/index', [HomeController::class, 'index'])->name('home.index');
+
+//Vacancies
+Route::get('/vacancies/index', [VacanciesController::class, 'index'])->name('vacancies.index');
+
+//About
+Route::get('/about/index',[AboutController::class,'index'])->name('about.index');
 
 //Authentication routes
 Route::get('login', [LoginController::class, 'index'])->name('login');
-Route::post('logout', [LogoutController::class, 'store'])->name('logout');
 Route::post('login', [LoginController::class, 'store']);
+Route::post('logout', [LogoutController::class, 'store'])->name('logout');
 
 //Management routes for role
 Route::get('/role/index', [RoleController::class, 'index'])->name('role.index');
@@ -150,5 +156,3 @@ Route::post('/vacancy/store',[VacancyController::class,'store'])->name('vacancy.
 Route::get('/vacancy/{id}/edit', [VacancyController::class, 'edit'])->name('vacancy.edit');
 Route::put('/vacancy/{id}/update', [VacancyController::class, 'update'])->name('vacancy.update');
 
-//About
-Route::get('/about/index',[AboutController::class,'index'])->name('about.index');

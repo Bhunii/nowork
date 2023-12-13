@@ -44,7 +44,7 @@
                     <a href="#" target="_self">...</a>
                 </li>
                 <li class="links">
-                    <a href="{{ route('about.index') }}" target="_self" class="button">Vacancies</a>
+                    <a href="{{ route('vacancies.index') }}" target="_self" class="button">Vacancies</a>
                 </li>
                 <li class="links">
                     <a href="{{ route('about.index') }}" target="_self" class="button">About us</a>
