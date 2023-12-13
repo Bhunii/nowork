@@ -5,12 +5,18 @@
     grid-template-columns: 0.8fr 1fr 0.6fr;
     padding: 0% 1%;
     background-color: #39393b;
+    font-size: 15px;
+    color: rgb(213, 198, 198);
     /* background-color: #676378; */
     /* box-shadow: 5px 0 55px #64626d; */
 }
 
 .p_footer{
     padding: 10px;
+}
+
+.p_footer span{
+    color: rgb(210, 59, 94);
 }
 
 .links_footer{

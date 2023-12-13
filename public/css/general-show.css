@@ -1,11 +1,13 @@
 .contenedor_show_general{
     display: flex;
     width: 80%;
+    height: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     padding: 25px 15px;
     gap: 21px;
+    font-size: 1.1em;
 }
 
 .contenedor_data_general{

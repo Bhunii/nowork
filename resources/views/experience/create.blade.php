@@ -10,6 +10,9 @@
 
 @section('style')
     <style>
+        .container_general_profile{
+            font-size: 15px;
+        }
         .contenido_form{
             width: 100%;
         }

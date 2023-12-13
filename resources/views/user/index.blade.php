@@ -1,16 +1,16 @@
 @extends('layouts.nav.administrator',['title' => 'Usuarios'])
 
-@section('js')
-    <script src="{{ asset('js/profile.js') }}"></script>
-@endsection
-
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/user-index.css') }}">
 @endsection
 
 @section('style')
-
+    <style>
+        .container_general_profile{
+            font-size: 15px;
+        }
+    </style>
 @endsection
 
 @section('content_profile')
@@ -31,7 +31,11 @@
             @forelse ($users as $user)
                 <tr class="tr_tabla_usuario_contenido">
                     <td class=" td_general_tabla_usuarios td_configuracion_usuario" style="width: 200px">
-                        <a class="a_config_usuario" href="{{ route('user.edit_role', $user->id)}}">Edit User Role</a> |
+                        @if($user->role_id == 4)
+                            <a class="a_config_usuario" href="{{ route('user.edit_role', $user->id)}}">Edit User Role</a> |
+                        @else
+                            <!--  -->
+                        @endif
                         <a class="a_config_usuario" href="{{ route('user.show', $user->id) }}">Show User</a>
                     </td>
                     <td class="td_general_tabla_usuarios" style="width: 100px">{{ $user->doc_num }}</td>

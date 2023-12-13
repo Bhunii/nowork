@@ -36,17 +36,15 @@ use App\Http\Controllers\VacancyController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/home/index');
 });
 
-Route::get('/home/index', [HomeController::class, 'index'])->name('home.index')->middleware('auth');
+Route::get('/home/index', [HomeController::class, 'index'])->name('home.index');
 
 //Authentication routes
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('logout', [LogoutController::class, 'store'])->name('logout');
 Route::post('login', [LoginController::class, 'store']);
-
-Route::get('/characters', [RoleController::class, 'characters'])->name('characters');
 
 //Management routes for role
 Route::get('/role/index', [RoleController::class, 'index'])->name('role.index');
@@ -57,8 +55,8 @@ Route::post('/role/store', [RoleController::class, 'store'])->name('role.store')
 Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
-Route::get('/user/edit_role', [UserController::class, 'edit_role'])->name('user.edit_role');
-Route::put('/user/update_role', [UserController::class, 'update_role'])->name('user.update_role');
+Route::get('/user/{id}/edit_role', [UserController::class, 'edit_role'])->name('user.edit_role');
+Route::put('/user/{id}/update_role', [UserController::class, 'update_role'])->name('user.update_role');
 Route::get('/user/edit_data', [UserController::class, 'edit_data'])->name('user.edit_data');
 Route::put('/user/update_data', [UserController::class, 'update_data'])->name('user.update_data');
 Route::delete('/user/{id}/destroy', [UserController::class, 'destroy'])->name('user.destroy');

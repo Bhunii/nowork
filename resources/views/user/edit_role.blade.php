@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="{{ asset('css/user-edit-role.css') }}">
 @endsection
 
+@section('style')
+    <style>
+        .container_general_profile{
+                font-size: 15px;
+            }
+    </style>
+@endsection
 
 @section('content_profile')
 <section class="contenedor_edit_role_usuario">

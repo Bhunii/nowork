@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="{{ asset('css/general-show.css') }}">
 @endsection
 
+@section('style')
+    <style>
+        .container_general_profile{
+            font-size: 15px;
+        }
+    </style>
+@endsection
+
 @section('content_profile')
 <section class="contenedor_show_general">
     <article>

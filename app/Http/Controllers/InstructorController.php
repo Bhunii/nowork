@@ -8,13 +8,17 @@ use App\Models\User;
 
 class InstructorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $instructors = Instructor::all();
-        return view('instructor.index', ['instructors' => $instructors]);
+        return view('instructor.index', compact('instructors'));
     }
 
-    public function create($id){
-        $user = User::findOrFail($id);
+    public function create(){
+        $user = auth()->user();
         return view('instructor.create', compact('user'));
     }
 

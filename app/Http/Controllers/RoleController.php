@@ -7,12 +7,6 @@ use App\Models\Role;
 
 class RoleController extends Controller
 {
-    public function welcome(){
-        return view('welcome');
-    }
-    public function characters(){
-        return view('characters');
-    }
     public function index(){
         $roles = Role::all();
         return view('role.index', compact('roles'));

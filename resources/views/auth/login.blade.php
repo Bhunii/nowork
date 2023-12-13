@@ -63,7 +63,7 @@
         </section>
         <section class="separator">
             <hr>
-            <span> --- or --- </span>
+            <span> or </span>
             <hr>
         </section>
         <section class="container_register">

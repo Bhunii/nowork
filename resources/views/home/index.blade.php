@@ -4,21 +4,18 @@
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 @endsection
 
-@section('content')
+@section('style')
+    <!-- <style>
+        .encabezado{
+            position: fixed;
+            z-index: 4;
+            width: 100%;
+        }
+    </style> -->
+@endsection
 
-@auth
-    @if (auth()->user()->role_id == 1)
-        <p>Rol: Administrador</p>
-    @elseif (auth()->user()->role_id == 2)
-        <p>Rol: Instructor</p>
-    @elseif (isset($user) && auth()->user()->role_id == 3)
-        <p>Rol: Reclutador</p>
-    @elseif (isset($user) && auth()->user()->role_id == 4)
-        <p>Rol: Candidato</p>
-    @endif
-    <span>Hola</span>
-@else
-    <body>
+@section('content')
+    <main class="contenedor-home">
         <section class="home" id="home">
             <div class="home-content">
                 <h1>Welcome to <span>Nowork</span></h1>
@@ -28,20 +25,23 @@
                 <p>En el dinámico mundo empresarial actual, la clave del éxito reside en contar con un equipo de profesionales talentosos y comprometidos. En Nowork, entendemos que la elección del personal adecuado es un factor determinante para el crecimiento
                     y la prosperidad de cualquier organización.</p>
                 <div class="animacion-text">
-                    <h3 style="width: 650px;">Usuario invitado</h3>
+                    @auth
+                        @if (auth()->user()->role_id == 1)
+                            <h3 style="width: 650px;">Usuario administrador</h3>
+                        @elseif (auth()->user()->role_id == 2)
+                            <h3 style="width: 650px;">Usuario instructor</h3>
+                        @elseif (isset($user) && auth()->user()->role_id == 3)
+                            <h3 style="width: 650px;">Usuario reclutador</h3>
+                        @elseif (isset($user) && auth()->user()->role_id == 4)
+                            <h3 style="width: 650px;">Usuario candidato</h3>
+                        @endif
+                    @endauth
+                    @guest
+                        <h3 style="width: 650px;">Usuario invitado</h3>
+                    @endguest
                 </div>
-                <nav>
-                    <div class="btn-box">
-                        <a class="btn" href="{{ route('login') }}">Iniciar sesión</a>
-                        <a class="btn" href="{{ route('user.create') }}">Nuevo Usuario</a>
-                    </div>
-                </nav>
             </div>
         </section>
-
-    </body>
-
-    </html>
-@endguest
+    </main>
 
 @endsection

@@ -22,14 +22,17 @@
             width: 5px;
             height: 11px;
         } */
+
+        /* main{
+            padding: 1.5% 9%;
+        } */
     </style>
-    <title></title>
 </head>
 <body>
     <header class="encabezado">
         <section class="logo_encabezado">
             <img class="icon_logo" src="{{ asset('img/icon-white-logo.png') }}" alt="icon profile">
-            <span>Nowork</span>
+            <span>nowork</span>
         </section>
 
         <nav class="navbar_encabezado">
@@ -38,13 +41,13 @@
                     <a href="{{ route('home.index') }}" target="_self">Home</a>
                 </li>
                 <li class="links">
-                    <a href="{{route('occupation.index')}}" target="_self">Ocupaciones</a>
+                    <a href="#" target="_self">...</a>
                 </li>
                 <li class="links">
-                    <a href="{{ route('about.index') }}" target="_self" class="button">About</a>
+                    <a href="{{ route('about.index') }}" target="_self" class="button">Vacancies</a>
                 </li>
                 <li class="links">
-                    <a href="{{ route('charge.index') }}" target="_self" class="button">create charge</a>
+                    <a href="{{ route('about.index') }}" target="_self" class="button">About us</a>
                 </li>
             </ul>
         </nav>
@@ -59,10 +62,10 @@
             @guest
                 <ul class="ul_nexos_header">
                     <li class="li_nexos">
-                        <a href="{{ route('login') }}">Sign in</a>
+                        <a href="{{ route('login') }}">Iniciar Sesion</a>
                     </li>
                     <li class="li_nexos">
-                        <a href="{{ route('candidate.create') }}">Sign up</a>
+                        <a href="{{ route('candidate.create') }}">Registrarse</a>
                     </li>
                 </ul>
             @endguest
@@ -75,8 +78,8 @@
         <section class="p_footer">
             <h3>¡Hola mundo!</h3>
             <span>AplicacionWeb de Proyecto</span>
-            <p>Bienvenido a UserSelect. Esta interfaz grafica diseñada. Para usarla o no usarla, ¡con proposito practico!
-                ©2023 Nuestro Sitio Web. Todos los derechos reservados. 2023
+            <p>Bienvenido a <span>nowork</span>. Esta interfaz grafica diseñada. Para usarla o no usarla, ¡con proposito practico!
+                ©2023 Nuestro Sitio Web. Todos los derechos reservados.
             </p>
         </section>
         <section class="links_footer">
