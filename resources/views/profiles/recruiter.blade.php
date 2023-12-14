@@ -37,10 +37,10 @@
                 </ul>
                 <ul class="data_ul">
                     <li class="data">
-                        <span>{{ auth()->user()->recruiter->company->nit }}</span>
+                        <span></span>
                     </li>
                     <li class="data">
-                        <span>{{ auth()->user()->recruiter->company->name }}</span>
+                        <span></span>
                     </li>
                     <li class="data">
                         <span>{{ auth()->user()->name }}</span> <span>{{ auth()->user()->last_name }}</span>

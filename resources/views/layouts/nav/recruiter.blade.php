@@ -20,10 +20,7 @@
                         <a href="{{route('vacancy.index')}}">Vacantes</a> <!-- llevarlo a un index  y hay el href para crear u show-->
                     </li>
                     <li class="nexos">
-                        <a href="{{route('occupation.create')}}">crear ocupacion</a> <!-- lo mismo -->
-                    </li>
-                    <li class="nexos">
-                        <a href="{{route('occupation.index')}}">ver ocpuacion</a>
+                        <a href="{{route('occupation.index')}}">Ocupaciones</a> <!-- lo mismo -->
                     </li>
                     <li class="nexos">
                         <a href="#">Ajustes</a>

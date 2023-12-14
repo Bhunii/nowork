@@ -26,8 +26,8 @@
                     <div class="titulo_vacantes">
                         <h2>Listado de Vacantes</h2>
                     </div>
-                    <div class="contenedor_vacante">
-                        @forelse($vacancies as $vacancy)
+                    @forelse($vacancies as $vacancy)
+                        <div class="contenedor_vacante">                        
                             <div class="datos_vacante">
                                 <ul>
                                     <li style="font-weight: 700;">{{ $vacancy->company->name }}</li>
@@ -86,10 +86,10 @@
                                     @endguest
                                 </ul>
                             </div>
-                        @empty
-                            <span>No hay vacantes registradas</span>
-                        @endforelse
                         </div>
+                    @empty
+                        <span>No hay vacantes registradas</span>                                                
+                    @endforelse
                     </div>
                 </div>
             </article>

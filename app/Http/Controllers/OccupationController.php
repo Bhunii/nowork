@@ -94,8 +94,9 @@ class OccupationController extends Controller
         return redirect()->route('occupation.index');
     }
 
-    public function show(Occupation $occupation)
+    public function show($id)
     {
+        $occupation = Occupation::with('functions', 'denominations', 'relations', 'skills', 'knowledges')->findOrFail($id);
         return view('occupation.show', compact('occupation'));
     }
 }

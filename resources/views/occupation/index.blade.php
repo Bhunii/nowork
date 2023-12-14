@@ -1,33 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.nav.recruiter', ['title' => 'Reclutador - Ocupaciones']);
 
-@section('content')
+@section('css')
+ <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+@endsection
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
-    <style>
-        
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-        }
-    
-        div {
-            background-color: rgb(121, 121, 121);
-            width: 80%;
-            margin: 50px auto;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    
+@section('style')
+<style>
         #create {
             display: block;
             margin-bottom: 20px;
@@ -83,13 +61,13 @@
         .delete-btn:hover {
             background-color: #b71c1c;
         }
-    </style>
-    
-</head>
-<body>
-    <div>
-        <a href="{{route('occupation.create')}}" id="create">Crear nueva ocupacion</a>
+</style>
+@endsection
 
+@section('content_profile')
+
+<main>
+    <div>
         <h1>LISTA DE OCUPACIONES</h1>
         <table class="tabla">
             
@@ -118,6 +96,9 @@
             @endforelse
         </table>
     </div>
-</body>
-</html>
+    <div>
+        <a href="{{route('occupation.create')}}">Crear Ocupacion</a>
+    </div>
+</main>
+
 @endsection
