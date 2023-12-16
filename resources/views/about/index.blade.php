@@ -2,19 +2,20 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/diskette.css') }}">
 @endsection
 
 @section('style')
     <style>
-        .card-bg {
+        .card-bg{
             height: 100%;
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
         }
-        .bg-red {
+        /* .bg-red {
             background-image: url('{{ asset('img/perfil.jpg') }}');
-        }
+        } */
 
         .bg-white {
             background-image: url('{{ asset('img/perfil.jpg') }}');
@@ -57,13 +58,59 @@
       </a>
     </div>
 
-    <div class="card" id="brayan">
-      <a href="https://github.com/byStiben/nowork.git" target="_blank">
-        <div class="card-bg bg-white"></div>
-      </a>
-      <a href="https://github.com/byStiben/nowork.git" target="_blank">
-        <h2>Brayan Stiben Capera Yara</h2>
-      </a>
+    <div class="diskette" id="brayan">
+        <div class="border-diskette" id="diskette-section-1">
+            <ul id="top-container-border-diskette">
+                <ul style="align-items:flex-start;">
+                    <li id="li-half-circle-left"></li>
+                </ul>
+                <ul style="justify-content: center;">
+                    <li id="li-circle-left"></li>
+                </ul>
+            </ul>
+            <ul id="bottom-container-border-diskette">
+                <li></li>
+            </ul>
+        </div>
+        <div class="center-diskette" id="diskette-section-2">
+            <div id="center-diskette-section-1">
+                <ul>
+                    <li id="li-top-center-left">
+                        <div></div>
+                    </li>
+                    <li id="li-top-center-top"></li>
+                    <li id="li-top-center-right">
+                        <hr>
+                    </li>
+                </ul>
+            </div>
+            <div id="center-diskette-section-2" >
+                <div id="div-center-1">
+                    <ul>
+                        <li id="li-circle-center"></li>
+                        <li id="li-square-center"></li>
+                    </ul>
+                </div>
+                <div id="div-center-2">
+                    <span>Stiben Yara</span>
+                    <hr>
+                </div>
+            </div>
+            <div id="center-diskette-section-3"></div>
+        </div>
+        <div class="border-diskette" id="diskette-section-3">
+            <ul id="top-container-border-diskette">
+                <ul style="justify-content: end;">
+                    <li id="li-half-circle-right"></li>
+                </ul>
+                <ul style="justify-content: center;">
+                    <li id="li-circle-right"></li>
+                </ul>
+            </ul>
+            <ul id="bottom-container-border-diskette">
+                <li></li>
+            </ul>
+        </div>
     </div>
 
     <div class="card" id="juan">
