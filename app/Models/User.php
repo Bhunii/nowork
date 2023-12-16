@@ -66,4 +66,12 @@ class User extends Authenticatable
     public function candidate(){
         return $this->hasOne(Candidate::class, 'user_id');
     }
+
+    public function recruiter(){
+        return $this->hasOne(Recruiter::class, 'user_id');
+    }
+
+    public function instructor(){
+        return $this->hasOne(Instructor::class, 'user_id');
+    }
 }

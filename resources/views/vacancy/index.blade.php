@@ -1,56 +1,74 @@
-@extends('layouts.app')
+@extends('layouts.nav.recruiter',['title' => 'Reclutador - Vacantes'])
 
-@section('content')
-<a href="{{ route('vacancy.create') }}" id="create">Create new vacancy</a>
-<ul>
-    @forelse($vacancies as $vacancy)
-        <li>
-            <a href="#">
-                {{ $vacancy->id_vacancy }}
-            </a>
-        </li>
-    @empty
-        <p>No hay sistema</p>
-    @endforelse
-</ul>
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/general-index.css') }}">
 @endsection
 
-<style>
-#create {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #3498db;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    margin-bottom: 20px;
-}
+@section('style')
+    <style>
+        .container_general_profile{
+            font-size: 15px;
+        }
 
-#create:hover {
-    background-color: #2980b9;
-}
+        /* .tabla_instructores {
+            width: 100%;
+        }
 
-/* Estilos para la lista de ciudades */
-.roles-list {
-    list-style: none;
-    padding: 0;
-}
+        .tabla_instructores th,.tabla_instructores td {
+            border: 1px solid rgb(159, 159, 159);
+            padding: 8px;
+            text-align: left;
+        } */
 
-.roles-list li {
-    margin-bottom: 10px;
-}
+        .tabla_instructores th {
+            background-color: #f2f2f2;
+        }
 
-.ciudad-link {
-    text-decoration: none;
-    color: #333;
-    border: 1px solid #ccc;
-    padding: 10px 15px;
-    border-radius: 4px;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-}
+        .tabla_instructores a {
+            color: blue;
+        }
+    </style>
+@endsection
 
-.ciudad-link:hover {
-    background-color: #f5f5f5;
-}
-</style>
+@section('content_profile')
+    <section class="contenedor_index_general">
+        <article class="titulo_index_general">
+            <h3>Listado de Vacantes</h3>
+        </article>
+        <article class="contenedor_tabla_general">
+            <table class="contenido_tabla_general">
+                <tr class="tr_tabla_general_encabezado">
+                    <th style="width: 200px">Config</th>
+                    <th style="width: 200px">Denomination</th>
+                    <th style="width: 200px">Number vacancy</th>
+                    <th style="width: 200px">Municipio</th>
+                    <th style="width: 200px">Start date</th>
+                    <th style="width: 200px">End date</th>
+                </tr>
+                @forelse ($vacancies as $vacancy)
+                    <tr class="tr_tabla_general_contenido">
+                        <td class="td_general_tabla_general td_configuracion_general">
+                            <a class="a_config_general" href="#">Show vacancy</a>
+                        </td>
+                        <td class="td_general_tabla_general">{{ $vacancy->id }}</td>
+                        <td class="td_borrar_general" style="width: 70px">
+                        <form method="POST" action="{{route('vacancy.destroy', $vacancy->id)}}">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="DELETE" class="edit"/>
+                        </form>
+                    </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td>No hay vacantes</td>
+                    </tr>
+                @endforelse
+            </table>
+        </article>
+        <article>
+            <a href="{{ route('vacancy.create') }}">Agregar</a>
+        </article>
+    </section>
+@endsection

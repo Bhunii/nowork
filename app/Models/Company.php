@@ -24,4 +24,23 @@ class Company extends Model
         'phone'
     ];
 
+    public function recruiter(){
+        return $this->belongsTo(Recruiter::class, 'id_recruiter');
+    }
+
+    public function departament(){
+        return $this->belongsTo(Departament::class, 'id_departament');
+    }
+
+    public function municipality(){
+        return $this->belongsTo(Municipality::class, 'id_municipality');
+    }
+
+    public function vacancies(){
+        return $this->hasMany(Vacancy::class, 'id_company');
+    }
+
+    public function vacancy(){
+        return $this->hasOne(Vacancy::class, 'id_company');
+    }
 }

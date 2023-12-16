@@ -9,30 +9,24 @@ use App\Http\Requests\CandidateRequest;
 use App\Models\Candidate;
 use App\Models\Curriculum;
 use App\Models\Departament;
-use App\Models\Municipality;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Models\User;
-use Illuminate\Support\Facades\Redirect;
 
 class CandidateController extends Controller
 {
-    public function index():View
+    public function index()
     {
-        $candidates = Candidate::all();
-        return view('candidate.index', ['candidates' => $candidates]);
     }
 
     public function create():View
     {
         $departaments = Departament::with('municipalities')->get();
-        // $user = User::findOrFail($id), compact('user');
         return view('candidate.create', compact('departaments'));
     }
 
     public function store(CandidateRequest $request):RedirectResponse
     {
-        // $user = User::findOrFail($id);
 
         User::create([
             'doc_type' => $request->doc_type,
@@ -63,10 +57,15 @@ class CandidateController extends Controller
 
     public function edit():View
     {
-        $user = auth()->user();
-        $departaments = Departament::with('municipalities')->get();
+        $authuser = auth()->user();
 
-        return view('candidate.edit', compact('user','departaments'));
+        if($authuser){
+            $user = auth()->user();
+            $departaments = Departament::with('municipalities')->get();
+            return view('candidate.edit', compact('user','departaments'));
+        }else{
+            return redirect()->route('home.index');
+        }
     }
 
     public function update(Request $request):RedirectResponse

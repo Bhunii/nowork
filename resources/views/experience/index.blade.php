@@ -6,7 +6,11 @@
 @endsection
 
 @section('style')
-
+    <style>
+        .container_general_profile{
+            font-size: 15px;
+        }
+    </style>
 @endsection
 
 @section('content_profile')

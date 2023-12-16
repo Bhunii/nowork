@@ -21,7 +21,7 @@
                         <a href="{{ route('user.index') }}">Modificar Rol</a>
                     </li>
                     <li class="nexos">
-                        <a href="#">Listado Instructores</a>
+                        <a href="{{ route('instructor.index') }}">Listado Instructores</a>
                     </li>
                     <li class="nexos">
                         <a href="#">Listado Registro Vacantes</a>

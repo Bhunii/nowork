@@ -15,11 +15,14 @@ use App\Http\Controllers\StudyController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\CompanyController;
-use Symfony\Component\HttpKernel\Profiler\Profile;
 use App\Http\Controllers\OccupationController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ChargeController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\VacancyController;
+use App\Http\Controllers\ProcessController;
+use App\Http\Controllers\VacanciesController;
+
 
 
 /*
@@ -33,19 +36,22 @@ use App\Http\Controllers\VacancyController;
 |
 */
 
-
+//Home
 Route::get('/', function () {
-    return view('welcome');
+    return view('/home/index');
 });
+Route::get('/home/index', [HomeController::class, 'index'])->name('home.index');
 
-Route::get('/home/index', [HomeController::class, 'index'])->name('home.index')->middleware('auth');
+//Vacancies
+Route::get('/vacancies/index', [VacanciesController::class, 'index'])->name('vacancies.index');
+
+//About
+Route::get('/about/index',[AboutController::class,'index'])->name('about.index');
 
 //Authentication routes
 Route::get('login', [LoginController::class, 'index'])->name('login');
-Route::post('logout', [LogoutController::class, 'store'])->name('logout');
 Route::post('login', [LoginController::class, 'store']);
-
-Route::get('/characters', [RoleController::class, 'characters'])->name('characters');
+Route::post('logout', [LogoutController::class, 'store'])->name('logout');
 
 //Management routes for role
 Route::get('/role/index', [RoleController::class, 'index'])->name('role.index');
@@ -56,8 +62,8 @@ Route::post('/role/store', [RoleController::class, 'store'])->name('role.store')
 Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
-Route::get('/user/edit_role', [UserController::class, 'edit_role'])->name('user.edit_role');
-Route::put('/user/update_role', [UserController::class, 'update_role'])->name('user.update_role');
+Route::get('/user/{id}/edit_role', [UserController::class, 'edit_role'])->name('user.edit_role');
+Route::put('/user/{id}/update_role', [UserController::class, 'update_role'])->name('user.update_role');
 Route::get('/user/edit_data', [UserController::class, 'edit_data'])->name('user.edit_data');
 Route::put('/user/update_data', [UserController::class, 'update_data'])->name('user.update_data');
 Route::delete('/user/{id}/destroy', [UserController::class, 'destroy'])->name('user.destroy');
@@ -65,17 +71,17 @@ Route::get('/user/{id}/show', [UserController::class, 'show'])->name('user.show'
 
 //management routes for instructor
 Route::get('/instructor/index', [InstructorController::class, 'index'])->name('instructor.index');
-Route::get('/instructor/{id}/create', [InstructorController::class, 'create'])->name('instructor.create');
-Route::post('/instructor/{id}/store', [InstructorController::class, 'store'])->name('instructor.store');
-Route::get('/instructor/{id}/edit', [InstructorController::class, 'edit'])->name('instructor.edit');
-Route::put('/instructor/{id}/update', [InstructorController::class, 'update'])->name('instructor.update');
+Route::get('/instructor/create', [InstructorController::class, 'create'])->name('instructor.create');
+Route::post('/instructor/store', [InstructorController::class, 'store'])->name('instructor.store');
+Route::get('/instructor/edit', [InstructorController::class, 'edit'])->name('instructor.edit');
+Route::put('/instructor/update', [InstructorController::class, 'update'])->name('instructor.update');
 
 //Management routes for recruiter
 Route::get('/recruiter/index', [RecruiterController::class, 'index'])->name('recruiter.index');
-Route::get('/recruiter/{id}/create', [RecruiterController::class, 'create'])->name('recruiter.create');
-Route::post('/recruiter/{id}/store', [RecruiterController::class, 'store'])->name('recruiter.store');
-Route::get('/recruiter/{id}/edit', [RecruiterController::class, 'edit'])->name('recruiter.edit');
-Route::put('/recruiter/{id}/update', [RecruiterController::class, 'update'])->name('recruiter.update');
+Route::get('/recruiter/create', [RecruiterController::class, 'create'])->name('recruiter.create');
+Route::post('/recruiter/store', [RecruiterController::class, 'store'])->name('recruiter.store');
+Route::get('/recruiter/edit', [RecruiterController::class, 'edit'])->name('recruiter.edit');
+Route::put('/recruiter/update', [RecruiterController::class, 'update'])->name('recruiter.update');
 
 //Management routes for candidate
 Route::get('/candidate/index', [CandidateController::class, 'index'])->name('candidate.index');
@@ -97,8 +103,8 @@ Route::get('/occupation/show/{occupation}', [OccupationController::class,'show']
 Route::get('/company/index', [CompanyController::class, 'index'])->name('company.index');
 Route::get('/company/create', [CompanyController::class, 'create'])->name('company.create');
 Route::post('/company/store', [CompanyController::class, 'store'])->name('company.store');
-Route::get('/company/{id}/edit', [CompanyController::class, 'edit'])->name('company.edit');
-Route::put('/company/{id}/update', [CompanyController::class, 'update'])->name('company.update');
+Route::get('/company/edit', [CompanyController::class, 'edit'])->name('company.edit');
+Route::put('/company/update', [CompanyController::class, 'update'])->name('company.update');
 Route::delete('/company/{id}/destroy', [CompanyController::class, 'destroy'])->name('company.destroy');
 Route::get('/company/{id}/show', [CompanyController::class, 'show'])->name('company.show');
 
@@ -139,15 +145,26 @@ Route::put('/language/{id}/update', [LanguageController::class, 'update'])->name
 Route::get('/language/{id}/show', [LanguageController::class, 'show'])->name('language.show');
 Route::delete('/language/{id}/destroy', [LanguageController::class, 'destroy'])->name('language.destroy');
 
-Route::get('/charge/index',[ChargeController::class,'index'])->name('charge.index');
-Route::get('/charge/create',[ChargeController::class,'create'])->name('charge.create');
-Route::post('/charge/store',[ChargeController::class,'store'])->name('charge.store');
-Route::get('/charge/{id}/edit', [ChargeController::class, 'edit'])->name('cahrge.edit');
-Route::put('/charge/{id}/update', [ChargeController::class, 'update'])->name('charge.update');
-
+//Management routes for vacancies of recruiter
 Route::get('/vacancy/index',[VacancyController::class,'index'])->name('vacancy.index');
 Route::get('/vacancy/create',[VacancyController::class,'create'])->name('vacancy.create');
 Route::post('/vacancy/store',[VacancyController::class,'store'])->name('vacancy.store');
-Route::get('/vacancy/{id}/edit', [VacancyController::class, 'edit'])->name('vacancy.edit');
-Route::put('/vacancy/{id}/update', [VacancyController::class, 'update'])->name('vacancy.update');
+Route::get('/vacancy/edit', [VacancyController::class, 'edit'])->name('vacancy.edit');
+Route::put('/vacancy/update', [VacancyController::class, 'update'])->name('vacancy.update');
+Route::delete('/vacancy/{id}/destroy', [VacancyController::class, 'destroy'])->name('vacancy.destroy');
+
+//Management routes for charge of recruiter
+Route::get('/charge/index',[ChargeController::class,'index'])->name('charge.index');
+Route::get('/charge/create',[ChargeController::class,'create'])->name('charge.create');
+Route::post('/charge/store',[ChargeController::class,'store'])->name('charge.store');
+Route::get('/charge/edit', [ChargeController::class, 'edit'])->name('cahrge.edit');
+Route::put('/charge/update', [ChargeController::class, 'update'])->name('charge.update');
+
+//Management routes for vacancy process of recruiter and candidate
+Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
+Route::get('/process/create',[ProcessController::class,'create'])->name('process.create');
+Route::post('/process/{id}/store',[ProcessController::class,'store'])->name('process.store');
+Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
+Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
+
 

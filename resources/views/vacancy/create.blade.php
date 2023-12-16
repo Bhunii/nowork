@@ -1,23 +1,25 @@
-@extends('layouts.app')
+@extends('layouts.nav.recruiter',['title' => 'Reclutador - Vacante'])
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+@endsection
 
 @section('js')
     <script src="{{ asset('js/location.js') }}"></script>
 @endsection
 
-@section("content")
+@section('content_profile')
 
 <form method="POST" action="{{route('vacancy.store')}}">
     @csrf
 
-
-
-    <h2>form  </h2>
+    <h2>Formulario Vacante</h2>
 
     <label> occupational_profile</label>
     <input type="text" name="occupational_profile"/>
 
     <label> number_vacancy</label>
-    <input type="text" name="number_vacancy"/>
+    <input type="number" name="number_vacancy"/>
 
     <label> workday</label>
     <input type="text" name="workday"/>
@@ -42,10 +44,10 @@
     <input type="text" name="addres"/>
 
     <label> start_date</label>
-    <input type="text" name="start_date"/>
+    <input type="date" name="start_date"/>
 
     <label> end_date</label>
-    <input type="text" name="end_date"/>
+    <input type="date" name="end_date"/>
 
 
 
@@ -56,15 +58,23 @@
     <label> id_function</label>
     <input type="text" name="id_function"/>
 
-    <label> payment_method</label>
-    <input type="text" name="payment_method"/>
 
     <label> salary</label>
     <input type="text" name="salary"/>
 
-    <label> type_contract</label>
-    <input type="text" name="type_contract"/>
+    <label>Type Contract</label>
+        <select class="select_style_general" name="type_contract">
+            <option value="">Select an option</option>
+            <option value="I">Indefinido</option>
+            <option value="D">Definido</option>
+        </select>
 
+    <label>Payment method</label>
+        <select class="select_style_general" name="payment_method">
+            <option value=" ">Select an option</option>
+            <option value="M">Mensual</option>
+            <option value="Q">Quincenal</option>
+        </select>
 
     <input type="submit" value="Crear" class="create"/>
 

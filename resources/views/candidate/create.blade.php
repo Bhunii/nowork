@@ -7,20 +7,31 @@
 @section('style')
     <style>
         .contenido_form{
-            height: 1050px;
+            height: 1225px;
         }
 
         .form_register_candidate{
             display: flex;
             flex-direction: column;
+            border: 2px #e3e3e3 solid;
+            border-radius: 15px;
+            gap: 25px;
+            background: #f1f1f1;
         }
         .div_form_create_candidate{
-            padding: 20px;
-            gap: 19px;
+            display: flex;
+            width: auto;
+            height: auto;
+            padding: 5px 21px;
+            gap: 21px;
         }
         .input_general_submit{
-            width: 140px;
+            width: 155px;
             height: 40px;
+        }
+
+        .input_style_general, .select_style_general{
+            height: 36px;
         }
         .btn_general{
             width: 140px;

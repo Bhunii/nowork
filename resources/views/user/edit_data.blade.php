@@ -10,6 +10,9 @@
 
 @section('style')
     <style>
+        .container_general_profile{
+            font-size: 15px;
+        }
         .contenido{
             height: 800px;
         }
