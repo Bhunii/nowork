@@ -29,5 +29,8 @@ class Process extends Model
     public function vacancy(){
         return $this->belongsTo(Vacancy::class, 'id_vacancy');
     }
+    public function selection_status(){
+        return $this->belongsTo(SelectionStatus::class, 'id_selection_status');
+    }
 
 }

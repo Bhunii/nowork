@@ -15,7 +15,6 @@ class ProcessController extends Controller
     public function index(){
         $authuser = auth()->user();
 
-
         if($authuser->role_id == 4){
 
             $processes = $authuser->candidate->load('processes')->processes;

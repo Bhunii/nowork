@@ -22,8 +22,8 @@
     <article class="contenedor_vacantes_general">
         <div class="contenedor_vacantes_encabezado">
             <ul class="ul_vacantes ul_vacantes_encabezado">
-                <li style="width: 35%"><span>Empresa</span></li>
-                <li style="width: 15%"><span>Ubicacion</span></li>
+                <li style="width: 33%"><span>Empresa</span></li>
+                <li style="width: 17%"><span>Ubicacion</span></li>
                 <li style="width: 25%"><span>Cargo</span></li>
                 <li style="width: 15%"><span>Estado</span></li>
                 <li style="width: 10%;border-right: none;"><span>Fecha Postulacion</span></li>
@@ -36,11 +36,14 @@
                 @foreach($processes as $process)                   
                     <div class="contenido_vacantes_candidato">
                         <ul class="ul_vacantes ul_vacantes_candidato">
-                            <li style="width: 35%"><span>empresa</span></li>
-                            <li style="width: 15%"><span>ubicacion</span></li>
-                            <li style="width: 25%"><span>cargo</span></li>
-                            <li style="width: 15%"><span>fecha postulacion</span></li>
-                            <li style="width: 10%;border-right: none;"><span>estado</span></li>
+                            <li style="width: 33%"><span>{{ $process->vacancy->company->name }}</span></li>
+                            <li style="width: 17%">
+                                <span>{{ $process->vacancy->departament->name}}</span>
+                                <span>{{ $process->vacancy->municipality->name}}</span>
+                            </li>
+                            <li style="width: 25%"><span>{{ $process->vacancy->charge->denomination->description }}</span></li>
+                            <li style="width: 15%"><span>{{ $process->selection_status->name }}</span></li>
+                            <li style="width: 10%;border-right: none;"><span>{{ $process->date_applied }}</span></li>
                         </ul>                        
                     </div>
                 @endforeach
