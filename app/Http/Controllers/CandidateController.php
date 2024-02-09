@@ -19,10 +19,16 @@ class CandidateController extends Controller
     {
     }
 
-    public function create():View
-    {
+    public function create()
+    {   
+        $authuser = auth()->user();
+        
+        if($authuser){
+            return redirect()->route('profile.index');
+        } else{
         $departaments = Departament::with('municipalities')->get();
         return view('candidate.create', compact('departaments'));
+        }
     }
 
     public function store(CandidateRequest $request):RedirectResponse

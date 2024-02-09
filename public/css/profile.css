@@ -12,7 +12,7 @@
     height: 100%;
     border-radius: 20px;
     overflow: hidden;
-    grid-template-columns: 0.3fr 1fr;
+    grid-template-columns: 0.27fr 1fr;
     gap: 5px;
 }
 

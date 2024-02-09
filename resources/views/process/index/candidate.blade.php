@@ -3,6 +3,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/general-index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/process.css') }}">
 @endsection
 
 @section('style')
@@ -18,31 +19,33 @@
     <article class="titulo_index_general">
         <h3>Listado de Vacante Aplicadas</h3>
     </article>
-    <article class="contenedor_tabla_general">
-        <table class="contenido_tabla_general">
-            <tr class="tr_tabla_general_encabezado">
-                <td style="width: 200px">Config</td>
-                <td style="width: 235px">Nombre Empresa</td>
-                <td style="width: 235px">Denominacion</td>
-                <td style="width: 155px">Fecha Postulacion</td>
-            </tr>
+    <article class="contenedor_vacantes_general">
+        <div class="contenedor_vacantes_encabezado">
+            <ul class="ul_vacantes ul_vacantes_encabezado">
+                <li style="width: 35%"><span>Empresa</span></li>
+                <li style="width: 15%"><span>Ubicacion</span></li>
+                <li style="width: 25%"><span>Cargo</span></li>
+                <li style="width: 15%"><span>Estado</span></li>
+                <li style="width: 10%;border-right: none;"><span>Fecha Postulacion</span></li>
+            </ul>                        
+        </div>
+        <div class="contenedor_vacantes_candidato">
             @if ($processes->isEmpty())
-                <tr>
-                    <td>Table empty</td>
-                </tr>
+                <span>table empty</span>
             @else
-                @foreach($processes as $process)
-                        <tr class="tr_tabla_general_contenido">
-                            <td class=" td_general_tabla_general td_configuracion_general">
-                                <a class="a_config_general" href="#">Show Process</a>
-                            </td>
-                            <td class="td_general_tabla_general">{{ $process->vacancy->company->name }}</td>
-                            <td class="td_general_tabla_general">{{ $process->vacancy->charge->denomination->description }}</td>
-                            <td class="td_general_tabla_general">{{ $process->date_applied }}</td>
-                        </tr>
+                @foreach($processes as $process)                   
+                    <div class="contenido_vacantes_candidato">
+                        <ul class="ul_vacantes ul_vacantes_candidato">
+                            <li style="width: 35%"><span>empresa</span></li>
+                            <li style="width: 15%"><span>ubicacion</span></li>
+                            <li style="width: 25%"><span>cargo</span></li>
+                            <li style="width: 15%"><span>fecha postulacion</span></li>
+                            <li style="width: 10%;border-right: none;"><span>estado</span></li>
+                        </ul>                        
+                    </div>
                 @endforeach
             @endif
-        </table>
+        </div>
     </article>
 </section>
 @endsection
