@@ -11,12 +11,23 @@ class Process extends Model
 
     protected $table = "processes";
 
+    protected $attributes = [
+        'id_selection_status' => '1',
+    ];
+
     protected $fillable = [
         'id_vacancy',
         'id_candidate',
         'date_applied',
-        'id_selection_status',
         'points'
     ];
+
+    public function candidate(){
+        return $this->belongsTo(Candidate::class, 'id_candidate');
+    }
+
+    public function vacancy(){
+        return $this->belongsTo(Vacancy::class, 'id_vacancy');
+    }
 
 }

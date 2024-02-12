@@ -1,4 +1,4 @@
-@extends('layouts.nav.recruiter',['title' => 'Your Profile'])
+@extends('layouts.nav.recruiter',['title' => 'Reclutador - Vacante'])
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
@@ -13,18 +13,13 @@
 <form method="POST" action="{{route('vacancy.store')}}">
     @csrf
 
-
-
     <h2>Formulario Vacante</h2>
-
-    <label>id de company</label>
-    <input type="text" name="id_company">
 
     <label> occupational_profile</label>
     <input type="text" name="occupational_profile"/>
 
     <label> number_vacancy</label>
-    <input type="text" name="number_vacancy"/>
+    <input type="number" name="number_vacancy"/>
 
     <label> workday</label>
     <input type="text" name="workday"/>
@@ -63,13 +58,6 @@
     <label> id_function</label>
     <input type="text" name="id_function"/>
 
-    <label>Payment method</label>
-        <select class="select_style_general" name="payment_method">
-            <option value="">Select an option</option>
-            <option value="M">M</option>
-            <option value="Q">Q</option>
-        </select>
-
 
     <label> salary</label>
     <input type="text" name="salary"/>
@@ -77,8 +65,15 @@
     <label>Type Contract</label>
         <select class="select_style_general" name="type_contract">
             <option value="">Select an option</option>
-            <option value="I">I</option>
-            <option value="D">D</option>
+            <option value="I">Indefinido</option>
+            <option value="D">Definido</option>
+        </select>
+
+    <label>Payment method</label>
+        <select class="select_style_general" name="payment_method">
+            <option value=" ">Select an option</option>
+            <option value="M">Mensual</option>
+            <option value="Q">Quincenal</option>
         </select>
 
     <input type="submit" value="Crear" class="create"/>

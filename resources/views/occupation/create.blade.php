@@ -1,17 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.nav.recruiter', ['title' => 'Reclutador - Ocupaciones']);
 
-@section('content')
+@section('css')
+ <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+@endsection
 
+@section('style')
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #525252;
-    }
 
     .contenido {
         margin: 50px auto;
         width: 80%;
-        background-color: rgb(110, 110, 110);
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -24,7 +22,10 @@
 
     .form {
         display: flex;
+        width: 100%;
         flex-direction: column;
+        max-width: 600px;
+        overflow-y: auto;
     }
 
     label {
@@ -54,9 +55,12 @@
         background-color: #b71c1c;
     }
 </style>
+@endsection
 
-<h1>Formulario de creacion de ocupacion</h1>
+@section('content_profile')
+
 <main class="contenido">
+    <h1>Formulario de creacion de ocupacion</h1>
     <form class="form" method="POST" action="{{ route('occupation.store')}}">
 
         @csrf
@@ -73,6 +77,9 @@
         <label>Codigo de funcion:</label>
         <input type="text" name="code_function"/>
         <label>Descripcion de funcion:</label>
+        <label>Nombre de habilidad:</label>
+        <input type="text" name="name_function"/>
+        <label>Descripcion de habilidad:</label>
         <input type="text" name="description_function"/>
 
 
@@ -82,7 +89,6 @@
         <label>Descripcion de denominacion:</label>
         <input type="text" name="description_denomination"/>
 
-        
         <h2>Ocupaciones Relacionadas</h2>
         <label>Codigo de ocupacion relacionada=opcional:</label>
         <input type="text" name="code_occupation_relation"/>
@@ -96,7 +102,6 @@
         <label>Descripcion de habilidad:</label>
         <input type="text" name="description_skill"/>
 
-        
         <h2>Conocimientos</h2>
         <label>Codigo de conocimiento:</label>
         <input type="text" name="code_knowledge"/>

@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('instructors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('profession');
-            $table->string('speciality');
+            $table->string('profession')->nullable();
+            $table->string('speciality')->nullable();
             $table->timestamps();
         });
     }

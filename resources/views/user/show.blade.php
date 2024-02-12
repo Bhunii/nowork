@@ -6,16 +6,24 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/user-show.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/general-show.css') }}">
+@endsection
+
+@section('style')
+    <style>
+        .container_general_profile{
+            font-size: 15px;
+        }
+    </style>
 @endsection
 
 @section('content_profile')
-<section class="contenedor_show_usuarios">
+<section class="contenedor_show_general">
     <article>
         <h3>Datos del usuario</h3>
     </article>
-    <article class="contenedor_data_usuario">
-        <div class="contenido_data_usuario">
+    <article class="contenedor_data_general">
+        <div class="contenido_data_general">
             <ul class="ul_campo_data">
                 <li>Nombre</li>
                 <li>Apellidos</li>

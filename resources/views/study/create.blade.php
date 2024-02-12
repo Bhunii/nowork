@@ -1,22 +1,59 @@
-@extends('layouts.nav.candidate',['title' => 'Agregar Estudio'])
+@extends('layouts.nav.candidate',['title' => 'Curriculum - Estudio'])
 
 @section('js')
     <script src="{{ asset('js/location.js') }}" ></script>
-    <script src="{{ asset('js/curriculum.js') }}" ></script>
 @endsection
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/curriculum.css') }}">
 @endsection
+
+@section('style')
+    <style>
+        .container_general_profile{
+            font-size: 13.5px;
+        }
+
+        .contenido_form{
+            width: 100%;
+        }
+
+        .form_create_curriculum{
+            display: flex;
+            width: 80%;
+            align-items: flex-start;
+            justify-content: center;
+            background: none;
+            border: none;
+            padding: 11px 16px;
+            overflow: hidden;
+        }
+
+        /* .form_edit_curriculum::-webkit-scrollbar {
+            width: 8px;
+            height: 5px;
+        } */
+        .input_style_general, .select_style_general{
+            height: 39px;
+        }
+        .input_general_submit{
+            margin: 0 75px;
+        }
+
+    </style>
+@endsection
+
+@section('content_profile')
     <div class="contenido_curriculum">
         <section class="contenedor_curriculum">
             <article class="nav_curriculum">
                 <button id="btn_curriculum_1" class="btn_nav btn_nav_1">Estudios</button>
             </article>
             <article class="contenedor_form_curriculum">
-                <form class="form form_create_curriculum" method="post" action="">
-                    <div id="contenido_curriculum_estudios" class="contenido_form_curriculum">
+                <form class="form form_create_curriculum" method="post" action="{{ route('study.store') }}">
+                    @csrf
+                    <div><!-- id="contenido_curriculum_estudios" class="contenido_form_curriculum" -->
                         <label>Name Institution</label>
                         <input
                         class="input_style_general"
@@ -83,5 +120,9 @@
                     </div>
                 </form>
             </article>
+            <article>
+                <a href="{{route('experience.index')}}">Back</a>
+            </article>
         </section>
     </div>
+@endsection

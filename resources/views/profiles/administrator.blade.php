@@ -9,7 +9,7 @@
 @endsection
 
 @section('content_profile')
-<div class="profile">
+    <div class="profile">
         <article class="img_profile">
             @switch($user->genre)
                 @case("M")
@@ -27,22 +27,33 @@
                 <li class="data data_title">
                     <h2>Informacion del Perfil</h2>
                 </li>
-                <li class="data">
-                    <span>{{ auth()->user()->name }}</span> <span>{{ auth()->user()->last_name }}</span>
-                </li>
-                <li class="data">
-                    <span>{{ auth()->user()->doc_type }}</span> <span>{{ auth()->user()->doc_num }}</span>
-                </li>
-                <li class="data">
-                    <span>{{ auth()->user()->candidate->departament->name }}</span> - <span>{{auth()->user()->candidate->municipality->name}}</span>
-                </li>
-                <li class="data">
-                    <span>{{ auth()->user()->email }}</span>
-                </li>
-                <li class="data">
-                    <span>{{ auth()->user()->phone }}</span>
-                </li>
             </ul>
+            <div class="contenedor_ul_data">
+                <ul class="ul_campo_data">
+                    <li><span> Administrador </span></li>
+                    <li><span> Documento </span></li>
+                    <li><span> Ubicacion </span></li>
+                    <li><span> Correo </span></li>
+                    <li><span> Telefono </span></li>
+                </ul>
+                <ul class="data_ul">
+                    <li class="data">
+                        <span>{{ auth()->user()->name }}</span> <span>{{ auth()->user()->last_name }}</span>
+                    </li>
+                    <li class="data">
+                        <span>{{ auth()->user()->doc_type }}</span> <span>{{ auth()->user()->doc_num }}</span>
+                    </li>
+                    <li class="data">
+                        <span>{{ auth()->user()->candidate->departament->name }}</span> - <span>{{auth()->user()->candidate->municipality->name}}</span>
+                    </li>
+                    <li class="data">
+                        <span>{{ auth()->user()->email }}</span>
+                    </li>
+                    <li class="data">
+                        <span>{{ auth()->user()->phone }}</span>
+                    </li>
+                </ul>
+            </div>
         </article>
     </div>
 @endsection

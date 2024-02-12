@@ -9,6 +9,8 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Models\User;
+use App\Models\Instructor;
+use App\Models\Recruiter;
 
 class UserController extends Controller
 {
@@ -19,8 +21,15 @@ class UserController extends Controller
 
     public function index():View
     {
-        $users = User::where('role_id', '!=', 1)->get();
-        return view('user.index', compact('users'));
+        $authuser = auth()->user();
+        if($authuser->role_id == '1'){
+            $users = User::whereNotIn('role_id', [1,2])->get();
+            return view('user.index', compact('users'));
+        }elseif($authuser->role_id == '2'){
+            $users = User::whereNotIn('role_id', [1,2,3])->get();
+            return view('user.index', compact('users'));
+        }
+        return redirect()->route('profile.index');
     }
     public function create():View
     {
@@ -45,18 +54,50 @@ class UserController extends Controller
         return redirect()->route('login')->with('mensaje','Usuario Creado Exitosamente');
     }
 
-    public function edit_role():View
+    public function edit_role($id):View
     {
-        $user = auth()->user();
+        $user = User::findOrFail($id);
         return view('user.edit_role', compact('user'));
     }
 
-    public function update_role(Request $request):RedirectResponse
+    public function update_role(Request $request,$id):RedirectResponse
     {
-        $user = auth()->user();
+        $user = User::findOrFail($id);
 
-        $user->role_id = $request->role_id;
-        $user->save();
+        $authuser = auth()->user();
+
+        if($authuser->role_id == '1'){
+
+            if($user->role_id == '4'){
+
+                $user->role_id = $request->role_id;
+                $user->save();
+
+                $instructor = $id;
+
+                Instructor::create([
+                    'user_id' => $instructor
+                ]);
+
+            return redirect()->route('profile.index');
+            }
+        }
+        elseif($authuser->role_id == '2'){
+
+            if($user->role_id == '4'){
+
+                $user->role_id = $request->role_id;
+                $user->save();
+
+                $recruiter = $id;
+
+                Recruiter::create([
+                    'user_id' => $recruiter
+                ]);
+
+            return redirect()->route('profile.index');
+            }
+        }
 
         return redirect()->route('profile.index');
     }

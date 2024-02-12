@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_curriculum')->constrained('curriculum');
             $table->string('name_company');
-            $table->string('adress');
+            $table->string('address');
             $table->foreignId('id_denomination')->constrained('denominations');
             $table->foreignId('id_function')->constrained('functions');
             $table->date('start_date');

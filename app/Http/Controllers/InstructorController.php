@@ -3,46 +3,60 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
+use App\Models\Departament;
 use App\Models\Instructor;
-use App\Models\User;
+use Illuminate\Support\Str;
+
 
 class InstructorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $instructors = Instructor::all();
-        return view('instructor.index', ['instructors' => $instructors]);
+        return view('instructor.index', compact('instructors'));
     }
 
-    public function create($id){
-        $user = User::findOrFail($id);
-        return view('instructor.create', compact('user'));
+    public function create(){
     }
 
-    public function store(Request $request,$id){
-        $user = User::findOrFail($id);
+    public function store(){
+    }
 
-        Instructor::create([
-            'user_id'=> $id,
-            'profession'=> $request->profession,
-            'speciality'=> $request->speciality
+    public function edit():View
+    {
+        $user = auth()->user();
+        $departaments = Departament::with('municipalities')->get();
+
+        return view('instructor.edit', compact('user','departaments'));
+    }
+
+    public function update(Request $request):RedirectResponse
+    {
+        $user = auth()->user();
+
+        $user->update([
+            'phone' => $request->phone,
+            'user_name' => $request->user_name,
+            'email' => Str::lower($request->email)
         ]);
 
-        return redirect()->route('instructor.index');
-    }
+        $user->candidate->update([
+            'id_departament' => $request->id_departament,
+            'id_municipality' => $request->id_municipality,
+            'addres' => Str::lower($request->addres)
+        ]);
 
-    public function edit($id){
-        $instructor = Instructor::findOrFail($id);
-        return view('instructor.edit', compact('instructor'));
-    }
+        $user->instructor->update([
+            'profession' => $request->profession,
+            'speciality' => $request->speciality
+        ]);
 
-    public function update(Request $request,$id){
-        $instructor = Instructor::findOrFail($id);
-
-        $instructor->profession = $request->profession;
-        $instructor->speciality = $request->speciality;
-        $instructor->save();
-
-        return redirect()->route('instructor.index');
+        return redirect()->route('profile.index')->with('mensaje','Datos Actualizados');
     }
 
 }

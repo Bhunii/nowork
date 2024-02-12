@@ -17,7 +17,11 @@ class Knowledge extends Model
         'name',
         'description'
     ];
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     public function occupation(){
         return $this->belongsTo(Occupation::class, 'code_occupation');
     }

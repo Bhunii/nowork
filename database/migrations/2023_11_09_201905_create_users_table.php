@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->enum('doc_type', ['CC','TI']);
-            $table->string('doc_num');
+            $table->string('doc_num')->unique();
             $table->string('name');
             $table->string('last_name');
             $table->string('phone', 50);

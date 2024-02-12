@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="{{ asset('css/curriculum-index.css') }}">
 @endsection
 
+@section('style')
+    <style>
+        .container_general_profile{
+            font-size: 15px;
+        }
+    </style>
+@endsection
+
 @section('content_profile')
     @if($curriculum)
         <section class="contenedor_curriculum">
@@ -40,7 +48,7 @@
                     <div class="curriculum_data_usuario">
                         <span>Tienes experiencia agregado</span>
                         <span>Detalles</span>
-                        <a href="#">Ir a Experiencias</a>
+                        <a href="{{ route('experience.index') }}">Ir a Experiencias</a>
                     </div>
                 </article>
             @else
@@ -48,7 +56,7 @@
                     <div class="curriculum_empty_data_usuario">
                         <span>No tienes ninguna experiencia agregado</span>
                         <span>Detalles</span>
-                        <a href="#">Ir a Experiencias</a>
+                        <a href="{{ route('experience.index') }}">Ir a Experiencias</a>
                     </div>
                 </article>
             @endif
@@ -56,8 +64,9 @@
             @if($curriculum->languages->isNotEmpty())
                 <article class="contenedor_data_curriculum">
                     <div class="curriculum_data_usuario">
-                        <span>Detalles Idiomas</span>
-                        <a href="#">Ir a Idiomas</a>
+                        <span>Tienes idioma agregado</span>
+                        <span>Detalles</span>
+                        <a href="{{ route('language.index') }}">Ir a Idiomas</a>
                      </div>
                 </article>
             @else
@@ -65,7 +74,7 @@
                     <div class="curriculum_empty_data_usuario">
                         <span>No tienes ningun idioma agregado</span>
                         <span>Detalles</span>
-                        <a href="#">Ir a Idiomas</a>
+                        <a href="{{ route('language.index') }}">Ir a Idiomas</a>
                      </div>
                 </article>
             @endif

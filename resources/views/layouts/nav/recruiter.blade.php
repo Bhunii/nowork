@@ -17,15 +17,11 @@
                         <a href="{{route('company.index')}}">Empresa</a><!-- llevarlo a un index y hay un href para crear  o actualizar  u show-->
                     </li>
                     <li class="nexos">
-                        <a href="{{route('vacancy.index')}}">Crear Vacante</a> <!-- llevarlo a un index  y hay el href para crear u show-->
+                        <a href="{{route('vacancy.index')}}">Vacantes</a> <!-- llevarlo a un index  y hay el href para crear u show-->
                     </li>
                     <li class="nexos">
-                        <a href="{{route('occupation.create')}}">crear ocupacion</a> <!-- lo mismo -->
+                        <a href="{{route('occupation.index')}}">Ocupaciones</a> <!-- lo mismo -->
                     </li>
-                    <li class="nexos">
-                        <a href="{{route('occupation.index')}}">ver ocpuacion</a>
-                    </li>
-                    
                     <li class="nexos">
                         <a href="#">Ajustes</a>
                     </li>

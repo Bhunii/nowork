@@ -1,6 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.nav.recruiter', ['title' => 'Reclutador - Ocupaciones']);
 
-@section('content')
+@section('css')
+ <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+@endsection
+
+@section('content_profile')
 
 <h1>Edicion de ocupacion</h1>
 <form method="POST" action="{{ route('occupation.update', $occupation->id)}}">
