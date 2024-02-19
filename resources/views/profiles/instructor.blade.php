@@ -50,12 +50,20 @@
                     <li class="data">
                         <span>{{ auth()->user()->phone }}</span>
                     </li>
-                    <li class="data">
-                        <span>{{ auth()->user()->instructor->profession }}</span>
-                    </li>
-                    <li class="data">
-                        <span>{{ auth()->user()->instructor->speciality}}</span>
-                    </li>
+                    @php
+                        $dataInstructor=auth()->user()->instructor->profession;
+                    @endphp
+                    @if($dataInstructor->isEmpty())
+                        <li class="data"></li>
+                        <li class="data"></li>
+                    @else
+                        <li class="data">
+                            <span>{{ auth()->user()->instructor->profession }}</span>
+                        </li>
+                        <li class="data">
+                            <span>{{ auth()->user()->instructor->speciality}}</span>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </article>
