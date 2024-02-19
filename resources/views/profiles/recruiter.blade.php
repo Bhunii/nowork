@@ -39,9 +39,16 @@
                     <li class="data">
                         <span>{{ auth()->user()->recruiter->company->nit }}</span>
                     </li>
-                    <li class="data">
-                        <span>{{ auth()->user()->recruiter->company->name }}</span>
-                    </li>
+                    @php
+                        $companyName=auth()->user()->recruiter->company->name
+                    @endphp
+                    @if($companyName->isEmpty())
+                        <li class="data"></li>
+                    @else
+                        <li class="data">
+                            <span>{{ auth()->user()->recruiter->company->name }}</span>
+                        </li>
+                    @endif
                     <li class="data">
                         <span>{{ auth()->user()->name }}</span> <span>{{ auth()->user()->last_name }}</span>
                     </li>
