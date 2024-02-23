@@ -36,19 +36,17 @@
                     <li><span> Fecha Admision </span></li>
                 </ul>
                 <ul class="data_ul">
-                    <li class="data">
-                        <span>{{ auth()->user()->recruiter->company->nit }}</span>
-                    </li>
                     @php
-                        $companyName=auth()->user()->recruiter->company->name
+                        $company = auth()->user()->recruiter->company ?? null;
+                        $companyName = $company ? $company->name : null;
+                        $companyNit = $company ? $company->nit : null;
                     @endphp
-                    @if($companyName->isEmpty())
-                        <li class="data"></li>
-                    @else
-                        <li class="data">
-                            <span>{{ auth()->user()->recruiter->company->name }}</span>
-                        </li>
-                    @endif
+                    <li class="data">
+                        <span>{{ $companyNit ?? '' }}</span>
+                    </li>
+                    <li class="data">
+                        <span>{{ $companyName ?? '' }}</span>
+                    </li>
                     <li class="data">
                         <span>{{ auth()->user()->name }}</span> <span>{{ auth()->user()->last_name }}</span>
                     </li>

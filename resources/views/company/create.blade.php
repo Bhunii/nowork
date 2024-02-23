@@ -45,9 +45,8 @@
 
 @section('content_profile')
     <main class="contenido_form">
-        <form class="form form_update_company" style="overflow-y: auto;" method="post" action="{{ route('company.update') }}">
+        <form class="form form_update_company" style="overflow-y: auto;" method="post" action="{{ route('company.store') }}">
             @csrf
-            @method('PUT')
             <div>
                 <label class="label_style_general">Name</label>
                 <input
