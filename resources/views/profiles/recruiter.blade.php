@@ -37,20 +37,16 @@
                 </ul>
                 <ul class="data_ul">
                     @php
-                        $companyName=auth()->user()->recruiter->company->name
-                        $companyNit=auth()->user()->recruiter->company->nit
+                        $company = auth()->user()->recruiter->company ?? null;
+                        $companyName = $company ? $company->name : null;
+                        $companyNit = $company ? $company->nit : null;
                     @endphp
-                    @if($companyName->isEmpty() and $companyNit)
-                        <li class="data"></li>
-                        <li class="data"></li>
-                    @else
-                        <li class="data">
-                            <span>{{ auth()->user()->recruiter->company->name }}</span>
-                        </li>
-                        <li class="data">
-                            <span>{{ auth()->user()->recruiter->company->nit }}</span>
-                        </li>
-                    @endif              
+                    <li class="data">
+                        <span>{{ $companyNit ?? '' }}</span>
+                    </li>
+                    <li class="data">
+                        <span>{{ $companyName ?? '' }}</span>
+                    </li>           
                     <li class="data">
                         <span>{{ auth()->user()->name }}</span> <span>{{ auth()->user()->last_name }}</span>
                     </li>
