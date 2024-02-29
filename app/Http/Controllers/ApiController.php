@@ -59,5 +59,45 @@ class ApiController extends Controller
             return response()->json('Error al buscar');
         }
     }
+
+    public function searchOccupation(Request $request, $occupation){
+
+        try {
+            $search=Occupation::findOrFail($occupation);
+            return response()->json($search);
+        } catch (\Exception $e) {
+            return response()->json('Error al buscar');
+        }
+    }
+
+    public function searchLanguage(Request $request, $language){
+
+        try {
+            $search=Language::findOrFail($language);
+            return response()->json($search);
+        } catch (\Exception $e) {
+            return response()->json('Error al buscar');
+        }
+    }
+
+    public function searchVacancy(Request $request, $vacancy){
+
+        try {
+            $search=Vacancy::findOrFail($vacancy);
+            return response()->json($search);
+        } catch (\Exception $e) {
+            return response()->json('Error al buscar');
+        }
+    }
+
+    public function searchSelectionStatus(Request $request, $selectionstatus){
+
+        try {
+            $search=SelectionStatus::findOrFail($selectionstatus);
+            return response()->json($search);
+        } catch (\Exception $e) {
+            return response()->json('Error al buscar');
+        }
+    }
 }
 
