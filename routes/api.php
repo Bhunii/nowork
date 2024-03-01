@@ -10,8 +10,8 @@ Route::get('/search_occupations/{occupation}', [ApiController::class, 'searchOcc
 Route::get('/search_languages/{language}', [ApiController::class, 'searchLanguage']);
 Route::get('/search_vacancies/{vacancy}', [ApiController::class, 'searchVacancy']);
 Route::get('/search_selectionstatus/{selectionstatus}', [ApiController::class, 'searchSelectionStatus']);
-Route::get('/users', [ControllersApiController::class, 'users']);
-Route::get('/occupations', [ControllersApiController::class, 'occupations']);
-Route::get('/languages', [ControllersApiController::class, 'languages']);
-Route::get('/vacancies', [ControllersApiController::class, 'vacancies']);
-Route::get('/selectionstatus', [ControllersApiController::class, 'selectionstatus']);
+Route::get('/users', [ApiController::class, 'users']);
+Route::get('/occupations', [ApiController::class, 'occupations']);
+Route::get('/languages', [ApiController::class, 'languages']);
+Route::get('/vacancies', [ApiController::class, 'vacancies']);
+Route::get('/selectionstatus', [ApiController::class, 'selectionstatus']);
