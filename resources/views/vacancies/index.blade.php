@@ -1,13 +1,15 @@
 @extends('layouts.app',['title' => 'Vacancies'])
 
+@section('js')
+    <script src="{{ asset('js/profile.js') }}"></script>
+@endsection
+
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/vacancies.css') }}">
 @endsection
 
 @section('style')
-    <style>
-
-    </style>
+    <style></style>
 @endsection
 
 
@@ -17,8 +19,16 @@
             <article class="article_buscador_vacantes">
                 <div class="contenedor_buscador">
                     <input
-                    class="input_style_general"
-                    placeholder="Buscador">
+                    class="input_style_general buscar-input-vacante"
+                    id="buscarVacante"
+                    type="text"
+                    placeholder="Buscar"
+                    >
+                    <button onclick="buscarVacante()" class="buscar-button-vacante">
+                        <picture>
+                            <img src="/img/search-icon.png" alt="icono buscador">
+                        </picture>
+                    </button>
                 </div>
             </article>
             <article class="article_general_vacantes">
@@ -81,7 +91,7 @@
                                     @endauth
                                     @guest
                                         <li>
-                                            <button>Postularse</button>
+                                            inicia sesion
                                         </li>
                                     @endguest
                                 </ul>
