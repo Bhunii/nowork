@@ -17,6 +17,8 @@ class CandidateController extends Controller
 {
     public function index()
     {
+        $candidates=Candidate::all();
+        return view('candidate.index',compact('candidates'));
     }
 
     public function create():View
@@ -85,5 +87,10 @@ class CandidateController extends Controller
         ]);
 
         return redirect()->route('profile.index')->with('mensaje','Datos Actualizados');
+    }
+
+    public function show(Candidate $candidate)
+    {
+        return view('candidate.show', compact('candidate'));
     }
 }

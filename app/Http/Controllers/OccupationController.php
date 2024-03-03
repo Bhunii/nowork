@@ -95,11 +95,7 @@ class OccupationController extends Controller
 
     public function show($id)
     {
-<<<<<<< HEAD
-        $occupation = Occupation::with('functions', 'denominations', 'relations', 'skills', 'knowledge')->findOrFail($id);
-=======
         $occupation = Occupation::with('functions', 'denominations', 'relations', 'skills', 'knowledges')->findOrFail($id);
->>>>>>> origin/main
         return view('occupation.show', compact('occupation'));
     }
 

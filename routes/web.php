@@ -90,6 +90,7 @@ Route::get('/candidate/create', [CandidateController::class, 'create'])->name('c
 Route::post('/candidate/store', [CandidateController::class, 'store'])->name('candidate.store');
 Route::get('/candidate/edit', [CandidateController::class, 'edit'])->name('candidate.edit');
 Route::put('/candidate/update', [CandidateController::class, 'update'])->name('candidate.update');
+Route::get('/candidate/show/{candidate}', [CandidateController::class, 'show'])->name('candidate.show');
 
 //rutas de ocupaciones
 Route::get('/occupation/index', [OccupationController::class,'index'])->name('occupation.index');

@@ -2,7 +2,7 @@
 @section('content')
 
 <main class="contenido">
-    <h3>List of Instructors</h3>
+    <h3>List of Candidates</h3>
     <style>
     .tabla_instructores td{
         border: 1px rgb(159, 159, 159) solid;
