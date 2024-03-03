@@ -1,17 +1,14 @@
 @extends('layouts.app',['title' => 'Vacancies'])
 
-@section('js')
-    <script src="{{ asset('js/profile.js') }}"></script>
-@endsection
-
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/vacancies.css') }}">
+<link rel="stylesheet" href="{{ asset('css/vacancies.css') }}">
 @endsection
 
-@section('style')
-    <style></style>
+@section('js')
+    <script src="{{ asset('js/search.js') }}">
+        let departamentos = @json($departamentsJson);
+    </script>
 @endsection
-
 
 @section('content')
     <main class="contenedor_index_vacantes">
@@ -24,9 +21,9 @@
                     type="text"
                     placeholder="Buscar"
                     >
-                    <button onclick="buscarVacante()" class="buscar-button-vacante">
+                    <button id="btnBuscarVacante" class="buscar-button-vacante">
                         <picture>
-                            <img src="/img/search-icon.png" alt="icono buscador">
+                            <img src="{{ asset('img/search-icon.png') }}" alt="icono buscador">
                         </picture>
                     </button>
                 </div>
@@ -37,7 +34,7 @@
                         <h2>Listado de Vacantes</h2>
                     </div>
                     @forelse($vacancies as $vacancy)
-                        <div class="contenedor_vacante">
+                        <div class="contenedor_vacante" data-departamento="{{ $vacancy->departament->name }}">
                             <div class="datos_vacante">
                                 <ul>
                                     <li style="font-weight: 700;">{{ $vacancy->company->name }}</li>

@@ -17,16 +17,6 @@
         {{ config('app.name') }}
     </title>
     @yield('style')
-    <style>
-        /* link[rel="icon"] {
-            width: 5px;
-            height: 9px;
-        } */
-
-        /* main{
-            padding: 1.5% 9%;
-        } */
-    </style>
 </head>
 <body>
     <header class="encabezado">

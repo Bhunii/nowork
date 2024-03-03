@@ -92,6 +92,14 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.contenedor_vacante.mostrar {
+    display: flex;
+}
+
+.contenedor_vacante.ocultar {
+    display: none;
+}
+
 .datos_vacante{
     display: flex;
     width: 70%;
