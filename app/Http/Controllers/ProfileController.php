@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 
 class ProfileController extends Controller
 {
-    public function index()
+    public function index($username = null)
     {
-        $user = auth()->user();
-        return view('profile.index', compact('user'));
+        if ($username) {
+            return view('profile.index');
+        } else {
+            return redirect()->route('profile.index', ['username' => auth()->user()->user_name]);
+        }
     }
 }
+
+
