@@ -1,4 +1,4 @@
-@extends('layouts.app',['title' => 'Instructors'])
+@extends('layouts.app',['title' => 'Candidates'])
 @section('content')
 
 <main class="contenido">

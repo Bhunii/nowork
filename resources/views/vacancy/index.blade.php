@@ -27,7 +27,7 @@
                 </table>
             </div>
             <div class="bottom-section">
-                <a href="{{ route('candidate.show') }}" id="show" style="background-color: #1d1d1d; color: #fff; padding: 10px; text-decoration: none;">Ver candidatos aplicados</a>
+                <a href="{{ route('candidate.index') }}" id="index" style="background-color: #1d1d1d; color: #fff; padding: 10px; text-decoration: none;">Ver candidatos aplicados</a>
             </div>
         @empty
             <p>No hay sistema</p>
