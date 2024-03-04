@@ -1,6 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.nav.recruiter',['title' => ''])
 
-@section('content')
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+@endsection
+
+@section('content_profile')
 
 <style>
     body {

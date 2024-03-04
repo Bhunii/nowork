@@ -109,7 +109,7 @@ Route::delete('/company/{id}/destroy', [CompanyController::class, 'destroy'])->n
 Route::get('/company/{id}/show', [CompanyController::class, 'show'])->name('company.show');
 
 //Profile routes
-Route::get('/profile/{username}', [ProfileController::class, 'index'])->where('username', '^(?!index$).*$')->name('profile.index');
+Route::get('/profile/{username}', [ProfileController::class, 'show'])->where('username', '^(?!index$).*$')->name('profile.show');
 Route::get('/profiles/recruiter', [RecruiterController::class, 'index'])->name('profiles.recruiter');
 
 //Management routes for candidate

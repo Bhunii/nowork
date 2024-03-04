@@ -45,7 +45,7 @@
             @auth
                 <ul class="ul_nexos_header">
                     <li class="li_nexos">
-                        <a href="{{ route('profile.index', ['username' => auth()->user()->user_name]) }}">Profile</a>
+                        <a href="{{ route('profile.show', ['username' => auth()->user()->user_name]) }}">Profile</a>
                     </li>
                 </ul>
             @endauth

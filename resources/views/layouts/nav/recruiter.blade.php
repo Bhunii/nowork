@@ -14,16 +14,16 @@
                 </article>
                 <ul class="nexos_ul">
                     <li class="nexos">
-                        <a href="{{route('company.index')}}">Empresa</a><!-- llevarlo a un index y hay un href para crear  o actualizar  u show-->
+                        <a href="{{route('company.index')}}">Empresa</a>
                     </li>
                     <li class="nexos">
-                        <a href="{{route('vacancy.index')}}">Vacantes</a> <!-- llevarlo a un index  y hay el href para crear u show-->
+                        <a href="{{route('vacancy.index')}}">Vacantes</a>
                     </li>
                     <li class="nexos">
-                        <a href="{{route('occupation.create')}}">crear ocupacion</a> <!-- lo mismo -->
-                    </li>
+                        <a href="{{route('occupation.index')}}">Ocupaciones</a>
+                    </li>   
                     <li class="nexos">
-                        <a href="{{route('occupation.index')}}">ver ocpuacion</a>
+                        <a href="{{ route('candidate.edit') }}">Actualizar Datos Personales</a>
                     </li>
                     <li class="nexos">
                         <a href="#">Ajustes</a>
