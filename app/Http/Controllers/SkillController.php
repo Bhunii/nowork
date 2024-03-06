@@ -8,25 +8,38 @@ use App\Models\Skill;
 
 class SkillController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $skills=Skill::all();
         return view('skill.index',compact('skills'));
     }
     
-    public function create()
+    public function create($code)
     {
-        return view('skill.create');
+        return view('skill.create', compact('code'));
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'code'=>'required',
+            'name'=>'required',
+            'description'=>'required'
+        ]);
+
         Skill::create([
             'code_occupation'=>$request->code_occupation,
             'code'=>$request->code,
             'name'=>$request->name,
             'description'=>$request->description,
         ]);
+
+        return redirect()->route('occupation.show', $request->code_occupation);
     }
 
     public function edit(Skill $skill)

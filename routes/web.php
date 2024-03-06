@@ -23,8 +23,8 @@ use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\VacanciesController;
 use App\Http\Controllers\FunctionsController;
-
-
+use App\Http\Controllers\KnowledgeController;
+use App\Models\Skill;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,7 +98,7 @@ Route::post('/occupation/store', [OccupationController::class,'store'])->name('o
 Route::get('/occupation/edit/{occupation}', [OccupationController::class,'edit'])->name('occupation.edit');
 Route::put('/occupation/update/{occupation}', [OccupationController::class,'update'])->name('occupation.update');
 Route::delete('/occupation/destroy/{occupation}',[OccupationController::class, 'destroy'])->name('occupation.destroy');
-Route::get('/occupation/show/{occupation}', [OccupationController::class,'show'])->name('occupation.show');
+Route::get('/occupation/show/{code}', [OccupationController::class,'show'])->name('occupation.show');
 
 //Management routes for companies
 Route::get('/company/index', [CompanyController::class, 'index'])->name('company.index');
@@ -168,10 +168,31 @@ Route::post('/process/{id}/store',[ProcessController::class,'store'])->name('pro
 Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
 Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
 
-//Management routes for vacancy process of recruiter and candidate
+//Management routes for functions of occupations
 // Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
-Route::get('/functions/create/{occupation}',[FunctionsController::class,'create'])->name('functions.create');
+Route::get('/functions/create/{code}',[FunctionsController::class,'create'])->name('functions.create');
 Route::post('/functions/store',[FunctionsController::class,'store'])->name('functions.store');
+// Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
+// Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
+
+//Management routes for skills of occupations
+// Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
+Route::get('/skill/create/{code}',[SkillController::class,'create'])->name('skill.create');
+Route::post('/skill/store',[SkillController::class,'store'])->name('skill.store');
+// Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
+// Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
+
+//Management routes for knowlegdes of occupations
+// Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
+Route::get('/knowledge/create/{code}',[KnowledgeController::class,'create'])->name('knowledge.create');
+Route::post('/knowledge/store',[KnowledgeController::class,'store'])->name('knowledge.store');
+// Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
+// Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
+
+//Management routes for knowlegdes of occupations
+// Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
+Route::get('/denomination/create/{code}',[KnController::class,'create'])->name('knowledge.create');
+Route::post('/denomination/store',[KnowledgeController::class,'store'])->name('knowledge.store');
 // Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
 // Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
 

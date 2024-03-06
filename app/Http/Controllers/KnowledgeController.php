@@ -14,19 +14,27 @@ class KnowledgeController extends Controller
         return view('knowledge.index',compact('knowledges'));
     }
     
-    public function create()
+    public function create($code)
     {
-        return view('knowledge.create');
+        return view('knowledge.create', compact('code'));
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'code'=>'required',
+            'name'=>'required',
+            'description'=>'required'
+        ]);
+
         Knowledge::create([
             'code_occupation'=>$request->code_occupation,
             'code'=>$request->code,
             'name'=>$request->name,
             'description'=>$request->description,
         ]);
+
+        return redirect()->route('occupation.show',$request->code_occupation);
     }
 
     public function edit(Knowledge $knowledge)

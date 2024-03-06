@@ -15,7 +15,7 @@
         <form class="form form_create" method="POST" action="{{ route('occupation.store')}}">
             @csrf
             <div>
-                <label>Codigo de ocupacion:</label>
+                <label>Codigo de ocupacion</label>
                 <input
                 type="text"
                 name="code_occupation"
@@ -26,7 +26,7 @@
                 @enderror
             </div>
             <div>
-                <label>Nombre:</label>
+                <label>Nombre</label>
                 <input
                 type="text"
                 name="name_occupation"
@@ -37,64 +37,12 @@
                 @enderror
             </div>
             <div>
-                <label>Descripcion:</label>
+                <label>Descripcion</label>
                 <textarea
                 class="textarea_form_occupation"
                 name="description_occupation"
                 value="{{ old('description_occupation') }}"
                 >@error('description_occupation')<small>{{$message}}</small>@enderror</textarea>
-            </div>
-            <div>
-                <h4>Funciones</h4>
-            </div>
-            <div>
-                <label>Codigo de funcion:</label>
-                <input
-                type="text"
-                name="code_function"
-                value="{{ old('code_function') }}"
-                >
-                @error('code_function')
-                    <small>{{$message}}</small>
-                @enderror
-            </div>
-            <div>
-                <label>Nombre de funcion:</label>
-                <input
-                type="text"
-                name="name_function"
-                value="{{ old('name_function') }}"
-                >
-                @error('name_function')
-                    <small>{{$message}}</small>
-                @enderror
-            </div>
-            <div>
-                <label>Descripcion de funcion:</label>
-                <textarea
-                class="textarea_form_occupation"
-                name="description_function"
-                value="{{ old('description_function') }}"
-                >@error('description_function')<small>{{$message}}</small>@enderror</textarea>
-            </div>
-            <div>
-                <label>Nombre de habilidad:</label>
-                <input
-                type="text"
-                name="name_function"
-                value="{{ old('name_function') }}"
-                >
-                @error('name_function')
-                    <small>{{$message}}</small>
-                @enderror
-            </div>
-            <div>
-                <label>Descripcion de habilidad:</label>
-                <textarea
-                class="textarea_form_occupation"
-                name="description_function"
-                value="{{ old('description_function') }}"
-                >@error('description_function')<small>{{$message}}</small>@enderror</textarea>
             </div>
             <div>
                 <h4>Denominaciones</h4>

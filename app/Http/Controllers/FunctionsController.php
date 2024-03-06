@@ -14,9 +14,9 @@ class FunctionsController extends Controller
         return view('functions.index',compact('functionss'));
     }
 
-    public function create($occupation)
+    public function create($code)
     {
-        return view('functions.create', $occupation);
+        return view('functions.create', compact('code'));
     }
 
     public function store(Request $request)

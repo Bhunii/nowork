@@ -48,7 +48,63 @@
             @endif
             </div>
             <div class="container_add">
-                <a class="add-icon" href="{{ route('functions.create', $occupation->id) }}">
+                <a class="add-icon" href="{{ route('functions.create', $occupation->code_occupation) }}">
+                    <img src="{{ asset('img/show-and-more-icon.png') }}" alt="agregar">
+                </a>
+            </div>
+            <div class="title_oc">
+                <h4>Habilidades</h4>
+            </div>
+            <div class="container_header_general">
+                <ul class="ul_header_general">
+                    <li style="width: 15%">Code Skill</li>
+                    <li style="width: 25%">Name</li>
+                    <li style="width: 60%">Description</li>
+                </ul>
+            </div>
+            <div class="container_data_general">
+            @if ($skills->isEmpty())
+                <span>table empty</span>
+            @else
+                @foreach($skills as $skill)
+                <ul class="ul_data_general">
+                    <li style="width: 15%">{{$skill->code}}</li>
+                    <li style="width: 25%">{{$skill->name}}</li>
+                    <li style="width: 60%">{{$skill->description}}</li>
+                </ul>
+                @endforeach
+            @endif
+            </div>
+            <div class="container_add">
+                <a class="add-icon" href="{{ route('skill.create', $occupation->code_occupation) }}">
+                    <img src="{{ asset('img/show-and-more-icon.png') }}" alt="agregar">
+                </a>
+            </div>
+            <div class="title_oc">
+                <h4>Conocimientos</h4>
+            </div>
+            <div class="container_header_general">
+                <ul class="ul_header_general">
+                    <li style="width: 15%">Code Knowledge</li>
+                    <li style="width: 25%">Name</li>
+                    <li style="width: 60%">Description</li>
+                </ul>
+            </div>
+            <div class="container_data_general">
+            @if ($knowledges->isEmpty())
+                <span>table empty</span>
+            @else
+                @foreach($knowledges as $knowledge)
+                <ul class="ul_data_general">
+                    <li style="width: 15%">{{$knowledge->code}}</li>
+                    <li style="width: 25%">{{$knowledge->name}}</li>
+                    <li style="width: 60%">{{$knowledge->description}}</li>
+                </ul>
+                @endforeach
+            @endif
+            </div>
+            <div class="container_add">
+                <a class="add-icon" href="{{ route('knowledge.create', $occupation->code_occupation) }}">
                     <img src="{{ asset('img/show-and-more-icon.png') }}" alt="agregar">
                 </a>
             </div>
