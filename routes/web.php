@@ -22,6 +22,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\VacanciesController;
+use App\Http\Controllers\FunctionsController;
 
 
 
@@ -166,5 +167,12 @@ Route::get('/process/create',[ProcessController::class,'create'])->name('process
 Route::post('/process/{id}/store',[ProcessController::class,'store'])->name('process.store');
 Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
 Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
+
+//Management routes for vacancy process of recruiter and candidate
+// Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
+Route::get('/functions/create/{occupation}',[FunctionsController::class,'create'])->name('functions.create');
+Route::post('/functions/store',[FunctionsController::class,'store'])->name('functions.store');
+// Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
+// Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
 
 

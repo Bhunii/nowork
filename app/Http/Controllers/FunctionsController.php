@@ -13,19 +13,26 @@ class FunctionsController extends Controller
         $functionss=Functions::all();
         return view('functions.index',compact('functionss'));
     }
-    
-    public function create()
+
+    public function create($occupation)
     {
-        return view('functions.create');
+        return view('functions.create', $occupation);
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'code'=>'required',
+            'description'=>'required'
+        ]);
+
         Functions::create([
             'code_occupation'=>$request->code_occupation,
             'code'=>$request->code,
             'description'=>$request->description,
         ]);
+
+        return redirect()->route('occupation.show', $request->code_occupation);
     }
 
     public function edit(Functions $functions)

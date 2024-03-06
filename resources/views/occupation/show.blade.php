@@ -48,7 +48,7 @@
             @endif
             </div>
             <div class="container_add">
-                <a class="add-icon" href="#">
+                <a class="add-icon" href="{{ route('functions.create', $occupation->id) }}">
                     <img src="{{ asset('img/show-and-more-icon.png') }}" alt="agregar">
                 </a>
             </div>
