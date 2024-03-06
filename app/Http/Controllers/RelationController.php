@@ -14,17 +14,23 @@ class RelationController extends Controller
         return view('relation.index',compact('relations'));
     }
     
-    public function create()
+    public function create($code)
     {
-        return view('relation.create');
+        return view('relation.create', compact('code'));
     }
 
     public function store(Request $request)
-    {
+    {   
+        $request->validate([
+            'code_occupation_relation' => 'required'
+        ]);
+
         Relation::create([
             'code_occupation'=>$request->code_occupation,
             'code_occupation_relation'=>$request->code_occupation_relation
         ]);
+
+        return redirect()->route('occupation.show'. $request->code_occcupation);
     }
 
     public function edit(Relation $relation)

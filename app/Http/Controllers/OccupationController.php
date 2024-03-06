@@ -34,46 +34,7 @@ class OccupationController extends Controller
             'description' => $request->description_occupation,
         ]);
 
-        //Funciones
-        Functions::create([
-            'code_occupation' => Occupation::latest('code_occupation')->first()->code_occupation,
-            'code'=>$request->code_function,
-            'name' => $request->name_function,
-            'description' => $request->description_function,
-        ]);
-
-
-        //Denominaciones
-        Denomination::create([
-            'code_occupation' => Occupation::latest('code_occupation')->first()->code_occupation,
-            'code'=>$request->code_denomination,
-            'description' => $request->description_denomination,
-        ]);
-
-
-        //Relacionadas
-        Relation::create([
-            'code_occupation' => Occupation::latest('code_occupation')->first()->code_occupation,
-            'code_occupation_relation' =>$request->code_occupation_relation
-        ]);
-
-        //Habilidades
-        Skill::create([
-            'code_occupation' => Occupation::latest('code_occupation')->first()->code_occupation,
-            'code'=>$request->code_skill,
-            'name' => $request->name_skill,
-            'description' => $request->description_skill,
-        ]);
-
-        //Conocimientos
-        Knowledge::create([
-            'code_occupation'=>Occupation::latest('code_occupation')->first()->code_occupation,
-            'code'=>$request->code_knowledge,
-            'name'=>$request->name_knowledge,
-            'description'=>$request->description_knowledge,
-        ]);
-
-        return redirect()->route('occupation.create');
+        return redirect()->route('occupation.index');
     }
 
 
@@ -101,6 +62,7 @@ class OccupationController extends Controller
         $skills = $occupation->skills;
         $knowledges = $occupation->knowledges;
         $denominations = $occupation->denominations;
-        return view('occupation.show', compact('occupation', 'functions', 'skills', 'knowledges', 'deominations'));
+        $relations = $occupation->relations;
+        return view('occupation.show', compact('occupation', 'functions', 'skills', 'knowledges', 'denominations', 'relations'));
     }
 }

@@ -108,6 +108,58 @@
                     <img src="{{ asset('img/show-and-more-icon.png') }}" alt="agregar">
                 </a>
             </div>
+            <div class="title_oc">
+                <h4>Denominaciones</h4>
+            </div>
+            <div class="container_header_general">
+                <ul class="ul_header_general">
+                    <li style="width: 25%">Code Denomination</li>
+                    <li style="width: 75%">Description</li>
+                </ul>
+            </div>
+            <div class="container_data_general">
+            @if ($denominations->isEmpty())
+                <span>table empty</span>
+            @else
+                @foreach($denominations as $denomination)
+                <ul class="ul_data_general">
+                    <li style="width: 25%">{{$denomination->code}}</li>
+                    <li style="width: 75%">{{$denomination->description}}</li>
+                </ul>
+                @endforeach
+            @endif
+            </div>
+            <div class="container_add">
+                <a class="add-icon" href="{{ route('denomination.create', $occupation->code_occupation) }}">
+                    <img src="{{ asset('img/show-and-more-icon.png') }}" alt="agregar">
+                </a>
+            </div>
+            <div class="title_oc">
+                <h4>Ocupaciones relacionadas</h4>
+            </div>
+            <div class="container_header_general">
+                <ul class="ul_header_general">
+                    <li style="width: 25%">Code Relation</li>
+                    <li style="width: 75%">Name Occupation</li>
+                </ul>
+            </div>
+            <div class="container_data_general">
+            @if ($relations->isEmpty())
+                <span>table empty</span>
+            @else
+                @foreach($relations as $relation)
+                <ul class="ul_data_general">
+                    <li style="width: 25%">{{$relation->code_occupation_relation}}</li>
+                    <li style="width: 75%">{{$relation->occupation->name}}</li>
+                </ul>
+                @endforeach
+            @endif
+            </div>
+            <div class="container_add">
+                <a class="add-icon" href="{{ route('relation.create', $occupation->code_occupation) }}">
+                    <img src="{{ asset('img/show-and-more-icon.png') }}" alt="agregar">
+                </a>
+            </div>
         </div>
     </div>
     <div>

@@ -24,7 +24,8 @@ use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\VacanciesController;
 use App\Http\Controllers\FunctionsController;
 use App\Http\Controllers\KnowledgeController;
-use App\Models\Skill;
+use App\Http\Controllers\DenominationController;
+use App\Http\Controllers\RelationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -191,8 +192,15 @@ Route::post('/knowledge/store',[KnowledgeController::class,'store'])->name('know
 
 //Management routes for knowlegdes of occupations
 // Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
-Route::get('/denomination/create/{code}',[KnController::class,'create'])->name('knowledge.create');
-Route::post('/denomination/store',[KnowledgeController::class,'store'])->name('knowledge.store');
+Route::get('/denomination/create/{code}',[DenominationController::class,'create'])->name('denomination.create');
+Route::post('/denomination/store',[DenominationController::class,'store'])->name('denomination.store');
+// Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
+// Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
+
+//Management routes for knowlegdes of occupations
+// Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
+Route::get('/relation/create/{code}',[RelationController::class,'create'])->name('relation.create');
+Route::post('/relation/store',[RelationController::class,'store'])->name('relation.store');
 // Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
 // Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
 
