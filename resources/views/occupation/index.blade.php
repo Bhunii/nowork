@@ -16,8 +16,8 @@
                 <ul class="ul_header_occupation">
                     <li style="width: 15%">Code</li>
                     <li style="width: 25%">Name</li>
-                    <li style="width: 50%">Description</li>
-                    <li style="width: 10%; background: none;"></li>
+                    <li style="width: 48%">Description</li>
+                    <li style="width: 12%; background: none;"></li>
                 </ul>
             </div>
             <div class="container_data_occupations">
@@ -25,8 +25,11 @@
                     <ul class="ul_data_occupation   ">
                         <li style="width: 15%">{{$occupation->code_occupation}}</li>
                         <li style="width: 25%">{{$occupation->name}}</li>
-                        <li style="width: 50%">{{$occupation->description}}</li>
-                        <li style="background: none; width: 10%; gap: 9px;">
+                        <li style="width: 48%">{{$occupation->description}}</li>
+                        <li style="background: none; width: 12%; gap: 9px;">
+                            <a class="show_icon_general" href="{{ route('occupation.show', $occupation->id)}}">
+                                <img src="{{ asset('img/show-and-more-icon.png') }}">
+                            </a>
                             <a class="edit_icon_general" href="{{ route('occupation.edit', $occupation->id)}}" class="edit">
                                 <img src="{{ asset('img/edit-icon.png')}}" alt="editar">
                             </a>

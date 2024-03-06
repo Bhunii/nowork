@@ -3,7 +3,7 @@
     align-items: center;
 }
 
-.container_index_occupations{
+.container_index_occupation{
     display: flex;
     width: 95%;
     height: 95%;
@@ -12,31 +12,34 @@
     gap: 20px;
 }
 
-.container_general_occupations{
+.container_general_occupation{
     display: flex;
     width: 100%;
     height: 100%;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 15px;
 }
 
-.container_content_occupations{
+.container_content_occupation{
     display: flex;
     width: 100%;
     height: 100%;
     flex-direction: column;
     align-items: center;
-    gap: 14px;
+    gap: 4px;
 }
 
-.container_header_occupations{
+.container_header_general{
     display: flex;
     width: 100%;
     height: 50px;
     align-items: center;
 }
 
-.ul_header_occupation{
+.ul_header_general{
     display: flex;
     width: 100%;
     height: 90%;
@@ -46,7 +49,7 @@
     gap: 10px;
 }
 
-.ul_header_occupation li{
+.ul_header_general li{
     display: flex;
     width: 100%;
     height: 100%;
@@ -55,19 +58,16 @@
     justify-content: center;
 }
 
-.container_data_occupations{
+.container_data_general{
     display: flex;
     width: 100%;
-    min-height: 90%;
-    max-height: 95%;
+    height: auto;
     flex-direction: column;
     align-items: center;
-    overflow-y: auto;
-    overflow-x: hidden;
     gap: 9px;
 }
 
-.ul_data_occupation{
+.ul_data_general{
     display: flex;
     width: 100%;
     height: 50px;
@@ -77,7 +77,7 @@
     gap: 10px;
 }
 
-.ul_data_occupation li{
+.ul_data_general li{
     display: flex;
     height: 90%;
     background: #e6e7e9;
@@ -85,24 +85,23 @@
     justify-content: center;
 }
 
-.edit_icon_general{
-    width: 35px;
-    height: 35px;
-    background-color: #d15d79;
-    border-radius: 5px;
-    transition: background-color 0.7s ease;
+.title_oc{
+    display: flex;
+    align-self: flex-start;
+    margin-top: 9px;
+    padding: 0 5px;
 }
 
-.edit_icon_general img{
-    width: 100%;
-    height: 100%;
+.title_oc h4{
+    display: flex;
 }
 
-.edit_icon_general:hover{
-    background-color: #ffffff;
+.container_add{
+    display: flex;
+    align-self: flex-end;
 }
 
-.show_icon_general{
+.add-icon{
     width: 35px;
     height: 35px;
     background-color: none;
@@ -110,38 +109,11 @@
     transition: background-color 0.7s ease;
 }
 
-.show_icon_general img{
+.add-icon img{
     width: 100%;
     height: 100%;
 }
 
-.show_icon_general:hover{
+.add-icon:hover{
     background-color: #973245;
 }
-
-.form_delete_icon{
-    width: 35px;
-    height: 35px;
-}
-
-.form_delete_icon button{
-    width: 100%;
-    height: 100%;
-    background: none;
-    border:0.5px #a3354eff solid;
-    background-repeat: no-repeat;
-    background-size: contain;
-    padding: 0;
-    transition: background-color 0.7s ease;
-}
-
-.form_delete_icon button img{
-    width: 100%;
-    height: 100%;
-}
-
-.form_delete_icon button:hover{
-    background-color: rgb(166, 104, 118);
-}
-
-

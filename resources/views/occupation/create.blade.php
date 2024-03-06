@@ -204,7 +204,7 @@
         </form>
     </div>
     <div>
-        <a href="{{ asset('ocupation.index') }}">Volver</a>
+        <a href="{{ route('occupation.index') }}">Volver</a>
     </div>
 </div>
 @endsection

@@ -19,7 +19,7 @@ class OccupationController extends Controller
         $occupations=Occupation::all();
         return view('occupation.index',compact('occupations'));
     }
-    
+
     public function create()
     {
         return view('occupation.create');
@@ -94,8 +94,10 @@ class OccupationController extends Controller
         return redirect()->route('occupation.index');
     }
 
-    public function show(Occupation $occupation)
+    public function show($id)
     {
-        return view('occupation.show', compact('occupation'));
+        $occupation = Occupation::findOrFail($id);
+        $functions= $occupation->functions;
+        return view('occupation.show', compact('occupation', 'functions'));
     }
 }
