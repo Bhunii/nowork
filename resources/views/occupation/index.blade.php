@@ -28,12 +28,14 @@
                         <li style="width: 50%">{{$occupation->description}}</li>
                         <li style="background: none; width: 10%; gap: 9px;">
                             <a class="edit_icon_general" href="{{ route('occupation.edit', $occupation->id)}}" class="edit">
-                                <img src="{{ asset('img/edit-icon.png')}}">
+                                <img src="{{ asset('img/edit-icon.png')}}" alt="editar">
                             </a>
                             <form class="form_delete_icon" method="POST" action="{{route('occupation.destroy', $occupation->id)}}" >
                                 @csrf
                                 @method('DELETE')
-                                <input style="width: 35px; height: 100%;" type="submit" value=" "/>
+                                <button type="submit" class="btn-eliminar-icon">
+                                    <img src="{{ asset('img/delete-icon.png') }}" alt="eliminar">
+                                </button>
                             </form>
                         </li>
                     </ul>

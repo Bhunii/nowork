@@ -1,118 +1,210 @@
-@extends('layouts.nav.recruiter',['title' => ''])
+@extends('layouts.nav.recruiter',['title' => 'Ocupation'])
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/create-occupation.css') }}">
 @endsection
 
 @section('content_profile')
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #525252;
-    }
-
-    .contenido {
-        margin: 50px auto;
-        width: 80%;
-        background-color: rgb(110, 110, 110);
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-        text-align: center;
-        color: #e4e4e4;
-    }
-
-    .form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    label {
-        margin-top: 10px;
-        color: #333;
-    }
-
-    input[type='text'] {
-        padding: 8px;
-        margin-top: 5px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-
-    input[type='submit'] {
-        padding: 10px 20px;
-        background-color: #d32f2f;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    input[type='submit']:hover {
-        background-color: #b71c1c;
-    }
-</style>
-
-<h1>Formulario de creacion de ocupacion</h1>
-<main class="contenido">
-    <form class="form" method="POST" action="{{ route('occupation.store')}}">
-
-        @csrf
-
-        <label>Codigo de ocupacion:</label>
-        <input type="text" name="code_occupation"/>
-        <label>Nombre:</label>
-        <input type="text" name="name_occupation"/>
-        <label>Descripcion:</label>
-        <input type="text" name="description_occupation"/>
-
-
-        <h2>Funciones</h2>
-        <label>Codigo de funcion:</label>
-        <input type="text" name="code_function"/>
-        <label>Nombre de funcion:</label>
-        <input type="text" name="name_function"/>
-        <label>Descripcion de funcion:</label>
-        <label>Nombre de habilidad:</label>
-        <input type="text" name="name_function"/>
-        <label>Descripcion de habilidad:</label>
-        <input type="text" name="description_function"/>
-
-
-        <h2>Denominaciones</h2>
-        <label>Codigo de denominacion:</label>
-        <input type="text" name="code_denomination"/>
-        <label>Descripcion de denominacion:</label>
-        <input type="text" name="description_denomination"/>
-
-        <h2>Ocupaciones Relacionadas</h2>
-        <label>Codigo de ocupacion relacionada=opcional:</label>
-        <input type="text" name="code_occupation_relation"/>
-
-
-        <h2>Habilidades</h2>
-        <label>Codigo de habilidad:</label>
-        <input type="text" name="code_skill"/>
-        <label>Nombre de habilidad:</label>
-        <input type="text" name="name_skill"/>
-        <label>Descripcion de habilidad:</label>
-        <input type="text" name="description_skill"/>
-
-        <h2>Conocimientos</h2>
-        <label>Codigo de conocimiento:</label>
-        <input type="text" name="code_knowledge"/>
-        <label>Nombre de conocimiento:</label>
-        <input type="text" name="name_knowledge"/>
-        <label>Descripcion de conocimiento:</label>
-        <input type="text" name="description_knowledge"/>
-
-        <input type="submit" value="Crear" class="create" />
-    </form>
-</main>
+<div class="container_form_create_occupation">
+    <div class="container_title_form_create">
+        <h3>Crear una Ocupacion</h3>
+    </div>
+    <div class="container_form_create">
+        <form class="form form_create" method="POST" action="{{ route('occupation.store')}}">
+            @csrf
+            <div>
+                <label>Codigo de ocupacion:</label>
+                <input
+                type="text"
+                name="code_occupation"
+                value="{{ old('code_occupation') }}"
+                >
+                @error('code_occupation')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <div>
+                <label>Nombre:</label>
+                <input
+                type="text"
+                name="name_occupation"
+                value="{{ old('name_occupation') }}"
+                >
+                @error('name_occupation')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <div>
+                <label>Descripcion:</label>
+                <textarea
+                class="textarea_form_occupation"
+                name="description_occupation"
+                value="{{ old('description_occupation') }}"
+                >@error('description_occupation')<small>{{$message}}</small>@enderror</textarea>
+            </div>
+            <div>
+                <h4>Funciones</h4>
+            </div>
+            <div>
+                <label>Codigo de funcion:</label>
+                <input
+                type="text"
+                name="code_function"
+                value="{{ old('code_function') }}"
+                >
+                @error('code_function')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <div>
+                <label>Nombre de funcion:</label>
+                <input
+                type="text"
+                name="name_function"
+                value="{{ old('name_function') }}"
+                >
+                @error('name_function')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <div>
+                <label>Descripcion de funcion:</label>
+                <textarea
+                class="textarea_form_occupation"
+                name="description_function"
+                value="{{ old('description_function') }}"
+                >@error('description_function')<small>{{$message}}</small>@enderror</textarea>
+            </div>
+            <div>
+                <label>Nombre de habilidad:</label>
+                <input
+                type="text"
+                name="name_function"
+                value="{{ old('name_function') }}"
+                >
+                @error('name_function')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <div>
+                <label>Descripcion de habilidad:</label>
+                <textarea
+                class="textarea_form_occupation"
+                name="description_function"
+                value="{{ old('description_function') }}"
+                >@error('description_function')<small>{{$message}}</small>@enderror</textarea>
+            </div>
+            <div>
+                <h4>Denominaciones</h4>
+            </div>
+            <div>
+                <label>Codigo de denominacion:</label>
+                <input
+                type="text"
+                name="code_denomination"
+                value="{{ old('code_denomination') }}"
+                >
+                @error('code_denomination')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <div>
+                <label>Descripcion de denominacion:</label>
+                <textarea
+                class="textarea_form_occupation"
+                name="description_denomination"
+                value="{{ old('description_denomination') }}"
+                >@error('description_denomination')<small>{{$message}}</small>@enderror</textarea>
+            </div>
+            <div>
+                <h4>Ocupaciones Relacionadas</h4>
+            </div>
+            <div>
+                <label>Codigo de ocupacion relacionada=opcional:</label>
+                <input
+                type="text"
+                name="code_occupation_relation"
+                value="{{ old('code_occupation_relation') }}"
+                >
+                @error('code_occupation_relation')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <div>
+                <h4>Habilidades</h4>
+            </div>
+            <div>
+                <label>Codigo de habilidad:</label>
+                <input
+                type="text"
+                name="code_skill"
+                value="{{ old('code_skill') }}"
+                >
+                @error('code_skill')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <div>
+                <label>Nombre de habilidad:</label>
+                <input
+                type="text"
+                name="name_skill"
+                value="{{ old('name_skill') }}"
+                >
+                @error('name_skill')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <div>
+                <label>Descripcion de habilidad:</label>
+                <textarea
+                class="textarea_form_occupation"
+                name="description_skill"
+                value="{{ old('description_skill') }}"
+                >@error('description_skill')<small>{{$message}}</small>@enderror</textarea>
+            </div>
+            <div>
+                <h4>Conocimientos</h4>
+            </div>
+            <div>
+                <label>Codigo de conocimiento:</label>
+                <input
+                type="text"
+                name="code_knowledge"
+                value="{{ old('code_knowledge') }}"
+                >
+                @error('name_knowledge')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <div>
+                <label>Nombre de conocimiento:</label>
+                <input
+                type="text"
+                name="name_knowledge"
+                value="{{ old('name_knoledge') }}"
+                >
+                @error('name_knoledge')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <div>
+                <label>Descripcion de conocimiento:</label>
+                <textarea
+                class="textarea_form_occupation"
+                name="description_knowledge"
+                value="{{ old('description_knoledge') }}"
+                >@error('description_knoledge')<small>{{$message}}</small>@enderror</textarea>
+            </div>
+            <div style="width: 100%; align-items: center; justify-content:center;">
+                <input style="width: 30%;" type="submit" value="Crear" class="create" />
+            </div>
+        </form>
+    </div>
+    <div>
+        <a href="{{ asset('ocupation.index') }}">Volver</a>
+    </div>
+</div>
 @endsection
