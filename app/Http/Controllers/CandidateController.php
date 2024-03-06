@@ -16,17 +16,12 @@ use App\Models\User;
 
 class CandidateController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $authUser = auth()->user();
         if ($authUser->role_id == '3') {
             $candidates = User::where('role_id', '4')->get();
-            
+
             return view('candidate.index', compact('candidates'));
         } else {
             return redirect()->route('candidate.index');

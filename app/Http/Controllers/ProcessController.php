@@ -12,6 +12,25 @@ class ProcessController extends Controller
         return $this->middleware('auth');
     }
 
+    //public function index()
+    //{
+    //    $candidates=Candidate::all();
+    //    return view('candidate.index',compact('candidates'));
+    //    $authuser = auth()->user();
+    //    if($authuser->role_id == '3'){
+    //        $vacancies = Auth::user()->recruiter->company->vacancies;
+    //        $candidates= collect();
+    //        foreach ($vacancies as $vacancy){
+    //            if ($vacancy->candidates){
+    //                $candidates= $candidates->merge($vacancy->candidates->where('role_id', '4'));
+    //            }
+    //        }
+    //        return view('candidate.index',compact('candidates'));
+    //    }else{
+    //        return redirect()->route('candidate.index');
+    //    }
+    //}
+
     public function index(){
         $authuser = auth()->user();
 
@@ -23,7 +42,7 @@ class ProcessController extends Controller
 
         }elseif($authuser->role_id == 3){
 
-            $processes = $authuser->recruiter->company->vacancy->process;
+            $processes = $authuser->recruiter->company->vacancy->processes;
             return view('process.index', compact('processes'));
 
         }

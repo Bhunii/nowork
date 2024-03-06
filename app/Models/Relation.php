@@ -16,12 +16,7 @@ class Relation extends Model
         'code_occupation_relation'
     ];
 
-<<<<<<< HEAD
-    public function occupation(){
-        return $this->belongsTo(Occupation::class, 'code_occupation');
-=======
     public function code_occupation_relation(){
         return $this->belongsTo(Occupation::class, 'code_occupation_relation');
->>>>>>> origin/main
     }
 }

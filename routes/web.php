@@ -169,4 +169,3 @@ Route::post('/process/{id}/store',[ProcessController::class,'store'])->name('pro
 Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
 Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
 
-
