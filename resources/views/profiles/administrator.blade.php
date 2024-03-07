@@ -1,9 +1,5 @@
 @extends('layouts.nav.administrator',['title' => 'Your Profile'])
 
-@section('js')
-    <script src="{{ asset('js/profile.js') }}"></script>
-@endsection
-
 @section('content_profile')
     <div class="profile">
         <article class="img_profile">

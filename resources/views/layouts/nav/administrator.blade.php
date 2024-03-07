@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('js')
-    <script src="{{ asset('js/profile.js') }}"></script>
-@endsection
-
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 @endsection

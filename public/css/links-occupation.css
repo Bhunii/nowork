@@ -1,0 +1,41 @@
+.links-occupations{
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.card-link{
+    display: flex;
+    width: auto;
+    height: 75px;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.title_link{
+    display: flex;
+    width: 100%;
+    align-self: flex-start;
+    margin-top: 9px;
+    padding: 0 5px;
+    background-color: #d6d8db;
+}
+
+.title_link h4{
+    display: flex;
+}
+
+.container_links_general{
+    display: flex;
+    height: 45px;
+    width: 215px;
+    align-items: center;
+    justify-content: center;
+    background-color: #e6e7e9;
+}
+
+.container_links_general a{
+
+}

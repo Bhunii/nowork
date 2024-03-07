@@ -1,4 +1,4 @@
-@extends('layouts.nav.recruiter',['title' => 'Update Data'])
+@extends('layouts.app')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
@@ -20,8 +20,8 @@
                         <a href="{{route('vacancy.index')}}">Vacantes</a>
                     </li>
                     <li class="nexos">
-                        <a href="{{route('occupation.index')}}">Ocupaciones</a>
-                    </li>   
+                        <a href="{{ route('occupation.index') }}">Ocupaciones</a>
+                    </li>
                     <li class="nexos">
                         <a href="{{ route('recruiter.edit') }}">Actualizar Datos Personales</a>
                     </li>

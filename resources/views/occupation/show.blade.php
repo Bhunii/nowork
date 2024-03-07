@@ -1,8 +1,9 @@
-@extends('layouts.nav.recruiter',['title' => 'Your Profile'])
+@extends('layouts.nav.recruiter',['title' => 'An Occupation'])
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/show-occupation.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/links-occupation.css') }}">
 @endsection
 
 @section('content_profile')
@@ -26,139 +27,23 @@
                     <li style="width: 60%">{{$occupation->description}}</li>
                 </ul>
             </div>
-            <div class="title_oc">
-                <h4>Funciones</h4>
-            </div>
-            <div class="container_header_general">
-                <ul class="ul_header_general">
-                    <li style="width: 25%">Code Function</li>
-                    <li style="width: 75%">Description</li>
-                </ul>
-            </div>
-            <div class="container_data_general">
-            @if ($functions->isEmpty())
-                <span>table empty</span>
-            @else
-                @foreach($functions as $function)
-                <ul class="ul_data_general">
-                    <li style="width: 25%">{{$function->code}}</li>
-                    <li style="width: 75%">{{$function->description}}</li>
-                </ul>
-                @endforeach
-            @endif
-            </div>
-            <div class="container_add">
-                <a class="add-icon" href="{{ route('functions.create', $occupation->code_occupation) }}">
-                    <img src="{{ asset('img/show-and-more-icon.png') }}" alt="agregar">
-                </a>
-            </div>
-            <div class="title_oc">
-                <h4>Habilidades</h4>
-            </div>
-            <div class="container_header_general">
-                <ul class="ul_header_general">
-                    <li style="width: 15%">Code Skill</li>
-                    <li style="width: 25%">Name</li>
-                    <li style="width: 60%">Description</li>
-                </ul>
-            </div>
-            <div class="container_data_general">
-            @if ($skills->isEmpty())
-                <span>table empty</span>
-            @else
-                @foreach($skills as $skill)
-                <ul class="ul_data_general">
-                    <li style="width: 15%">{{$skill->code}}</li>
-                    <li style="width: 25%">{{$skill->name}}</li>
-                    <li style="width: 60%">{{$skill->description}}</li>
-                </ul>
-                @endforeach
-            @endif
-            </div>
-            <div class="container_add">
-                <a class="add-icon" href="{{ route('skill.create', $occupation->code_occupation) }}">
-                    <img src="{{ asset('img/show-and-more-icon.png') }}" alt="agregar">
-                </a>
-            </div>
-            <div class="title_oc">
-                <h4>Conocimientos</h4>
-            </div>
-            <div class="container_header_general">
-                <ul class="ul_header_general">
-                    <li style="width: 15%">Code Knowledge</li>
-                    <li style="width: 25%">Name</li>
-                    <li style="width: 60%">Description</li>
-                </ul>
-            </div>
-            <div class="container_data_general">
-            @if ($knowledges->isEmpty())
-                <span>table empty</span>
-            @else
-                @foreach($knowledges as $knowledge)
-                <ul class="ul_data_general">
-                    <li style="width: 15%">{{$knowledge->code}}</li>
-                    <li style="width: 25%">{{$knowledge->name}}</li>
-                    <li style="width: 60%">{{$knowledge->description}}</li>
-                </ul>
-                @endforeach
-            @endif
-            </div>
-            <div class="container_add">
-                <a class="add-icon" href="{{ route('knowledge.create', $occupation->code_occupation) }}">
-                    <img src="{{ asset('img/show-and-more-icon.png') }}" alt="agregar">
-                </a>
-            </div>
-            <div class="title_oc">
-                <h4>Denominaciones</h4>
-            </div>
-            <div class="container_header_general">
-                <ul class="ul_header_general">
-                    <li style="width: 25%">Code Denomination</li>
-                    <li style="width: 75%">Description</li>
-                </ul>
-            </div>
-            <div class="container_data_general">
-            @if ($denominations->isEmpty())
-                <span>table empty</span>
-            @else
-                @foreach($denominations as $denomination)
-                <ul class="ul_data_general">
-                    <li style="width: 25%">{{$denomination->code}}</li>
-                    <li style="width: 75%">{{$denomination->description}}</li>
-                </ul>
-                @endforeach
-            @endif
-            </div>
-            <div class="container_add">
-                <a class="add-icon" href="{{ route('denomination.create', $occupation->code_occupation) }}">
-                    <img src="{{ asset('img/show-and-more-icon.png') }}" alt="agregar">
-                </a>
-            </div>
-            <div class="title_oc">
-                <h4>Ocupaciones relacionadas</h4>
-            </div>
-            <div class="container_header_general">
-                <ul class="ul_header_general">
-                    <li style="width: 25%">Code Relation</li>
-                    <li style="width: 75%">Name Occupation</li>
-                </ul>
-            </div>
-            <div class="container_data_general">
-            @if ($relations->isEmpty())
-                <span>table empty</span>
-            @else
-                @foreach($relations as $relation)
-                <ul class="ul_data_general">
-                    <li style="width: 25%">{{$relation->code_occupation_relation}}</li>
-                    <li style="width: 75%">{{$relation->occupation->name}}</li>
-                </ul>
-                @endforeach
-            @endif
-            </div>
-            <div class="container_add">
-                <a class="add-icon" href="{{ route('relation.create', $occupation->code_occupation) }}">
-                    <img src="{{ asset('img/show-and-more-icon.png') }}" alt="agregar">
-                </a>
+            <div class="links-occupations">
+                <div class="card-link">
+                    <div class="title_link">
+                        <h4>Funciones</h4>
+                    </div>
+                    <div class="container_links_general">
+                        <a href="{{ route('functions.show', $occupation->code_occupation) }}">Ir a funciones</a>
+                    </div>
+                </div>
+                <div class="card-link">
+                    <div class="title_link">
+                        <h4>Habilidades</h4>
+                    </div>
+                    <div class="container_links_general">
+                        <a href="#}">Ir a habilidades</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Occupation;
 use App\Models\Functions;
 
 class FunctionsController extends Controller
@@ -45,7 +46,11 @@ class FunctionsController extends Controller
     {
     }
 
-    public function show()
+    public function show($code)
     {
+        $occupation = Occupation::findOrFail($code);
+        $functions = $occupation->functions;
+
+        return view('functions.show', compact('functions', 'code'));
     }
 }

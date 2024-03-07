@@ -5,11 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Occupation;
-use App\Models\Skill;
-use App\Models\Knowledge;
-use App\Models\Relation;
-use App\Models\Functions;
-use App\Models\Denomination;
 
 
 class OccupationController extends Controller
@@ -58,11 +53,7 @@ class OccupationController extends Controller
     public function show($code_occupation)
     {
         $occupation = Occupation::findOrFail($code_occupation);
-        $functions= $occupation->functions;
-        $skills = $occupation->skills;
-        $knowledges = $occupation->knowledges;
-        $denominations = $occupation->denominations;
-        $relations = $occupation->relations;
-        return view('occupation.show', compact('occupation', 'functions', 'skills', 'knowledges', 'denominations', 'relations'));
+        // $functions= $occupation->functions;
+        return view('occupation.show', compact('occupation'));
     }
 }

@@ -171,10 +171,11 @@ Route::put('/process/update', [ProcessController::class, 'update'])->name('proce
 
 //Management routes for functions of occupations
 // Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
-Route::get('/functions/create/{code}',[FunctionsController::class,'create'])->name('functions.create');
+Route::get('/functions/create/occupation/{code}',[FunctionsController::class,'create'])->name('functions.create');
 Route::post('/functions/store',[FunctionsController::class,'store'])->name('functions.store');
 // Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
 // Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
+Route::get('/functions/show/occupation/{code}', [FunctionsController::class, 'show'])->name('functions.show');
 
 //Management routes for skills of occupations
 // Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');

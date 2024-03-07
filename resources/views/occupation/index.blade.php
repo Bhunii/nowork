@@ -21,12 +21,12 @@
                 </ul>
             </div>
             <div class="container_data_occupations">
-                @forelse($occupations as $occupation)
-                    <ul class="ul_data_occupation   ">
-                        <li style="width: 15%">{{$occupation->code_occupation}}</li>
-                        <li style="width: 25%">{{$occupation->name}}</li>
-                        <li style="width: 48%">{{$occupation->description}}</li>
-                        <li style="background: none; width: 12%; gap: 9px;">
+            @forelse($occupations as $occupation)
+                <ul class="ul_data_occupation">
+                    <li style="width: 15%">{{ $occupation->code_occupation }}</li>
+                    <li style="width: 25%">{{ $occupation->name }}</li>
+                    <li style="width: 48%">{{ $occupation->description }}</li>
+                    <li style="background: none; width: 12%; gap: 9px;">
                             <a class="show_icon_general" href="{{ route('occupation.show', $occupation->code_occupation)}}">
                                 <img src="{{ asset('img/show-and-more-icon.png') }}">
                             </a>
