@@ -16,10 +16,8 @@ class DenominationController extends Controller
 
     public function index()
     {
-        $denominations=Denomination::all();
-        return view('denomination.index',compact('denominations'));
     }
-    
+
     public function create($code)
     {
         return view('denomination.create', compact('code'));
@@ -41,25 +39,19 @@ class DenominationController extends Controller
         return redirect()->route('occupation.show', $request->code_occupation);
     }
 
-    public function edit(Denomination $denomination)
+    public function edit()
     {
-        return view('denomination.edit', compact('denomination'));
     }
 
-    public function update(Request $request, Denomination $denomination)
+    public function update()
     {
-        $denomination->update($request->all());
-        return redirect()->route('denomination.index');
     }
 
-    public function destroy(Denomination $denomination)
+    public function destroy()
     {
-        $denomination->delete();
-        return redirect()->route('denomination.index');
     }
 
-    public function show(Denomination $denomination)
+    public function show()
     {
-        return view('denomination.show', compact('denomination'));
     }
 }

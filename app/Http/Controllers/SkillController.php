@@ -12,13 +12,11 @@ class SkillController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
-        $skills=Skill::all();
-        return view('skill.index',compact('skills'));
     }
-    
+
     public function create($code)
     {
         return view('skill.create', compact('code'));
@@ -42,25 +40,19 @@ class SkillController extends Controller
         return redirect()->route('occupation.show', $request->code_occupation);
     }
 
-    public function edit(Skill $skill)
+    public function edit()
     {
-        return view('skill.edit', compact('skill'));
     }
 
-    public function update(Request $request, Skill $skill)
+    public function update()
     {
-        $skill->update($request->all());
-        return redirect()->route('skill.index');
     }
 
-    public function destroy(Skill $skill)
+    public function destroy()
     {
-        $skill->delete();
-        return redirect()->route('skill.index');
     }
 
-    public function show(Skill $skill)
+    public function show()
     {
-        return view('skill.show', compact('skill'));
     }
 }

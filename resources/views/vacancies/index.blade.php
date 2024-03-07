@@ -58,12 +58,11 @@
                                     <li>{{ $vacancy->end_date }}</li>
                                 </ul>
                                 <ul class="ul_postular_vacante">
-                                    @auth
-                                        @if(auth()->user()->role_id == '4')
+                                @auth
+                                    @switch(auth()->user()->role_id)
+                                        @case('4')
                                             @if ($vacancy->processes()->where('id_candidate', auth()->id())->exists())
-                                                <li>
-                                                    Ya está postulado
-                                                </li>
+                                                <li>Ya está postulado</li>
                                             @else
                                                 <li>
                                                     <form method="POST" action="{{ route('process.store', $vacancy->id) }}">
@@ -72,25 +71,17 @@
                                                     </form>
                                                 </li>
                                             @endif
-                                        @elseif(auth()->user()->role_id == '1')
-                                            <li>
-                                                No puede postularse
-                                            </li>
-                                        @elseif(auth()->user()->role_id == '2')
-                                            <li>
-                                                No puede postularse
-                                            </li>
-                                        @elseif(auth()->user()->role_id == '3')
-                                            <li>
-                                                No puede postularse
-                                            </li>
-                                        @endif
-                                    @endauth
-                                    @guest
-                                        <li>
-                                            inicia sesion
-                                        </li>
-                                    @endguest
+                                            @break
+                                        @case('1')
+                                        @case('2')
+                                        @case('3')
+                                            <li>No puede postularse</li>
+                                            @break
+                                    @endswitch
+                                @endauth
+                                @guest
+                                    <li>Inicia sesión</li>
+                                @endguest
                                 </ul>
                             </div>
                         </div>

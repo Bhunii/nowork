@@ -10,12 +10,12 @@ class ChargeController extends Controller
 {
     public function index()
     {
-    $charges=Charge::all();
-    return view('charge.index',compact('charges'));
+    // $charges=Charge::all();
+    // return view('charge.index',compact('charges'));
     }
     public function create()
     {
-        return view('charge.create');
+        // return view('charge.create');
     }
     public function store(Request $request)
     {
@@ -26,15 +26,13 @@ class ChargeController extends Controller
         $charge->salary=$request->salary;
         $charge->type_contract=$request->type_contract;
         $charge->save();
-        
-        return rendirect()->route('charge.create');
+
+        return redirect()->route('charge.create');
 
     }
 
-    public function edit(Charge $charge)
+    public function edit()
     {
-        return view('charge.edit',compact('charge'));
-
     }
     public function update(Request $request,Charge $charge)
     {

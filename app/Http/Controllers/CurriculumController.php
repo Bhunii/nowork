@@ -50,8 +50,6 @@ class CurriculumController extends Controller
     }
 
     public function destoy(){
-        // $user = auth()->user();
-        return view('profile.index', compact('user'));
     }
 
 }

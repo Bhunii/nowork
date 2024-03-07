@@ -56,9 +56,9 @@ Route::post('login', [LoginController::class, 'store']);
 Route::post('logout', [LogoutController::class, 'store'])->name('logout');
 
 //Management routes for role
-Route::get('/role/index', [RoleController::class, 'index'])->name('role.index');
-Route::get('/role/create', [RoleController::class, 'create'])->name('role.create');
-Route::post('/role/store', [RoleController::class, 'store'])->name('role.store');
+// Route::get('/role/index', [RoleController::class, 'index'])->name('role.index');
+// Route::get('/role/create', [RoleController::class, 'create'])->name('role.create');
+// Route::post('/role/store', [RoleController::class, 'store'])->name('role.store');
 
 //Management routes for user
 Route::get('/user/index', [UserController::class, 'index'])->name('user.index');

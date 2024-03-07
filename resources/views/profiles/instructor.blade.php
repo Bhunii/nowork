@@ -1,9 +1,5 @@
 @extends('layouts.nav.instructor',['title' => 'Your Profile'])
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
-@endsection
-
 @section('content_profile')
     <div class="profile">
         <article class="img_profile">

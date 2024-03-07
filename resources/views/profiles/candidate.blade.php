@@ -4,10 +4,6 @@
     <script src="{{ asset('js/occupational_profile.js') }}"></script>
 @endsection
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
-@endsection
-
 @section('content_profile')
     <div class="profile">
         <article class="img_profile">

@@ -10,8 +10,6 @@ class FunctionsController extends Controller
 {
     public function index()
     {
-        $functionss=Functions::all();
-        return view('functions.index',compact('functionss'));
     }
 
     public function create($code)
@@ -35,25 +33,19 @@ class FunctionsController extends Controller
         return redirect()->route('occupation.show', $request->code_occupation);
     }
 
-    public function edit(Functions $functions)
+    public function edit()
     {
-        return view('functions.edit', compact('functions'));
     }
 
-    public function update(Request $request, Functions $functions)
+    public function update(Request $request,)
     {
-        $functions->update($request->all());
-        return redirect()->route('functions.index');
     }
 
-    public function destroy(Functions $functions)
+    public function destroy()
     {
-        $functions->delete();
-        return redirect()->route('functions.index');
     }
 
-    public function show(Functions $functions)
+    public function show()
     {
-        return view('functions.show', compact('functions'));
     }
 }
