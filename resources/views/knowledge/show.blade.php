@@ -1,4 +1,4 @@
-@extends('layouts.nav.recruiter',['title' => 'The Functions'])
+@extends('layouts.nav.recruiter',['title' => 'The Knowledge'])
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
@@ -8,26 +8,28 @@
 @section('content_profile')
 <div class="container_index_occupation">
     <div class="content_title_occupation">
-        <h3>Funciones</h3>
+        <h3>Conocimientos</h3>
     </div>
     <div class="container_general_occupation">
         <div class="container_content_occupation">
             <div class="container_header_general">
                 <ul class="ul_header_general">
                     <li style="width: 14%">Code Occupation</li>
-                    <li style="width: 16%">Code Function</li>
-                    <li style="width: 70%">Description</li>
+                    <li style="width: 14%">Code Knoledge</li>
+                    <li style="width: 20%">Name</li>
+                    <li style="width: 50%">Description</li>
                 </ul>
             </div>
             <div class="container_data_general">
-            @if ($functions->isEmpty())
+            @if ($knowledges->isEmpty())
                 <span>table empty</span>
             @else
-                @foreach($functions as $function)
+                @foreach($knowledges as $knowledge)
                 <ul class="ul_data_general">
                     <li style="width: 14%">{{$code}}</li>
-                    <li style="width: 16%">{{$function->code}}</li>
-                    <li style="width: 70%">{{$function->description}}</li>
+                    <li style="width: 14%">{{$knowledge->code}}</li>
+                    <li style="width: 20%">{{$knowledge->name}}</li>
+                    <li style="width: 50%">{{$knowledge->description}}</li>
                 </ul>
                 @endforeach
             @endif

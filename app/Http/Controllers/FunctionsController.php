@@ -9,6 +9,11 @@ use App\Models\Functions;
 
 class FunctionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
     }
@@ -38,7 +43,7 @@ class FunctionsController extends Controller
     {
     }
 
-    public function update(Request $request,)
+    public function update()
     {
     }
 
@@ -49,7 +54,7 @@ class FunctionsController extends Controller
     public function show($code)
     {
         $occupation = Occupation::findOrFail($code);
-        $functions = $occupation->functions;
+        $functions = $occupation->functions()->select('code','description')->get();
 
         return view('functions.show', compact('functions', 'code'));
     }

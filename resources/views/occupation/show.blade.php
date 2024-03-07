@@ -41,7 +41,31 @@
                         <h4>Habilidades</h4>
                     </div>
                     <div class="container_links_general">
-                        <a href="#}">Ir a habilidades</a>
+                        <a href="{{ route('skill.show', $occupation->code_occupation) }}">Ir a habilidades</a>
+                    </div>
+                </div>
+                <div class="card-link">
+                    <div class="title_link">
+                        <h4>Conocimientos</h4>
+                    </div>
+                    <div class="container_links_general">
+                        <a href="{{ route('knowledge.show', $occupation->code_occupation) }}">Ir a conocimientos</a>
+                    </div>
+                </div>
+                <div class="card-link">
+                    <div class="title_link">
+                        <h4>Denominaciones</h4>
+                    </div>
+                    <div class="container_links_general">
+                        <a href="{{ route('denomination.show', $occupation->code_occupation) }}">Ir a denominaciones</a>
+                    </div>
+                </div>
+                <div class="card-link">
+                    <div class="title_link">
+                        <h4>Ocupaciones Relacionadas</h4>
+                    </div>
+                    <div class="container_links_general">
+                        <a href="{{ route('relation.show', $occupation->code_occupation) }}">Ir a relacionadas</a>
                     </div>
                 </div>
             </div>

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Occupation;
 use App\Models\Denomination;
-use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 
 class DenominationController extends Controller
 {
@@ -51,7 +51,11 @@ class DenominationController extends Controller
     {
     }
 
-    public function show()
+    public function show($code)
     {
+        $occupation = Occupation::findOrFail($code);
+        $denominations = $occupation->denominations()->select('code','description')->get();
+
+        return view('denomination.show', compact('denominations', 'code'));
     }
 }

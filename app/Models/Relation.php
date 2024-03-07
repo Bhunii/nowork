@@ -17,6 +17,6 @@ class Relation extends Model
     ];
 
     public function occupation(){
-        return $this->belongsTo(Occupation::class, 'code_occupation');
+        return $this->belongsTo(Occupation::class, 'code_occupation_relation');
     }
 }

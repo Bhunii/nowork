@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Occupation;
 use App\Models\Skill;
 
 class SkillController extends Controller
@@ -52,7 +53,11 @@ class SkillController extends Controller
     {
     }
 
-    public function show()
+    public function show($code)
     {
+        $occupation = Occupation::findOrFail($code);
+        $skills = $occupation->skills()->select('code','name','description')->get();
+
+        return view('skill.show', compact('skills', 'code'));
     }
 }

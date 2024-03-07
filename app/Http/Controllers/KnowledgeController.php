@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Occupation;
 use App\Models\Knowledge;
 
 class KnowledgeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
     }
@@ -47,7 +53,11 @@ class KnowledgeController extends Controller
     {
     }
 
-    public function show()
+    public function show($code)
     {
+        $occupation = Occupation::findOrFail($code);
+        $knowledges = $occupation->knowledges()->select('code','name','description')->get();
+
+        return view('knowledge.show', compact('knowledges', 'code'));
     }
 }

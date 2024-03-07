@@ -4,6 +4,8 @@
     height: auto;
     flex-direction: row;
     gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .card-link{
@@ -34,8 +36,4 @@
     align-items: center;
     justify-content: center;
     background-color: #e6e7e9;
-}
-
-.container_links_general a{
-
 }

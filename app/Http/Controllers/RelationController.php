@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Occupation;
 use App\Models\Relation;
 
 class RelationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
     }
@@ -43,7 +49,11 @@ class RelationController extends Controller
     {
     }
 
-    public function show()
+    public function show($code)
     {
+        $occupation = Occupation::findOrFail($code);
+        $relations = $occupation->relations()->select('code_occupation_relation')->get();
+
+        return view('relation.show', compact('relations', 'code'));
     }
 }

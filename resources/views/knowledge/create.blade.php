@@ -49,7 +49,7 @@
             </div>
         </form>
     <div>
-        <a href="{{ route('occupation.show', $code) }}">Volver</a>
+        <a href="{{ route('knowledge.show', $code) }}">Volver</a>
     </div>
 </div>
 @endsection
