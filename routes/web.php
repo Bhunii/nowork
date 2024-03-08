@@ -169,3 +169,9 @@ Route::post('/process/{id}/store',[ProcessController::class,'store'])->name('pro
 Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
 Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
 
+//Management routes for ponderate of recruiter
+Route::get('/ponderate/index',[PonderateController::class,'index'])->name('ponderate.index');
+Route::get('/ponderate/create',[PonderateController::class,'create'])->name('ponderate.create');
+Route::post('/ponderate/store',[PonderateController::class,'store'])->name('ponderate.store');
+Route::get('/ponderate/edit', [PonderateController::class, 'edit'])->name('cahrge.edit');
+Route::put('/ponderate/update', [PonderateController::class, 'update'])->name('ponderate.update');

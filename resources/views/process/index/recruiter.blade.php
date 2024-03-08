@@ -34,7 +34,7 @@
                 @foreach($processes as $process)
                         <tr class="tr_tabla_general_contenido">
                             <td class=" td_general_tabla_general td_configuracion_general">
-                                <a class="a_config_general" href="#">Puntuar</a>
+                                <a class="a_config_general" href="ponderate.index">Puntuar</a>
                             </td>
                             <td class="td_general_tabla_general">{{ $process->candidate->user->name }}</td>
                             <td class="td_general_tabla_general">{{ $process->date_applied }}</td>
