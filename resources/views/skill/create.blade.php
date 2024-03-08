@@ -45,11 +45,11 @@
                 >@error('description_function')<small>{{$message}}</small>@enderror</textarea>
             </div>
             <div>
-                <input type="submit" value="Agregar">   
+                <input type="submit" value="Agregar">
             </div>
         </form>
     <div>
-        <a href="{{ route('occupation.show', $code) }}">Volver</a>
+        <a href="{{ route('skill.show', $code) }}">Volver</a>
     </div>
 </div>
 @endsection

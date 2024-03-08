@@ -1,4 +1,4 @@
-@extends('layouts.app',['title' => 'Update Info Recruiter'])
+@extends('layouts.nav.recruiter',['title' => 'Update Data'])
 
 @section('js')
     <script src="{{ asset('js/location.js') }}"></script>
@@ -36,7 +36,7 @@
 
 @section('content_profile')
 <section class="contenido_form">
-    <form class="form form_edit_curriculum" style="overflow-y: auto;" method="post" action="{{ route('candidate.update') }}">
+    <form class="form form_edit_curriculum" style="overflow-y: auto;" method="post" action="{{ route('recruiter.update') }}">
         @csrf
         @METHOD('PUT')
         <div>
@@ -160,4 +160,3 @@
 
 
 @endsection
-
