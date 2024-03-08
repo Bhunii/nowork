@@ -23,10 +23,10 @@ class UserController extends Controller
     {
         $authuser = auth()->user();
         if($authuser->role_id == '1'){
-            $users = User::whereNotIn('role_id', [1,2])->get();
+            $users = User::whereNotIn('role_id', [1,2])->select('id','doc_num','name','last_name','email','role_id')->get();
             return view('user.index', compact('users'));
         }elseif($authuser->role_id == '2'){
-            $users = User::whereNotIn('role_id', [1,2,3])->get();
+            $users = User::whereNotIn('role_id', [1,2,3])->select('id','doc_num','name','last_name','email','role_id')->get();
             return view('user.index', compact('users'));
         }
         return redirect()->route('profile.index');
@@ -56,7 +56,7 @@ class UserController extends Controller
 
     public function edit_role($id):View
     {
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($id)->select('id','doc_num','name','last_name','email')->get();
         return view('user.edit_role', compact('user'));
     }
 
