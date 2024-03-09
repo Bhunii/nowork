@@ -31,19 +31,42 @@ class ProcessController extends Controller
     }
 
     public function create(){
+        $authuser = auth()->user();
+        
+        if($authuser->role_id == 3){
+
+            $processes = $authuser->recruiter->company->vacancy->processes;
+            return view('process.create');
+        }else{
+            return ('No autorizado');
+        }
     }
 
-    public function store($id){
-        $authuser = auth()->user()->candidate;
-        $vacancy = $id;
+    public function store(Request $request){
+        $authuser = auth()->user();
+    
+        if ($authuser->role_id == 3) {
 
-        Process::create([
-            'id_vacancy' => $vacancy,
-            'id_candidate' => $authuser->id
-        ]);
-
-        return redirect()->route('process.index');
+            $id = $request->input('id_vacancy');
+            
+            $points1 = request()->input('points1');
+            $points2 = request()->input('points2');
+            $points3 = request()->input('points3');
+            
+            $totalPoints = $points1 + $points2 + $points3;
+    
+            $process = Process::create([
+                'id_vacancy' => $id,
+                'id_candidate' => $authuser->candidate->id,
+                'points' => $totalPoints,
+            ]);
+    
+            return redirect()->route('process.index');
+        } else {
+            return ('No autorizado');
+        }
     }
+    
 
     public function edit(){
     }

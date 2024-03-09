@@ -25,6 +25,7 @@
                 <td style="width: 235px">Nombre Candidato</td>
                 <td style="width: 235px">Fecha de postulacion</td>
                 <td style="width: 155px">Datos</td>
+                <td style="width: 155px">Puntos</td>
             </tr>
             @if ($processes->isEmpty())
                 <tr>
@@ -34,13 +35,15 @@
                 @foreach($processes as $process)
                         <tr class="tr_tabla_general_contenido">
                             <td class=" td_general_tabla_general td_configuracion_general">
-                                <a class="a_config_general" href="ponderate.index">Puntuar</a>
+                                <a class="a_config_general" href="{{ route('process.create') }}">Puntuar candidato</a>
+
                             </td>
                             <td class="td_general_tabla_general">{{ $process->candidate->user->name }}</td>
                             <td class="td_general_tabla_general">{{ $process->date_applied }}</td>
                             <td class=" td_general_tabla_general td_configuracion_general">
                                 <a class="a_config_general" href="#">Curriculum</a>
                             </td>
+                            <td class="td_general_tabla_general">{{ $process->points }}</td>
                         </tr>
                 @endforeach
             @endif
