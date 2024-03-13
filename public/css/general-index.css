@@ -1,0 +1,53 @@
+.contenedor_index_general{
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 25px 15px;
+    gap: 11px;
+}
+
+.contenedor_tabla_general{
+    overflow-y: auto;
+    font-size: 0.9em;
+}
+
+.tr_tabla_general_encabezado{
+    color: white;
+    background-color: #504a54;
+}
+
+.tr_tabla_general_encabezado td{
+    text-align: center;
+}
+
+.td_general_tabla_general{
+    background-color: #a9a4ad;
+    padding: 5px 3px;
+    text-align: center;
+}
+
+.tr_tabla_general_contenido a{
+    font-weight: 800;
+    color: #902424;
+    transition: color 0.3s ease;
+}
+
+.tr_tabla_general_contenido a:link{
+    color: #902424;
+}
+
+.tr_tabla_general_contenido a:visited{
+    color: #902424;
+}
+
+.tr_tabla_usuario_contenido a:hover{
+    color: #cc6060;
+}
+
+.tr_tabla_usuario_contenido a:active{
+    color: #e1afaf;
+}
+
+

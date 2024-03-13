@@ -1,82 +1,84 @@
-@extends('layouts.app',['title' => 'Your Profile'])
+@extends('layouts.nav.candidate',['title' => 'Your Profile'])
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+@section('js')
+    <script src="{{ asset('js/occupational_profile.js') }}"></script>
 @endsection
 
-@section('content')
-
-<main class="main_profile">
-        <div class="container_profile">
-            <section class="container_nexos_profile">
-                <ul class="nexos_ul">
-                    <li class="nexos">
-                        <a href="#">Actulizar Hoja de Vida</a>
+@section('content_profile')
+    <div class="profile">
+        <article class="img_profile">
+            @switch(auth()->user()->genre)
+                @case("M")
+                    <img class="icon_profile2" src="{{asset('img/gigachad.jpg')}}" alt="icon profile">
+                    @break
+                @case("F")
+                    <img class="icon_profile2" src="{{ asset('img/icon_profile2.png') }}" alt="icon profile">
+                    @break
+                @default
+                                <!-- <img src="icon_profile_woman.png" alt="icon profile"> -->
+            @endswitch
+        </article>
+        <article class="data_profile">
+            <ul class="data_ul">
+                <li class="data data_title">
+                    <h2>Informacion del Perfil</h2>
+                </li>
+            </ul>
+            <div class="contenedor_ul_data">
+                <ul class="ul_campo_data">
+                    <li><span> Candidato </span></li>
+                    <li><span> Documento </span></li>
+                    <li><span> Ubicacion </span></li>
+                    <li><span> Correo </span></li>
+                    <li><span> Telefono </span></li>
+                    <li><span> Perfil Ocupacional </span></li>
+                </ul>
+                <ul class="data_ul">
+                    <li class="data">
+                        <span>{{ auth()->user()->name }}</span> <span>{{ auth()->user()->last_name }}</span>
                     </li>
-                    <li class="nexos">
-                        <a href="{{ route('user.edit_data', $user->id) }}">Actulizar Datos Personales</a>
+                    <li class="data">
+                        <span>{{ auth()->user()->doc_type }}</span> <span>{{ auth()->user()->doc_num }}</span>
                     </li>
-                    <li class="nexos">
-                        <a href="#">Ver Vacantes Aplicadas</a>
+                    <li class="data">
+                        <span>{{ auth()->user()->candidate->departament->name }}</span> - <span>{{auth()->user()->candidate->municipality->name}}</span>
                     </li>
-                    <li class="nexos">
-                        <a href="#">Ajustes</a>
+                    <li class="data">
+                        <span>{{ auth()->user()->email }}</span>
                     </li>
-                    <li class="nexos nexo_logout">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <input type="submit" value="Logout"></input>
-                        </form>
+                    <li class="data">
+                        <span>{{ auth()->user()->phone }}</span>
+                    </li>
+                    <li class="data data_occupational_profile">
+                        <div class="contenedor_visible" id="contenedor_visible">
+                            <span id="occupationalProfile">{{ auth()->user()->candidate->curriculum->occupational_profile }}</span>
+                            <button id="btnShow" class="btn_update_curriculum" onclick="showContainer()">
+                                Actualizar Perfil Ocupacional
+                            </button>
+                        </div>
+                        <div class="contenedor_no_visible" id="contenedor_no_visible" style="display: none;">
+                            <form class="form_edit_curriculum" method="post" action="{{ route('curriculum.update') }}">
+                                @csrf
+                                @method('PUT')
+                                <div class="div_input_occupational_profile">
+                                    <textarea
+                                        id="textarea_occupational_profile"
+                                        name="occupational_profile"
+                                        value="{{ auth()->user()->candidate->curriculum->occupational_profile }}"
+                                        >{{ old('occupational_profile', auth()->user()->candidate->curriculum->occupational_profile) }}</textarea>
+                                    @error('occupational_profile')
+                                        <small>{{$message}}</small>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <input class="input_general_submit" id="input_submit_edit_curriculum" type="submit" value="Actualizar">
+                                    <button class="btn_general btn_update_curriculum" id="btnHide" onclick="hideContainer()">Cancelar</button>
+                                </div>
+                            </form>
+                        </div>
                     </li>
                 </ul>
-            </section>
-
-            <section class="container_general_profile">
-                <article class="phrase_profile">
-                    <span>Hola!,Que tal tu dia?</span>
-                </article>
-                <div class="profile">
-                    <article class="img_profile">
-                        @switch($user->genre)
-                            @case("M")
-                                <img class="icon_profile2" src="icon_profile1.png" alt="icon profile">
-                                @break
-                            @case("F")
-                                <img class="icon_profile2" src="{{ asset('img/icon_profile2.png') }}" alt="icon profile">
-                                @break
-                            @default
-                                <!-- <img src="icon_profile_woman.png" alt="icon profile"> -->
-                        @endswitch
-                    </article>
-                    <article class="data_profile">
-                        <ul class="data_ul">
-                            <li class="data data_title">
-                                <h2>Informacion del Perfil</h2>
-                            </li>
-                            <li class="data">
-                                <span>{{ auth()->user()->name }}</span> <span>{{ auth()->user()->last_name }}</span>
-                            </li>
-                            <li class="data">
-                                <span>{{ auth()->user()->doc_type }}</span> <span>{{ auth()->user()->doc_num }}</span>
-                            </li>
-                            <li class="data">
-                                <span>Ciudad</span>
-                            </li>
-                            <li class="data">
-                                <span>{{ auth()->user()->email }}</span>
-                            </li>
-                            <li class="data">
-                                <span>{{ auth()->user()->phone }}</span>
-                            </li>
-                            <li class="data data_occupational_profile">
-                                <span>
-                                </span>
-                            </li>
-                        </ul>
-                    </article>
-                </div>
-            </section>
-        </div>
-    </main>
-
+            </div>
+        </article>
+    </div>
 @endsection

@@ -1,0 +1,61 @@
+.container_general_profile{
+    display: flex;
+    align-items: center;
+}
+
+.container_form_create_occupation{
+    display: flex;
+    width: 90%;
+    height: 95%;
+    flex-direction: column;
+    align-items: center;
+    gap: 11px;
+}
+
+.container_form_create{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.form_create{
+    display: flex;
+    width: 80%;
+    align-items: center;
+    background: none;
+    border: none;
+}
+
+.textarea_form_occupation{
+    height: 85px;
+    padding: 5px 7px;
+    border: 1px solid #ccc;
+    -webkit-transition: 0.5s ;
+    transition: 0.5s;
+    outline: none;
+    resize: none;
+    margin: 0;
+}
+
+.textarea_form_occupation:focus{
+    transition: 2s ease;
+    border: 2px solid #555;
+}
+/* .textarea_form_occupation{
+    display: flex;
+    width: 100%;
+    padding: 7px 7px;
+    height: 121px;
+    border-radius: 5px;
+    font-size:larger;
+
+
+} */
+
+#textarea_occupational_profile:focus{
+    outline: none;
+}

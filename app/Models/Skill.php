@@ -17,4 +17,8 @@ class Skill extends Model
         'name',
         'description'
     ];
+
+    public function occupation(){
+        return $this->belongsTo(Occupation::class, 'code_occupation');
+    }
 }

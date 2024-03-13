@@ -35,4 +35,12 @@ class Company extends Model
     public function municipality(){
         return $this->belongsTo(Municipality::class, 'id_municipality');
     }
+
+    public function vacancies(){
+        return $this->hasMany(Vacancy::class, 'id_company');
+    }
+
+    public function vacancy(){
+        return $this->hasOne(Vacancy::class, 'id_company');
+    }
 }

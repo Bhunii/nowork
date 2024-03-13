@@ -16,7 +16,18 @@ class Curriculum extends Model
         'occupational_profile'
     ];
 
-    protected $attributes = [
-        'occupational_profile' => 'Aqui va tu perfil ocupacional.',
-    ];
+    public function studies()
+    {
+        return $this->hasMany(Study::class, 'id_curriculum');
+    }
+
+    public function experiences()
+    {
+        return $this->hasMany(Experience::class, 'id_curriculum');
+    }
+
+    public function languages()
+    {
+        return $this->hasMany(Language::class, 'id_curriculum');
+    }
 }

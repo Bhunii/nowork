@@ -4,42 +4,56 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Recruiter;
-use App\Models\User;
+use App\Models\Departament;
+use Illuminate\Support\Str;
 
 class RecruiterController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
     public function index(){
-        $recruiters = Recruiter::all();
-        return view('recruiter.index', ['recruiters' => $recruiters]);
+        $authuser = auth()->user();
+
+        if($authuser->role_id == '2'){
+            $recruiters = Recruiter::select('id','admission_date')->get;
+            return view('recruiter.index', compact('recruiters'));
+        }else{
+            return redirect()->route('profile.index');
+        }
     }
 
-    public function create($id){
-        $user = User::findOrFail($id);
-        return view('recruiter.create', compact('user'));
+    public function create(){
     }
 
-    public function store(Request $request,$id){
-        $user = User::findOrFail($id);
+    public function store(){
+    }
 
-        Recruiter::create([
-            'user_id'=> $id,
-            'admission_date'=> $request->admission_date
+    public function edit()
+    {
+        $user = auth()->user();
+        $departaments = Departament::with('municipalities')->get();
+        return view('recruiter.edit', compact('user','departaments'));
+
+    }
+
+    public function update(Request $request)
+    {
+        $user = auth()->user();
+
+        $user->update([
+            'phone' => $request->phone,
+            'user_name' => $request->user_name,
+            'email' => Str::lower($request->email)
         ]);
 
-        return redirect()->route('recruiter.index');
-    }
+        $user->candidate->update([
+            'id_departament' => $request->id_departament,
+            'id_municipality' => $request->id_municipality,
+            'addres' => Str::lower($request->addres)
+        ]);
 
-    public function edit($id){
-        $recruiter = Recruiter::findOrFail($id);
-        return view('recruiter.edit', compact('recruiter'));
-    }
-
-    public function update(Request $request,$id){
-        $recruiter = recruiter::findOrFail($id);
-
-        $recruiter->admission_date = $request->admission_date;
-        $recruiter->save();
-
-        return redirect()->route('recruiter.index');
+        return redirect()->route('profile.index')->with('mensaje','Datos Actualizados');
     }
 }

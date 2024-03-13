@@ -19,4 +19,17 @@ class Charge extends Model
         'salary',
         'type_contract'
     ];
+
+    public function users(){
+        return $this->belongsTo(User::class,'id_vacancy','id');
+    }
+
+    public function denomination(){
+        return $this->belongsTo(Denomination::class,'id_denomination');
+    }
+
+    public function function(){
+        return $this->belongsTo(Functions::class,'id_function');
+    }
+
 }

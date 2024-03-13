@@ -1,55 +1,53 @@
-@extends('layouts.app')
+@extends('layouts.nav.recruiter',['title' => 'Reclutador - Empresa'])
 
-@section('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('css/index.css')}}">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <h2>LIST OF COMPANIES</h2>
-        <table class="tabla">
-            <tr>
-                <th>id_company</th>
-                <th>name</th>
-                <th>nit</th>
-                <th>company_name</th>
-                <th>email</th>
-                <th>nature</th>
-                <th>id_departement</th>
-                <th>id_municipality</th>
-                <th>addres</th>
-                <th>phone</th>
-            </tr>
-        @forelse ($companies as $company)
-            <tbody>
-                <tr>
-                    <td>{{$company->id_company}}</td>
-                    <td>{{$company->name}}</td>
-                    <td>{{$company->nit}}</td>
-                    <td>{{$company->company_name}}</td>
-                    <td>{{$company->email}}</td>
-                    <td>{{$company->nature}}</td>
-                    <td>{{$company->departament->name}}</td>
-                    <td>{{$company->municipality->name}}</td>
-                    <td>{{$company->addres}}</td>
-                    <td>{{$company->phone}}</td>
-
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="2">There is no system</td>
-                </tr>
-            </tbody>
-        @endforelse
-        <a href="{{route('company.create')}}" id="create">Create new company</a>
-        </table>
-    </div>
-</body>
-</html>
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/index-company.css') }}">
 @endsection
+
+@section('content_profile')
+<section class="contenedor_index_empresa">
+    <article class="contenedor_index_titulo">
+        <h2>Empresa</h2>
+    </article>
+    <article class="contenedor_general_empresa">
+        @if($company)
+            <div class="contenedor_data_general">
+                <div class="contenido_data_general">
+                    <ul class="ul_campo_data">
+                        <li>Name</li>
+                        <li>NIT</li>
+                        <li>Company name</li>
+                        <li>Email</li>
+                        <li>Nature</li>
+                        <li>Departement</li>
+                        <li>Municipality</li>
+                        <li>Addres</li>
+                        <li>Phone</li>
+                    </ul>
+                    <ul class="ul_valor_data">
+                        <ul>{{$company->name}}</ul>
+                        <ul>{{$company->nit}}</ul>
+                        <ul>{{$company->company_name}}</ul>
+                        <ul>{{$company->email}}</ul>
+                        <ul>{{$company->nature}}</ul>
+                        <ul>{{$company->departament->name}}</ul>
+                        <ul>{{$company->municipality->name}}</ul>
+                        <ul>{{$company->addres}}</ul>
+                        <ul>{{$company->phone}}</ul>
+                    </ul>
+                </div>
+                <div>
+                    <a href="{{ route('company.edit') }}">Actualizar Datos</a>
+                </div>
+            </div>
+        @else
+            <div>
+                <a href="{{ route('company.create') }}">Crear Empresa</a>
+            </div>
+        @endif
+    </article>
+</section>
+@endsection
+
+

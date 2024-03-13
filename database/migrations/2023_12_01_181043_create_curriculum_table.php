@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('curriculum', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_candidate')->constrained('candidates');
-            $table->string('occupational_profile');
+            $table->string('occupational_profile')->nullable();
             $table->timestamps();
         });
     }

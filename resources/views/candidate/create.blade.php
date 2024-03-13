@@ -1,30 +1,52 @@
 @extends('layouts.app',['title' => 'Form Register'])
 
-@section('content')
-@php
-    $selected_departament = old('id_departament');
-@endphp
+@section('js')
+    <script src="{{ asset('js/location.js') }}"></script>
+@endsection
+
+@section('style')
     <style>
-        .contenido{
-            height: 1000px;
+        .contenido_form{
+            height: 1225px;
         }
 
         .form_register_candidate{
-            height: 90%;
-            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            border: 2px #e3e3e3 solid;
+            border-radius: 15px;
+            gap: 25px;
+            background: #f1f1f1;
+        }
+        .div_form_create_candidate{
+            display: flex;
+            width: auto;
+            height: auto;
+            padding: 5px 21px;
+            gap: 21px;
+        }
+        .input_general_submit{
+            width: 155px;
+            height: 40px;
         }
 
-        .form_register_candidate div{
-            height: 10%;
+        .input_style_general, .select_style_general{
+            height: 36px;
+        }
+        .btn_general{
+            width: 140px;
+            height: 40px;
         }
 
     </style>
-<main class="contenido">
+@endsection
+@section('content')
+<main class="contenido_form">
     <form class="form form_register_candidate" method="post" action="{{ route('candidate.store') }}">
         @csrf
         <div>
             <label>Document Type</label>
-            <select name="doc_type">
+            <select class="select_style_general" name="doc_type" class="s">
                 <option value=" ">Select an option</option>
                 <option value="CC">citizenship card</option>
                 <option value="TI">identity card</option>
@@ -33,6 +55,7 @@
         <div>
             <label>Document Number</label>
             <input
+            class="input_style_general"
             name="doc_num"
             type="text"
             value="{{ old('doc_num') }}"
@@ -43,6 +66,7 @@
         <div>
             <label>Name</label>
             <input
+            class="input_style_general"
             name="name"
             type="text"
             value="{{ old('name') }}"
@@ -53,6 +77,7 @@
         <div>
             <label>Last Name</label>
             <input
+            class="input_style_general"
             name="last_name"
             type="text"
             value="{{ old('last_name') }}"
@@ -63,6 +88,7 @@
         <div>
             <label>Phone</label>
             <input
+            class="input_style_general"
             name="phone"
             type="text"
             value="{{ old('phone') }}"
@@ -73,6 +99,7 @@
         <div>
             <label>User name</label>
             <input
+            class="input_style_general"
             name="user_name"
             type="text"
             value="{{ old('user_name') }}"
@@ -83,6 +110,7 @@
         <div>
             <label>Email</label>
             <input
+            class="input_style_general"
             name="email"
             type="text"
             value="{{ old('email') }}"
@@ -92,7 +120,7 @@
         </div>
         <div>
             <label>Genre</label>
-            <select name="genre">
+            <select class="select_style_general" name="genre">
                 <option value=" ">Select an option</option>
                 <option value="M">male</option>
                 <option value="F">female</option>
@@ -100,50 +128,52 @@
         </div>
         <div>
             <label>Departament</label>
-            <select name="id_departament">
-                <option value=" ">Select an option</option>
+            <select class="select_style_general" name="id_departament" id="departamentSelect">
+                <option value="">Select an option</option>
                 @foreach ($departaments as $departament)
-                    <option value="{{ $departament->id }}">{{ $departament->name }}</option>
+                    <option value="{{ $departament->id }}" data-municipalities='@json($departament->municipalities)'>{{ $departament->name }}</option>
                 @endforeach
             </select>
         </div>
         <div>
             <label>Municipality</label>
-            <select name="id_municipality">
-                <option value=" ">Select an option</option>
-                @foreach ($municipalities as $municipality)
-                    @if (old('id_departament') == $municipality->id_departament)
-                        <option value="{{ $municipality->id }}" selected>{{ $municipality->name }}</option>
-                    @else
-                        <option value="{{ $municipality->id }}">{{ $municipality->name }}</option>
-                    @endif
-                @endforeach
+            <select class="select_style_general" name="id_municipality" id="municipalitySelect">
+                <option value="">Select an option</option>
             </select>
         </div>
         <div>
             <label>Addres</label>
             <input
+            class="input_style_general"
             name="addres"
             type="text"
-            value=""
+            value="{{ old('addres') }}"
             >
+            @error('addres')
+                <small>{{$message}}</small>
+            @enderror
         </div>
         <div>
             <label>Password</label>
             <input
+            class="input_style_general"
             name="password"
             type="password"
             value=""
-            >@error('password')
+            >
+            @error('password')
                 <small>{{$message}}</small>
             @enderror
         </div>
-        <input
-        type="submit"
-        value="enviar"
-        >
+        <div class="div_form_create_candidate" style="flex-direction: row">
+            <input
+            class="input_general_submit"
+            type="submit"
+            value="Crear"
+            >
+            <button class="btn_general"><a href="{{ route('login') }}">Volver</a></button>
+        </div>
     </form>
-    <h4><a href="{{ route('login') }}">Back to List</a></h4>
 </main>
 
 @endsection
