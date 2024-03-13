@@ -33,6 +33,7 @@ class CandidateController extends Controller
     {
         $departaments = Departament::with('municipalities')->get();
         return view('candidate.create', compact('departaments'));
+        }
     }
 
     public function store(CandidateRequest $request):RedirectResponse

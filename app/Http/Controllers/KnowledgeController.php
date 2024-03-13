@@ -4,50 +4,60 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Occupation;
 use App\Models\Knowledge;
 
 class KnowledgeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $knowledges=Knowledge::all();
-        return view('knowledge.index',compact('knowledges'));
     }
-    
-    public function create()
+
+    public function create($code)
     {
-        return view('knowledge.create');
+        return view('knowledge.create', compact('code'));
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'code'=>'required',
+            'name'=>'required',
+            'description'=>'required'
+        ]);
+
         Knowledge::create([
             'code_occupation'=>$request->code_occupation,
             'code'=>$request->code_knowledge,
             'name'=>$request->name_knowledge,
             'description'=>$request->description_knowledge,
         ]);
+
+        return redirect()->route('occupation.show',$request->code_occupation);
     }
 
-    public function edit(Knowledge $knowledge)
+    public function edit()
     {
-        return view('knowledge.edit', compact('knowledge'));
     }
 
-    public function update(Request $request, Knowledge $knowledge)
+    public function update()
     {
-        $knowledge->update($request->all());
-        return redirect()->route('knowledge.index');
     }
 
-    public function destroy(Knowledge $knowledge)
+    public function destroy()
     {
-        $knowledge->delete();
-        return redirect()->route('knowledge.index');
     }
 
-    public function show(Knowledge $knowledge)
+    public function show($code)
     {
-        return view('knowledge.show', compact('knowledge'));
+        $occupation = Occupation::findOrFail($code);
+        $knowledges = $occupation->knowledges()->select('code','name','description')->get();
+
+        return view('knowledge.show', compact('knowledges', 'code'));
     }
 }

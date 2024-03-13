@@ -1,104 +1,56 @@
-@extends('layouts.nav.recruiter', ['title' => 'Reclutador - Ocupaciones']);
+@extends('layouts.nav.recruiter',['title' => 'Your Profile'])
 
 @section('css')
- <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
-@endsection
-
-@section('style')
-<style>
-        #create {
-            display: block;
-            margin-bottom: 20px;
-            color: #d32f2f;
-            text-decoration: none;
-        }
-    
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-    
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-    
-        th, td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
-        }
-    
-        th {
-            background-color: #d32f2f;
-            color: white;
-        }
-    
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-    
-        .edit {
-            color: #d32f2f;
-            text-decoration: none;
-            margin-right: 5px;
-        }
-    
-        .edit:hover {
-            text-decoration: underline;
-        }
-    
-        .delete-btn {
-            background-color: #d32f2f;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    
-        .delete-btn:hover {
-            background-color: #b71c1c;
-        }
-</style>
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/index-occupations.css') }}">
 @endsection
 
 @section('content_profile')
-
-<main>
-    <div>
-        <h1>LISTA DE OCUPACIONES</h1>
-        <table class="tabla">
-            
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Actualizar</th>
-                </tr>
-            </thead>
+<div class="container_index_occupations">
+    <div class="content_title_occupations">
+        <h1>Listado De Ocupaciones</h1>
+    </div>
+    <div class="container_general_occupations">
+        <div class="container_content_occupations">
+            <div class="container_header_occupations">
+                <ul class="ul_header_occupation">
+                    <li style="width: 15%">Code</li>
+                    <li style="width: 25%">Name</li>
+                    <li style="width: 48%">Description</li>
+                    <li style="width: 12%; background: none;"></li>
+                </ul>
+            </div>
+            <div class="container_data_occupations">
             @forelse($occupations as $occupation)
-            <tbody>
-                <tr>
-                    <td>{{$occupation->name}}</td>
-                    <td><a href="{{route('occupation.show', $occupation->id)}}" class="edit">DETALLES</a>|<a href="{{ route('occupation.edit', $occupation->id)}}" class="edit">EDIT</a>|
-                        <form method="POST" action="{{route('occupation.destroy', $occupation->id)}}" >
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit" value="DELETE" class="edit"/>
+                <ul class="ul_data_occupation">
+                    <li style="width: 15%">{{ $occupation->code_occupation }}</li>
+                    <li style="width: 25%">{{ $occupation->name }}</li>
+                    <li style="width: 48%">{{ $occupation->description }}</li>
+                    <li style="background: none; width: 12%; gap: 9px;">
+                            <a class="show_icon_general" href="{{ route('occupation.show', $occupation->code_occupation)}}">
+                                <img src="{{ asset('img/show-and-more-icon.png') }}">
+                            </a>
+                            <a class="edit_icon_general" href="{{ route('occupation.edit', $occupation->id)}}" class="edit">
+                                <img src="{{ asset('img/edit-icon.png')}}" alt="editar">
+                            </a>
+                            <form class="form_delete_icon" method="POST" action="{{route('occupation.destroy', $occupation->id)}}" >
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn-eliminar-icon">
+                                    <img src="{{ asset('img/delete-icon.png') }}" alt="eliminar">
+                                </button>
                             </form>
-                    </td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="2">No hay ocupaciones aun...</td>
-                </tr></tbody>
-            @endforelse
-        </table>
+                        </li>
+                    </ul>
+                @empty
+                    <span colspan="2">No hay ocupaciones aun...</span>
+                @endforelse
+            </div>
+        </div>
     </div>
     <div>
-        <a href="{{route('occupation.create')}}">Crear Ocupacion</a>
+        <a href="{{route('occupation.create')}}" id="create">Crear nueva ocupacion</a>
     </div>
-</main>
+</div>
 
 @endsection

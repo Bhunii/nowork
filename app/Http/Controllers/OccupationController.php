@@ -5,11 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Occupation;
-use App\Models\Skill;
-use App\Models\Knowledge;
-use App\Models\Relation;
-use App\Models\Functions;
-use App\Models\Denomination;
 
 
 class OccupationController extends Controller
@@ -19,7 +14,7 @@ class OccupationController extends Controller
         $occupations=Occupation::all();
         return view('occupation.index',compact('occupations'));
     }
-    
+
     public function create()
     {
         return view('occupation.create');
@@ -34,6 +29,7 @@ class OccupationController extends Controller
             'description' => $request->description_occupation,
         ]);
 
+<<<<<<< HEAD
         //Funciones
         Functions::create([
             'code_occupation' => Occupation::latest('code_occupation')->first()->code_occupation,
@@ -73,6 +69,9 @@ class OccupationController extends Controller
         ]);
 
         return redirect()->route('occupation.create');
+=======
+        return redirect()->route('occupation.index');
+>>>>>>> origin/bryan
     }
 
 
@@ -93,9 +92,16 @@ class OccupationController extends Controller
         return redirect()->route('occupation.index');
     }
 
+<<<<<<< HEAD
     public function show($id)
     {
         $occupation = Occupation::with('functions', 'denominations', 'relations', 'skills', 'knowledges')->findOrFail($id);
+=======
+    public function show($code_occupation)
+    {
+        $occupation = Occupation::findOrFail($code_occupation);
+        // $functions= $occupation->functions;
+>>>>>>> origin/bryan
         return view('occupation.show', compact('occupation'));
     }
 

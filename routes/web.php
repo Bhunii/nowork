@@ -23,8 +23,10 @@ use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\VacanciesController;
 use App\Http\Controllers\ApiController;
-
-
+use App\Http\Controllers\FunctionsController;
+use App\Http\Controllers\KnowledgeController;
+use App\Http\Controllers\DenominationController;
+use App\Http\Controllers\RelationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,9 +57,9 @@ Route::post('login', [LoginController::class, 'store']);
 Route::post('logout', [LogoutController::class, 'store'])->name('logout');
 
 //Management routes for role
-Route::get('/role/index', [RoleController::class, 'index'])->name('role.index');
-Route::get('/role/create', [RoleController::class, 'create'])->name('role.create');
-Route::post('/role/store', [RoleController::class, 'store'])->name('role.store');
+// Route::get('/role/index', [RoleController::class, 'index'])->name('role.index');
+// Route::get('/role/create', [RoleController::class, 'create'])->name('role.create');
+// Route::post('/role/store', [RoleController::class, 'store'])->name('role.store');
 
 //Management routes for user
 Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
@@ -99,7 +101,7 @@ Route::post('/occupation/store', [OccupationController::class,'store'])->name('o
 Route::get('/occupation/edit/{occupation}', [OccupationController::class,'edit'])->name('occupation.edit');
 Route::put('/occupation/update/{occupation}', [OccupationController::class,'update'])->name('occupation.update');
 Route::delete('/occupation/destroy/{occupation}',[OccupationController::class, 'destroy'])->name('occupation.destroy');
-Route::get('/occupation/show/{occupation}', [OccupationController::class,'show'])->name('occupation.show');
+Route::get('/occupation/show/{code}', [OccupationController::class,'show'])->name('occupation.show');
 
 //Management routes for companies
 Route::get('/company/index', [CompanyController::class, 'index'])->name('company.index');
@@ -111,7 +113,7 @@ Route::delete('/company/{id}/destroy', [CompanyController::class, 'destroy'])->n
 Route::get('/company/{id}/show', [CompanyController::class, 'show'])->name('company.show');
 
 //Profile routes
-Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/profile/{username}', [ProfileController::class, 'show'])->where('username', '^(?!index$).*$')->name('profile.show');
 Route::get('/profiles/recruiter', [RecruiterController::class, 'index'])->name('profiles.recruiter');
 
 //Management routes for candidate
@@ -165,6 +167,47 @@ Route::put('/charge/update', [ChargeController::class, 'update'])->name('charge.
 //Management routes for vacancy process of recruiter and candidate
 Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
 Route::get('/process/create',[ProcessController::class,'create'])->name('process.create');
-Route::post('/process/store',[ProcessController::class,'store'])->name('process.store');
+Route::post('/process/{id}/store',[ProcessController::class,'store'])->name('process.store');
 Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
 Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
+
+//Management routes for functions of occupations
+// Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
+Route::get('/functions/create/occupation/{code}',[FunctionsController::class,'create'])->name('functions.create');
+Route::post('/functions/store',[FunctionsController::class,'store'])->name('functions.store');
+// Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
+// Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
+Route::get('/functions/show/occupation/{code}', [FunctionsController::class, 'show'])->name('functions.show');
+
+//Management routes for skills of occupations
+// Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
+Route::get('/skill/create/{code}',[SkillController::class,'create'])->name('skill.create');
+Route::post('/skill/store',[SkillController::class,'store'])->name('skill.store');
+// Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
+// Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
+Route::get('/skill/show/occupation/{code}', [SkillController::class, 'show'])->name('skill.show');
+
+//Management routes for knowlegdes of occupations
+// Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
+Route::get('/knowledge/create/{code}',[KnowledgeController::class,'create'])->name('knowledge.create');
+Route::post('/knowledge/store',[KnowledgeController::class,'store'])->name('knowledge.store');
+// Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
+// Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
+Route::get('/knowledge/show/occupation/{code}', [KnowledgeController::class, 'show'])->name('knowledge.show');
+
+//Management routes for knowlegdes of occupations
+// Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
+Route::get('/denomination/create/{code}',[DenominationController::class,'create'])->name('denomination.create');
+Route::post('/denomination/store',[DenominationController::class,'store'])->name('denomination.store');
+// Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
+// Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
+Route::get('/denomination/show/occupation/{code}', [DenominationController::class, 'show'])->name('denomination.show');
+
+//Management routes for knowlegdes of occupations
+// Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
+Route::get('/relation/create/{code}',[RelationController::class,'create'])->name('relation.create');
+Route::post('/relation/store',[RelationController::class,'store'])->name('relation.store');
+// Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
+// Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
+Route::get('/relation/show/occupation/{code}', [RelationController::class, 'show'])->name('relation.show');
+

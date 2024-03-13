@@ -4,14 +4,10 @@
     <script src="{{ asset('js/occupational_profile.js') }}"></script>
 @endsection
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
-@endsection
-
 @section('content_profile')
     <div class="profile">
         <article class="img_profile">
-            @switch($user->genre)
+            @switch(auth()->user()->genre)
                 @case("M")
                     <img class="icon_profile2" src="{{asset('img/gigachad.jpg')}}" alt="icon profile">
                     @break

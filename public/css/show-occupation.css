@@ -1,0 +1,120 @@
+.container_general_profile{
+    display: flex;
+    align-items: center;
+}
+
+.container_index_occupation{
+    display: flex;
+    width: 95%;
+    height: 95%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.container_general_occupation{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 15px;
+}
+
+.container_content_occupation{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.container_header_general{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    align-items: center;
+}
+
+.ul_header_general{
+    display: flex;
+    width: 100%;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    list-style: none;
+    gap: 10px;
+}
+
+.ul_header_general li{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: #d6d8db;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_data_general{
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+}
+
+.ul_data_general{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    flex-direction: row;
+    list-style: none;
+    gap: 10px;
+}
+
+.ul_data_general li{
+    display: flex;
+    height: 90%;
+    background: #e6e7e9;
+    align-items: center;
+    justify-content: center;
+}
+
+.title_oc{
+    display: flex;
+    align-self: flex-start;
+    margin-top: 9px;
+    padding: 0 5px;
+}
+
+.title_oc h4{
+    display: flex;
+}
+
+.container_add{
+    display: flex;
+    align-self: flex-end;
+}
+
+.add-icon{
+    width: 35px;
+    height: 35px;
+    background-color: none;
+    border-radius: 5px;
+    transition: background-color 0.7s ease;
+}
+
+.add-icon img{
+    width: 100%;
+    height: 100%;
+}
+
+.add-icon:hover{
+    background-color: #973245;
+}

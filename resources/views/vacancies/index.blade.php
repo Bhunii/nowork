@@ -1,15 +1,14 @@
 @extends('layouts.app',['title' => 'Vacancies'])
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/vacancies.css') }}">
+<link rel="stylesheet" href="{{ asset('css/vacancies.css') }}">
 @endsection
 
-@section('style')
-    <style>
-
-    </style>
+@section('js')
+    <script src="{{ asset('js/search.js') }}">
+        let departamentos = @json($departamentsJson);
+    </script>
 @endsection
-
 
 @section('content')
     <main class="contenedor_index_vacantes">
@@ -17,8 +16,16 @@
             <article class="article_buscador_vacantes">
                 <div class="contenedor_buscador">
                     <input
-                    class="input_style_general"
-                    placeholder="Buscador">
+                    class="input_style_general buscar-input-vacante"
+                    id="buscarVacante"
+                    type="text"
+                    placeholder="Buscar"
+                    >
+                    <button id="btnBuscarVacante" class="buscar-button-vacante">
+                        <picture>
+                            <img src="{{ asset('img/search-icon.png') }}" alt="icono buscador">
+                        </picture>
+                    </button>
                 </div>
             </article>
             <article class="article_general_vacantes">
@@ -27,7 +34,7 @@
                         <h2>Listado de Vacantes</h2>
                     </div>
                     @forelse($vacancies as $vacancy)
-                        <div class="contenedor_vacante">                        
+                        <div class="contenedor_vacante" data-departamento="{{ $vacancy->departament->name }}">
                             <div class="datos_vacante">
                                 <ul>
                                     <li style="font-weight: 700;">{{ $vacancy->company->name }}</li>
@@ -51,12 +58,11 @@
                                     <li>{{ $vacancy->end_date }}</li>
                                 </ul>
                                 <ul class="ul_postular_vacante">
-                                    @auth
-                                        @if(auth()->user()->role_id == '4')
+                                @auth
+                                    @switch(auth()->user()->role_id)
+                                        @case('4')
                                             @if ($vacancy->processes()->where('id_candidate', auth()->id())->exists())
-                                                <li>
-                                                    Ya está postulado
-                                                </li>
+                                                <li>Ya está postulado</li>
                                             @else
                                                 <li>
                                                     <form method="POST" action="{{ route('process.store', $vacancy->id) }}">
@@ -65,30 +71,22 @@
                                                     </form>
                                                 </li>
                                             @endif
-                                        @elseif(auth()->user()->role_id == '1')
-                                            <li>
-                                                No puede postularse
-                                            </li>
-                                        @elseif(auth()->user()->role_id == '2')
-                                            <li>
-                                                No puede postularse
-                                            </li>
-                                        @elseif(auth()->user()->role_id == '3')
-                                            <li>
-                                                No puede postularse
-                                            </li>
-                                        @endif
-                                    @endauth
-                                    @guest
-                                        <li>
-                                            <button>Postularse</button>
-                                        </li>
-                                    @endguest
+                                            @break
+                                        @case('1')
+                                        @case('2')
+                                        @case('3')
+                                            <li>No puede postularse</li>
+                                            @break
+                                    @endswitch
+                                @endauth
+                                @guest
+                                    <li>Inicia sesión</li>
+                                @endguest
                                 </ul>
                             </div>
                         </div>
                     @empty
-                        <span>No hay vacantes registradas</span>                                                
+                        <span>No hay vacantes registradas</span>
                     @endforelse
                     </div>
                 </div>

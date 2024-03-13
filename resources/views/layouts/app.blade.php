@@ -17,16 +17,6 @@
         {{ config('app.name') }}
     </title>
     @yield('style')
-    <style>
-        /* link[rel="icon"] {
-            width: 5px;
-            height: 9px;
-        } */
-
-        /* main{
-            padding: 1.5% 9%;
-        } */
-    </style>
 </head>
 <body>
     <header class="encabezado">
@@ -55,7 +45,7 @@
             @auth
                 <ul class="ul_nexos_header">
                     <li class="li_nexos">
-                        <a href="{{ route('profile.index')}}">Profile</a>
+                        <a href="{{ route('profile.show', ['username' => auth()->user()->user_name]) }}">Profile</a>
                     </li>
                 </ul>
             @endauth

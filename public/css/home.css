@@ -113,9 +113,4 @@
 span {
     color: var(--main-color)
 }
-@media (min-width: 250px) and (max-width: 650px) {
-    body {
-      background-color: var(--color-mid-dark);
-      color: var(--color-light);
-    }
-  }
+

@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Experience;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Departament;
-use Illuminate\Support\Str;
 
 class ExperienceController extends Controller
 {

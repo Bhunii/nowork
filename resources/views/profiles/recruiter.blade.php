@@ -1,13 +1,9 @@
 @extends('layouts.nav.recruiter',['title' => 'Your Profile'])
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
-@endsection
-
 @section('content_profile')
     <div class="profile">
         <article class="img_profile">
-            @switch($user->genre)
+            @switch(auth()->user()->genre)
                 @case("M")
                     <img class="icon_profile2" src="{{asset('img/gigachad.jpg')}}" alt="icon profile">
                     @break
@@ -46,7 +42,11 @@
                     </li>
                     <li class="data">
                         <span>{{ $companyName ?? '' }}</span>
+<<<<<<< HEAD
                     </li>           
+=======
+                    </li>
+>>>>>>> origin/bryan
                     <li class="data">
                         <span>{{ auth()->user()->name }}</span> <span>{{ auth()->user()->last_name }}</span>
                     </li>

@@ -4,48 +4,56 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Occupation;
 use App\Models\Relation;
 
 class RelationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $relations=Relation::all();
-        return view('relation.index',compact('relations'));
     }
-    
-    public function create()
+
+    public function create($code)
     {
-        return view('relation.create');
+        return view('relation.create', compact('code'));
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'code_occupation_relation' => 'required'
+        ]);
+
         Relation::create([
             'code_occupation'=>$request->code_occupation,
             'code_occupation_relation'=>$request->code_occupation_relation
         ]);
+
+        return redirect()->route('occupation.show'. $request->code_occcupation);
     }
 
-    public function edit(Relation $relation)
+    public function edit()
     {
-        return view('relation.edit', compact('relation'));
     }
 
-    public function update(Request $request, Relation $relation)
+    public function update()
     {
-        $relation->update($request->all());
-        return redirect()->route('relation.index');
     }
 
-    public function destroy(Relation $relation)
+    public function destroy()
     {
-        $relation->delete();
-        return redirect()->route('relation.index');
     }
 
-    public function show(Relation $relation)
+    public function show($code)
     {
-        return view('relation.show', compact('relation'));
+        $occupation = Occupation::findOrFail($code);
+        $relations = $occupation->relations()->select('code_occupation_relation')->get();
+
+        return view('relation.show', compact('relations', 'code'));
     }
 }
