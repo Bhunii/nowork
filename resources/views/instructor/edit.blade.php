@@ -13,7 +13,7 @@
 
         .form_update_instructor{
             width: 80%;
-            max-height: 650px;
+            max-height: auto;
             background: none;
             border: none;
             gap: 21px;

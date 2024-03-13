@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             // $table->string('code_departament', 50);
             // $table->foreign('code_departament')->references('code')->on('occupations');
-            $table->foreignId('id_departament')->constrained('departaments')->onDelete('cascade');            $table->string('code');
+            $table->foreignId('id_departament')->constrained('departaments')->onDelete('cascade');            
+            $table->string('code');
             $table->string('name');
             $table->timestamps();
         });

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('charges', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_vacancy')->constrained('vacancies');
+            $table->foreignId('id_vacancy')->constrained('vacancies')->onDelete('cascade');
             $table->foreignId('id_denomination')->constrained('denominations');
             $table->text('functions');
             $table->enum('payment_method',['M','Q']);

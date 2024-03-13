@@ -2,66 +2,54 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/general-index.css') }}">
-@endsection
-
-@section('style')
-    <style>
-        .container_general_profile{
-            font-size: 15px;
-        }
-
-        .tabla_instructores th {
-            background-color: #f2f2f2;
-        }
-
-        .tabla_instructores a {
-            color: blue;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/index-occupations.css') }}">
 @endsection
 
 @section('content_profile')
-    <section class="contenedor_index_general">
-        <article class="titulo_index_general">
-            <h3>Listado de Vacantes</h3>
-        </article>
-        <article class="contenedor_tabla_general">
-            <table class="contenido_tabla_general">
-                <tr class="tr_tabla_general_encabezado">
-                    <th style="width: 200px">Config</th>
-                    <th style="width: 200px">Denomination</th>
-                    <th style="width: 200px">Number vacancy</th>
-                    <th style="width: 200px">Municipio</th>
-                    <th style="width: 200px">Start date</th>
-                    <th style="width: 200px">End date</th>
-                </tr>
-                @forelse ($vacancies as $vacancy)
-                    <tr class="tr_tabla_general_contenido">
-                        <td class="td_general_tabla_general td_configuracion_general">
-                            <a class="a_config_general" href="#">Show vacancy</a>
-                        </td>
-                        <td class="td_general_tabla_general">{{ $vacancy->id }}</td>
-                        <td class="td_borrar_general" style="width: 70px">
-                        <form method="POST" action="{{route('vacancy.destroy', $vacancy->id)}}">
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit" value="DELETE" class="edit"/>
-                        </form>
-                        <div class="bottom-section">
-                            <a href="{{ route('process.index', $vacancy->id) }}" id="index">Ver candidatos aplicados</a>
-                        </div>
-                    </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td>No hay vacantes</td>
-                    </tr>
-                @endforelse
-            </table>
-        </article>
-        <article>
-            <a href="{{ route('vacancy.create') }}">Agregar</a>
-        </article>
-    </section>
+<div class="container_index_occupations">
+    <div class="content_title_occupations">
+        <h1>Listado De Vacantes</h1>
+    </div>
+    <div class="container_general_occupations">
+        <div class="container_content_occupations">
+            <div class="container_header_occupations">
+                <ul class="ul_header_occupation">
+                    <li style="width: 15%">Denomination</li>
+                    <li style="width: 25%">Location</li>
+                    <li style="width: 48%">Number vacantes</li>
+                    <li style="width: 12%; background: none;"></li>
+                </ul>
+            </div>
+            <div class="container_data_occupations">
+            @if($vacancies->isEmpty())
+                <span>No hay ocupaciones registradas</span>
+            @else
+                @foreach($vacancies as $vacancy)
+                    <ul class="ul_data_occupation">
+                        <li style="width: 15%">{{ $vacancy->charge->description }}</li>
+                        <li style="width: 25%">{{ $vacancy->departament->name }} - {{ $vacancy->municipality->name }}</li>
+                        <li style="width: 48%">{{ $vacancy->number_vacancy }}</li>
+                        <li style="background: none; width: 12%; gap: 9px;">
+                            <a class="show_icon_general" href="{{ route('process.index', $vacancy->id) }}" id="index" style="background: none;">
+                                <img src="{{ asset('img/process-candidates-icon.png') }}">
+                            </a>
+                            <form class="form_delete_icon" method="POST" action="{{route('vacancy.destroy', $vacancy->id)}}" >
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn-eliminar-icon">
+                                    <img src="{{ asset('img/delete-icon.png') }}" alt="eliminar">
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                @endforeach
+            @endif
+            </div>
+        </div>
+    </div>
+    <div>
+        <a href="{{ route('vacancy.create') }}">Crear vacante</a>
+    </div>
+</div>
+
 @endsection

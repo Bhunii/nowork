@@ -155,7 +155,7 @@ Route::get('/vacancy/create',[VacancyController::class,'create'])->name('vacancy
 Route::post('/vacancy/store',[VacancyController::class,'store'])->name('vacancy.store');
 Route::get('/vacancy/edit', [VacancyController::class, 'edit'])->name('vacancy.edit');
 Route::put('/vacancy/update', [VacancyController::class, 'update'])->name('vacancy.update');
-Route::delete('/vacancy/{id}/destroy', [VacancyController::class, 'destroy'])->name('vacancy.destroy');
+Route::delete('/vacancy/destroy/{id}', [VacancyController::class, 'destroy'])->name('vacancy.destroy');
 
 //Management routes for charge of recruiter
 Route::get('/charge/index',[ChargeController::class,'index'])->name('charge.index');

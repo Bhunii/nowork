@@ -77,13 +77,9 @@ class VacancyController extends Controller
 
     public function destroy($id)
     {
-        $vacancy=Vacancy::find($id);
-        if ($vacancy){
-            $vacancy->delete();
-            return redirect()->route('vacancy.index')->with('succes','vacancy delete');
-        }else{
-            return redirect()->route('vacancy.index')->with('mistake','vacancy not found');
+        $vacancy=Vacancy::findOrFail($id);
+        $vacancy->delete();
 
-        }
+        return redirect()->route('vacancy.index');
     }
 }
