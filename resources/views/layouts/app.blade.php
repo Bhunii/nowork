@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{asset('css/header.css')}}">
     <link rel="stylesheet" href="{{asset('css/form.css')}}">
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
+    <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <link rel="icon" type="image/png" href="{{ asset('img/trex-logo-black.png') }}">
     @yield('css')
     <title>
@@ -97,6 +99,43 @@
                 <a href="" target=""><img src="../img/login/icon_help.png" alt="ayuda"/></a>
             </picture>
         </section>
+
+        <nav class="mobile container" style="@media screen and (min-width: 968px)">
+            <div class="mobile__menu" id="mobile-menu">
+                <ul class="mobile__list">
+                    <li class="mobile__item">
+                        <a href="{{ route('candidate.create')}}" class="mobile__link active-link">
+                            <i class='bx bx-edit-alt' style='color:#ffffff'></i>
+                            <span class="mobile__name">Registarse </span>
+                        </a>
+                    </li>
+                    <li class="mobile__item">
+                        <a href="{{ route('login')}}" class="mobile__link">
+                            <i class='bx bx-log-in' style='color:#ffffff' ></i>
+                            <span class="mobile__name">Iniciar sesión </span>
+                        </a>
+                    </li>
+                    <li class="mobile__item">
+                        <a href="{{ route('home.index')}}" class="mobile__link">
+                            <i class='bx bx-home-alt-2'style='color:#ffffff'></i>
+                            <span class="mobile__name">Home</span>
+                        </a>
+                    </li>
+                    <li class="mobile__item">
+                        <a href="{{ route('vacancies.index')}}" class="mobile__link">
+                            <i class='bx bx-file'style='color:#ffffff'></i>
+                            <span class="mobile__name">Vacacies</span>
+                        </a>
+                    </li>
+                    <li class="mobile__item">
+                        <a href="{{ route('about.index')}}" class="mobile__link">
+                            <i class='bx bx-message-square-detail'style='color:#ffffff'></i>
+                            <span class="mobile__name">About</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </footer>
 </body>
 </html>

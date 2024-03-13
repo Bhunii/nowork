@@ -5,13 +5,7 @@
 @endsection
 
 @section('style')
-    <!-- <style>
-        .encabezado{
-            position: fixed;
-            z-index: 4;
-            width: 100%;
-        }
-    </style> -->
+
 @endsection
 
 @section('content')
