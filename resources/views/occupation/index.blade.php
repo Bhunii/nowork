@@ -21,19 +21,22 @@
                 </ul>
             </div>
             <div class="container_data_occupations">
-            @forelse($occupations as $occupation)
-                <ul class="ul_data_occupation">
-                    <li style="width: 15%">{{ $occupation->code_occupation }}</li>
-                    <li style="width: 25%">{{ $occupation->name }}</li>
-                    <li style="width: 48%">{{ $occupation->description }}</li>
-                    <li style="background: none; width: 12%; gap: 9px;">
+            @if($occupations->isEmpty())
+                <span>No hay ocupaciones registradas</span>
+            @else
+                @foreach($occupations as $occupation)
+                    <ul class="ul_data_occupation">
+                        <li style="width: 15%">{{ $occupation->code_occupation }}</li>
+                        <li style="width: 25%">{{ $occupation->name }}</li>
+                        <li style="width: 48%">{{ $occupation->description }}</li>
+                        <li style="background: none; width: 12%; gap: 9px;">
                             <a class="show_icon_general" href="{{ route('occupation.show', $occupation->code_occupation)}}">
                                 <img src="{{ asset('img/show-and-more-icon.png') }}">
                             </a>
-                            <a class="edit_icon_general" href="{{ route('occupation.edit', $occupation->id)}}" class="edit">
+                            <a class="edit_icon_general" href="{{ route('occupation.edit', $occupation->code_occupation)}}" class="edit">
                                 <img src="{{ asset('img/edit-icon.png')}}" alt="editar">
                             </a>
-                            <form class="form_delete_icon" method="POST" action="{{route('occupation.destroy', $occupation->id)}}" >
+                            <form class="form_delete_icon" method="POST" action="{{route('occupation.destroy', $occupation->code_occupation)}}" >
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn-eliminar-icon">
@@ -42,9 +45,8 @@
                             </form>
                         </li>
                     </ul>
-                @empty
-                    <span colspan="2">No hay ocupaciones aun...</span>
-                @endforelse
+                @endforeach
+            @endif
             </div>
         </div>
     </div>

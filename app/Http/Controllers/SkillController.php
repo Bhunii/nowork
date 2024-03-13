@@ -55,8 +55,7 @@ class SkillController extends Controller
 
     public function show($code)
     {
-        $occupation = Occupation::findOrFail($code);
-        $skills = $occupation->skills()->select('code','name','description')->get();
+        $skills = Skill::where('code_occupation', $code)->select('code','name','description')->get();
 
         return view('skill.show', compact('skills', 'code'));
     }

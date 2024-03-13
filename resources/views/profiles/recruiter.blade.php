@@ -42,11 +42,7 @@
                     </li>
                     <li class="data">
                         <span>{{ $companyName ?? '' }}</span>
-<<<<<<< HEAD
-                    </li>           
-=======
                     </li>
->>>>>>> origin/bryan
                     <li class="data">
                         <span>{{ auth()->user()->name }}</span> <span>{{ auth()->user()->last_name }}</span>
                     </li>

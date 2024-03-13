@@ -23,10 +23,10 @@ class UserController extends Controller
     {
         $authuser = auth()->user();
         if($authuser->role_id == '1'){
-            $users = User::whereNotIn('role_id', [1,2])->select('id','doc_num','name','last_name','email','role_id')->get();
+            $users = User::whereNotIn('role_id', [1,2])->select('doc_num','name','last_name','email','role_id')->get();
             return view('user.index', compact('users'));
         }elseif($authuser->role_id == '2'){
-            $users = User::whereNotIn('role_id', [1,2,3])->select('id','doc_num','name','last_name','email','role_id')->get();
+            $users = User::whereNotIn('role_id', [1,2,3])->select('doc_num','name','last_name','email','role_id')->get();
             return view('user.index', compact('users'));
         }
         return redirect()->route('profile.index');
@@ -54,15 +54,15 @@ class UserController extends Controller
         return redirect()->route('login')->with('mensaje','Usuario Creado Exitosamente');
     }
 
-    public function edit_role($id):View
+    public function edit_role($doc_num):View
     {
-        $user = User::findOrFail($id)->select('id','doc_num','name','last_name','email')->get();
+        $user = User::where('doc_num',$doc_num)->select('doc_num','name','last_name','email')->first();
         return view('user.edit_role', compact('user'));
     }
 
-    public function update_role(Request $request,$id):RedirectResponse
+    public function update_role(Request $request,$doc_num):RedirectResponse
     {
-        $user = User::findOrFail($id);
+        $user = User::where('doc_num', $doc_num)->first();
 
         $authuser = auth()->user();
 
@@ -73,13 +73,11 @@ class UserController extends Controller
                 $user->role_id = $request->role_id;
                 $user->save();
 
-                $instructor = $id;
-
                 Instructor::create([
-                    'user_id' => $instructor
+                    'user_id' => $user->id
                 ]);
 
-            return redirect()->route('profile.index');
+            return redirect()->route('profile.show', ['username' => auth()->user()->user_name]);
             }
         }
         elseif($authuser->role_id == '2'){
@@ -89,17 +87,15 @@ class UserController extends Controller
                 $user->role_id = $request->role_id;
                 $user->save();
 
-                $recruiter = $id;
-
                 Recruiter::create([
-                    'user_id' => $recruiter
+                    'user_id' => $user->id
                 ]);
 
-            return redirect()->route('profile.index');
+            return redirect()->route('profile.show', ['username' => auth()->user()->user_name]);
             }
         }
 
-        return redirect()->route('profile.index');
+        return redirect()->route('profile.show', ['username' => auth()->user()->user_name]);
     }
 
     public function edit_data():View
@@ -120,15 +116,15 @@ class UserController extends Controller
         return redirect()->route('profile.index');
     }
 
-    public function destroy($id):RedirectResponse
+    public function destroy($doc_num):RedirectResponse
     {
-        ($user = User::findOrFail($id))->delete();
+        $user = User::where('doc_num', $doc_num)->first()->delete();
         return redirect()->route('user.index', compact('user'));
     }
 
-    public function show($id):View
+    public function show($doc_num):View
     {
-        $user = User::findOrFail($id);
+        $user = User::where('doc_num', $doc_num)->first();
         return view('user.show', compact('user'));
     }
 }

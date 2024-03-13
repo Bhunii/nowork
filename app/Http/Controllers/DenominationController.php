@@ -53,8 +53,7 @@ class DenominationController extends Controller
 
     public function show($code)
     {
-        $occupation = Occupation::findOrFail($code);
-        $denominations = $occupation->denominations()->select('code','description')->get();
+        $denominations = Denomination::where('code_occupation', $code)->select('code', 'description')->get();
 
         return view('denomination.show', compact('denominations', 'code'));
     }

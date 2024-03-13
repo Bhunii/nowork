@@ -9,9 +9,14 @@ use App\Models\Occupation;
 
 class OccupationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $occupations=Occupation::all();
+        $occupations=Occupation::select('code_occupation','name','description')->get();;
         return view('occupation.index',compact('occupations'));
     }
 
@@ -29,79 +34,43 @@ class OccupationController extends Controller
             'description' => $request->description_occupation,
         ]);
 
-<<<<<<< HEAD
-        //Funciones
-        Functions::create([
-            'code_occupation' => Occupation::latest('code_occupation')->first()->code_occupation,
-            'code'=>$request->code_function,
-            'description' => $request->description_function,
-        ]);
-
-
-        //Denominaciones
-        Denomination::create([
-            'code_occupation' => Occupation::latest('code_occupation')->first()->code_occupation,
-            'code'=>$request->code_denomination,
-            'description' => $request->description_denomination,
-        ]);
-
-
-        //Relacionadas
-        Relation::create([
-            'code_occupation' => Occupation::latest('code_occupation')->first()->code_occupation,
-            'code_occupation_relation' =>$request->code_occupation_relation
-        ]);
-
-        //Habilidades
-        Skill::create([
-            'code_occupation' => Occupation::latest('code_occupation')->first()->code_occupation,
-            'code'=>$request->code_skill,
-            'name' => $request->name_skill,
-            'description' => $request->description_skill,
-        ]);
-
-        //Conocimientos
-        Knowledge::create([
-            'code_occupation'=>Occupation::latest('code_occupation')->first()->code_occupation,
-            'code'=>$request->code_knowledge,
-            'name'=>$request->name_knowledge,
-            'description'=>$request->description_knowledge,
-        ]);
-
-        return redirect()->route('occupation.create');
-=======
         return redirect()->route('occupation.index');
->>>>>>> origin/bryan
     }
 
 
-    public function edit(Occupation $occupation)
+    public function edit($code_occupation)
     {
+        $occupation = Occupation::where('code_occupation', $code_occupation)
+            ->select('code_occupation', 'name', 'description')
+            ->first();
+
         return view('occupation.edit', compact('occupation'));
     }
 
-    public function update(Request $request, Occupation $occupation)
+    public function update(Request $request, $code_occupation)
     {
+        $occupation = Occupation::where('code_occupation', $code_occupation)
+            ->select('code_occupation', 'name', 'description')
+            ->first();
+
         $occupation->update($request->all());
+
         return redirect()->route('occupation.index');
     }
 
-    public function destroy(Occupation $occupation)
+
+    public function destroy($code_occupation)
     {
+        $occupation = Occupation::where('code_occupation', $code_occupation)->first();
         $occupation->delete();
+
         return redirect()->route('occupation.index');
     }
 
-<<<<<<< HEAD
-    public function show($id)
-    {
-        $occupation = Occupation::with('functions', 'denominations', 'relations', 'skills', 'knowledges')->findOrFail($id);
-=======
+
     public function show($code_occupation)
     {
-        $occupation = Occupation::findOrFail($code_occupation);
-        // $functions= $occupation->functions;
->>>>>>> origin/bryan
+        $occupation = Occupation::where('code_occupation', $code_occupation)->first();
         return view('occupation.show', compact('occupation'));
     }
 

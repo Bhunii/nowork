@@ -65,12 +65,12 @@ Route::post('logout', [LogoutController::class, 'store'])->name('logout');
 Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
-Route::get('/user/{id}/edit_role', [UserController::class, 'edit_role'])->name('user.edit_role');
-Route::put('/user/{id}/update_role', [UserController::class, 'update_role'])->name('user.update_role');
+Route::get('/user/{doc_num}/edit_role', [UserController::class, 'edit_role'])->name('user.edit_role');
+Route::put('/user/{doc_num}/update_role', [UserController::class, 'update_role'])->name('user.update_role');
 Route::get('/user/edit_data', [UserController::class, 'edit_data'])->name('user.edit_data');
 Route::put('/user/update_data', [UserController::class, 'update_data'])->name('user.update_data');
-Route::delete('/user/{id}/destroy', [UserController::class, 'destroy'])->name('user.destroy');
-Route::get('/user/{id}/show', [UserController::class, 'show'])->name('user.show');
+Route::delete('/user/{doc_num}/destroy', [UserController::class, 'destroy'])->name('user.destroy');
+Route::get('/user/{doc_num}/show', [UserController::class, 'show'])->name('user.show');
 
 //management routes for instructor
 Route::get('/instructor/index', [InstructorController::class, 'index'])->name('instructor.index');
@@ -98,9 +98,9 @@ Route::get('/candidate/show/{candidate}', [CandidateController::class, 'show'])-
 Route::get('/occupation/index', [OccupationController::class,'index'])->name('occupation.index');
 Route::get('/occupation/create', [OccupationController::class,'create'])->name('occupation.create');
 Route::post('/occupation/store', [OccupationController::class,'store'])->name('occupation.store');
-Route::get('/occupation/edit/{occupation}', [OccupationController::class,'edit'])->name('occupation.edit');
-Route::put('/occupation/update/{occupation}', [OccupationController::class,'update'])->name('occupation.update');
-Route::delete('/occupation/destroy/{occupation}',[OccupationController::class, 'destroy'])->name('occupation.destroy');
+Route::get('/occupation/edit/{code_occupation}', [OccupationController::class, 'edit'])->name('occupation.edit');
+Route::put('/occupation/update/{code_occupation}', [OccupationController::class, 'update'])->name('occupation.update');
+Route::delete('/occupation/delete/{code_occupation}', [OccupationController::class, 'destroy'])->name('occupation.destroy');
 Route::get('/occupation/show/{code}', [OccupationController::class,'show'])->name('occupation.show');
 
 //Management routes for companies

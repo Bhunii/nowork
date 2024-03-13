@@ -55,8 +55,7 @@ class KnowledgeController extends Controller
 
     public function show($code)
     {
-        $occupation = Occupation::findOrFail($code);
-        $knowledges = $occupation->knowledges()->select('code','name','description')->get();
+        $knowledges = Knowledge::where('code_occupation', $code)->select('code','name','description')->get();
 
         return view('knowledge.show', compact('knowledges', 'code'));
     }

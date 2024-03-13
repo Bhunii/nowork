@@ -51,8 +51,7 @@ class RelationController extends Controller
 
     public function show($code)
     {
-        $occupation = Occupation::findOrFail($code);
-        $relations = $occupation->relations()->select('code_occupation_relation')->get();
+        $relations = Relation::where('code_occupation', $code)->select('code_occupation_relation')->get();
 
         return view('relation.show', compact('relations', 'code'));
     }

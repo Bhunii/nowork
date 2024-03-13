@@ -34,7 +34,7 @@
                 <td style="width: 200px">{{ $user->doc_num }}</td>
                 <td style="width: 290px">{{ $user->email }}</td>
                 <td style="width: 300px">
-                    <form class="form_edit_user_role" method="post" action="{{route('user.update_role',$user->id)}}">
+                    <form class="form_edit_user_role" method="post" action="{{route('user.update_role',$user->doc_num)}}">
                         @csrf
                         @method('PUT')
                         <select name="role_id">

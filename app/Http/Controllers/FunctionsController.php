@@ -32,11 +32,11 @@ class FunctionsController extends Controller
 
         Functions::create([
             'code_occupation'=>$request->code_occupation,
-            'code'=>$request->code_function,
-            'description'=>$request->description_function,
+            'code'=>$request->code,
+            'description'=>$request->description
         ]);
 
-        return redirect()->route('occupation.show', $request->code_occupation);
+        return redirect()->route('functions.show', $request->code_occupation);
     }
 
     public function edit()
@@ -53,8 +53,7 @@ class FunctionsController extends Controller
 
     public function show($code)
     {
-        $occupation = Occupation::findOrFail($code);
-        $functions = $occupation->functions()->select('code','description')->get();
+        $functions = Functions::where('code_occupation', $code)->select('code', 'description')->get();
 
         return view('functions.show', compact('functions', 'code'));
     }

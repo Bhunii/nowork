@@ -22,7 +22,7 @@
         <p>Nuestra vision se encuentra aqui...</p>
     </div>
 
-    <article style="display:flex; width: 100%; align-items:center; justify-content:space-around;">
+    <article style="display:flex; width: 100%; flex-direction: row;align-items:center; justify-content:space-between; padding: 10px 15px;">
         <div class="diskette" id="isaac">
             <div class="border-diskette" id="diskette-section-1">
                 <ul class="top-container-border-diskette">
