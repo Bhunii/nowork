@@ -23,8 +23,8 @@ class DenominationController extends Controller
     {
         Denomination::create([
             'code_occupation'=>$request->code_occupation,
-            'code'=>$request->code,
-            'description'=>$request->description,
+            'code'=>$request->code_denomination,
+            'description'=>$request->description_denomination,
         ]);
     }
 

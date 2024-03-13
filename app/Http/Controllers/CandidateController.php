@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Http\Requests\CandidateRequest;
 use App\Models\Candidate;
@@ -17,7 +18,16 @@ class CandidateController extends Controller
 {
     public function index()
     {
+        $authUser = auth()->user();
+        if ($authUser->role_id == '3') {
+            $candidates = User::where('role_id', '4')->get();
+
+            return view('candidate.index', compact('candidates'));
+        } else {
+            return redirect()->route('candidate.index');
+        }
     }
+
 
     public function create():View
     {
@@ -85,5 +95,10 @@ class CandidateController extends Controller
         ]);
 
         return redirect()->route('profile.index')->with('mensaje','Datos Actualizados');
+    }
+
+    public function show(Candidate $candidate)
+    {
+        return view('candidate.show', compact('candidate'));
     }
 }

@@ -23,8 +23,8 @@ class FunctionsController extends Controller
     {
         Functions::create([
             'code_occupation'=>$request->code_occupation,
-            'code'=>$request->code,
-            'description'=>$request->description,
+            'code'=>$request->code_function,
+            'description'=>$request->description_function,
         ]);
     }
 

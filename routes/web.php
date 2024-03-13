@@ -22,6 +22,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\VacanciesController;
+use App\Http\Controllers\ApiController;
 
 
 
@@ -89,6 +90,7 @@ Route::get('/candidate/create', [CandidateController::class, 'create'])->name('c
 Route::post('/candidate/store', [CandidateController::class, 'store'])->name('candidate.store');
 Route::get('/candidate/edit', [CandidateController::class, 'edit'])->name('candidate.edit');
 Route::put('/candidate/update', [CandidateController::class, 'update'])->name('candidate.update');
+Route::get('/candidate/show/{candidate}', [CandidateController::class, 'show'])->name('candidate.show');
 
 //rutas de ocupaciones
 Route::get('/occupation/index', [OccupationController::class,'index'])->name('occupation.index');
@@ -163,8 +165,6 @@ Route::put('/charge/update', [ChargeController::class, 'update'])->name('charge.
 //Management routes for vacancy process of recruiter and candidate
 Route::get('/process/index',[ProcessController::class,'index'])->name('process.index');
 Route::get('/process/create',[ProcessController::class,'create'])->name('process.create');
-Route::post('/process/{id}/store',[ProcessController::class,'store'])->name('process.store');
+Route::post('/process/store',[ProcessController::class,'store'])->name('process.store');
 Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
 Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
-
-

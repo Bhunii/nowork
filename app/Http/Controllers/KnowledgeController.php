@@ -23,9 +23,9 @@ class KnowledgeController extends Controller
     {
         Knowledge::create([
             'code_occupation'=>$request->code_occupation,
-            'code'=>$request->code,
-            'name'=>$request->name,
-            'description'=>$request->description,
+            'code'=>$request->code_knowledge,
+            'name'=>$request->name_knowledge,
+            'description'=>$request->description_knowledge,
         ]);
     }
 
