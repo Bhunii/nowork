@@ -23,7 +23,7 @@
     </div>
 
     <article style="display:flex; width: 100%; flex-direction: row;align-items:center; justify-content:space-between; padding: 10px 15px;">
-        <div class="diskette" id="isaac">
+        <a href="https://github.com/isaacrevelo" class="diskette" id="isaac" target="_blank">
             <div class="border-diskette" id="diskette-section-1">
                 <ul class="top-container-border-diskette">
                     <ul style="align-items:flex-start;">
@@ -76,8 +76,8 @@
                     <li></li>
                 </ul>
             </div>
-        </div>
-        <div class="diskette" id="brayan">
+        </a>
+        <a href="https://github.com/Bhunii" class="diskette" id="brayan" target="_blank">
             <div class="border-diskette" id="diskette-section-1">
                 <ul class="top-container-border-diskette">
                     <ul style="align-items:flex-start;">
@@ -130,8 +130,8 @@
                     <li></li>
                 </ul>
             </div>
-        </div>
-        <div class="diskette" id="juan">
+        </a>
+        <a href="https://github.com/Juafsalgadov" class="diskette" id="juan" target="_blank">
             <div class="border-diskette" id="diskette-section-1">
                 <ul class="top-container-border-diskette">
                     <ul style="align-items:flex-start;">
@@ -184,8 +184,8 @@
                     <li></li>
                 </ul>
             </div>
-        </div>
-        <div class="diskette" id="nicolas">
+        </a>
+        <a href="https://github.com/Nicoilas" class="diskette" id="nicolas" target="_blank">
             <div class="border-diskette" id="diskette-section-1">
                 <ul class="top-container-border-diskette">
                     <ul style="align-items:flex-start;">
@@ -238,7 +238,7 @@
                     <li></li>
                 </ul>
             </div>
-        </div>
+        </a>
     </article>
 </main>
 @endsection

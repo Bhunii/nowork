@@ -6,6 +6,7 @@
 
 @section('js')
     <script src="{{ asset('js/location.js') }}"></script>
+    <script src="{{ asset('js/charge.js') }}"></script>
 @endsection
 
 @section('content_profile')
@@ -49,15 +50,20 @@
     <label> end_date</label>
     <input type="date" name="end_date"/>
 
+    <div>
+        <label for="occupationSelect">Occupation</label>
+        <select class="select_style_general" name="id_occupation" id="occupationSelect">
+            <option value="">Select an occupation</option>
+            @foreach ($occupations as $occupation)
+                <option value="{{ $occupation->id }}" data-functions='@json($occupation->functions)'>{{ $occupation->name }}</option>
+            @endforeach
+        </select>
+    </div>
 
-
-    <h2>form charge </h2>
-    <label> id_denomination</label>
-    <input type="text" name="id_denomination"/>
-
-    <label> id_function</label>
-    <input type="text" name="id_function"/>
-
+    <div id="functionsContainer">
+        <label for="functionsCheckboxList">Functions</label>
+        <div id="functionsCheckboxList"></div>
+    </div>
 
     <label> salary</label>
     <input type="text" name="salary"/>

@@ -12,7 +12,8 @@ class ProcessController extends Controller
         return $this->middleware('auth');
     }
 
-    public function index(){
+    public function index($vacancy)
+    {
         $authuser = auth()->user();
 
         if($authuser->role_id == 4){
@@ -22,9 +23,13 @@ class ProcessController extends Controller
 
         }elseif($authuser->role_id == 3){
 
-            $processes = $authuser->recruiter->company->vacancy->processes;
+            // $processes = $authuser->recruiter->company->vacancy->processes;
+            $processes = Process::where('id_vacancy', $vacancy)->get();
+
             return view('process.index', compact('processes'));
 
+        }else{
+            return redirect()->route('profile.show' ,['username' => auth()->user()->user_name]);
         }
 
     }
@@ -37,7 +42,7 @@ class ProcessController extends Controller
             $processes = $authuser->recruiter->company->vacancy->processes;
             return view('process.create');
         }else{
-            return ('No autorizado');
+            return redirect()->route('profile.show' ,['username' => auth()->user()->user_name]);
         }
     }
 
@@ -62,7 +67,7 @@ class ProcessController extends Controller
 
             return redirect()->route('process.index');
         } else {
-            return ('No autorizado');
+            return redirect()->route('profile.show' ,['username' => auth()->user()->user_name]);
         }
     }
 

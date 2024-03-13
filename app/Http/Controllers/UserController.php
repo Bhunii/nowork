@@ -28,8 +28,9 @@ class UserController extends Controller
         }elseif($authuser->role_id == '2'){
             $users = User::whereNotIn('role_id', [1,2,3])->select('doc_num','name','last_name','email','role_id')->get();
             return view('user.index', compact('users'));
+        }else{
+            return redirect()->route('profile.index' ,['username' => auth()->user()->user_name]);
         }
-        return redirect()->route('profile.index');
     }
     public function create():View
     {

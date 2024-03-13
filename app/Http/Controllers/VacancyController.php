@@ -9,6 +9,7 @@ use Illuminate\View\View;
 use App\Models\Departament;
 use App\Models\Vacancy;
 use App\Models\Charge;
+use App\Models\Occupation;
 
 class VacancyController extends Controller
 {
@@ -25,7 +26,7 @@ class VacancyController extends Controller
             $vacancies = $company->vacancies;
             return view('vacancy.index',compact('vacancies'));
         }else{
-            return redirect()->route('profile.index');
+            return redirect()->route('profile.show' ,['username' => auth()->user()->user_name]);
         }
     }
     public function create()
@@ -33,9 +34,10 @@ class VacancyController extends Controller
         $authuser = auth()->user();
         if($authuser->role_id == '3'){
             $departaments = Departament::with('municipalities')->get();
-            return view('vacancy.create', compact('departaments'));
+            $occupations = Occupation::with('functions')->get();
+            return view('vacancy.create', compact('departaments', 'occupations'));
         }else{
-            return redirect()->route('profile.index');
+            return redirect()->route('profile.show' ,['username' => auth()->user()->user_name]);
         }
     }
     public function store(Request $request)

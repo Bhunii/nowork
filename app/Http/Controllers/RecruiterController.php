@@ -17,7 +17,7 @@ class RecruiterController extends Controller
         $authuser = auth()->user();
 
         if($authuser->role_id == '2'){
-            $recruiters = Recruiter::all();
+            $recruiters = Recruiter::select('id','admission_date')->get;
             return view('recruiter.index', compact('recruiters'));
         }else{
             return redirect()->route('profile.index');

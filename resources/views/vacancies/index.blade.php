@@ -44,7 +44,7 @@
                                     <li style="font-weight: 500;">Cargo</li>
                                     <li>
                                         <span>{{ $vacancy->charge->denomination->description }}</span> -
-                                        <span>{{ $vacancy->charge->function->description }}</span>
+                                        <span>{{ $vacancy->charge->functions }}</span>
                                     </li>
                                     <li>
                                         <span>{{ $vacancy->departament->name }}</span> -
