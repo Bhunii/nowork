@@ -2,47 +2,46 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/general-index.css') }}">
-@endsection
-
-@section('style')
-    <style>
-        .container_general_profile{
-            font-size: 15px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/index-occupations.css') }}">
 @endsection
 
 @section('content_profile')
-<section class="contenedor_index_general">
-    <article class="titulo_index_general">
-        <h3>Listado de Vacante Aplicadas</h3>
-    </article>
-    <article class="contenedor_tabla_general">
-        <table class="contenido_tabla_general">
-            <tr class="tr_tabla_general_encabezado">
-                <td style="width: 200px">Config</td>
-                <td style="width: 235px">Nombre Empresa</td>
-                <td style="width: 235px">Denominacion</td>
-                <td style="width: 155px">Fecha Postulacion</td>
-            </tr>
-            @if ($processes->isEmpty())
-                <tr>
-                    <td>Table empty</td>
-                </tr>
+<div class="container_index_occupations">
+    <div class="content_title_occupations">
+        <h1>Vacantes Aplicadas</h1>
+    </div>
+    <div class="container_general_occupations">
+        <div class="container_content_occupations">
+            <div class="container_header_occupations">
+                <ul class="ul_header_occupation">
+                    <li style="width: 25%">Company</li>
+                    <li style="width: 20%">Denomination</li>
+                    <li style="width: 17%">Location</li>
+                    <li style="width: 15%">Selection Status</li>
+                    <li style="width: 13%">Date Applied</li>
+                    <li style="width: 10%">Points</li>
+                    <!-- <li style="width: 10%; background: none;"></li> -->
+                </ul>
+            </div>
+            <div class="container_data_occupations">
+            @if($processes->isEmpty())
+                <span>No hay ocupaciones registradas</span>
             @else
                 @foreach($processes as $process)
-                        <tr class="tr_tabla_general_contenido">
-                            <td class=" td_general_tabla_general td_configuracion_general">
-                                <a class="a_config_general" href="#">Show Process</a>
-                            </td>
-                            <td class="td_general_tabla_general">{{ $process->vacancy->company->name }}</td>
-                            <td class="td_general_tabla_general">{{ $process->vacancy->charge->denomination->description }}</td>
-                            <td class="td_general_tabla_general">{{ $process->date_applied }}</td>
-                        </tr>
+                    <ul class="ul_data_occupation">
+                        <li style="width: 25%">{{ $process->vacancy->company->name }}</li>
+                        <li style="width: 20%">{{ $process->vacancy->charge->denomination->description }}</li>
+                        <li style="width: 17%">{{ $process->vacancy->departament->name}} - {{ $process->vacancy->municipality->name}}</li>
+                        <li style="width: 15%"><abbr title="{{ $process->selection_status->description }}">{{ $process->selection_status->name }}</abbr></li>
+                        <li style="width: 13%">{{ $process->date_applied }}</li>
+                        <li style="width: 10%">{{ $process->points }}</li>
+                        <!-- <li style="background: none; width: 10%; gap: 9px;"></li> -->
+                    </ul>
                 @endforeach
             @endif
-        </table>
-    </article>
-</section>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection

@@ -61,8 +61,8 @@
                                 @auth
                                     @switch(auth()->user()->role_id)
                                         @case('4')
-                                            @if ($vacancy->processes()->where('id_candidate', auth()->id())->exists())
-                                                <li>Ya está postulado</li>
+                                            @if ($vacancy->processes()->where('id_candidate', auth()->user()->candidate->id)->exists())
+                                                <li>Ya esta postulado</li>
                                             @else
                                                 <li>
                                                     <form method="POST" action="{{ route('process.store', $vacancy->id) }}">
