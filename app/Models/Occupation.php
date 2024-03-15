@@ -42,8 +42,9 @@ class Occupation extends Model
         return $this->hasOne(Knowledge::class, 'code_occupation');
     }
 
-    public function functions() {
-        return $this->hasMany(Functions::class, 'code_occupation');
+    public function functions()
+    {
+        return $this->hasMany(Functions::class, 'code_occupation', 'code_occupation');
     }
 
     public function function() {

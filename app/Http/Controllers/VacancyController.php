@@ -33,9 +33,12 @@ class VacancyController extends Controller
     {
         $authuser = auth()->user();
         if($authuser->role_id == '3'){
+            $occupations = Occupation::with(['functions' => function ($query){
+                $query->select('code_occupation','code','description');
+            }])->get(['code_occupation','name']);
+            // dd($occupations);
             $departaments = Departament::with('municipalities')->get();
-            $occupations = Occupation::with('functions')->get();
-            return view('vacancy.create', compact('departaments', 'occupations'));
+            return view('vacancy.create', compact('departaments','occupations'));
         }else{
             return redirect()->route('profile.show' ,['username' => auth()->user()->user_name]);
         }
