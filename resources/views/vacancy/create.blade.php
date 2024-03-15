@@ -57,7 +57,7 @@
 
     <div>
         <label for="occupationSelect">Occupation</label>
-        <select class="select_style_general" name="id_occupation" id="occupationSelect">
+        <select class="select_style_general" name="" id="occupationSelect">
             <option value="">Select an occupation</option>
             @foreach ($occupations as $occupation)
                 <option value="{{ $occupation->code_occupation }}" data-functions='@json($occupation->functions)'>{{ $occupation->name }}</option>

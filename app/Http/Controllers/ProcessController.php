@@ -12,20 +12,18 @@ class ProcessController extends Controller
         return $this->middleware('auth');
     }
 
-    public function index($vacancy)
+    public function index($confirm)
     {
         $authuser = auth()->user();
 
         if($authuser->role_id == 4){
 
-            $processes = $authuser->candidate->load('processes')->processes;
+            $processes = Process::where('id_candidate', $confirm)->get();
             return view('process.index', compact('processes'));
 
         }elseif($authuser->role_id == 3){
 
-            // $processes = $authuser->recruiter->company->vacancy->processes;
-            $processes = Process::where('id_vacancy', $vacancy)->get();
-
+            $processes = Process::where('id_vacancy', $confirm)->get();
             return view('process.index', compact('processes'));
 
         }else{
@@ -35,42 +33,25 @@ class ProcessController extends Controller
     }
 
     public function create(){
-        $authuser = auth()->user();
-
-        if($authuser->role_id == 3){
-
-            $processes = $authuser->recruiter->company->vacancy->processes;
-            return view('process.create');
-        }else{
-            return redirect()->route('profile.show' ,['username' => auth()->user()->user_name]);
-        }
     }
 
-    public function store(Request $request){
+    public function store($id){
         $authuser = auth()->user();
 
-        if ($authuser->role_id == 3) {
+        if ($authuser->role_id == 4) {
 
-            $id = $request->input('id_vacancy');
+            $candidate = $authuser->candidate->id;
 
-            $points1 = request()->input('points1');
-            $points2 = request()->input('points2');
-            $points3 = request()->input('points3');
-
-            $totalPoints = $points1 + $points2 + $points3;
-
-            $process = Process::create([
+            Process::create([
                 'id_vacancy' => $id,
-                'id_candidate' => $authuser->candidate->id,
-                'points' => $totalPoints,
+                'id_candidate' => $candidate
             ]);
 
-            return redirect()->route('process.index');
+            return redirect()->route('process.index',['confirm' => auth()->user()->candidate->id]);
         } else {
             return redirect()->route('profile.show' ,['username' => auth()->user()->user_name]);
         }
     }
-
 
     public function edit(){
     }

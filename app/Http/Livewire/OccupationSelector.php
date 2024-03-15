@@ -8,12 +8,12 @@ use App\Models\Functions;
 
 class OccupationSelector extends Component
 {
-    public $selectedOccupation;
+    public $selectedOccupation = '';
     public $functions = [];
 
     public function render()
     {
-        $occupations = Occupation::select('code_occupation','name')->get();
+        $occupations = Occupation::all();
 
         return view('livewire.occupation-selector', compact('occupations'));
     }
@@ -21,9 +21,16 @@ class OccupationSelector extends Component
     public function updatedSelectedOccupation($selectedOccupation)
     {
         if($selectedOccupation) {
-            $this->functions = Functions::where('code_occupation', $selectedOccupation)->get();
-        }else{
+            $function = Functions::where('code_occupation', $selectedOccupation)->first();
+
+            if ($function) {
+                $this->functions = $function;
+            } else {
+                $this->functions = [];
+            }
+        } else {
             $this->functions = [];
         }
     }
+
 }

@@ -165,9 +165,9 @@ Route::get('/charge/edit', [ChargeController::class, 'edit'])->name('cahrge.edit
 Route::put('/charge/update', [ChargeController::class, 'update'])->name('charge.update');
 
 //Management routes for vacancy process of recruiter and candidate
-Route::get('/process/index/vacancy/{vacancy}',[ProcessController::class,'index'])->name('process.index');
+Route::get('/process/index/confirm/{confirm}',[ProcessController::class,'index'])->name('process.index');
 Route::get('/process/create',[ProcessController::class,'create'])->name('process.create');
-Route::post('/process/{id}/store',[ProcessController::class,'store'])->name('process.store');
+Route::post('/process/store/{id}',[ProcessController::class,'store'])->name('process.store');
 Route::get('/process/edit', [ProcessController::class, 'edit'])->name('process.edit');
 Route::put('/process/update', [ProcessController::class, 'update'])->name('process.update');
 
