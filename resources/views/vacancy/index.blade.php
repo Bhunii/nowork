@@ -21,12 +21,18 @@
                 </ul>
             </div>
             <div class="container_data_occupations">
+                    <li class="data">
+                        <span></span>
+                    </li>
             @if($vacancies->isEmpty())
                 <span>No hay ocupaciones registradas</span>
             @else
                 @foreach($vacancies as $vacancy)
+                @php
+                    $denonimation = $vacancy->charge->denomination->description ?? null;
+                @endphp
                     <ul class="ul_data_occupation">
-                        <li style="width: 15%">{{ $vacancy->charge->description }}</li>
+                        <li style="width: 15%">{{ $denonimation ?? '' }}</li>
                         <li style="width: 25%">{{ $vacancy->departament->name }} - {{ $vacancy->municipality->name }}</li>
                         <li style="width: 48%">{{ $vacancy->number_vacancy }}</li>
                         <li style="background: none; width: 12%; gap: 9px;">

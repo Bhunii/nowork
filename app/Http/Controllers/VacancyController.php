@@ -23,8 +23,12 @@ class VacancyController extends Controller
         $authuser = auth()->user();
         if($authuser->role_id == '3'){
             $company = Auth::user()->recruiter->company;
-            $vacancies = $company->vacancies;
-            return view('vacancy.index',compact('vacancies'));
+            if($company == null){
+                return redirect()->route('company.index')->with('mensaje','Debes crear la empresa primero');
+            } else{
+                $vacancies = $company->vacancies;
+                return view('vacancy.index',compact('vacancies'));
+            }
         }else{
             return redirect()->route('profile.show' ,['username' => auth()->user()->user_name]);
         }
@@ -62,7 +66,7 @@ class VacancyController extends Controller
         Charge::create([
             'id_vacancy'=>Vacancy::latest('id')->first()->id,
             'id_denomination' => $request->id_denomination,
-            'id_function' => $request->id_function,
+            'functions' => $request->functions,
             'payment_method' => $request->payment_method,
             'salary' => $request->salary,
             'type_contract' => $request->type_contract
