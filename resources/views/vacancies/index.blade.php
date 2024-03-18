@@ -36,6 +36,7 @@
                     @forelse($vacancies as $vacancy)
                     @php
                         $denonimation = $vacancy->charge->denomination->description ?? null;
+                        $functions = $vacancy->charge->functions ?? null;
                     @endphp
                         <div class="contenedor_vacante" data-departamento="{{ $vacancy->departament->name }}">
                             <div class="datos_vacante">
@@ -47,7 +48,7 @@
                                     <li style="font-weight: 500;">Cargo</li>
                                     <li>
                                         <span>{{ $denonimation ?? '' }}</span> -
-                                        <span>{{ $vacancy->charge->functions }}</span>
+                                        <span>{{ $functions ?? '' }}</span>
                                     </li>
                                     <li>
                                         <span>{{ $vacancy->departament->name }}</span> -
