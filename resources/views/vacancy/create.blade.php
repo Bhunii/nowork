@@ -6,7 +6,8 @@
 
 @section('js')
     <script src="{{ asset('js/location.js') }}"></script>
-    <script src="{{ asset('js/occupation-functions.js') }}"></script>
+    <script src="{{ asset('js/occupation-denomination.js') }}"></script>
+    <script src="{{ asset('js/occupation-function.js') }}"></script>
 @endsection
 
 @section('content_profile')
@@ -60,10 +61,18 @@
         <select class="select_style_general" name="" id="occupationSelect">
             <option value="">Select an occupation</option>
             @foreach ($occupations as $occupation)
-                <option value="{{ $occupation->code_occupation }}" data-functions='@json($occupation->functions)'>{{ $occupation->name }}</option>
+                <option value="{{ $occupation->code_occupation }}" data-functions='@json($occupation->functions)' data-denominations='@json($occupation->denominations)'>{{ $occupation->name }}</option>
             @endforeach
         </select>
     </div>
+
+    <div>
+        <label for="denominationSelect">Denominations</label>
+        <select class="select_style_general" name="id_denomination" id="denominationSelect">
+            <option value="">Select an option</option>
+        </select>
+    </div>
+
     <div>
         <fieldset>
             <legend>Functions</legend>
@@ -92,6 +101,9 @@
             <option value="M">Mensual</option>
             <option value="Q">Quincenal</option>
         </select>
+    </div>
+    <div>
+        <input type="text" name="functions" value="" readonly hidden>
     </div>
     <div>
         <input type="submit" value="Crear" class="create"/>

@@ -118,6 +118,28 @@
     justify-content: space-between;
 }
 
+.cargo_vacante{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+}
+
+.cargo_vacante ul{
+    width: 40%;
+}
+
+.functions_vacante{
+    display: flex;
+    width: 60%;
+    padding: 0 10px;
+}
+
+.functions_vacante ul{
+    list-style-position: inside;
+    list-style-type: circle;
+}
+
 .ul_fecha_vacante{
     display: flex;
     align-items: flex-end;

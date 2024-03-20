@@ -8,6 +8,7 @@
     <script src="{{ asset('js/search.js') }}">
         let departamentos = @json($departamentsJson);
     </script>
+    <script src="{{ asset('js/read-functions.js') }}"></script>
 @endsection
 
 @section('content')
@@ -44,17 +45,24 @@
                                     <li style="font-weight: 700;">{{ $vacancy->company->name }}</li>
                                     <li>{{ $vacancy->company->nature}}</li>
                                 </ul>
-                                <ul>
-                                    <li style="font-weight: 500;">Cargo</li>
-                                    <li>
-                                        <span>{{ $denonimation ?? '' }}</span> -
-                                        <span>{{ $functions ?? '' }}</span>
-                                    </li>
-                                    <li>
-                                        <span>{{ $vacancy->departament->name }}</span> -
-                                        <span>{{ $vacancy->municipality->name }}</span></li>
-                                    <li>{{ $vacancy->occupational_profile }}</li>
-                                </ul>
+                                <div class="cargo_vacante">
+                                    <ul>
+                                        <li style="font-weight: 500;">Cargo</li>
+                                        <li>
+                                            <span>{{ $denonimation ?? '' }}</span> -
+                                        </li>
+                                        <li>
+                                            <span>{{ $vacancy->departament->name }}</span> -
+                                            <span>{{ $vacancy->municipality->name }}</span></li>
+                                        <li>{{ $vacancy->occupational_profile }}</li>
+                                    </ul>
+                                    <div class="functions_vacante">
+                                        <ul id="functionsList">
+                                            <span style="font-weight: 400;">Funciones</span>
+                                            <li>{{ $functions ?? '' }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                             <div class="datos_vacante datos_vacante_style">
                                 <ul class="ul_fecha_vacante">

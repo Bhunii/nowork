@@ -52,7 +52,7 @@ class Occupation extends Model
     }
 
     public function denominations() {
-        return $this->hasMany(Denomination::class, 'code_occupation');
+        return $this->hasMany(Denomination::class, 'code_occupation', 'code_occupation');
     }
     public function denomination() {
         return $this->hasOne(Denomination::class, 'code_occupation');

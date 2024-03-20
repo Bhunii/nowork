@@ -14,7 +14,7 @@ class Charge extends Model
     protected $fillable = [
         'id_vacancy',
         'id_denomination',
-        'id_function',
+        'functions',
         'payment_method',
         'salary',
         'type_contract'

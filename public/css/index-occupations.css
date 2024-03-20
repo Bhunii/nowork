@@ -6,10 +6,12 @@
 .container_index_occupations{
     display: flex;
     width: 95%;
-    height: 95%;
+    min-height: 90%;
+    height: auto;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    padding: 10px;
 }
 
 .container_general_occupations{

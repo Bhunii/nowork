@@ -37,16 +37,18 @@ class VacancyController extends Controller
     {
         $authuser = auth()->user();
         if($authuser->role_id == '3'){
-            $occupations = Occupation::with(['functions' => function ($query){
-                $query->select('code_occupation','code','description');
-            }])->get(['code_occupation','name']);
+            // $occupations = Occupation::with(['functions' => function ($query){
+            //     $query->select('code_occupation','code','description');
+            // },'denominations'])->get(['code_occupation','name']);
             // dd($occupations);
+            $occupations = Occupation::with(['functions','denominations'])->get();
             $departaments = Departament::with('municipalities')->get();
             return view('vacancy.create', compact('departaments','occupations'));
         }else{
             return redirect()->route('profile.show' ,['username' => auth()->user()->user_name]);
         }
     }
+
     public function store(Request $request)
     {
         $company = Auth::user()->recruiter->company;
