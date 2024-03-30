@@ -46,7 +46,7 @@
     padding: 10px;
     border-radius: 5px;
     border: 2px #e3e3e3 solid;
-    gap: 25px;
+    gap: 0;
     background: #f1f1f1;
 }
 
@@ -80,6 +80,18 @@
     color: rgb(255, 113, 146);
 }
 
+.bx{
+    font-size: 25px;
+    transform: translateY(-28px) translateX(90%);
+    cursor: pointer;
+}
+
+.restore-password{
+    display: flex;
+    align-items: flex-end;
+    margin-top: 7px;
+}
+
 .separator {
     display: flex;
     justify-content: center;
@@ -106,7 +118,6 @@
     align-items: center;
     justify-content: center;
     padding: 5px;
-    font-size: 13.5px;
     border-radius: 5px;
     border: 2px #e3e3e3 solid;
     gap: 25px;
@@ -116,6 +127,7 @@
 .sign_up{
     display: flex;
     gap: 5px;
+    font-size: 13.5px;
     flex-direction: row;
 }
 

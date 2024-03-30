@@ -1,7 +1,11 @@
 @extends('layouts.app',['title' => 'Login'])
 
+@section('js')
+    <script src="{{ asset('js/hide-show-pass.js') }}"></script>
+@endsection
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 @endsection
 
 @section('style')
@@ -21,9 +25,6 @@
         <section class="name_login">
             <span class="name">Sign in Nowork</span>
         </section>
-        <!-- <section class="img_background_login">
-            <img src="../img/login/select_candidates_illustrations.jpg"/>
-        </section> -->
         <section class="container_form_login">
             <form class="form form_login" action="{{ route('login') }}" method="POST" novalidate>
                 @csrf
@@ -31,7 +32,7 @@
                 @if (session('mensaje'))
                     <small>{{ session('mensaje') }}</small>
                 @endif
-                <div>
+                <div style="margin-bottom: 15px;">
                     <label>Email address</label>
                     <input
                     name="email"
@@ -47,7 +48,10 @@
                     <input
                     type="password"
                     name="password"
-                    value="">
+                    value=""
+                    id="pass"
+                    >
+                    <i class='bx bx-show-alt' ></i>
                     @error('password')
                         <small>{{ $message }}</small>
                     @enderror
@@ -58,6 +62,13 @@
                     type="submit"
                     name="login"
                     value="Sign in">
+                </div>
+                <div class="restore-password">
+                    <ul class="sign_up">
+                        <li>Forgot Password?</li>
+                        <li>  |  </li>
+                        <li><a href="{{ asset('login') }}" target="_self"> Restore Password</a></li>
+                    </ul>
                 </div>
             </form>
         </section>
