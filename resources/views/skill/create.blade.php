@@ -19,9 +19,9 @@
                 <input
                 type="text"
                 name="code"
-                value="{{ old('code_function') }}"
+                value="{{ old('code') }}"
                 >
-                @error('code_function')
+                @error('code')
                     <small>{{$message}}</small>
                 @enderror
             </div>
@@ -30,9 +30,9 @@
                 <input
                 type="text"
                 name="name"
-                value="{{ old('name_function') }}"
+                value="{{ old('name') }}"
                 >
-                @error('name_function')
+                @error('name')
                     <small>{{$message}}</small>
                 @enderror
             </div>
@@ -41,8 +41,8 @@
                 <textarea
                 class="textarea_form_occupation"
                 name="description"
-                value="{{ old('description_function') }}"
-                >@error('description_function')<small>{{$message}}</small>@enderror</textarea>
+                value="{{ old('description') }}"
+                >@error('description')<small>{{$message}}</small>@enderror</textarea>
             </div>
             <div>
                 <input type="submit" value="Agregar">

@@ -35,7 +35,7 @@
             @endif
             </div>
             <div class="container_add">
-                <a class="add-icon" href="{{ route('functions.create', $code) }}">
+                <a class="add-icon" href="{{ route('knowledge.create', $code) }}">
                     <img src="{{ asset('img/show-and-more-icon.png') }}" alt="agregar">
                 </a>
             </div>
