@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RoleController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RestorePasswordController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\RecruiterController;
 use App\Http\Controllers\CandidateController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CurriculumController;
@@ -22,7 +22,6 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\VacanciesController;
-use App\Http\Controllers\ApiController;
 use App\Http\Controllers\FunctionsController;
 use App\Http\Controllers\KnowledgeController;
 use App\Http\Controllers\DenominationController;
@@ -55,6 +54,12 @@ Route::get('/about/index',[AboutController::class,'index'])->name('about.index')
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'store']);
 Route::post('logout', [LogoutController::class, 'store'])->name('logout');
+
+//Restore Password
+Route::get('/restore-password/create', [RestorePasswordController::class, 'create'])->name('restore-password.create');
+Route::post('/restore-password/store', [RestorePasswordController::class, 'store'])->name('restore-password.store');
+Route::get('/restore-password/edit/{token}', [RestorePasswordController::class, 'edit'])->name('restore-password.edit');
+Route::post('/restore-password/update', [RestorePasswordController::class, 'update'])->name('restore-password.store');
 
 //Management routes for role
 // Route::get('/role/index', [RoleController::class, 'index'])->name('role.index');

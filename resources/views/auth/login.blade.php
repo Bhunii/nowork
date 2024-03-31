@@ -9,14 +9,6 @@
 @endsection
 
 @section('style')
-    <style>
-        .contenido{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 25px
-        }
-    </style>
 @endsection
 
 @section('content')
@@ -65,9 +57,9 @@
                 </div>
                 <div class="restore-password">
                     <ul class="sign_up">
-                        <li>Forgot Password?</li>
+                        <li>Forgot your password?</li>
                         <li>  |  </li>
-                        <li><a href="{{ asset('login') }}" target="_self"> Restore Password</a></li>
+                        <li><a href="{{ route('restore-password.create') }}" target="_self"> Restore Password</a></li>
                     </ul>
                 </div>
             </form>
