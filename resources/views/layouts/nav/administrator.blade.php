@@ -20,9 +20,6 @@
                         <a href="{{ route('instructor.index') }}">Listado Instructores</a>
                     </li>
                     <li class="nexos">
-                        <a href="#">Listado Registro Vacantes</a>
-                    </li>
-                    <li class="nexos">
                         <a href="#">Ajustes</a>
                     </li>
                     <li class="nexos nexo_logout">

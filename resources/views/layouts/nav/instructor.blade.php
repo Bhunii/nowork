@@ -23,9 +23,6 @@
                         <a href="{{ route('instructor.edit') }}">Actualizar Datos Personales</a>
                     </li>
                     <li class="nexos">
-                        <a href="#">Ver Vacantes Registradas</a>
-                    </li>
-                    <li class="nexos">
                         <a href="#">Ajustes</a>
                     </li>
                     <li class="nexos nexo_logout">
